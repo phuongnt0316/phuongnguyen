@@ -172,9 +172,9 @@ nav .menu-2 ul li a{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 350px;
     padding:40px 10px;
     margin-top: 80px;
+    z-index: 10;
     
 }
 #footer .ft .row a{
@@ -210,4 +210,57 @@ nav .menu-2 ul li a{
     border-radius: 5px;
     border: none;
     padding: 3px;
+}
+
+/* -------contact------------------- */
+ 
+ #body-contact img{
+    width: 100%;
+    height: 590px;
+    object-fit: cover;
+    opacity: 0.9; 
+    position: absolute; 
+} 
+#body-contact .container .row .ct-left{
+    position: relative;
+    background: #606B79;
+    opacity: 0.6;
+    z-index: 20;
+    color: var(--color-3);
+    
+}
+
+.container .row .ct-right{
+    position: relative;
+    background: white;
+    opacity: 0.9;
+    z-index: 20;
+    color:var(--main-color-2);
+}
+.ct-right form .info input{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: none;
+    outline: none;
+    width: 250px;
+    height: 40px;
+    padding: 15px;
+}
+.ct-right form .info textarea{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: var(--title-2-afer);
+    outline: none;
+    padding: 18px;
+}
+.ct-right form .send input{
+    width: 120px;
+    height: 40px;
+    background: var(--main-color-1);
+    color: var(--color-3);
+    font-weight: bold;
+    padding: 5px;
+    border: none;
+    
+}
+.ct-right form .send input:hover{
+    background: var(--main-color1-hover);
 }
