@@ -1,0 +1,34 @@
+:root{
+    --main-color-1:#30B5B2;
+    --main-color-2:#333333;
+    --main-color-3: #e8598f;
+    --main-color1-hover:#25928c;
+    --title-2-afer:#e5e5e5;
+    --color-3:azure;
+}
+#body .row{
+
+}
+#body .row .sitebar{
+    background: var(--main-color-1);
+    height: 700px;
+}
+#body .row .main input{
+    width: 300px;
+   
+}
+#body .row .main table{
+    width: 300px;
+}
+
+ul li{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+    color: var(--color-3);
+}
+a:hover{
+    color: var(--color-3);
+    text-decoration: underline;
+}

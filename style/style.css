@@ -111,6 +111,7 @@ nav .menu-2 ul li a{
     font-weight: bold;
     font-size: 20px;
     transition: transform 0.5s;
+    margin-bottom: 50px;
 }
 #body .product .xt button:hover{
     transform: translateY(-5px);
@@ -173,8 +174,8 @@ nav .menu-2 ul li a{
     background-position: center;
     background-repeat: no-repeat;
     padding:40px 10px;
-    margin-top: 80px;
     z-index: 10;
+    position: relative;
     
 }
 #footer .ft .row a{
@@ -212,11 +213,18 @@ nav .menu-2 ul li a{
     padding: 3px;
 }
 
-/* -------contact------------------- */
+/* -------contact- register------------------ */
  
  #body-contact img{
     width: 100%;
-    height: 590px;
+    height: 610px;
+    object-fit: cover;
+    opacity: 0.9; 
+    position: absolute; 
+} 
+#body-contact-1 img{
+    width: 100%;
+    height: 500px;
     object-fit: cover;
     opacity: 0.9; 
     position: absolute; 
@@ -263,4 +271,18 @@ nav .menu-2 ul li a{
 }
 .ct-right form .send input:hover{
     background: var(--main-color1-hover);
+}
+
+/* -----------------------register--------------- */
+.ct-right form .info-1 input{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: none;
+    outline: none;
+    width: 320px;
+    height: 40px;
+    padding: 15px;
+}
+.right-1{
+    border-right: 20px solid var(--main-color-1);
+    border-top: 20px solid var(--main-color-3);
 }
