@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/manager.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Document</title>
+    
 </head>
 <body>
     <div class="content">
@@ -104,47 +105,102 @@
               
         </div>
         <!-- --------------------------------body--------------------------------- -->
-        <div id="container-fluid">
-          <div class="row">
-            <div class="col-sm-2">
-              <h4 class="">Quản lý bán hàng</h4>
+          <div class="main d-flex">
+            <div class="menu-left p-2">
+              <h5 class="">Quản lý bán hàng</h5>
               <ul>
                 <li>
-                  <a href="#">Khách hàng</a>
+                  <a href="admin.html" class="active">Khách hàng</a>
                 </li>
                 <li>
                   <a class=" text-white" data-bs-toggle="collapse" data-bs-target="#demo">Sản phẩm</a>
                     <ul id="demo" class="collapse">
-                        <li><a href="#">Chó</a></li>
-                        <li><a href="#">Mèo</a></li>
+                        <li><a href="manager-dog.html">Chó</a></li>
+                        <li><a href="manager-cat.html">Mèo</a></li>
                         <li><a data-bs-toggle="collapse" data-bs-target="#demo1">Đồ ăn</a>
                           <ul id="demo1" class="collapse">
-                            <li><a href="#">Cho chó</a></li>
-                            <li><a href="#">Cho mèo</a></li>
+                            <li><a href="manager-food-dog.html">Cho chó</a></li>
+                            <li><a href="manager-food-cat.html">Cho mèo</a></li>
                           </ul>
                         </li>
-                        <li><a href="#">Phụ kiện</a></li>
+                        <li><a href="manager-pk.html">Phụ kiện</a></li>
                     </ul>
                 </li>
                 <li>
                   <a href="#">Kho hàng</a>
                 </li>
                 <li>
-                  <a href="#">Hóa đơn</a>
+                  <a href="bill.html">Hóa đơn</a>
                 </li>
                 <li>
-                  <a href="#">Doanh thu</a>
+                  <a href="sales.html">Doanh thu</a>
                 </li>
                 <li>
-                  <a href="#">Blog</a>
+                  <a href="blog.html">Blog</a>
                 </li>
                 <li>
-                  <a href="#">Quảng cáo</a>
+                  <a href="pr.html">Quảng cáo</a>
                 </li>
               </ul>
             </div>
+            <div class="main-right">
+              <div class="list-customer">
+                <div class="container p-3">
+                  <h4 class="text-dark text-center">DANH SÁCH SẢN PHẨM  - ĐỒ ĂN CHO MÈO</h4>
+                  <input class="form-control" id="myInput" type="text" placeholder="Tìm kiếm khách hàng">
+                  <br>
+                  <table class="table table-bordered table-striped .table-responsive">
+                    <thead class="table-dark">
+                      <tr>
+                        <th>Mã sản phẩm</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Nơi sản xuất</th>
+                        <th>Ngày sản xuất</th>
+                        <th>Hạn sử dụng</th>
+                        <td>Giá</td>
+                        <th>Số lượng</th>
+                        <th colspan="3">Thao tác</th>
+                      </tr>
+                    </thead>
+                    <tbody id="myTable">
+                      <tr>
+                        <td>FC01</td>
+                        <td>Pate gà</td>
+                        <td>Trung quốc</td>
+                        <td>20/10/2022</td>
+                        <td>20/10/2023</td>
+                        <td>100000</td>
+                        <td>50</td>
+                        <td colspan="3">Thao tác</td>
+                      </tr>
+                      <tr>
+                        <td>FC02</td>
+                        <td>Pate bò</td>
+                        <td>Trung quốc</td>
+                        <td>20/10/2022</td>
+                        <td>20/10/2023</td>
+                        <td>100000</td>
+                        <td>50</td>
+                        <td colspan="3">Thao tác</td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
+                
+                <script>
+                $(document).ready(function(){
+                  $("#myInput").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function() {
+                      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                  });
+                });
+                </script>
+              </div>
+            </div>
           </div>
-        </div>
         <!-- -------------------------------------footer-------------------------- -->
         <div id="footer">
             <div class="container-fluid ft">

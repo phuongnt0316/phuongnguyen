@@ -6,29 +6,26 @@
     --title-2-afer:#e5e5e5;
     --color-3:azure;
 }
-#body .row{
-
+.content .main{
+    width: 100%;
 }
-#body .row .sitebar{
+.main .menu-left{
+    width: 15%;
     background: var(--main-color-1);
-    height: 700px;
+    
 }
-#body .row .main input{
-    width: 300px;
-   
-}
-#body .row .main table{
-    width: 300px;
+.main .main-right{
+    width: 85%;
 }
 
-ul li{
+.main .menu-left ul li{
     list-style-type: none;
 }
-a{
+.main .menu-left ul li a{
     text-decoration: none;
     color: var(--color-3);
 }
-a:hover{
+.main .menu-left ul li a:hover{
     color: var(--color-3);
     text-decoration: underline;
 }
