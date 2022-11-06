@@ -77,15 +77,37 @@
     width: 100px;
     padding: 5px;
 }
-.main-right .form-info table tr td .sd{
+.main-right .form-info  .sd{
     width: 100px;
-    padding: 10px;
+    height: 40px;
+    padding: 15px;
     background: var(--main-color-1);
     padding: 3px;
     border: none;
     color: var(--color-3);
 }
-.main-right .form-info table tr td .sd:hover{
+.main-right .form-info .sd:hover{
     background: var(--main-color1-hover);
     
+}
+.main-right .form-info table tr td{
+    padding: 10px;
+} 
+.main-right .form-info table tr td input[type=text],
+.main-right .form-info table tr td select{
+    outline: none;
+   border: 2px solid var(--main-color-2);
+    width: 500px;
+    height: 40px;
+    padding: 0 10px 0 10px;
+    
+}
+.main-right .form-info table tr td textarea{
+    outline: none;
+    border: 2px solid var(--main-color-2);
+     padding: 10px;
+}
+.main-right .form-info table tr td:first-child{
+    width: 200px;
+    font-size: 20px;
 }
