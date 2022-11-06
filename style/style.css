@@ -274,7 +274,9 @@ nav .menu-2 ul li a{
 }
 
 /* -----------------------register--------------- */
-.ct-right form .info-1 input{
+.ct-right form .info-1 input[type=text],.ct-right form .info-1 input[type=email],
+.ct-right form .info-1 input[type=date],
+.ct-right form .info-1 input[type=password]{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: none;
     outline: none;
