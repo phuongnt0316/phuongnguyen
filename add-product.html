@@ -149,9 +149,16 @@
                     <form action="" method="post" class="form d-flex flex-wrap mt-4 justify-content-center">
                             <input type="text" name="" id="" placeholder="Mã sản phẩm">
                             <input type="text" name="" id="" placeholder="Tên sản phẩm">
-                            <textarea name="" id="" cols="97" rows="5" placeholder="Mô tả"></textarea>  
+                            <textarea name="" id="" cols="97" rows="5" placeholder="Mô tả"></textarea> 
+                            <textarea name="" id="" cols="97" rows="5" placeholder="Ghi chú"></textarea>  
                             <input type="text" name="" id="" placeholder="Nơi sản xuất">
-                            <input type="text" name="" id="" placeholder="Mã loại sản phẩm">
+                            <select name="" id="">
+                              <option value="">---Chọn---</option>
+                              <option value="CAT">Cat</option>
+                              <option value="DOG">Dog</option>
+                              <option value="FOOD">Food</option>
+                              <option value="PK">Pk</option>
+                            </select>
                             <div class="img">
                                 <input type="file" src="" alt="">
                                 <img src="" alt="">
@@ -160,7 +167,7 @@
                                 <input type="file" src="" alt="">
                                 <img src="" alt="">
                             </div>
-                            <input type="text" name="" id="" placeholder="Đơn giá">
+                            <input type="text" name=""  id="dg" placeholder="Đơn giá">
                             <input type="submit" class="send" value="Thêm sản phẩm">
 
 
