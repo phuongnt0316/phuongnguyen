@@ -161,47 +161,30 @@
                         <th>Ngày sinh</th>
                         <th colspan="2">Thao tác</th>
                       </tr>
+                      <?php 
+                      include("control.php");
+                      $get_data=new data();
+                      $select_user=$get_data->select_user();
+                      foreach($select_user as $se){
+                      ?>
+
                     </thead>
                     <tbody id="myTable">
                       <tr>
-                        <td>KH01</td>
-                        <td>Nguyễn Quang Linh</td>
-                        <td>Linh@example.com</td>
-                        <td>Hưng Yên</td>
-                        <td>09836899</td>
-                        <td>Nam</td>
-                        <td>2001</td>
+                        <td><?php echo $se['id_kh']?></td>
+                        <td><?php echo $se['Hoten']?></td>
+                        <td><?php echo $se['Email']?></td>
+                        <td><?php echo $se['Diachi']?></td>                        
+                        <td><?php echo $se['Sodienthoai']?></td>
+                        <td><?php echo $se['Gioitinh']?></td>
+                        <td><?php echo $se['Ngaysinh']?></td>
                         <td><a href="#">Sửa</a></td>
                         <td><a href="#">Xóa</a></td>
                       </tr>
-                      <tr>
-                        <td>KH02</td>
-                        <td>Nguyễn Thị Phương</td>
-                        <td>Phuong@example.com</td>
-                        <td>Hải Dương</td>
-                        <td>09836899</td>
-                      </tr>
-                      <tr>
-                        <td>KH03</td>
-                        <td>Đặng Hữu Phước</td>
-                        <td>Phuong@example.com</td>
-                        <td>Hải Dương</td>
-                        <td>09836899</td>
-                      </tr>
-                      <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>july@greatstuff.com</td>
-                        <td>Hải Dương</td>
-                        <td>09836899</td>
-                      </tr>
-                      <tr>
-                        <td>Anja</td>
-                        <td>Ravendale</td>
-                        <td>a_r@test.com</td>
-                        <td>Hải Dương</td>
-                        <td>09836899</td>
-                      </tr>
+                      
+                      <?php
+                      }
+                      ?>
                     </tbody>
                   </table>
                 </div>

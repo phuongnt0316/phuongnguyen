@@ -146,11 +146,10 @@
             <div class="main-right">
                 <div class="container text-dark mt-3">
                     <h3 class="text-center">Thêm sản phẩm || <a href="manager-food-dog.html">Quay Lại</a></h3>
-                    <form action="" method="post" class="form d-flex flex-wrap mt-4 justify-content-center">
+                    <form enctype="multipart/form-data" method="POST" class="form d-flex flex-wrap mt-4 justify-content-center">
                             <input type="text" name="txtMasp" id="" placeholder="Mã sản phẩm">
-                            <input type="text" name="txttensp" id="" placeholder="Tên sản phẩm">
+                            <input type="text" name="txtTensp" id="" placeholder="Tên sản phẩm">
                             <textarea name="txtMota" id="" cols="97" rows="5" placeholder="Mô tả"></textarea> 
-                            <textarea name="txtGhichu" id="" cols="97" rows="5" placeholder="Ghi chú"></textarea>  
                             <input type="text" name="txtNoisx" id="" placeholder="Nơi sản xuất">
                             <select name="txtLoaisp" id="">
                             <option value="">Chọn loại</option>
@@ -164,18 +163,37 @@
 							              <?php }?>
                             </select>
                             <div class="img">
-                                <input type="file" src="" alt="">
-                                <img src="" alt="">
-                            </div>
-                            <div class="img">
-                                <input type="file" src="" alt="">
-                                <img src="" alt="">
-                            </div>
-                            <input type="text" name=""  id="dg" placeholder="Đơn giá">
-                            <input type="submit" class="send" value="Thêm sản phẩm">
+                                <input type="file"  name="txtFile"/>
+                              </div>
+                            <input type="text" name="txtDongia"  id="dg" placeholder="Đơn giá">
+                            <input type="submit" name="btn_them" class="send" value="Thêm sản phẩm">
 
 
                     </form>
+                            <?php
+                            if(isset($_POST["btn_them"])){
+                              $check_id=$get_data->check_id_sp($_POST["txtMasp"]);
+                              if($check_id>0){
+                                echo"<script> alert('Mã sản phẩm đã tồn tại')</script>";	
+                              }
+                              else{
+                                move_uploaded_file($_FILES['txtFile']['tmp_name'],"img/". $_FILES['txtFile']['name']);
+                                $insert=$get_data->add_sanpham($_POST['txtMasp'],$_POST['txtTensp'],$_POST['txtMota'],$_POST['txtNoisx'],$_POST['txtLoaisp'],$_FILES['txtFile']['name'],$_POST['txtDongia']);
+                               
+                                if($insert){
+                                  ?> <script>
+                                  location.href = 'manager-product.php';
+                                  </script>
+                                   <?php
+                            
+                                    }
+                              else
+                              echo"<script> alert('Không thành công')</script>";
+                                
+                                
+                               }
+                            }
+                            ?>
                 </div>
             </div>
         </div>

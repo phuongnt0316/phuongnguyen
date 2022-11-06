@@ -1,12 +1,5 @@
 <?php
-// use PHPMailer\PHPMailer\PHPMailer;
-// use PHPMailer\PHPMailer\Exception;
  include('connect.php');
-// include("PHPMailer/src/Exception.php");
-// include("PHPMailer/src/OAuth.php");
-// include("PHPMailer/src/POP3.php");
-// include("PHPMailer/src/PHPMailer.php");
-// include("PHPMailer/src/SMTP.php");
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -86,7 +79,22 @@ require 'PHPMailer/src/SMTP.php';
     }
     public function select_user(){
         global $conn;
-        $sql="select *from register";
+        $sql="select *from user";
+        $run=mysqli_query($conn,$sql);
+        return $run;
+    }
+    //sanpham
+    public function check_id_sp($id){//kiemtra email da ton tai chua?
+        global $conn;
+        $sql="select*from sanpham where id_sp='$id'";
+        $run=mysqli_query($conn,$sql);
+        $count=mysqli_num_rows($run);
+        return $count;
+    }
+    public function add_sanpham($id,$tensp,$mota,$noisx,$maloai,$hinhanh,$dongia){
+        global $conn;
+        $sql="insert into sanpham (id_sp,Tensanpham,Mota,Noisanxuat,Maloaisanpham,Hinhanh,Dongiaban)
+        values('$id','$tensp','$mota','$noisx','$maloai','$hinhanh','$dongia')";
         $run=mysqli_query($conn,$sql);
         return $run;
     }
