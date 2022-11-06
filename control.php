@@ -229,15 +229,15 @@ public function check_search_blog($search){
 
  }
  //subject
- public function select_devvn_tinhthanhpho(){
+ public function select_loaisanpham(){
     global $conn;
-    $sql="SELECT*from devvn_tinhthanhpho";
+    $sql="SELECT*from loaisanpham";
     $run =mysqli_query($conn,$sql);
     return $run;
  }
- public function select_nametp($id){
+ public function select_tenloaisanpham($id){
     global $conn;
-    $sql="SELECT*from devvn_tinhthanhpho where matp='$id'";
+    $sql="SELECT*from loaisanpham where Maloaisanpham='$id'";
     $run =mysqli_query($conn,$sql);
     return $run;
  }

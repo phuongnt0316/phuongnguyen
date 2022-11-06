@@ -147,17 +147,21 @@
                 <div class="container text-dark mt-3">
                     <h3 class="text-center">Thêm sản phẩm || <a href="manager-food-dog.html">Quay Lại</a></h3>
                     <form action="" method="post" class="form d-flex flex-wrap mt-4 justify-content-center">
-                            <input type="text" name="" id="" placeholder="Mã sản phẩm">
-                            <input type="text" name="" id="" placeholder="Tên sản phẩm">
-                            <textarea name="" id="" cols="97" rows="5" placeholder="Mô tả"></textarea> 
-                            <textarea name="" id="" cols="97" rows="5" placeholder="Ghi chú"></textarea>  
-                            <input type="text" name="" id="" placeholder="Nơi sản xuất">
-                            <select name="" id="">
-                              <option value="">---Chọn---</option>
-                              <option value="CAT">Cat</option>
-                              <option value="DOG">Dog</option>
-                              <option value="FOOD">Food</option>
-                              <option value="PK">Pk</option>
+                            <input type="text" name="txtMasp" id="" placeholder="Mã sản phẩm">
+                            <input type="text" name="txttensp" id="" placeholder="Tên sản phẩm">
+                            <textarea name="txtMota" id="" cols="97" rows="5" placeholder="Mô tả"></textarea> 
+                            <textarea name="txtGhichu" id="" cols="97" rows="5" placeholder="Ghi chú"></textarea>  
+                            <input type="text" name="txtNoisx" id="" placeholder="Nơi sản xuất">
+                            <select name="txtLoaisp" id="">
+                            <option value="">Chọn loại</option>
+                              <?php include('control.php');
+							                $get_data=new data();
+							                $add=$get_data->select_loaisanpham();
+							                foreach($add as $se){
+							                ?>
+                            <option value="<?php echo $se['Maloaisanpham'] ?>"><?php echo $se['Tenloaisanpham'] ?></option>
+
+							              <?php }?>
                             </select>
                             <div class="img">
                                 <input type="file" src="" alt="">
