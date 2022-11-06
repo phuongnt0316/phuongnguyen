@@ -9,7 +9,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style/style.css">
-    <title>Document</title>
+    <title>Register</title>
 </head>
 <body>
     <div class="content">
@@ -111,27 +111,64 @@
                         <h2 class="text-center mb-4">Đăng ký tài khoản</h2>
                         <form action="" method="post">
                             <div class="d-flex flex-wrap justify-content-between info-1 mb-3 ">
-                                <input type="text" class="me-3" name="" id="" placeholder="Họ và Tên">
-                                <input type="email" name="" id="" placeholder="Email">
+                                <input type="text" class="me-3" name="txtHoten" id="" placeholder="Họ và Tên">
+                                <input type="email" name="txtEmail" id="" placeholder="Email">
                             </div>
                             <div class="d-flex flex-wrap justify-content-between info-1 mb-3">
-                                <input type="password" name="" id="" placeholder="Mật khẩu">
-                                <input type="text" name="" id="" placeholder="Số điện thoại">
+                                <input type="password" name="txtMatkhau" id="" placeholder="Mật khẩu">
+                              <!--  <input type="password" name="txtMatkhau2" id="" placeholder="Nhập lại mật khẩu">-->
+                                <input type="text" name="txtSodienthoai" id="" placeholder="Số điện thoại">
                             </div>
                             <div class="d-flex flex-wrap justify-content-between info-1 mb-3">
                                <div class="info-1 ms-1 mt-2">
-                                <input type="radio" name="" id="" value="Nam"> Nam 
-                                <input type="radio" name="" id="" value="Nữ"> Nữ
+                                <input type="radio" name="txtGioitinh" id="" value="Nam"> Nam 
+                                <input type="radio" name="txtGioitinh" id="" value="Nữ"> Nữ
                                </div>
-                                <input type="date" name="" id="" placeholder="Ngày sinh">
+                                <input type="date" name="txtNgaysinh" id="" placeholder="Ngày sinh">
                             </div>
                             <div class="info mb-4 d-flex">
-                                <textarea name="" id="" cols="80" rows="5" placeholder="Địa chỉ"></textarea>
+                                <textarea name="txtDiachi" id="" cols="80" rows="5" placeholder="Địa chỉ"></textarea>
                             </div>
                             <div class="send d-flex mb-3 justify-content-center">
-                               <input type="submit" class="" value="Gửi">
+                               <input type="submit" name="btnDangky" class="" value="Gửi">
                             </div>
                         </form>
+                        <?php
+                         include('control.php');
+                         $get_data=new data();
+                        if(isset($_POST["btnDangky"])){
+                            $check_mail=$get_data->check_email($_POST["txtEmail"]);
+                            $quyen=0;
+                            if($check_mail>0){
+                                echo"<script> alert('Email này đã đăng ký')</script>";	
+                            }
+                            else{
+                               // $date=date_create($_POST['txtNgaysinh']);
+                                $date=date_format(date_create($_POST['txtNgaysinh']),"Y/m/d");
+                                $insert=$get_data->add_acc($_POST['txtHoten'],$_POST['txtEmail'],$_POST['txtDiachi'],$_POST['txtSodienthoai'],$_POST['txtGioitinh'],$date,$quyen,$_POST['txtMatkhau']);
+			// if($insert){
+			// 	$username='phuong16397@gmail.com';
+			// 	$password='nguyenthiphuong';
+			// 	$address=$_POST['txtEmail'];
+			// 	$subject='PETSHOP Mona chào mừng';
+			// 	$body='Chào '.$_POST['txtHoten'].', bạn đã đăng ký tài khoản thành công ';
+			// 	$altbody='Thanks ';
+			// 	$sendMail=$get_data->sendMail($username,$password,$address,$subject,$body,$altbody);
+				if($insert){
+                    ?> <script>
+				location.href = 'login.php';
+				</script>
+				<?php
+              
+	            }
+	            else
+                echo"<script> alert('Không thành công')</script>";
+              	
+			}
+
+                            }
+                        
+                        ?>
                     </div>
                 </div>
             </div>

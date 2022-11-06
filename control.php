@@ -1,24 +1,31 @@
 <?php
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\Exception;
+ include('connect.php');
+// include("PHPMailer/src/Exception.php");
+// include("PHPMailer/src/OAuth.php");
+// include("PHPMailer/src/POP3.php");
+// include("PHPMailer/src/PHPMailer.php");
+// include("PHPMailer/src/SMTP.php");
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-include('connect.php');
-include("PHPMailer/src/Exception.php");
-include("PHPMailer/src/OAuth.php");
-include("PHPMailer/src/POP3.php");
-include("PHPMailer/src/PHPMailer.php");
-include("PHPMailer/src/SMTP.php");
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
  class data{
      //register
-    public function add_acc($fullname,$email,$password,$gender,$address,$birthday,$file,$level){
+    public function add_acc($ho_ten,$mail,$dia_chi,$so_dt,$gioi_tinh,$ngay_sinh,$quyen,$pass_word){
         global $conn;
-        $sql="insert into register(fullname,email,password,gender,address,birthday,file,level)
-        values('$fullname','$email','$password','$gender','$address','$birthday','$file',$level)";
+        //$quyen=0;
+        $sql="insert into user (Hoten,Email,Diachi,Sodienthoai,Gioitinh,Ngaysinh,quyen,Password)
+        values('$ho_ten','$mail','$dia_chi','$so_dt','$gioi_tinh','$ngay_sinh',$quyen,'$pass_word')";
         $run=mysqli_query($conn,$sql);
         return $run;
     }
     public function check_email($email){//kiemtra email da ton tai chua?
         global $conn;
-        $sql="select*from register where email='$email'";
+        $sql="select*from user where Email='$email'";
         $run=mysqli_query($conn,$sql);
         $count=mysqli_num_rows($run);
         return $count;
