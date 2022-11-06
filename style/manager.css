@@ -29,13 +29,14 @@
     color: var(--color-3);
     text-decoration: underline;
 }
-.main .main-right .form  input[type="text"]{
+.main .main-right .form  input[type="text"],
+.main-right .form  select{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: none;
     outline: none;
     width: 400px;
     height: 40px;
-    padding: 15px;
+    padding: 10px;
     margin: 0 20px 20px 0;
     
 }
@@ -47,6 +48,9 @@
     height: 40px;
     padding: 5px;
     margin: 0 20px 20px 0;
+}
+.form #dg{
+    margin-left: -20px;
 }
 .main-right .form textarea{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -63,4 +67,25 @@
     font-weight: bold;
     padding: 5px;
     border: none;
+}
+.main-right .form-info table tr td input[type=email],
+.main-right .form-info table tr td .hoten{
+    width: 150px;
+    padding: 5px;
+}
+.main-right .form-info table tr td .if{
+    width: 100px;
+    padding: 5px;
+}
+.main-right .form-info table tr td .sd{
+    width: 100px;
+    padding: 10px;
+    background: var(--main-color-1);
+    padding: 3px;
+    border: none;
+    color: var(--color-3);
+}
+.main-right .form-info table tr td .sd:hover{
+    background: var(--main-color1-hover);
+    
 }
