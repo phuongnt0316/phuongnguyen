@@ -36,23 +36,23 @@ require 'PHPMailer/src/SMTP.php';
         $run=mysqli_query($conn,$sql);
         return $run;
     }
-    public function get_user($id_regt){
+    public function get_user($id_kh){//lay kh theo id_kh
         global $conn;
-        $sql="select*from register where id_regt='$id_regt'";
+        $sql="select*from user where id_kh='$id_kh'";
         $run=mysqli_query($conn,$sql);
         return $run;
     }
-    public function update_infor($fullname,$email,$address,$bday,$file,$gender,$id_regt){
+    public function update_user($id,$ho_ten,$mail,$dia_chi,$so_dt,$gioi_tinh,$ngay_sinh){//Update thong tin theo id_kh
         global $conn;
-        $sql="update register set  Fullname='$fullname',email='$email', address='$address', birthday='$bday',
-         file='$file', gender='$gender' where id_regt='$id_regt'";
+        $sql="update user set  Hoten='$ho_ten',Email='$mail',Diachi='$dia_chi',Sodienthoai='$so_dt', Gioitinh='$gioi_tinh',
+         Ngaysinh='$ngay_sinh' where id_kh='$id'";
         $run=mysqli_query($conn,$sql);
         return $run;
     
     }
-    public function delete_user($id_regt){
+    public function delete_user($id){//Xoa kh theo id_kh
         global $conn;
-        $sql="delete from register where id_regt=$id_regt";
+        $sql="delete from user where id_kh=$id";
         $run=mysqli_query($conn,$sql);
         return $run;   
     }
@@ -84,7 +84,7 @@ require 'PHPMailer/src/SMTP.php';
         return $run;
     }
     //sanpham
-    public function check_id_sp($id){//kiemtra email da ton tai chua?
+    public function check_id_sp($id){
         global $conn;
         $sql="select*from sanpham where id_sp='$id'";
         $run=mysqli_query($conn,$sql);

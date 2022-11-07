@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <?php
-ob_start();
+ob_start(); 
 session_start();
+include("control.php");
+$get_data=new data();
+
+
 ?>
 <html lang="en">
 <head>
@@ -150,62 +154,75 @@ session_start();
             <div class="main-right">
               <div class="list-customer">
                 <div class="container p-3">
-                  <h4 class="text-dark text-center">DANH SÁCH KHÁCH HÀNG || <a href="admin_customer_add.php">Thêm khách hàng</a></h4>
-                  <input class="form-control" id="myInput" type="text" placeholder="Tìm kiếm khách hàng">
-                  <br>
-                  <table class="table table-bordered table-striped .table-responsive">
-                    <thead class="table-dark">
-                      <tr>
-                        <th>Mã khách hàng</th>
-                        <th>Họ tên</th>
-                        <th>Email</th>
-                        <th>Địa chỉ</th>
-                        <th>SĐT</th>
-                        <th>Giới tính</th>
-                        <th>Ngày sinh</th>
-                        <th colspan="2">Thao tác</th>
-                      </tr>
-                      <?php 
-                      include("control.php");
-                      $get_data=new data();
-                      $select_user=$get_data->select_user();
-                      foreach($select_user as $se){
-                      ?>
+                  <h4 class="text-dark text-center">SỬA KHÁCH KHÁCH HÀNG </h4>
+                  <div id="body-contact">
+            <img src="./images/bg-contact.jpg" alt="">
+            <div class="container">
+                <div class="row d-flex flex-wrap justify-content-center">
+                    <div class="col-sm-8 p-4 mt-5 ct-right right-1" >
+                        <h2 class="text-center mb-4">Mã khách hàng <?php  echo $_GET["edit"] ?></h2>
+                        <form action="" method="post">
+                        <?php
+                        $select_user=$get_data->get_user($_GET["edit"]);
+                        foreach($select_user as $se){
+                            $email=$se['Email'];
+                        ?>
 
-                    </thead>
-                    <tbody id="myTable">
-                      <tr>
-                        <td><?php echo $se['id_kh']?></td>
-                        <td><?php echo $se['Hoten']?></td>
-                        <td><?php echo $se['Email']?></td>
-                        <td><?php echo $se['Diachi']?></td>                        
-                        <td><?php echo $se['Sodienthoai']?></td>
-                        <td><?php echo $se['Gioitinh']?></td>
-                        <td><?php echo $se['Ngaysinh']?></td>
-                        <td><a href="admin_customer_edit.php?edit=<?php echo $se['id_kh']?>">Sửa</a></td>
-                        <td><a href="admin_customer_delete.php?delete=<?php echo $se['id_kh']?>">Xóa</a></td>
-                      </tr>
-                      
-                      <?php
-                      }
-                      ?>
-                    </tbody>
-                  </table>
+                            <div class="d-flex flex-wrap justify-content-between info-1 mb-3 ">
+                                <input type="text" class="me-3" name="txtHoten" id="" value="<?php echo $se['Hoten'] ?>">
+                                <input type="email" name="txtEmail" id="" value="<?php echo $se['Email']?>">
+                            </div>
+                            <div class="d-flex flex-wrap justify-content-between info-1 mb-3">
+                                <input type="text" name="txtSodienthoai" id="" value="<?php echo $se['Sodienthoai']?>">
+                            </div>
+                            <div class="d-flex flex-wrap justify-content-between info-1 mb-3">
+                               <div class="info-1 ms-1 mt-2">
+                                <input type="radio" name="txtGioitinh" id="" value="Nam" <?php if($se['Gioitinh']=="Nam") echo 'Checked';?>> Nam 
+                                <input type="radio" name="txtGioitinh" id="" value="Nữ"  <?php if($se['Gioitinh']=="Nữ") echo 'Checked';?>> Nữ
+                               </div>
+                                <input type="date" name="txtNgaysinh" id="" value="<?php echo $se['Ngaysinh'] ?>">
+                            </div>
+                            <div class="info mb-4 d-flex">
+                                <textarea name="txtDiachi" id="" cols="80" rows="5" ><?php echo $se['Diachi'] ?></textarea>
+                            </div>
+                            
+                            <div class="send d-flex mb-3 justify-content-center">
+                               <input type="submit" name="btnUpdate" class="" value="Sửa">
+                            </div>
+                            <?php } ?>
+                        </form>
+                        <?php
+                        if(isset($_POST["btnUpdate"])){
+                            echo $_POST["txtDiachi"];
+                            
+                            if($email!=$_POST["txtEmail"]){
+                            $check_mail=$get_data->check_email($_POST["txtEmail"]);
+                            if($check_mail>0){
+                                echo"<script> alert('Email này đã đăng ký')</script>";	
+                            }
+                            else{
+    
+                                $date=date_format(date_create($_POST['txtNgaysinh']),"Y/m/d");
+                                $update=$get_data->update_user($_GET['edit'],$_POST['txtHoten'],$_POST['txtEmail'],$_POST['txtDiachi'],$_POST['txtSodienthoai'],$_POST['txtGioitinh'],$date);
+                                if($update){
+                                    ?> <script>
+                                location.href = 'admin.php';
+                                </script>
+                                <?php
+                                }
+                                
+                                else
+                                echo"<script> alert('Không thành công')</script>";
+                                
+                            }
+                            }
+                            }
+                        
+                        ?>
+                    </div>
                 </div>
-                
-                <script>
-                $(document).ready(function(){
-                  $("#myInput").on("keyup", function() {
-                    var value = $(this).val().toLowerCase();
-                    $("#myTable tr").filter(function() {
-                      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                    });
-                  });
-                });
-                </script>
-              </div>
             </div>
-          </div>
+        </div>
         <!-- -------------------------------------footer-------------------------- -->
         <div id="footer">
             <div class="container-fluid ft">

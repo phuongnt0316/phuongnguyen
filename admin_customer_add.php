@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+ob_start(); 
+session_start();
+include("control.php");
+$get_data=new data();
+
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +16,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/manager.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Document</title>
     
 </head>
@@ -144,68 +154,62 @@
             <div class="main-right">
               <div class="list-customer">
                 <div class="container p-3">
-                  <h4 class="text-dark text-center">DANH SÁCH KHÁCH HÀNG || <a href="admin.html">Quay lại</a></h4>
-                  <br>
-                  <form action="" method="post" class="form-info">
-                    <table class="table table-bordered table-striped .table-responsive">
-                        <thead class="table-dark">
-                          <tr>
-                            <th>ID</th>
-                            <th>Họ tên</th>
-                            <th>Email</th>
-                            <th>Địa chỉ</th>
-                            <th>SĐT</th>
-                            <th>Giới tính</th>
-                            <th>Ngày sinh</th>
-                          </tr>
-                        </thead>
-                        <tbody id="myTable">
-                          <tr>
-                            <td><input type="text" class="if" name="" id="" placeholder="ID"></td>
-                            <td><input type="text" class="hoten" name="" id="" placeholder="Họ tên"></td>
-                            <td><input type="email" name=""  id="" placeholder="Email"></td>
-                            <td><textarea name="" id="" cols="10" rows="5" placeholder="Địa chỉ"></textarea></td>
-                            <td><input type="text" name="" class="if" id="" placeholder="SĐT"></td>
-                            <td><select name="gioitinh" class="if" id="">
-                                <option value="Nam">Nam</option>
-                                <option value="Nữ">Nữ</option>
-                            </select></td>
-                            <td><input type="date" class="if" name="" id="" placeholder="Ngày sinh"></td>
-                          </tr>
-                          <tr>
-                            <td><input type="text" class="if" name="" id="" placeholder="ID"></td>
-                            <td><input type="text" class="hoten" name="" id="" placeholder="Họ tên"></td>
-                            <td><input type="email" name=""  id="" placeholder="Email"></td>
-                            <td><textarea name="" id="" cols="10" rows="5" placeholder="Địa chỉ"></textarea></td>
-                            <td><input type="text" name="" class="if" id="" placeholder="SĐT"></td>
-                            <td><select name="gioitinh" class="if" id="">
-                                <option value="Nam">Nam</option>
-                                <option value="Nữ">Nữ</option>
-                            </select></td>
-                            <td><input type="date" class="if" name="" id="" placeholder="Ngày sinh"></td>
-                          </tr>
-                          <tr>
-                            <td><input type="text" class="if" name="" id="" placeholder="ID"></td>
-                            <td><input type="text" class="hoten" name="" id="" placeholder="Họ tên"></td>
-                            <td><input type="email" name=""  id="" placeholder="Email"></td>
-                            <td><textarea name="" id="" cols="10" rows="5" placeholder="Địa chỉ"></textarea></td>
-                            <td><input type="text" name="" class="if" id="" placeholder="SĐT"></td>
-                            <td><select name="gioitinh" class="if" id="">
-                                <option value="Nam">Nam</option>
-                                <option value="Nữ">Nữ</option>
-                            </select></td>
-                            <td><input type="date" class="if" name="" id="" placeholder="Ngày sinh"></td>
-                            
-                          </tr>
-                        </tbody>
-                      </table>
-                      <div><input type="submit" class="sd" value="Thêm"></div>
-                  </form>
+                  <h4 class="text-dark text-center">THÊM KHÁCH KHÁCH HÀNG </h4>
+                  <div id="body-contact">
+            <img src="./images/bg-contact.jpg" alt="">
+            <div class="container">
+                <div class="row d-flex flex-wrap justify-content-center">
+                    <div class="col-sm-8 p-4 mt-5 ct-right right-1" >
+                        <h2 class="text-center mb-4">Điền thông tin khách hàng</h2>
+                        <form action="" method="post">
+                            <div class="d-flex flex-wrap justify-content-between info-1 mb-3 ">
+                                <input type="text" class="me-3" name="txtHoten" id="" placeholder="Họ và Tên">
+                                <input type="email" name="txtEmail" id="" placeholder="Email">
+                            </div>
+                            <div class="d-flex flex-wrap justify-content-between info-1 mb-3">
+                                <input type="password" name="txtMatkhau" id="" placeholder="Mật khẩu">
+                                <input type="text" name="txtSodienthoai" id="" placeholder="Số điện thoại">
+                            </div>
+                            <div class="d-flex flex-wrap justify-content-between info-1 mb-3">
+                               <div class="info-1 ms-1 mt-2">
+                                <input type="radio" name="txtGioitinh" id="" value="Nam"> Nam 
+                                <input type="radio" name="txtGioitinh" id="" value="Nữ"> Nữ
+                               </div>
+                                <input type="date" name="txtNgaysinh" id="" placeholder="Ngày sinh">
+                            </div>
+                            <div class="info mb-4 d-flex">
+                                <textarea name="txtDiachi" id="" cols="80" rows="5" placeholder="Địa chỉ"></textarea>
+                            </div>
+                            <div class="send d-flex mb-3 justify-content-center">
+                               <input type="submit" name="btnDangky" class="" value="Gửi">
+                            </div>
+                        </form>
+                        <?php
+                       if(isset($_POST["btnDangky"])){
+                           $check_mail=$get_data->check_email($_POST["txtEmail"]);
+                           $quyen=0;
+                           if($check_mail>0){
+                               echo"<script> alert('Email này đã đăng ký')</script>";	
+                           }
+                           else{
+                               $date=date_format(date_create($_POST['txtNgaysinh']),"Y/m/d");
+                               $insert=$get_data->add_acc($_POST['txtHoten'],$_POST['txtEmail'],$_POST['txtDiachi'],$_POST['txtSodienthoai'],$_POST['txtGioitinh'],$date,$quyen,$_POST['txtMatkhau']);
+
+                              if($insert){
+                                          ?> <script>
+                              location.href = 'admin.php';
+                              </script>
+                              <?php                                    
+                                    }
+                              else
+                              echo"<script> alert('Không thành công')</script>";                                 
+                            }
+                            }                                              
+                                ?>
+                    </div>
                 </div>
-                
-              </div>
             </div>
-          </div>
+        </div>
         <!-- -------------------------------------footer-------------------------- -->
         <div id="footer">
             <div class="container-fluid ft">
