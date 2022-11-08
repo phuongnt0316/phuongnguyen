@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+ob_start(); 
+session_start();
+include("control.php");
+$get_data=new data();
+
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -144,81 +152,82 @@
             <div class="main-right">
               <div class="list-customer">
                 <div class="container p-3 ms-5">
-                  <h4 class="text-dark text-center">THAY ĐỔI THÔNG TIN SẢN PHẨM || <a href="admin.html">Quay lại</a></h4>
+                  <h4 class="text-dark text-center">Sửa thông tin khách hàng || <a href="admin.php">Quay lại</a></h4>
+                  <?php
+                        $select_user=$get_data->get_user($_GET["edit"]);
+                        foreach($select_user as $se){
+                            $email=$se['Email'];
+                        ?>
                   <br>
                   <form action="" method="post" class="form-info text-dark me-5">
                     <table>
                         <tr>
-                            <td><label for="id" class="">ID</label></td>
-                            <td><input type="text" name="" id="id" ></td>
+                            <td><label for="hoten" class="">Họ tên khách</label></td>
+                            <td><input type="text" class="me-3" name="txtHoten"  id="" placeholder="Họ và Tên" value="<?php echo $se['Hoten'] ?>"></td>
                         </tr>
                         <tr>
-                            <td><label for="ten">Tên thú nuôi</label</td>
-                            <td><input type="text" name="" id="ten" ></td>
-                        </tr>
-                        <tr>
-                            <td><label for="maloai">Mã loại</label></td>
-                            <td> 
-                                    <select name="" id="maloai">
-                                        <option value="">---Chọn---</option>
-                                        <option value="Chó">Chó</option>
-                                        <option value="Mèo">Mèo</option>
-                                        <option value="Khác">Khác</option>
-                                     </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label for="trongluong">Trọng lượng</label></td>
-                            <td><input type="text" name="" id="trongluong" ></td>
-                        </tr>
-                        <tr>
-                            <td><label for="long">Kiểu lông</label></td>
-                            <td>
-                                <select name="" id="long">
-                                    <option value="">---Chọn---</option>
-                                    <option value="Ngắn">Ngắn</option>
-                                    <option value="Dài">Dài</option>
-                                    <option value="Xoăn">Xoăn</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label for="mota">Mô tả</label></td>
-                            <td><textarea name="" id="" cols="57.5" rows="5"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td><label for="gia">Giá</label></td>
-                            <td><input type="text" name="" id="gia" ></td>
-                        </tr>
-                        <tr>
-                            <td><label for="phobien">Độ phổ biến</label></td>
-                            <td>
-                                <select name="phobien" id="">
-                                    <option value="">---Chọn---</option>
-                                    <option value="Cao">Cao</option>
-                                    <option value="Trung bình">Trung bình</option>
-                                    <option value="Thấp">Thấp</option>
-                                </select>
-                            </td>
-                        </tr>
-                            
-                        <tr>
-                            <td><label for="anh1">Ảnh 1</label></td>
-                            <td><input type="file" name="" id="anh1" ></td>
-                        </tr>
-                        <tr>
-                            <td><label for="anh2">Ảnh 2</label></td>
-                            <td><input type="file" name="" id="anh2" ></td>
-                        </tr>
+                          <td><label for="email" class="">Email</label></td>
+                          <td><input type="email" name="txtEmail" id="" placeholder="Email" value="<?php echo $se['Email'] ?>"></td>
+                      </tr>
+                      
+                    <tr>
+                      <td><label for="sdt" class="">Số điện thoại</label></td>
+                      <td><input type="text" name="txtSodienthoai" id="" placeholder="Số điện thoại" value="<?php echo $se['Sodienthoai'] ?>"></td>
+                    </tr>
+                    <tr>
+                      <td><label for="gioitinh" class="">Giới tính</label></td>
+                      <td>
+                        <div>
+                          <input type="radio" name="txtGioitinh" id="" value="Nam" <?php if($se['Gioitinh']=="Nam") echo 'Checked';?>> Nam 
+                                <input type="radio" name="txtGioitinh" id="" value="Nữ" <?php if($se['Gioitinh']=="Nữ") echo 'Checked';?>> Nữ
+                        </div>
+                    </td>
+                    <tr>
+                      <td><label for="ngaysinh" class="">Ngày sinh</label></td>
+                      <td><input type="date" name="txtNgaysinh" id="" placeholder="Ngày sinh" value="<?php echo $se['Ngaysinh'] ?>"></td>
+                    </tr>
+                    <tr>
+                      <td><label for="diachi" class="">Địa chỉ</label></td>
+                      <td><textarea name="txtDiachi" id="" cols="58" rows="5" placeholder="Địa chỉ"><?php echo $se['Diachi'] ?></textarea></td>
+                    </tr>
                         <tr>
                             <td colspan="2" >
-                                <input type="submit" class=" sd text-right" value="Gửi">
+                            <input type="submit" name="btnUpdate" class=" sd text-right" value="Sửa">
                             </td>
                         </tr>
                         
                         
                     </table>
+                    <?php } ?>
                   </form>
+                  <?php
+                        if(isset($_POST["btnUpdate"])){
+                            echo $_POST["txtDiachi"];
+                            
+                            if($email!=$_POST["txtEmail"]){
+                            $check_mail=$get_data->check_email($_POST["txtEmail"]);
+                            if($check_mail>0){
+                                echo"<script> alert('Email này đã đăng ký')</script>";	
+                            }
+                            else{
+    
+                                $date=date_format(date_create($_POST['txtNgaysinh']),"Y/m/d");
+                                $update=$get_data->update_user($_GET['edit'],$_POST['txtHoten'],$_POST['txtEmail'],$_POST['txtDiachi'],$_POST['txtSodienthoai'],$_POST['txtGioitinh'],$date);
+                                if($update){
+                                    ?> <script>
+                                location.href = 'admin.php';
+                                </script>
+                                <?php
+                                }
+                                
+                                else
+                                echo"<script> alert('Không thành công')</script>";
+                                
+                            }
+                            }
+                            }
+                        
+                        ?>
                 </div>
                 
               </div>

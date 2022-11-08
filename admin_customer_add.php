@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+ob_start(); 
+session_start();
+include("control.php");
+$get_data=new data();
+
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,8 +16,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/manager.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Document</title>
     
 </head>
@@ -106,7 +112,7 @@
         </div>
         <!-- --------------------------------body--------------------------------- -->
           <div class="main d-flex">
-            <div class="menu-left p-2">
+             <div class="menu-left p-2">
               <h5 class="">Quản lý bán hàng</h5>
               <ul>
                 <li>
@@ -145,77 +151,76 @@
             </div>
             <div class="main-right">
               <div class="list-customer">
-                <div class="container p-3">
-                  <h4 class="text-dark text-center">DANH SÁCH KHÁCH HÀNG || <a href="add-customer.html">Thêm khách hàng</a></h4>
-                  <input class="form-control" id="myInput" type="text" placeholder="Tìm kiếm khách hàng">
+                <div class="container p-3 ms-5">
+                  <h4 class="text-dark text-center">DANH SÁCH || <a href="admin.html">Quay lại</a></h4>
                   <br>
-                  <table class="table table-bordered table-striped .table-responsive">
-                    <thead class="table-dark">
-                      <tr>
-                        <th>Mã khách hàng</th>
-                        <th>Họ tên</th>
-                        <th>Email</th>
-                        <th>Địa chỉ</th>
-                        <th>SĐT</th>
-                        <th>Giới tính</th>
-                        <th>Ngày sinh</th>
-                        <th colspan="2">Thao tác</th>
-                      </tr>
-                    </thead>
-                    <tbody id="myTable">
-                      <tr>
-                        <td>KH01</td>
-                        <td>Nguyễn Quang Linh</td>
-                        <td>Linh@example.com</td>
-                        <td>Hưng Yên</td>
-                        <td>09836899</td>
-                        <td>Nam</td>
-                        <td>2001</td>
-                        <td><a href="#">Sửa</a></td>
-                        <td><a href="#">Xóa</a></td>
+                  <form action="" method="post" class="form-info text-dark me-5">
+                    <table>
+                        <tr>
+                            <td><label for="hoten" class="">Họ tên khách</label></td>
+                            <td><input type="text" class="me-3" name="txtHoten" id="" placeholder="Họ và Tên"></td>
+                        </tr>
+                        <tr>
+                          <td><label for="email" class="">Email</label></td>
+                          <td><input type="email" name="txtEmail" id="" placeholder="Email"></td>
                       </tr>
                       <tr>
-                        <td>KH02</td>
-                        <td>Nguyễn Thị Phương</td>
-                        <td>Phuong@example.com</td>
-                        <td>Hải Dương</td>
-                        <td>09836899</td>
-                      </tr>
-                      <tr>
-                        <td>KH03</td>
-                        <td>Đặng Hữu Phước</td>
-                        <td>Phuong@example.com</td>
-                        <td>Hải Dương</td>
-                        <td>09836899</td>
-                      </tr>
-                      <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>july@greatstuff.com</td>
-                        <td>Hải Dương</td>
-                        <td>09836899</td>
-                      </tr>
-                      <tr>
-                        <td>Anja</td>
-                        <td>Ravendale</td>
-                        <td>a_r@test.com</td>
-                        <td>Hải Dương</td>
-                        <td>09836899</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                        <td><label for="pass" class="">Password</label></td>
+                        <td><input type="password" name="txtMatkhau" id="" placeholder="Mật khẩu"></td>
+                    </tr>
+                    <tr>
+                      <td><label for="sdt" class="">Số điện thoại</label></td>
+                      <td><input type="text" name="txtSodienthoai" id="" placeholder="Số điện thoại"></td>
+                    </tr>
+                    <tr>
+                      <td><label for="gioitinh" class="">Giới tính</label></td>
+                      <td>
+                        <div>
+                          <input type="radio" name="txtGioitinh" id="" value="Nam"> Nam 
+                                <input type="radio" name="txtGioitinh" id="" value="Nữ"> Nữ
+                        </div>
+                    </td>
+                    <tr>
+                      <td><label for="ngaysinh" class="">Ngày sinh</label></td>
+                      <td><input type="date" name="txtNgaysinh" id="" placeholder="Ngày sinh"></td>
+                    </tr>
+                    <tr>
+                      <td><label for="diachi" class="">Địa chỉ</label></td>
+                      <td><textarea name="txtDiachi" id="" cols="58" rows="5" placeholder="Địa chỉ"></textarea></td>
+                    </tr>
+                        <tr>
+                            <td colspan="2" >
+                            <input type="submit" name="btnDangky" class=" sd text-right" value="Gửi">
+                            </td>
+                        </tr>
+                        
+                        
+                    </table>
+                  </form>
+                  <?php
+                  if(isset($_POST["btnDangky"])){
+                      $check_mail=$get_data->check_email($_POST["txtEmail"]);
+                      $quyen=0;
+                      if($check_mail>0){
+                          echo"<script> alert('Email này đã đăng ký')</script>";	
+                      }
+                      else{
+                          $date=date_format(date_create($_POST['txtNgaysinh']),"Y/m/d");
+                          $insert=$get_data->add_acc($_POST['txtHoten'],$_POST['txtEmail'],$_POST['txtDiachi'],$_POST['txtSodienthoai'],$_POST['txtGioitinh'],$date,$quyen,$_POST['txtMatkhau']);
+
+                         if($insert){
+                                     ?> <script>
+                         location.href = 'admin.php';
+                         </script>
+                         <?php                                    
+                               }
+                         else
+                         echo"<script> alert('Không thành công')</script>";                                 
+                       }
+                       }                                              
+                           ?>
                 </div>
                 
-                <script>
-                $(document).ready(function(){
-                  $("#myInput").on("keyup", function() {
-                    var value = $(this).val().toLowerCase();
-                    $("#myTable tr").filter(function() {
-                      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                    });
-                  });
-                });
-                </script>
               </div>
             </div>
           </div>

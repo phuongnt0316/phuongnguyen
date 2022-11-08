@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+ob_start();
+session_start();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/manager.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Document</title>
     
 </head>
@@ -143,56 +149,61 @@
             </div>
             <div class="main-right">
               <div class="list-customer">
-                <div class="container p-3 ms-5">
-                  <h4 class="text-dark text-center">DANH SÁCH || <a href="admin.html">Quay lại</a></h4>
+                
+                <div class="container p-3">
+                  <h4 class="text-dark text-center">DANH SÁCH KHÁCH HÀNG || <a href="admin_customer_add.php">Thêm khách hàng</a></h4>
+                  <input class="form-control" id="myInput" type="text" placeholder="Tìm kiếm khách hàng">
                   <br>
-                  <form action="" method="post" class="form-info text-dark me-5">
-                    <table>
-                        <tr>
-                            <td><label for="id" class="">ID</label></td>
-                            <td><input type="text" name="" id="id" ></td>
-                        </tr>
-                        <tr>
-                            <td><label for="ten">Họ tên khách</label</td>
-                            <td><input type="text" name="" id="ten" ></td>
-                        </tr>
-                        <tr>
-                          <td><label for="ten">Email</label></td>
-                          <td><input type="text" name="" id="ten" ></td>
-                      </tr>
+                  <table class="table table-bordered table-striped .table-responsive">
+                    <thead class="table-dark">
                       <tr>
-                        <td><label for="diachi">Địa chỉ</label></td>
-                        <td><textarea name="" id="" cols="57.5" rows="5"></textarea></td>
+                        <th>Mã khách hàng</th>
+                        <th>Họ tên</th>
+                        <th>Email</th>
+                        <th>Địa chỉ</th>
+                        <th>SĐT</th>
+                        <th>Giới tính</th>
+                        <th>Ngày sinh</th>
+                        <th colspan="2">Thao tác</th>
                       </tr>
-                        <tr>
-                            <td><label for="sdt">Số điện thoại </label></td>
-                            <td><input type="text" name="" id="trongluong" ></td>
-                        </tr>
-                        <tr>
-                            <td><label for="gioitinh">Giới tính</label></td>
-                            <td>
-                                <select name="" id="gioitinh">
-                                    <option value="">---Chọn---</option>
-                                    <option value="Ngắn">Nam</option>
-                                    <option value="Dài">Nữ</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label for="ngaysinh">Ngày sinh</label></td>
-                            <td><input type="date" name="" id="ngaysinh" ></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" >
-                                <input type="submit" class=" sd text-right" value="Gửi">
-                            </td>
-                        </tr>
-                        
-                        
-                    </table>
-                  </form>
+                      <?php 
+                      include("control.php");
+                      $get_data=new data();
+                      $select_user=$get_data->select_user();
+                      foreach($select_user as $se){
+                      ?>
+
+                    </thead>
+                    <tbody id="myTable">
+                      <tr>
+                        <td><?php echo $se['id_kh']?></td>
+                        <td><?php echo $se['Hoten']?></td>
+                        <td><?php echo $se['Email']?></td>
+                        <td><?php echo $se['Diachi']?></td>                        
+                        <td><?php echo $se['Sodienthoai']?></td>
+                        <td><?php echo $se['Gioitinh']?></td>
+                        <td><?php echo $se['Ngaysinh']?></td>
+                        <td><a href="admin_customer_edit.php?edit=<?php echo $se['id_kh']?>">Sửa</a></td>
+                        <td><a href="admin_customer_delete.php?delete=<?php echo $se['id_kh']?>">Xóa</a></td>
+                      </tr>
+                      
+                      <?php
+                      }
+                      ?>
+                    </tbody>
+                  </table>
                 </div>
                 
+                <script>
+                $(document).ready(function(){
+                  $("#myInput").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function() {
+                      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                  });
+                });
+                </script>
               </div>
             </div>
           </div>
