@@ -339,5 +339,58 @@ public function update_hd1($id){ // cho blog chu de da chon bang 1
     $run =mysqli_query($conn,$sql);
     return $run;
 }
+public function check_idmeo($id){//check idmeo da ton tai chua
+    global $conn;
+    $sql="select*from thucung_meo where id_dv='$id'";
+    $run=mysqli_query($conn,$sql);
+    $count=mysqli_num_rows($run);
+    return $count;
+}
+public function insert_meo($id_dv, $Tenthucung, $Maloai, $Machungloai, $Dongia, $Kieulong, $Mausac, $Mucdorunglong, $Mucdophobien, $Vengoai, $Thongtin, $Anh1, $Anh2){
+    global $conn;
+    $sql="INSERT INTO thucung_meo(id_dv, Tenthucung, Maloai, Machungloai, Dongia, Kieulong, Mausac, Mucdorunglong, Mucdophobien, Vengoai, Thongtin, Anh1, Anh2) 
+    VALUES ('$id_dv', '$Tenthucung', '$Maloai', '$Machungloai', $Dongia, '$Kieulong', '$Mausac', '$Mucdorunglong', '$Mucdophobien', '$Vengoai', '$Thongtin', '$Anh1', '$Anh2')";
+    $run =mysqli_query($conn,$sql);
+    return $run;
+}
+public function check_idcho($id){//check idcho
+    global $conn;
+    $sql="select*from thucung_cho where id_dv='$id'";
+    $run=mysqli_query($conn,$sql);
+    $count=mysqli_num_rows($run);
+    return $count;
+}
+
+public function get_cho(){
+    global $conn;
+    $sql="select*from thucung_cho";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
+public function get_meo(){
+    global $conn;
+    $sql="select*from thucung_meo";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
+public function insert_cho($id_dv, $Tenthucung, $Maloai, $Machungloai, $Kieulong, $Mucdichnuoi, $Kichthuoc, $Dongia, $Mucdophobien, $Thongtinthem, $Anh1, $Anh2){
+    global $conn;
+    $sql="INSERT INTO thucung_cho(id_dv, Tenthucung, Maloai, Machungloai, Kieulong, Mucdichnuoi, Kichthuoc, Dongia, Mucdophobien, Thongtinthem, Anh1, Anh2) 
+    VALUES ('$id_dv', '$Tenthucung', '$Maloai', '$Machungloai', '$Kieulong', '$Mucdichnuoi', '$Kichthuoc', '$Dongia', '$Mucdophobien', '$Thongtinthem', '$Anh1', '$Anh2')";
+    $run =mysqli_query($conn,$sql);
+    return $run;
+}
+public function get_chungloai($maloai){
+    global $conn;
+    $sql="select * from chungloai where Maloai='$maloai'";
+    $run =mysqli_query($conn,$sql);
+    return $run;
+}
+public function get_loai(){
+    global $conn;
+    $sql="select * from loaithucung";
+    $run =mysqli_query($conn,$sql);
+    return $run;
+}
  
 }
