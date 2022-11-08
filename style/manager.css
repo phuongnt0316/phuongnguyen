@@ -94,7 +94,8 @@
     padding: 10px;
 } 
 .main-right .form-info table tr td input[type=text],
-.main-right .form-info table tr td select{
+.main-right .form-info table tr td select,
+.main-right .form-info table tr td input[type=date]{
     outline: none;
    border: 2px solid var(--main-color-2);
     width: 500px;
@@ -111,3 +112,4 @@
     width: 200px;
     font-size: 20px;
 }
+

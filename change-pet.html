@@ -144,7 +144,7 @@
             <div class="main-right">
               <div class="list-customer">
                 <div class="container p-3 ms-5">
-                  <h4 class="text-dark text-center">DANH SÁCH || <a href="admin.html">Quay lại</a></h4>
+                  <h4 class="text-dark text-center">Thay đổi thông tin thú cưng || <a href="admin.html">Quay lại</a></h4>
                   <br>
                   <form action="" method="post" class="form-info text-dark me-5">
                     <table>
@@ -153,34 +153,62 @@
                             <td><input type="text" name="" id="id" ></td>
                         </tr>
                         <tr>
-                            <td><label for="ten">Họ tên khách</label</td>
+                            <td><label for="ten">Tên thú nuôi</label</td>
                             <td><input type="text" name="" id="ten" ></td>
                         </tr>
                         <tr>
-                          <td><label for="ten">Email</label></td>
-                          <td><input type="text" name="" id="ten" ></td>
-                      </tr>
-                      <tr>
-                        <td><label for="diachi">Địa chỉ</label></td>
-                        <td><textarea name="" id="" cols="57.5" rows="5"></textarea></td>
-                      </tr>
+                            <td><label for="maloai">Mã loại</label></td>
+                            <td> 
+                                    <select name="" id="maloai">
+                                        <option value="">---Chọn---</option>
+                                        <option value="Chó">Chó</option>
+                                        <option value="Mèo">Mèo</option>
+                                        <option value="Khác">Khác</option>
+                                     </select>
+                            </td>
+                        </tr>
                         <tr>
-                            <td><label for="sdt">Số điện thoại </label></td>
+                            <td><label for="trongluong">Trọng lượng</label></td>
                             <td><input type="text" name="" id="trongluong" ></td>
                         </tr>
                         <tr>
-                            <td><label for="gioitinh">Giới tính</label></td>
+                            <td><label for="long">Kiểu lông</label></td>
                             <td>
-                                <select name="" id="gioitinh">
+                                <select name="" id="long">
                                     <option value="">---Chọn---</option>
-                                    <option value="Ngắn">Nam</option>
-                                    <option value="Dài">Nữ</option>
+                                    <option value="Ngắn">Ngắn</option>
+                                    <option value="Dài">Dài</option>
+                                    <option value="Xoăn">Xoăn</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
-                            <td><label for="ngaysinh">Ngày sinh</label></td>
-                            <td><input type="date" name="" id="ngaysinh" ></td>
+                            <td><label for="mota">Mô tả</label></td>
+                            <td><textarea name="" id="" cols="57.5" rows="5"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><label for="gia">Giá</label></td>
+                            <td><input type="text" name="" id="gia" ></td>
+                        </tr>
+                        <tr>
+                            <td><label for="phobien">Độ phổ biến</label></td>
+                            <td>
+                                <select name="phobien" id="">
+                                    <option value="">---Chọn---</option>
+                                    <option value="Cao">Cao</option>
+                                    <option value="Trung bình">Trung bình</option>
+                                    <option value="Thấp">Thấp</option>
+                                </select>
+                            </td>
+                        </tr>
+                            
+                        <tr>
+                            <td><label for="anh1">Ảnh 1</label></td>
+                            <td><input type="file" name="" id="anh1" ></td>
+                        </tr>
+                        <tr>
+                            <td><label for="anh2">Ảnh 2</label></td>
+                            <td><input type="file" name="" id="anh2" ></td>
                         </tr>
                         <tr>
                             <td colspan="2" >
