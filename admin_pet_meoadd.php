@@ -7,6 +7,7 @@ $maloai="MEO";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style/style.css">
@@ -292,39 +293,9 @@ $maloai="MEO";
         <div id="footer">
             <div class="container-fluid ft">
                 <div class="row">
-                    <div class="col-sm-3 left">
-                        <h2>ĐIỀU HƯỚNG</h2>
-                        <ul class="list-unstyled">
-                            <li><a  href="">Trang chủ</a></li>
-                            <li><a  href="">Về chúng tôi</a></li>
-                            <li><a  href="">Sản phẩm</a></li>
-                            <li><a  href="">Điểm tin hữu ích</a></li>
-                            <li><a  href="">Liên hệ</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 center align-center">
-                        <div class="logo-1 text-center mb-5">
-                            <img src="images/logo.png" alt="">
-                        </div>
-                        <div class="text-center">
-                            <form action="" method="get">
-                                <input type="email" name="" id="" placeholder="Enter your mail">
-                                <input type="submit" value="Gửi">
-                            </form>
-                        </div>
-                       
-                    </div>
-                    <div class="col-sm-3 right ">
-                        <h2>Thông tin lên hệ</h2>
-                        <ul class="list-unstyled">
-                            <li><a  href=""><i class="fa icon fa-map-marker"></i>  Đại học Phương Đông<br> số 4 Ngõ Chùa Hưng Ký – Minh Khai <br> Hai Bà Trưng – Hà Nội</a></li>
-                            <li><a  href=""><i class="fa icon fa-volume-control-phone" ></i> 02436241394 hoặc 0936738889</a></li>
-                            <li><a  href=""><i class="fa icon fa-envelope-o" ></i> ict.dhphuongdong@gmail.com</a></li>
-                            <li><a  href=""><i class="fa icon fa-facebook-square" ></i> facebook.com/cntt.phuongdong</a></li>
-                            <li><a  href=""><i class="fa icon fa-globe" ></i> cntt.phuongdong.edu.vn
-                            </a></li>
-                        </ul>
-                    </div>
+                <div class=" ft text-center">
+                 <p>Sản phẩm của Phuong&Linh PDU - Hotline hỗ trợ : 0123456789</p>
+                </div>
                 </div>
             </div>
         </div>

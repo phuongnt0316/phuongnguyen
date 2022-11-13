@@ -233,8 +233,9 @@
                         </ul>
                     </div>
                     <div class="col-sm-6 center align-center">
-                        <div class="logo-1 text-center mb-5">
+                    <div class="logo-1 text-center mb-3 text-white">
                             <img src="images/logo.png" alt="">
+                            <p class="mt-3">Nơi gửi gắm niềm tin về vẻ đẹp thú cưng</p>
                         </div>
                         <div class="text-center">
                             <form action="" method="get">
