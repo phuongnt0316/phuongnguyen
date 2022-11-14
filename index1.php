@@ -341,7 +341,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
             </div>
             
         </div>
-        <script src="script/main.js"></script>
+        
   <!-- -------------------------------------footer---------------------------------- -->
         <div id="footer">
             <div class="container-fluid ft">
