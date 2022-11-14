@@ -164,7 +164,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                             
                             ?>
                             <li><?php echo $_SESSION["hoten"]?></li>
-                            <li>Đăng xuất</li> 
+                            <li><a href="logout.php">Đăng xuất</a></li> 
                             <?php }?>
                         <li><a  href="carts.html"><i class="fa fa-shopping-cart" ></i></a></li>
                     </ul>
@@ -236,17 +236,22 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                     <div class="row ">
                       <div class="col-sm-6">
                         <div class="type-img">
-                          <img src="images/cat/cat-8.jpg" alt="" id="img-main">
+                          <?php
+                    $id_dv=$_GET['id'];
+                    $maloai=$_GET['maloai'];
+                    if($maloai=="MEO"){
+                    $get_info=$get_data->get_infomeo($id_dv);
+                    foreach($get_info as $se_if){					
+                      ?>
+                          <img src="img/<?php echo $se_if["Anh1"] ?>" alt="" id="img-main">
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="first-select1 text-dark">
-                          <span><a href="index.html">TRANG CHỦ</a>  || <a href="cat.html">MÈO CẢNH</a></span>
-                          <h3 class="name-product title-2 mt-3">Mèo Anh lông dài – British Longhair</h3>
-                          <h3 class="price mt-2"><b>Giá:</b> 5,769,000 ₫</h3>
-                          <p class="description mt-2">
-                            Mèo lông dài Anh (ALD) là phiên bản lông dài của giống mèo Anh lông ngắn có nguồn gốc từ Anh. Chúng có có bộ lông dài óng ánh cùng chiếc đuôi có lông khá xù và dài. Mèo ALD có nhiều điểm tương đồng với mèo Ba Tư. Những chú mèo ALD cũng rất đáng yêu và hiền lành phù hợp để nuôi làm cảnh
-                          </p>
+                          <span><a href="index.html">TRANG CHỦ</a>  || <a href="cat.html"><?php echo $se_if["Maloai"] ?></a></span>
+                          <h3 class="name-product title-2 mt-3"><?php echo $se_if["Tenthucung"] ?></h3>
+                          <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongia"] ?></h3>
+                          <p class="description mt-2"><?php echo $se_if["Maloai"] ?></p>
                           <div class="chose">
                             <form action="" method="post">
                               <input type="number" name="quantity" min="1" max="10" value="1" id="">
@@ -258,12 +263,45 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                     </div>
                     <div class="img-product mt-3 mb-5">
                       <ul class="d-flex">
-                        <li><img src="images/cat/cat-8.jpg" alt="" onclick="changeImg('img-one')" id="img-one"></li>
-                        <li><img src="images/cat/cat-8.1.jpg" alt="" onclick="changeImg('img-two')" id="img-two"></li>
+                        <li><img src="img/<?php echo $se_if["Anh1"] ?>" alt="" onclick="changeImg('img-one')" id="img-one"></li>
+                        <li><img src="img/<?php echo $se_if["Anh2"] ?>" alt="" onclick="changeImg('img-two')" id="img-two"></li>
                       </ul>
                     </div>
                   </div> 
+                  <?php }
+                    }
+                  else{
+                    $get_info=$get_data->get_infocho($id_dv);
+                    foreach($get_info as $se_if){					
+                      ?>
+                          <img src="img/<?php echo $se_if["Anh1"] ?>" alt="" id="img-main">
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="first-select1 text-dark">
+                          <span><a href="index.html">TRANG CHỦ</a>  || <a href="cat.html"><?php echo $se_if["Maloai"] ?></a></span>
+                          <h3 class="name-product title-2 mt-3"><?php echo $se_if["Tenthucung"] ?></h3>
+                          <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongia"] ?></h3>
+                          <p class="description mt-2"><?php echo $se_if["Maloai"] ?></p>
+                          <div class="chose">
+                            <form action="" method="post">
+                              <input type="number" name="quantity" min="1" max="10" value="1" id="">
+                              <input type="submit" value="Thêm vào giỏ hàng">
+                            </form>
+                          </div>
 
+                      </div>
+                    </div>
+                    <div class="img-product mt-3 mb-5">
+                      <ul class="d-flex">
+                        <li><img src="img/<?php echo $se_if["Anh1"] ?>" alt="" onclick="changeImg('img-one')" id="img-one"></li>
+                        <li><img src="img/<?php echo $se_if["Anh2"] ?>" alt="" onclick="changeImg('img-two')" id="img-two"></li>
+                      </ul>
+                    </div>
+                  </div> 
+                  <?php
+
+                  }}?>
                 </div>
                 <div class="container mt-5 list-op">
                   <ul class="nav nav-tabs" role="tablist">

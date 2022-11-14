@@ -373,6 +373,26 @@ public function get_meo(){
     $run=mysqli_query($conn,$sql);
     return $run;
 }
+public function get_info($id){
+    global $conn;
+    $sql="SELECT*from thucung_meo WHERE id_dv = '$id'
+    UNION
+    SELECT*from thucung_cho WHERE id_dv = '$id'";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
+public function get_infocho($id){
+    global $conn;
+    $sql="SELECT*from thucung_cho WHERE id_dv = '$id'";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
+public function get_infomeo($id){
+    global $conn;
+    $sql="SELECT*from thucung_meo WHERE id_dv = '$id'";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
 public function insert_cho($id_dv, $Tenthucung, $Maloai, $Machungloai, $Kieulong, $Mucdichnuoi, $Kichthuoc, $Dongia, $Mucdophobien, $Thongtinthem, $Anh1, $Anh2){
     global $conn;
     $sql="INSERT INTO thucung_cho(id_dv, Tenthucung, Maloai, Machungloai, Kieulong, Mucdichnuoi, Kichthuoc, Dongia, Mucdophobien, Thongtinthem, Anh1, Anh2) 

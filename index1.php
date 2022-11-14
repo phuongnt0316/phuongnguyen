@@ -225,22 +225,32 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
         </div>
         
   <!-- --------------------------------body--------------------------------- -->
-        <div id="body" class="mt-5">
-            <div class="product dog container-fluid">
-              <h2 class="title text-dark text-center">CHÓ CẢNH<h2>
+  <div id="body" class="mt-5">
+  <div class="product cat container-fluid mt-5">
+              <h2 class="title text-dark text-center">Chó Cảnh</h2>
               <div class="menu-product d-flex flex-wrap justify-content-around">
-                <!-- <div class="item-product text-center mb-5">
-                  <div class="images-item">
-                    <img src="images/dog/dog-1.jpg" alt="">
-                  </div>
-                  <div class="title-item">
-                    <p class="item-kind">Chó cảnh <br></p>
-                   <p class="item-name"><b>Chó Alasca trắng đen</b></p>
-                  </div>
-                  <div class="price-item mb-1">
-                    <span class="price"><b>Gía: 5000000</b></span>
-                  </div>
-                </div> -->
+              <?php
+                        
+                        $getdog=$get_data->get_cho();
+                        foreach($getdog as $se_dog){
+
+                        ?>
+                    <div class="item-product text-center mb-5">
+                      <div class="images-item">
+                        <img src="img/<?php echo $se_dog['Anh1'] ?>" alt="">
+                      </div>
+                      <div class="title-item">
+                        <p class="item-kind"><?php echo $se_dog['Tenthucung']."-".$se_dog['id_dv'] ?><br></p>
+                       
+                      </div>
+                      <div class="price-item mb-1">
+                        <span class="price"><b><?php echo $se_dog['Dongia'] ?></b></span>
+                        <span><a href="product-item.php?id=<?php echo $se_dog['id_dv'];?>&maloai=<?php echo $se_dog['Maloai']?>" class="more"> Chi tiết&gt;&gt;</a></span>
+                      </div>
+                    </div>
+                    <?php
+                        }
+                    ?> 
                 
               </div>
               <div class="xt mt-3 text-center "><button class="btn">Xem thêm</button></div>
@@ -268,7 +278,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                       </div>
                       <div class="price-item mb-1">
                         <span class="price"><b><?php echo $se_cat['Dongia'] ?></b></span>
-                        <span><a href="product-item.php?content=<?php echo $se_cat['id_dv'];?>" class="more"> Chi tiết&gt;&gt;</a></span>
+                        <span><a href="product-item.php?id=<?php echo $se_cat['id_dv'];?> &maloai=<?php echo $se_cat['Maloai'];?>" class="more"> Chi tiết&gt;&gt;</a></span>
                       </div>
                     </div>
                     <?php
@@ -341,7 +351,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
             </div>
             
         </div>
-        <script src="script/main.js"></script>
+        
   <!-- -------------------------------------footer---------------------------------- -->
         <div id="footer">
             <div class="container-fluid ft">
