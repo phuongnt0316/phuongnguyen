@@ -412,5 +412,12 @@ public function get_loai(){
     $run =mysqli_query($conn,$sql);
     return $run;
 }
+ //gio hang
+ public function insert_giohang($id_kh, $id_sp, $Maloai, $Soluong,$dongia){
+    global $conn;
+    $sql="INSERT INTO giohang(id_kh, id_sp, Maloai, Soluong,Dongia) VALUES ('$id_kh','$id_sp','$Maloai',$Soluong,$dongia)";
+    $run =mysqli_query($conn,$sql);
+    return $run;  
+ }
  
 }

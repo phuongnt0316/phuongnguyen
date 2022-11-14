@@ -6,13 +6,15 @@ $get_data=new data();
 if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
   $getdata=$get_data->login_user($_SESSION["email"],$_SESSION["pass"]);
   foreach($getdata as $sel){
-    $idkh=$sel["id_kh"];
       $_SESSION["hoten"]=$sel["Hoten"];
   }
 
 }
-?>
+else {?> <script>
 
+location.href = 'login.php';
+</script>
+<?php }?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +25,6 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/product.css">
-    <link rel="stylesheet" href="style/product-item.css">
     <title>Document</title>
 </head>
 <body>
@@ -73,7 +74,15 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                                         <input type="search" name="txtsearch" placeholder="Tìm kiếm ....">
                                         <input type="submit" name="btm" value="Search">
                                     </form>
-                                        
+                                    <?php
+                                    if(isset($_POST["txtsearch"])){
+                                      ?>
+                                      <script>
+                                      location.href = "search.php?search=<?php echo $_POST['txt_search'];?>";
+                                      </script>
+                                    <?php
+                                    }
+                                    ?>     
                                 </li>
                             </ul>
                         </li>
@@ -108,53 +117,53 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                                     </div>
                                   </form>
                                   <?php
-                                  if(isset($_POST["sub_dangnhap"])){
-                                    if(empty($_POST["txtemail"])||empty($_POST["txtpass"]))
-                                    {
-                                    echo("<script>alert('Không được để trống');</script>");
-                                    }
-                                else
-                                {
-                                  $login=$get_data->login($_POST["txtemail"],$_POST["txtpass"]);
-                                  if ($login==1)
-                                  {
-                                      $_SESSION["email"]=$_POST["txtemail"];
-                                      $_SESSION["pass"]=$_POST["txtpass"];
-                                      $get=$get_data->login_user($_POST["txtemail"],$_POST["txtpass"]);
-                                      foreach($get as $se){
-                                          $lv=$se["quyen"];
-                                          $_SESSION["quyen"]=$se["quyen"];
-                                          $_SESSION["hoten"]=$se["Hoten"];
-                                      }
-                                          //header("location:admin_login.php");}
-                                          
-                                      if($lv==0)
-                                      {?>
-                                      <script>
+    if(isset($_POST["sub_dangnhap"])){
+      if(empty($_POST["txtemail"])||empty($_POST["txtpass"]))
+      {
+      echo("<script>alert('Không được để trống');</script>");
+      }
+  else
+  {
+    $login=$get_data->login($_POST["txtemail"],$_POST["txtpass"]);
+    if ($login==1)
+    {
+        $_SESSION["email"]=$_POST["txtemail"];
+        $_SESSION["pass"]=$_POST["txtpass"];//khoi tao session co ten la user
+        $get=$get_data->login_user($_POST["txtemail"],$_POST["txtpass"]);
+        foreach($get as $se){
+            $lv=$se["quyen"];
+            $_SESSION["quyen"]=$se["quyen"];
+            $_SESSION["hoten"]=$se["Hoten"];
+        }
+            //header("location:admin_login.php");}
+            
+        if($lv==0)
+        {?>
+         <script>
 
-                                          location.href = 'index1.php';
-                                          </script>
-                                      <?php
-                                      //	header("location:user_login.php");
-                                      }
-                                      else{?>
-                                        <script>
-                                          //alert("lv".$lv);
-                                        location.href = 'admin.php';
-                                        </script>
-                                    <?php
-                                    }
-                                      //echo("<script>alert('login thanh cong!!!');</script>");
-                                  }
-                                
-                                  else
-                                  echo("<script>alert('login that bai!!!');</script>");   
-                                  
-                                }
-                                
-                              }
+            location.href = 'index1.php';
+            </script>
+        <?php
+        //	header("location:user_login.php");
+        }
+        else{?>
+          <script>
+            //alert("lv".$lv);
+          location.href = 'admin.php';
+          </script>
+      <?php
+      }
+        //echo("<script>alert('login thanh cong!!!');</script>");
+    }
+  
+    else
+    echo("<script>alert('login that bai!!!');</script>");   
+    
+  }
+  
+}
 
-                              ?>	
+?>	
                                 </div>
                           
                               </div>
@@ -165,7 +174,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                             
                             ?>
                             <li><?php echo $_SESSION["hoten"]?></li>
-                            <li><a href="logout.php">Đăng xuất</a></li> 
+                            <li><a href="logout.php" class="text-white">Đăng xuất</a></li> 
                             <?php }?>
                         <li><a  href="carts.html"><i class="fa fa-shopping-cart" ></i></a></li>
                     </ul>
@@ -175,11 +184,35 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
         </div>
         <!-- --------------------------------body--------------------------------- -->
         <div id="body">
+          <div class="first-select d-flex justify-content-between m-4">
+            <div class="first-select1 text-dark">
+                <a href="index.html">TRANG CHỦ</a> <span> || <b>MÈO CẢNH</b></span>
+            </div>
+            <div class="first-select1">
+                <select name="chose" id="select">
+                    <option value="Thứ tự mặc định">Thứ tự mặc định</option>
+                    <option value="Thứ tự theo mức độ phổ biến">Thứ tự theo mức độ phổ biến</option>
+                    <option value="Thứ tự theo điểm đánh giá sản phẩm">Thứ tự theo điểm đánh giá sản phẩm</option>
+                    <option value="Thứ tự theo đánh giá: từ thấp đến cao">Thứ tự theo đánh giá: từ thấp đến cao</option>
+                    <option value="Thứ tự theo đánh giá: từ cao đến thấp">Thứ tự theo đánh giá: từ cao đến thấp</option>
+                </select>
+            </div>
+        </div>
           <div class="container-fluid">
-            <div class="row">
+            <div class="row ms-1 mt-2">
               <div class="col-sm-3">
                 <div class="category">
-                  <div class="first-category text-dark mt-3">
+                  <div class="first-category">
+                      <p class="title-2 text-dark"><b>DANH MỤC SẢN PHẨM</b></p>
+                      <div class="type p-2">
+                          <div class="dm p-1"><a href="dog.html" >Chó cảnh</a></div>
+                          
+                          <div class="dm p-1"><a href="dog.html" >Mèo cảnh</a></div>
+                          
+                      </div>
+                  </div>
+                 
+                  <div class="first-category text-dark mt-3 ">
                       <p class="title-2"><b>SẢN PHẨM</b></p>
                       <div class="type p-2">
                         <div class="type-of">
@@ -232,131 +265,10 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                   </div>
               </div>
               </div>
-              <div class="col-sm-9 p-2">
-                <div class="product container-fluid mt-5 pb-5">
-                    <div class="row ">
-                      <div class="col-sm-6">
-                        <div class="type-img">
-                          <?php
-                    $id_dv=$_GET['id'];
-                    $maloai=$_GET['maloai'];
-                    if($maloai=="MEO"){
-                    $get_info=$get_data->get_infomeo($id_dv);
-                    foreach($get_info as $se_if){					
-                      ?>
-                          <img src="img/<?php echo $se_if["Anh1"] ?>" alt="" id="img-main">
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="first-select1 text-dark">
-                          <span><a href="index.html">TRANG CHỦ</a>  || <a href="cat.php"><?php echo $se_if["Maloai"] ?></a></span>
-                          <h3 class="name-product title-2 mt-3"><?php echo $se_if["Tenthucung"] ?></h3>
-                          <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongia"] ?></h3>
-                          <p class="description mt-2"><?php echo $se_if["Maloai"] ?></p>
-                          <div class="chose">
-                          
-                              <a href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>">Thêm vào giỏ hàng</a>
-                        
-                          </div>
-
-                      </div>
-                    </div>
-                    <div class="img-product mt-3 mb-5">
-                      <ul class="d-flex">
-                        <li><img src="img/<?php echo $se_if["Anh1"] ?>" alt="" onclick="changeImg('img-one')" id="img-one"></li>
-                        <li><img src="img/<?php echo $se_if["Anh2"] ?>" alt="" onclick="changeImg('img-two')" id="img-two"></li>
-                      </ul>
-                    </div>
-                  </div> 
-                  <?php }
-                    }
-                  else{
-                    $get_info=$get_data->get_infocho($id_dv);
-                    foreach($get_info as $se_if){					
-                      ?>
-                          <img src="img/<?php echo $se_if["Anh1"] ?>" alt="" id="img-main">
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="first-select1 text-dark">
-                          <span><a href="index.html">TRANG CHỦ</a>  || <a href="cat.html"><?php echo $se_if["Maloai"] ?></a></span>
-                          <h3 class="name-product title-2 mt-3"><?php echo $se_if["Tenthucung"] ?></h3>
-                          <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongia"] ?></h3>
-                          <p class="description mt-2"><?php echo $se_if["Maloai"] ?></p>
-                          <div class="chose">
-                            <form action="" method="post">
-                              <input type="number" name="quantity" min="1" max="10" value="1" id="">
-                              <input type="submit" value="Thêm vào giỏ hàng">
-                            </form>
-                          </div>
-
-                      </div>
-                    </div>
-                    <div class="img-product mt-3 mb-5">
-                      <ul class="d-flex">
-                        <li><img src="img/<?php echo $se_if["Anh1"] ?>" alt="" onclick="changeImg('img-one')" id="img-one"></li>
-                        <li><img src="img/<?php echo $se_if["Anh2"] ?>" alt="" onclick="changeImg('img-two')" id="img-two"></li>
-                      </ul>
-                    </div>
-                  </div> 
-                  <?php
-
-                  }}?>
-                </div>
-                <div class="container mt-5 list-op">
-                  <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                      <a class="nav-link active" data-bs-toggle="tab" href="#home">Mô tả</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" data-bs-toggle="tab" href="#menu1">Đánh giá</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" data-bs-toggle="tab" href="#menu2">Chính sách bảo hành</a>
-                    </li>
-                  </ul>
-                  <div class="tab-content text-dark">
-                    <div id="home" class="container tab-pane active"><br>
-                      <p class="discription-item">
-                        <?php echo  $se_if["Thongtin"];?>                      </p>
-                    </div>
-                    <div id="menu1" class="container tab-pane fade"><br>
-                      <h3>Đánh giá của bạn</h3>
-                      <div class="bl-comment">
-                        <form action="" method="post">
-                          <div class="cmt">
-                            <label for="comment" class="mb-2"><b>Đánh giá của ban *</b></label> <br>
-                            <textarea name="comment" id="comment" cols="90" rows="5"></textarea>
-                          </div>
-                          <div class="info d-flex mt-3">
-                            <div class="me-5">
-                              <label for="name" class="mb-2"><b>Tên *</b></label> <br>
-                              <input type="text" name="name" id="name">
-                            </div>
-                            <div>
-                              <label for="name" class="mb-2"><b>Email *</b></label> <br>
-                              <input type="email" name="name" id="name">
-                            </div>
-                          </div>
-                          <div class="send mt-5">
-                            <input type="submit" value="Gửi">
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                    <div id="menu2" class="container tab-pane fade"><br>
-                     <p>
-                      Khi nhận hàng thú cưng sẽ đi kèm các giấy tờ liên quan đến giấy khai sinh,chủng loại, xuất sứ, các mũi đã được tiêm
-                     </p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
+              
             </div>
           </div>
         </div>
-        <script src="./script/main.js"></script>
 
         <!-- -------------------------------------footer-------------------------- -->
         <div id="footer">
@@ -373,8 +285,9 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                         </ul>
                     </div>
                     <div class="col-sm-6 center align-center">
-                        <div class="logo-1 text-center mb-5">
+                    <div class="logo-1 text-center mb-3 text-white">
                             <img src="images/logo.png" alt="">
+                            <p class="mt-3">Nơi gửi gắm niềm tin về vẻ đẹp thú cưng</p>
                         </div>
                         <div class="text-center">
                             <form action="" method="get">
