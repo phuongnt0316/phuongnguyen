@@ -16,7 +16,7 @@
 <body>
     <div class="content">
         <div id="header">
-            <nav class=" container-fluid p-2 navbar-expand-sm navbar-dark bg-dark d-flex align-items-center justify-content-between">
+        <nav class=" container-fluid p-2 navbar-expand-sm navbar-dark bg-dark d-flex align-items-center justify-content-between">
                 <div class="ms-3">
                   <a class="navbar-brand" href="index.html">
                     <img src="images/logo.png" alt="">

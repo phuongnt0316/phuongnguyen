@@ -29,7 +29,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
         <div id="header">
             <nav class=" container-fluid p-2 navbar-expand-sm navbar-dark bg-dark d-flex align-items-center justify-content-between">
                 <div class="ms-3">
-                  <a class="navbar-brand" href="index.html">
+                  <a class="navbar-brand" href="index1.php">
                     <img src="images/logo.png" alt="">
                   </a>
                 </div>
@@ -37,26 +37,26 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                     <div class="collapse navbar-collapse" id="mynavbar">
                       <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                          <a class="nav-link" href="intro.html">GIỚI THIỆU</a>
+                          <a class="nav-link" href="intro.php">GIỚI THIỆU</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="dog.html">CHÓ CẢNH</a>
+                          <a class="nav-link" href="dog.php">CHÓ CẢNH</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="cat.html">MÈO CẢNH</a>
+                          <a class="nav-link" href="cat.php">MÈO CẢNH</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="food.html" role="button" data-bs-toggle="dropdown">ĐỒ ĂN</a>
                             <ul class="dropdown-menu mt-3 p-2 fade">
-                              <li><a class="dropdown-item text-dark " href="food-dog.html">Đồ ăn cho chó</a></li>
-                              <li><a class="dropdown-item text-dark" href="food-cat.html">Đồ ăn cho mèo</a></li>
+                              <li><a class="dropdown-item text-dark " href="food-dog.php">Đồ ăn cho chó</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-cat.php">Đồ ăn cho mèo</a></li>
                             </ul>
                           </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pk.html">PHỤ KIỆN</a>
+                            <a class="nav-link" href="pk.php">PHỤ KIỆN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">LIÊN HỆ</a>
+                            <a class="nav-link" href="contact.php">LIÊN HỆ</a>
                         </li>
                         
                       </ul>
@@ -171,7 +171,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                             
                             ?>
                             <li><?php echo $_SESSION["hoten"]?></li>
-                            <li><a href="logout.php">Đăng xuất</a></li> 
+                            <li><a href="logout.php" class="text-white">Đăng xuất</a></li> 
                             <?php }?>
                         <li><a  href="carts.html"><i class="fa fa-shopping-cart" ></i></a></li>
                     </ul>
