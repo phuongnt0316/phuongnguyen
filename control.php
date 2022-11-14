@@ -23,22 +23,15 @@ require 'PHPMailer/src/SMTP.php';
         $count=mysqli_num_rows($run);
         return $count;
     }
-    public function login($email,$pass){
-        global $conn;
-        $sql="select*from register where email='$email' and password='$pass'";
-        $run=mysqli_query($conn,$sql);
-        $count=mysqli_num_rows($run);
-        return $count;
-    }
-    public function get_register($email,$pass){
-        global $conn;
-        $sql="select*from register where email='$email' and password='$pass'";
-        $run=mysqli_query($conn,$sql);
-        return $run;
-    }
     public function get_user($id_kh){//lay kh theo id_kh
         global $conn;
         $sql="select*from user where id_kh='$id_kh'";
+        $run=mysqli_query($conn,$sql);
+        return $run;
+    }
+    public function login_user($email,$pass){ //login with email and password from user
+        global $conn;
+        $sql="select*from user where Email='$email' and Password='$pass'";
         $run=mysqli_query($conn,$sql);
         return $run;
     }
@@ -55,6 +48,13 @@ require 'PHPMailer/src/SMTP.php';
         $sql="delete from user where id_kh=$id";
         $run=mysqli_query($conn,$sql);
         return $run;   
+    }
+    public function login($email,$pass){ //login with email and password from user
+        global $conn;
+        $sql="select*from user where Email='$email' and Password='$pass'";
+        $run=mysqli_query($conn,$sql);
+        $count=mysqli_num_rows($run);
+        return $count;
     }
 
     public function update_pass($id_regt,$pass){
