@@ -6,19 +6,19 @@
     --title-2-afer:#e5e5e5;
     --color-3:azure;
 }
-.content .main{
+/* .content .main{
     width: 100%;
-}
-.main .menu-left{
+} */
+/* .main .menu-left{
     width: 15%;
     background: var(--main-color-1);
     
 }
 .main .main-right{
     width: 85%;
-}
+} */
 
-.main .menu-left ul li{
+/* .main .menu-left ul li{
     list-style-type: none;
 }
 .main .menu-left ul li a{
@@ -28,7 +28,7 @@
 .main .menu-left ul li a:hover{
     color: var(--color-3);
     text-decoration: underline;
-}
+} */
 .main .main-right .form  input[type="text"],
 .main-right .form  select{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

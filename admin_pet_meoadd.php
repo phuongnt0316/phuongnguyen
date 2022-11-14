@@ -18,9 +18,9 @@ $maloai="MEO";
 <body>
     <div class="content">
         <div id="header">
-            <nav class=" container-fluid p-2 navbar-expand-sm navbar-dark bg-dark d-flex align-items-center justify-content-between">
+        <nav class=" container-fluid p-2 navbar-expand-sm navbar-dark bg-dark d-flex align-items-center justify-content-around">
                 <div class="ms-3">
-                  <a class="navbar-brand" href="index.html">
+                  <a class="navbar-brand" href="index1.php">
                     <img src="images/logo.png" alt="">
                   </a>
                 </div>
@@ -28,32 +28,40 @@ $maloai="MEO";
                     <div class="collapse navbar-collapse" id="mynavbar">
                       <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                          <a class="nav-link" href="intro.html">GIỚI THIỆU</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="dog.html">CHÓ CẢNH</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="cat.html">MÈO CẢNH</a>
+                          <a class="nav-link" href="intro.php">KHÁCH HÀNG</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="food.html" role="button" data-bs-toggle="dropdown">THỨC ĂN</a>
+                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown">SẢN PHẨM</a>
                             <ul class="dropdown-menu mt-3 p-2 fade">
-                              <li><a class="dropdown-item text-dark " href="food-dog.html">Đồ ăn cho chó</a></li>
-                              <li><a class="dropdown-item text-dark" href="food-cat.html">Đồ ăn cho mèo</a></li>
+                              <li><a class="dropdown-item text-dark " href="food-dog.php">CHÓ</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-cat.php">MÈO</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-dog.php">ĐỒ ĂN CHO CHÓ</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-cat.php">ĐỒ ĂN CHO MÈO</a></li>
+                              <li><a class="dropdown-item text-dark" href="pk.php">PHỤ KIỆN</a></li>
+                              
                             </ul>
                           </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pk.html">PHỤ KIỆN</a>
+                          <a class="nav-link" href="#">KHO HÀNG</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="cat.html">LIÊN HỆ</a>
+                          <a class="nav-link" href="#">HÓA ĐƠN</a>
+                        </li>
+                       
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">DOANH THU</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.php">BLOG</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">QUẢNG CÁO</a>
                         </li>
                         
                       </ul>
                     </div>
                 </div>
-                <div class="menu-2 me-3">
+                <!-- <div class="menu-2 me-3">
                      <ul class="navbar-nav me-auto menu-22">
                         <li ><a  href="#"><i class="fa fa-search" ></i></a>
                             <ul class="search">
@@ -76,7 +84,7 @@ $maloai="MEO";
                                   <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                           
-                                <!-- Modal body -->
+                                Modal body 
                                 <div class="modal-body">
                                   <form action="" method="post">
                                     <div class="mb-3 mt-3 text-dark">
@@ -102,49 +110,13 @@ $maloai="MEO";
                         </li>
                         <li><a  href="carts.html"><i class="fa fa-shopping-cart" ></i></a></li>
                     </ul>
-                </div>
+                </div> -->
             </nav>
               
         </div>
         <!-- --------------------------------body--------------------------------- -->
-          <div class="main d-flex">
-             <div class="menu-left p-2">
-              <h5 class="">Quản lý bán hàng</h5>
-              <ul>
-                <li>
-                  <a href="admin.html" class="active">Khách hàng</a>
-                </li>
-                <li>
-                  <a class=" text-white" data-bs-toggle="collapse" data-bs-target="#demo">Sản phẩm</a>
-                    <ul id="demo" class="collapse">
-                        <li><a href="manager-dog.html">Chó</a></li>
-                        <li><a href="manager-cat.html">Mèo</a></li>
-                        <li><a data-bs-toggle="collapse" data-bs-target="#demo1">Đồ ăn</a>
-                          <ul id="demo1" class="collapse">
-                            <li><a href="manager-food-dog.html">Cho chó</a></li>
-                            <li><a href="manager-food-cat.html">Cho mèo</a></li>
-                          </ul>
-                        </li>
-                        <li><a href="manager-pk.html">Phụ kiện</a></li>
-                    </ul>
-                </li>
-                <li>
-                  <a href="#">Kho hàng</a>
-                </li>
-                <li>
-                  <a href="bill.html">Hóa đơn</a>
-                </li>
-                <li>
-                  <a href="sales.html">Doanh thu</a>
-                </li>
-                <li>
-                  <a href="blog.html">Blog</a>
-                </li>
-                <li>
-                  <a href="pr.html">Quảng cáo</a>
-                </li>
-              </ul>
-            </div>
+          <div class="main d-flex justify-content-center">
+             
             <div class="main-right">
               <div class="list-customer">
                 <div class="container p-3 ms-5">
