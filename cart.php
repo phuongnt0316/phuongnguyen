@@ -24,7 +24,7 @@ location.href = 'login.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/product.css">
+    <link rel="stylesheet" href="style/cart.css">
     <title>Document</title>
 </head>
 <body>
@@ -184,89 +184,44 @@ location.href = 'login.php';
         </div>
         <!-- --------------------------------body--------------------------------- -->
         <div id="body">
-          <div class="first-select d-flex justify-content-between m-4">
-            <div class="first-select1 text-dark">
-                <a href="index.html">TRANG CHỦ</a> <span> || <b>MÈO CẢNH</b></span>
-            </div>
-            <div class="first-select1">
-                <select name="chose" id="select">
-                    <option value="Thứ tự mặc định">Thứ tự mặc định</option>
-                    <option value="Thứ tự theo mức độ phổ biến">Thứ tự theo mức độ phổ biến</option>
-                    <option value="Thứ tự theo điểm đánh giá sản phẩm">Thứ tự theo điểm đánh giá sản phẩm</option>
-                    <option value="Thứ tự theo đánh giá: từ thấp đến cao">Thứ tự theo đánh giá: từ thấp đến cao</option>
-                    <option value="Thứ tự theo đánh giá: từ cao đến thấp">Thứ tự theo đánh giá: từ cao đến thấp</option>
-                </select>
-            </div>
-        </div>
-          <div class="container-fluid">
-            <div class="row ms-1 mt-2">
-              <div class="col-sm-3">
-                <div class="category">
-                  <div class="first-category">
-                      <p class="title-2 text-dark"><b>DANH MỤC SẢN PHẨM</b></p>
-                      <div class="type p-2">
-                          <div class="dm p-1"><a href="dog.html" >Chó cảnh</a></div>
-                          
-                          <div class="dm p-1"><a href="dog.html" >Mèo cảnh</a></div>
-                          
-                      </div>
-                  </div>
-                 
-                  <div class="first-category text-dark mt-3 ">
-                      <p class="title-2"><b>SẢN PHẨM</b></p>
-                      <div class="type p-2">
-                        <div class="type-of">
-                            <div class="type-img">
-                              <a href=""><img src="images/cat/cat-8.jpg" alt=""></a>
-                            </div>
-                            <div class="type-des">
-                                <a href="">Chó alaska</a>
-                                <p>200$</p>
-                            </div>
-                        </div>
-                        <div class="type-of">
-                              <div class="type-img">
-                                  <a href=""><img src="images/cat/cat-1.jpg" alt=""></a>
-                              </div>
-                           <div class="type-des">
-                               <a href="">Chó alaska</a>
-                               <p>200$</p>
-                           </div>
-                          </div>
-                          <div class="type-of">
-                              <div class="type-img">
-                                <a href=""><img src="images/cat/cat-2.jpg" alt=""></a>
-                              </div>
-                              <div class="type-des">
-                                  <a href="">Thức ăn cho chó</a>
-                                  <p>200$</p>
-                              </div>
-                          </div>
-                          <div class="type-of">
-                              <div class="type-img">
-                                <a href=""><img src="images/cat/cat-8.jpg" alt=""></a>
-                              </div>
-                              <div class="type-des">
-                                  <a href="">Mèo Anh - tai cụp</a>
-                                  <p>200$</p>
-                              </div>
-                          </div>
-                          <div class="type-of">
-                              <div class="type-img">
-                                <a href=""><img src="images/cat/cat-8.jpg" alt=""></a>
-                              </div>
-                              <div class="type-des">
-                                  <a href="">Mèo ta</a>
-                                  <p>200$</p>
-                              </div>
-                          </div>
-                          
-                      </div>
-                  </div>
+          <div class="container p-5 cart">
+            <form action="" method="post">
+              <table class="table text-dark ">
+                <tr>
+                  <th>SẢN PHẨM</th>
+                  <th>GIÁ</th>
+                  <th>SỐ LƯỢNG</th>
+                  <th>TỔNG CỘNG</th>
+                  <th>THÊM</th>
+                </tr>
+                <tr>
+                  <td class="d-flex flex-wrap ">
+                    <img src="./images/cat/cat-1.jpg" width="100px" alt="">
+                    <h5 class="mt-4 ms-3">Mèo nhà </h5>
+                  </td>
+                  <td ><p class="mt-4">5000000</p></td>
+                  <td><input type="number" name="" min="1"  class="mt-4" value="1" max="10" width="100px" id=""></td>
+                  <td><p  class="mt-4">5000000</p></td>
+                  <td><a href="" class="text-danger "><i class="fa fa-minus-square mt-4" style="font-size:24px"></i></a></td>
+                </tr>
+                <tr>
+                  <td class="d-flex flex-wrap ">
+                    <img src="./images/cat/cat-1.jpg" width="100px" alt="">
+                    <h5 class="mt-4 ms-3">Mèo nhà </h5>
+                  </td>
+                  <td ><p class="mt-4">5000000</p></td>
+                  <td><input type="number" name="" min="1"  class="mt-4" value="1" max="10" width="100px" id=""></td>
+                  <td><p  class="mt-4">5000000</p></td>
+                  <td><a href="" class="text-danger"><i class="fa fa-minus-square mt-4" style="font-size:24px"></i></a></td>
+                </tr>
+                
+              </table>
+              <div class="d-flex justify-content-between link mt-5" >
+                <a href="">Tiếp tục xem sản phẩm</a>
+                <input type="submit" value="Cập nhật giỏ hàng">
+                <input type="submit" value="Thanh toán">
               </div>
-              </div>
-              
-            </div>
+            </form>
           </div>
         </div>
 

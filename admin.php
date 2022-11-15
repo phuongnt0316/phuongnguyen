@@ -124,7 +124,7 @@ session_start();
               <div class="list-customer">
                 
                 <div class="container p-3">
-                  <h4 class="text-dark text-center">DANH SÁCH KHÁCH HÀNG || <a href="admin_customer_add.php">Thêm khách hàng</a></h4>
+                  <h4 class="text-dark text-center">DANH SÁCH KHÁCH HÀNG || <a href="admin_customer_add.php" id="t">Thêm khách hàng</a></h4>
                   <input class="form-control mt-5 mb-3" id="myInput" type="text" placeholder="Tìm kiếm khách hàng">
                   <br>
                   <table class="table table-bordered table-striped .table-responsive">
@@ -156,8 +156,8 @@ session_start();
                         <td><?php echo $se['Sodienthoai']?></td>
                         <td><?php echo $se['Gioitinh']?></td>
                         <td><?php echo $se['Ngaysinh']?></td>
-                        <td><a href="admin_customer_edit.php?edit=<?php echo $se['id_kh']?>">Sửa</a></td>
-                        <td><a href="admin_customer_delete.php?delete=<?php echo $se['id_kh']?>">Xóa</a></td>
+                        <td><a href="admin_customer_edit.php?edit=<?php echo $se['id_kh']?>"><i class="fa fa-home text-primary " style="font-size:24px"></i></a></td>
+                        <td><a href="admin_customer_delete.php?delete=<?php echo $se['id_kh']?>"><i class="fa fa-minus-square text-danger mt-1" style="font-size:20px"></i></a></td>
                       </tr>
                       
                       <?php
