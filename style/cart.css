@@ -27,3 +27,29 @@
 #body .cart form .link input[type="submit"]:hover{
     background: var(--main-color-3hover);
 }
+.pay .pay-left {
+  
+}
+.pay .pay-left form table tr td input[type="text"],
+.pay .pay-left form table tr td textarea
+{
+    width: 500px;
+    height: 40px;
+    border: 2px solid var(--title-2-afer);
+    border-radius: 2px;
+    outline: none;
+    margin: 10px 0;
+}
+.pay .pay-left form table tr td textarea{
+    height: 200px;
+}
+.pay .pay-right .pay-right-main{
+    border: 2px solid var(--main-color-1);
+}
+.pay .pay-right .pay-right-main form input{
+    background: var(--main-color-3);
+    padding: 10px;
+    width: 150px;
+    border: none;
+    color: var(--color-3);
+}
