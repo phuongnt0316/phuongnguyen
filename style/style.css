@@ -165,6 +165,11 @@ nav .menu-2 ul li a{
 #body .pr-1 img{
     width: 50%;
 }
+#body .product .menu-product .item-product .more{
+    text-decoration: none;
+    color: var(--main-color-2);
+}
+
 
 /* -------footer----- */
 
