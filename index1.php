@@ -239,6 +239,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
 
                         ?>
                     <div class="item-product text-center mb-5">
+                    <a href="product-item.php?id=<?php echo $se_dog['id_dv'];?>&maloai=<?php echo $se_dog['Maloai']?>" class="more" style={text-decoration:none;color:black;}>
                       <div class="images-item">
                         <img src="img/<?php echo $se_dog['Anh1'] ?>" alt="">
                       </div>
@@ -248,7 +249,8 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                       </div>
                       <div class="price-item mb-1">
                         <span class="price"><b><?php echo $se_dog['Dongia'] ?></b></span>
-                        <span><a href="product-item.php?id=<?php echo $se_dog['id_dv'];?>&maloai=<?php echo $se_dog['Maloai']?>" class="more"> Chi tiết&gt;&gt;</a></span>
+                      </div>
+                      </a>
                       </div>
                     </div>
                     <?php
