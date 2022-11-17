@@ -28,7 +28,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
         <div id="header">
             <nav class=" container-fluid p-2 navbar-expand-sm navbar-dark bg-dark d-flex align-items-center justify-content-between">
                 <div class="ms-3">
-                  <a class="navbar-brand" href="index.html">
+                  <a class="navbar-brand" href="index1.php">
                     <img src="images/logo.png" alt="">
                   </a>
                 </div>
@@ -36,26 +36,26 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                     <div class="collapse navbar-collapse" id="mynavbar">
                       <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                          <a class="nav-link" href="intro.html">GIỚI THIỆU</a>
+                          <a class="nav-link" href="intro.php">GIỚI THIỆU</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="dog.html">CHÓ CẢNH</a>
+                          <a class="nav-link" href="dog.php">CHÓ CẢNH</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="cat.html">MÈO CẢNH</a>
+                          <a class="nav-link" href="cat.php">MÈO CẢNH</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="food.html" role="button" data-bs-toggle="dropdown">THỨC ĂN</a>
+                            <a class="nav-link dropdown-toggle" href="food.php" role="button" data-bs-toggle="dropdown">THỨC ĂN</a>
                             <ul class="dropdown-menu mt-3 p-2 fade">
-                              <li><a class="dropdown-item text-dark " href="food-dog.html">Đồ ăn cho chó</a></li>
-                              <li><a class="dropdown-item text-dark" href="food-cat.html">Đồ ăn cho mèo</a></li>
+                              <li><a class="dropdown-item text-dark " href="food-dog.php">Đồ ăn cho chó</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-cat.php">Đồ ăn cho mèo</a></li>
                             </ul>
                           </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pk.html">PHỤ KIỆN</a>
+                            <a class="nav-link" href="pk.php">PHỤ KIỆN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">LIÊN HỆ</a>
+                            <a class="nav-link" href="contact.php">LIÊN HỆ</a>
                         </li>
                         
                       </ul>
@@ -83,7 +83,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                             </ul>
                         </li>
                         
-                        <li><a  href="carts.html"><i class="fa fa-shopping-cart" ></i></a></li>
+                        <li><a  href="cart.php"><i class="fa fa-shopping-cart" ></i></a></li>
                     </ul>
                 </div>
             </nav>
@@ -101,22 +101,22 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
 
                     </div>
                     <div class="col-sm-6 p-4 mt-5 mb-4 ct-right" >
-                        <h2 class="text-center mb-4">ĐĂNG NHẬP</h2>
+                        <h2 class="text-center mb-4">ĐĂNG NHẬP || <a href="register.php">ĐĂNG KÝ</a></h2>
                         <form action="" method="post">
                                     <div class="mb-3 mt-3 text-dark">
                                         <label for="email" class="mb-1"><b>Tên đăng nhập</b></label>
-                                        <input type="email" class="form-control" id="email" placeholder="Enter username" name="email">
+                                        <input type="email" class="form-control" id="email" focus placeholder="Enter username" name="txtemail">
                                       </div>
                                       <div class="mb-3 text-dark">
                                         <label for="pwd" class="mb-1"><b>Mật khẩu</b></label>
-                                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="txtpass">
                                       </div>
                                     <div class="text-dark">
-                                        <input type="submit" class="btn me-3 mb-3 p-2" value="Đăng Nhập">
+                                        <input type="submit" class="btn me-3 mb-3 p-2" name="sub_dangnhap" value="Đăng Nhập">
                                         <input type="checkbox" class="form-check-input mt-2" name="" id=""> <span>Ghi nhớ đăng nhập</span>
                                     </div>
                                     <div class="mb-3">
-                                        <a href="forgetpass.html" class="text-dark ">Quên mật khẩu</a>
+                                        <a href="forgetpass.php" class="text-dark ">Quên mật khẩu</a>
                                     </div>
                         </form>
                         <?php

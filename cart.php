@@ -37,7 +37,7 @@ else {?> <script>
         <div id="header">
             <nav class=" container-fluid p-2 navbar-expand-sm navbar-dark bg-dark d-flex align-items-center justify-content-between">
                 <div class="ms-3">
-                  <a class="navbar-brand" href="index.html">
+                  <a class="navbar-brand" href="index1.php">
                     <img src="images/logo.png" alt="">
                   </a>
                 </div>
@@ -45,26 +45,26 @@ else {?> <script>
                     <div class="collapse navbar-collapse" id="mynavbar">
                       <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                          <a class="nav-link" href="intro.html">GIỚI THIỆU</a>
+                          <a class="nav-link" href="intro.php">GIỚI THIỆU</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="dog.html">CHÓ CẢNH</a>
+                          <a class="nav-link" href="dog.php">CHÓ CẢNH</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="cat.html">MÈO CẢNH</a>
+                          <a class="nav-link" href="cat.php">MÈO CẢNH</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="food.html" role="button" data-bs-toggle="dropdown">ĐỒ ĂN</a>
+                            <a class="nav-link dropdown-toggle" href="food.php" role="button" data-bs-toggle="dropdown">ĐỒ ĂN</a>
                             <ul class="dropdown-menu mt-3 p-2 fade">
-                              <li><a class="dropdown-item text-dark " href="food-dog.html">Đồ ăn cho chó</a></li>
-                              <li><a class="dropdown-item text-dark" href="food-cat.html">Đồ ăn cho mèo</a></li>
+                              <li><a class="dropdown-item text-dark " href="food-dog.php">Đồ ăn cho chó</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-cat.php">Đồ ăn cho mèo</a></li>
                             </ul>
                           </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pk.html">PHỤ KIỆN</a>
+                            <a class="nav-link" href="pk.php">PHỤ KIỆN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">LIÊN HỆ</a>
+                            <a class="nav-link" href="contact.php">LIÊN HỆ</a>
                         </li>
                         
                       </ul>
@@ -92,89 +92,7 @@ else {?> <script>
                             </ul>
                         </li>
                         <?php if(empty ($_SESSION["email"])){?>
-                        <li class="lii"><button id="Btn"  type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-user-circle-o text-white" ></i>
-                        </button>
                         
-                        <div class="modal mt-5 p-5 account fade" id="myModal">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 class="modal-title text-dark">Đăng Nhập || <span><a href="register.html"  class="text-info">Đăng ký</a></span></h4>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                </div>
-                          
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                  <form action="" method="post">
-                                    <div class="mb-3 mt-3 text-dark">
-                                        <label for="email" class="mb-1"><b>Tên đăng nhập</b></label>
-                                        <input type="email" class="form-control" id="email" placeholder="Enter username" name="email">
-                                      </div>
-                                      <div class="mb-3 text-dark">
-                                        <label for="pwd" class="mb-1"><b>Mật khẩu</b></label>
-                                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-                                      </div>
-                                    <div class="text-dark">
-                                        <input type="submit" class="btn me-3 mb-3 p-2" value="Đăng Nhập">
-                                        <input type="checkbox" class="form-check-input mt-2" name="" id=""> <span>Ghi nhớ đăng nhập</span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <a href="forgetpass.html" class="text-dark ">Quên mật khẩu</a>
-                                    </div>
-                                  </form>
-                                  <?php
-    if(isset($_POST["sub_dangnhap"])){
-      if(empty($_POST["txtemail"])||empty($_POST["txtpass"]))
-      {
-      echo("<script>alert('Không được để trống');</script>");
-      }
-  else
-  {
-    $login=$get_data->login($_POST["txtemail"],$_POST["txtpass"]);
-    if ($login==1)
-    {
-        $_SESSION["email"]=$_POST["txtemail"];
-        $_SESSION["pass"]=$_POST["txtpass"];//khoi tao session co ten la user
-        $get=$get_data->login_user($_POST["txtemail"],$_POST["txtpass"]);
-        foreach($get as $se){
-            $lv=$se["quyen"];
-            $_SESSION["quyen"]=$se["quyen"];
-            $_SESSION["hoten"]=$se["Hoten"];
-        }
-            //header("location:admin_login.php");}
-            
-        if($lv==0)
-        {?>
-         <script>
-
-            location.href = 'index1.php';
-            </script>
-        <?php
-        //	header("location:user_login.php");
-        }
-        else{?>
-          <script>
-            //alert("lv".$lv);
-          location.href = 'admin.php';
-          </script>
-      <?php
-      }
-        //echo("<script>alert('login thanh cong!!!');</script>");
-    }
-  
-    else
-    echo("<script>alert('login that bai!!!');</script>");   
-    
-  }
-  
-}
-
-?>	
-                                </div>
-                          
-                              </div>
-                            </div>                                                       
-                        </li>
                         <?php } 
                             else{
                             
@@ -182,7 +100,7 @@ else {?> <script>
                             <li><?php echo $_SESSION["hoten"]?></li>
                             <li><a href="logout.php" class="text-white">Đăng xuất</a></li> 
                             <?php }?>
-                        <li><a  href="carts.html"><i class="fa fa-shopping-cart" ></i></a></li>
+                        <li><a  href="cart.php"><i class="fa fa-shopping-cart" ></i></a></li>
                     </ul>
                 </div>
             </nav>
@@ -198,7 +116,7 @@ else {?> <script>
                   <th>GIÁ</th>
                   <th>SỐ LƯỢNG</th>
                   <th>TỔNG CỘNG</th>
-                  <th>THÊM</th>
+                  <th>THAO TÁC</th>
                 </tr>
                 <?php
                 $get_cart=$get_data->get_cart($id_kh);

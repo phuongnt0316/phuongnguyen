@@ -32,7 +32,7 @@ location.href = 'login.php';
         <div id="header">
             <nav class=" container-fluid p-2 navbar-expand-sm navbar-dark bg-dark d-flex align-items-center justify-content-between">
                 <div class="ms-3">
-                  <a class="navbar-brand" href="index.html">
+                  <a class="navbar-brand" href="index1.php">
                     <img src="images/logo.png" alt="">
                   </a>
                 </div>
@@ -40,26 +40,26 @@ location.href = 'login.php';
                     <div class="collapse navbar-collapse" id="mynavbar">
                       <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                          <a class="nav-link" href="intro.html">GIỚI THIỆU</a>
+                          <a class="nav-link" href="intro.php">GIỚI THIỆU</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="dog.html">CHÓ CẢNH</a>
+                          <a class="nav-link" href="dog.php">CHÓ CẢNH</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="cat.html">MÈO CẢNH</a>
+                          <a class="nav-link" href="cat.php">MÈO CẢNH</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="food.html" role="button" data-bs-toggle="dropdown">ĐỒ ĂN</a>
+                            <a class="nav-link dropdown-toggle" href="food.php" role="button" data-bs-toggle="dropdown">ĐỒ ĂN</a>
                             <ul class="dropdown-menu mt-3 p-2 fade">
-                              <li><a class="dropdown-item text-dark " href="food-dog.html">Đồ ăn cho chó</a></li>
-                              <li><a class="dropdown-item text-dark" href="food-cat.html">Đồ ăn cho mèo</a></li>
+                              <li><a class="dropdown-item text-dark " href="food-dog.php">Đồ ăn cho chó</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-cat.php">Đồ ăn cho mèo</a></li>
                             </ul>
                           </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pk.html">PHỤ KIỆN</a>
+                            <a class="nav-link" href="pk.php">PHỤ KIỆN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">LIÊN HỆ</a>
+                            <a class="nav-link" href="contact.php">LIÊN HỆ</a>
                         </li>
                         
                       </ul>
@@ -93,7 +93,7 @@ location.href = 'login.php';
                             <div class="modal-dialog">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h4 class="modal-title text-dark">Đăng Nhập || <span><a href="register.html"  class="text-info">Đăng ký</a></span></h4>
+                                  <h4 class="modal-title text-dark">Đăng Nhập || <span><a href="register.php"  class="text-info">Đăng ký</a></span></h4>
                                   <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                           
@@ -113,7 +113,7 @@ location.href = 'login.php';
                                         <input type="checkbox" class="form-check-input mt-2" name="" id=""> <span>Ghi nhớ đăng nhập</span>
                                     </div>
                                     <div class="mb-3">
-                                        <a href="forgetpass.html" class="text-dark ">Quên mật khẩu</a>
+                                        <a href="forgetpass.php" class="text-dark ">Quên mật khẩu</a>
                                     </div>
                                   </form>
                                   <?php
@@ -176,7 +176,7 @@ location.href = 'login.php';
                             <li><?php echo $_SESSION["hoten"]?></li>
                             <li><a href="logout.php" class="text-white">Đăng xuất</a></li> 
                             <?php }?>
-                        <li><a  href="carts.html"><i class="fa fa-shopping-cart" ></i></a></li>
+                        <li><a  href="cart.php"><i class="fa fa-shopping-cart" ></i></a></li>
                     </ul>
                 </div>
             </nav>
@@ -192,14 +192,8 @@ location.href = 'login.php';
                   <table>
                     <tr>
                       <td>
-                        <label for="ho" class="mb-2">Họ <span class="text-danger">*</span></label> <br>
+                        <label for="ho" class="mb-2">Họ Tên<span class="text-danger">*</span></label> <br>
                         <input type="text" name="" id="ho">
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <label for="ten" class="mb-2">Tên <span class="text-danger">*</span></label> <br>
-                        <input type="text" name="" id="ten">
                       </td>
                     </tr>
                     <tr>

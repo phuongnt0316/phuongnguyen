@@ -26,6 +26,18 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
     <link rel="stylesheet" href="style/product-item.css">
     <title>Document</title>
 </head>
+<style>
+  .chose form a{
+    text-decoration: none;
+    background: #e8598f;
+    padding: 15px;
+    color: var(--color-3);
+    margin-left: 10px;
+} 
+.chose form a:hover{
+  background: #a73963;
+}
+</style>
 <body>
     <div class="content">
         <div id="header">
@@ -77,8 +89,9 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                                 </li>
                             </ul>
                         </li>
-                        <li class="lii"><button  type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-user-circle-o text-white" ></i>
+                        <li class="lii"><button id="Btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-user-circle-o text-white" ></i>
                         </button>
+                        
                         <?php if(empty ($_SESSION["email"])){?>
                         <div class="modal mt-5 p-5 account fade" id="myModal">
                             <div class="modal-dialog">
@@ -88,19 +101,18 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                                   <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                           
-                                <!-- Modal body -->
                                 <div class="modal-body">
                                   <form action="" method="post">
                                     <div class="mb-3 mt-3 text-dark">
-                                        <label for="email" class="mb-1"><b>Tên đăng nhập</b></label>
-                                        <input type="email" class="form-control" id="email" placeholder="Enter username" name="email">
+                                        <label for="email" class="mb-1"><b>Email</b></label>
+                                        <input type="email" name="txtemail" class="form-control" id="email" placeholder="Nhập email của bạn" name="email">
                                       </div>
                                       <div class="mb-3 text-dark">
                                         <label for="pwd" class="mb-1"><b>Mật khẩu</b></label>
-                                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                                        <input type="password" name="txtpass" class="form-control" id="pwd" placeholder="Nhập mật khẩu" name="pswd">
                                       </div>
                                     <div class="text-dark">
-                                        <input type="submit" class="btn me-3 mb-3 p-2" value="Đăng Nhập">
+                                        <input type="submit" class="btn me-3 mb-3 p-2" name="sub_dangnhap" value="Đăng Nhập">
                                         <input type="checkbox" class="form-check-input mt-2" name="" id=""> <span>Ghi nhớ đăng nhập</span>
                                     </div>
                                     <div class="mb-3">
@@ -108,53 +120,53 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                                     </div>
                                   </form>
                                   <?php
-                                  if(isset($_POST["sub_dangnhap"])){
-                                    if(empty($_POST["txtemail"])||empty($_POST["txtpass"]))
-                                    {
-                                    echo("<script>alert('Không được để trống');</script>");
-                                    }
-                                else
-                                {
-                                  $login=$get_data->login($_POST["txtemail"],$_POST["txtpass"]);
-                                  if ($login==1)
-                                  {
-                                      $_SESSION["email"]=$_POST["txtemail"];
-                                      $_SESSION["pass"]=$_POST["txtpass"];
-                                      $get=$get_data->login_user($_POST["txtemail"],$_POST["txtpass"]);
-                                      foreach($get as $se){
-                                          $lv=$se["quyen"];
-                                          $_SESSION["quyen"]=$se["quyen"];
-                                          $_SESSION["hoten"]=$se["Hoten"];
-                                      }
-                                          //header("location:admin_login.php");}
-                                          
-                                      if($lv==0)
-                                      {?>
-                                      <script>
+    if(isset($_POST["sub_dangnhap"])){
+      if(empty($_POST["txtemail"])||empty($_POST["txtpass"]))
+      {
+      echo("<script>alert('Không được để trống');</script>");
+      }
+  else
+  {
+    $login=$get_data->login($_POST["txtemail"],$_POST["txtpass"]);
+    if ($login==1)
+    {
+        $_SESSION["email"]=$_POST["txtemail"];
+        $_SESSION["pass"]=$_POST["txtpass"];//khoi tao session co ten la user
+        $get=$get_data->login_user($_POST["txtemail"],$_POST["txtpass"]);
+        foreach($get as $se){
+            $lv=$se["quyen"];
+            $_SESSION["quyen"]=$se["quyen"];
+            $_SESSION["hoten"]=$se["Hoten"];
+        }
+            //header("location:admin_login.php");}
+            
+        if($lv==0)
+        {?>
+         <script>
 
-                                          location.href = 'index1.php';
-                                          </script>
-                                      <?php
-                                      //	header("location:user_login.php");
-                                      }
-                                      else{?>
-                                        <script>
-                                          //alert("lv".$lv);
-                                        location.href = 'admin.php';
-                                        </script>
-                                    <?php
-                                    }
-                                      //echo("<script>alert('login thanh cong!!!');</script>");
-                                  }
-                                
-                                  else
-                                  echo("<script>alert('login that bai!!!');</script>");   
-                                  
-                                }
-                                
-                              }
+            location.href = 'index1.php';
+            </script>
+        <?php
+        //	header("location:user_login.php");
+        }
+        else{?>
+          <script>
+            //alert("lv".$lv);
+          location.href = 'admin.php';
+          </script>
+      <?php
+      }
+        //echo("<script>alert('login thanh cong!!!');</script>");
+    }
+  
+    else
+    echo("<script>alert('login that bai!!!');</script>");   
+    
+  }
+  
+}
 
-                              ?>	
+?>	
                                 </div>
                           
                               </div>
@@ -254,9 +266,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                           <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongia"] ?></h3>
                           <p class="description mt-2"><?php echo $se_if["Maloai"] ?></p>
                           <div class="chose">
-                          
                               <a href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>">Thêm vào giỏ hàng</a>
-                        
                           </div>
 
                       </div>
@@ -274,7 +284,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                     $get_info=$get_data->get_infocho($id_dv);
                     foreach($get_info as $se_if){					
                       ?>
-                          <img src="img/<?php echo $se_if["Anh1"] ?>" alt="" id="img-main">
+                          <img src="img/<?php echo $se_if["Anh1"] ?>" alt="" id="img-main" width="250px" height="500px">
                         </div>
                       </div>
                       <div class="col-sm-6">
@@ -286,7 +296,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                           <div class="chose">
                             <form action="" method="post">
                               <input type="number" name="quantity" min="1" max="10" value="1" id="">
-                             <a href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>">Thêm vào giỏ hàng</a>
+                             <a href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>" >Thêm vào giỏ hàng</a>
 
                             </form>
                           </div>
@@ -295,8 +305,8 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                     </div>
                     <div class="img-product mt-3 mb-5">
                       <ul class="d-flex">
-                        <li><img src="img/<?php echo $se_if["Anh1"] ?>" alt="" onclick="changeImg('img-one')" id="img-one"></li>
-                        <li><img src="img/<?php echo $se_if["Anh2"] ?>" alt="" onclick="changeImg('img-two')" id="img-two"></li>
+                        <li><img src="img/<?php echo $se_if["Anh1"] ?>" alt="" onclick="changeImg('img-one')" id="img-one" width="210px" height="130px"></li>
+                        <li><img src="img/<?php echo $se_if["Anh2"] ?>" alt="" onclick="changeImg('img-two')" id="img-two" width="210px" height="130px"></li>
                       </ul>
                     </div>
                   </div> 

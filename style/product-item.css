@@ -35,6 +35,13 @@
     color: var(--color-3);
     border: none;
 }
+.chose form a{
+    text-decoration: none;
+    background: var(--main-color-3);
+    padding: 10px;
+    color: var(--color-3);
+    margin-left: 10px;
+}
 .chose form input[type="submit"]:hover{
     background: var(--main-color3-hover);
 }
@@ -89,4 +96,9 @@
 .img-product ul li img{
     width: 100px;
     cursor: pointer;
+}
+.chose form #gh{
+    background: var(--main-color-3);
+    padding: 10px;
+    color: var(--color-3);
 }
