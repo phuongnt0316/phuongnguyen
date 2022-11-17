@@ -419,5 +419,22 @@ public function get_loai(){
     $run =mysqli_query($conn,$sql);
     return $run;  
  }
+ public function get_cart($id){
+    global $conn;
+    $sql="SELECT id_kh,id_sp,Tenthucung,Anh1,Soluong,giohang.Dongia,Soluong*giohang.Dongia as Tong from giohang,thucung_meo WHERE thucung_meo.id_dv=giohang.id_sp and id_kh='$id'
+    Union all
+    SELECT id_kh,id_sp,Tenthucung,Anh1,Soluong,giohang.Dongia,Soluong*giohang.Dongia as Tong from giohang,thucung_cho WHERE thucung_cho.id_dv=giohang.id_sp and id_kh='$id'
+    union all
+    SELECT id_kh,giohang.id_sp,Tensanpham,Hinhanh,Soluong,giohang.Dongia,Soluong*giohang.Dongia as Tong from giohang,sanpham WHERE sanpham.id_sp=giohang.id_sp and id_kh='$id'
+    ";
+    $run =mysqli_query($conn,$sql);
+    return $run;  
+ }
+ public function delete_cart($id_kh,$id_sp){
+    global $conn;
+    $sql="delete from giohang where id_kh='$id_kh' and id_sp='$id_sp'";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+ }
  
 }
