@@ -268,6 +268,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                           <div class="chose">
                               <a href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>">Thêm vào giỏ hàng</a>
                           </div>
+                          <p class="description mt-2"><?php echo $se_if["Thongtinthem"] ?></p>
 
                       </div>
                     </div>
@@ -287,7 +288,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                           <img src="img/<?php echo $se_if["Anh1"] ?>" alt="" id="img-main" width="250px" height="500px">
                         </div>
                       </div>
-                      <div class="col-sm-6">
+                      <div class="col-sm-6 p-2 pe-3">
                         <div class="first-select1 text-dark">
                           <span><a href="index1.php">TRANG CHỦ</a>  || <a href="cat.php"><?php echo $se_if["Maloai"] ?></a></span>
                           <h3 class="name-product title-2 mt-3"><?php echo $se_if["Tenthucung"] ?></h3>
@@ -300,6 +301,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
 
                             </form>
                           </div>
+                          <h5 class="description mt-4"><?php echo $se_if["Thongtinthem"] ?></h5>
 
                       </div>
                     </div>

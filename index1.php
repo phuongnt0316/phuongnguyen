@@ -243,13 +243,13 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                     <div class="item-product text-center mb-5">
                       <a href="product-item.php?id=<?php echo $se_dog['id_dv'];?>&maloai=<?php echo $se_dog['Maloai']?>" class="more" style={text-decoration:none;color:black;}>
                       <div class="images-item">
-                        <img src="img/<?php echo $se_dog['Anh1'] ?>" alt="">
+                        <img src="img/<?php echo $se_dog['Anh1'] ?>" alt="" width=" 300px" height= "350px">
                       </div>
-                      <div class="title-item">
+                      <div class="title-item mt-3">
                         <p class="item-kind"><?php echo $se_dog['Tenthucung']."-".$se_dog['id_dv'] ?><br></p>
                        
                       </div>
-                      <div class="price-item mb-1">
+                      <div class="price-item mb-2">
                         <span class="price"><b><?php echo $se_dog['Dongia'] ?></b></span>
                         
                       </div>
@@ -280,11 +280,11 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                       <div class="images-item">
                         <img src="img/<?php echo $se_cat['Anh1'] ?>" alt="">
                       </div>
-                      <div class="title-item">
+                      <div class="title-item mt-3">
                         <p class="item-kind"><?php echo $se_cat['Tenthucung']."-".$se_cat['id_dv'] ?><br></p>
                        
                       </div>
-                      <div class="price-item mb-1">
+                      <div class="price-item mb-2">
                         <span class="price"><b><?php echo $se_cat['Dongia'] ?></b></span>
                         
                       </div>

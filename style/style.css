@@ -130,7 +130,7 @@ nav .menu-2 ul li a{
     transform: translateY(-50%);
 }
 #body .product .menu-product .item-product{
-    width: 260px;
+    width: 280px;
     background: #F9F9F9;
     color:var(--main-color-2);
     transition: transform 0.5s;
@@ -143,8 +143,8 @@ nav .menu-2 ul li a{
 }
 
 #body .product .menu-product .item-product img{
-    width: 260px;
-    height: 300px;
+    width: 280px;
+    height: 350px;
 }
 #body .product .menu-product .item-product .item-kind{
     font-size: 16px;
