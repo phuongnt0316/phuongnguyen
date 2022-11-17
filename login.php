@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+<?php
+session_start();
+include("control.php");
+$get_data=new data();
+if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
+  $getdata=$get_data->login_user($_SESSION["email"],$_SESSION["pass"]);
+  foreach($getdata as $sel){
+      $_SESSION["hoten"]=$sel["Hoten"];
+  }
+
+}
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -58,44 +70,19 @@
                                         <input type="search" name="txtsearch" placeholder="Tìm kiếm ....">
                                         <input type="submit" name="btm" value="Search">
                                     </form>
-                                        
+                                    <?php
+                                    if(isset($_POST["txtsearch"])){
+                                      ?>
+                                      <script>
+                                      location.href = "search.php?search=<?php echo $_POST['txt_search'];?>";
+                                      </script>
+                                    <?php
+                                    }
+                                    ?>
                                 </li>
                             </ul>
                         </li>
-                        <li class="lii"><button  type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-user-circle-o text-white" ></i>
-                        </button>
-                        <div class="modal mt-5 p-5 account fade" id="myModal">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 class="modal-title text-dark">Đăng Nhập || <span><a href="register.html"  class="text-info">Đăng ký</a></span></h4>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                </div>
-                          
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                  <form action="" method="post">
-                                    <div class="mb-3 mt-3 text-dark">
-                                        <label for="email" class="mb-1"><b>Tên đăng nhập</b></label>
-                                        <input type="email" class="form-control" id="email" placeholder="Enter username" name="email">
-                                      </div>
-                                      <div class="mb-3 text-dark">
-                                        <label for="pwd" class="mb-1"><b>Mật khẩu</b></label>
-                                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-                                      </div>
-                                    <div class="text-dark">
-                                        <input type="submit" class="btn me-3 mb-3 p-2" value="Đăng Nhập">
-                                        <input type="checkbox" class="form-check-input mt-2" name="" id=""> <span>Ghi nhớ đăng nhập</span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <a href="forgetpass.html" class="text-dark ">Quên mật khẩu</a>
-                                    </div>
-                                  </form>
-                                </div>
-                          
-                              </div>
-                            </div>
-                        </li>
+                        
                         <li><a  href="carts.html"><i class="fa fa-shopping-cart" ></i></a></li>
                     </ul>
                 </div>
@@ -131,7 +118,55 @@
                                     <div class="mb-3">
                                         <a href="forgetpass.html" class="text-dark ">Quên mật khẩu</a>
                                     </div>
-                                  </form>
+                        </form>
+                        <?php
+    if(isset($_POST["sub_dangnhap"])){
+      if(empty($_POST["txtemail"])||empty($_POST["txtpass"]))
+      {
+      echo("<script>alert('Không được để trống');</script>");
+      }
+  else
+  {
+    $login=$get_data->login($_POST["txtemail"],$_POST["txtpass"]);
+    if ($login==1)
+    {
+        $_SESSION["email"]=$_POST["txtemail"];
+        $_SESSION["pass"]=$_POST["txtpass"];//khoi tao session co ten la user
+        $get=$get_data->login_user($_POST["txtemail"],$_POST["txtpass"]);
+        foreach($get as $se){
+            $lv=$se["quyen"];
+            $_SESSION["quyen"]=$se["quyen"];
+            $_SESSION["hoten"]=$se["Hoten"];
+        }
+            //header("location:admin_login.php");}
+            
+        if($lv==0)
+        {?>
+         <script>
+
+            location.href = 'index1.php';
+            </script>
+        <?php
+        //	header("location:user_login.php");
+        }
+        else{?>
+          <script>
+            //alert("lv".$lv);
+          location.href = 'admin.php';
+          </script>
+      <?php
+      }
+        //echo("<script>alert('login thanh cong!!!');</script>");
+    }
+  
+    else
+    echo("<script>alert('login that bai!!!');</script>");   
+    
+  }
+  
+}
+
+?>	
                     </div>
                 </div>
             </div>

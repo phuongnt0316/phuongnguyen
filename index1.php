@@ -46,7 +46,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                           <a class="nav-link" href="cat.php">MÈO CẢNH</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="food.html" role="button" data-bs-toggle="dropdown">ĐỒ ĂN</a>
+                            <a class="nav-link dropdown-toggle" href="food.php" role="button" data-bs-toggle="dropdown">ĐỒ ĂN</a>
                             <ul class="dropdown-menu mt-3 p-2 fade">
                               <li><a class="dropdown-item text-dark " href="food-dog.php">Đồ ăn cho chó</a></li>
                               <li><a class="dropdown-item text-dark" href="food-cat.php">Đồ ăn cho mèo</a></li>
@@ -87,14 +87,15 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                                 </li>
                             </ul>
                         </li>
-                        <li class="lii"><button  type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-user-circle-o text-white" ></i>
+                        <li class="lii"><button id="Btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-user-circle-o text-white" ></i>
                         </button>
+                        
                         <?php if(empty ($_SESSION["email"])){?>
                         <div class="modal mt-5 p-5 account fade" id="myModal">
                             <div class="modal-dialog">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h4 class="modal-title text-dark">Đăng Nhập || <span><a href="register.html"  class="text-info">Đăng ký</a></span></h4>
+                                  <h4 class="modal-title text-dark">Đăng Nhập || <span><a href="register.php"  class="text-info">Đăng ký</a></span></h4>
                                   <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                           
@@ -113,7 +114,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                                         <input type="checkbox" class="form-check-input mt-2" name="" id=""> <span>Ghi nhớ đăng nhập</span>
                                     </div>
                                     <div class="mb-3">
-                                        <a href="forgetpass.html" class="text-dark ">Quên mật khẩu</a>
+                                        <a href="forgetpass.php" class="text-dark ">Quên mật khẩu</a>
                                     </div>
                                   </form>
                                   <?php
@@ -176,7 +177,8 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                             <li><?php echo $_SESSION["hoten"]?></li>
                             <li><a href="logout.php" class="text-white">Đăng xuất</a></li> 
                             <?php }?>
-                        <li><a  href="carts.html"><i class="fa fa-shopping-cart" ></i></a></li>
+                        <li><a href="cart.php"><i class="fa fa-shopping-cart" name="btn_cart" ></i></a></li>
+                       
                     </ul>
                 </div>
             </nav>
@@ -239,7 +241,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
 
                         ?>
                     <div class="item-product text-center mb-5">
-                    <a href="product-item.php?id=<?php echo $se_dog['id_dv'];?>&maloai=<?php echo $se_dog['Maloai']?>" class="more" style={text-decoration:none;color:black;}>
+                      <a href="product-item.php?id=<?php echo $se_dog['id_dv'];?>&maloai=<?php echo $se_dog['Maloai']?>" class="more" style={text-decoration:none;color:black;}>
                       <div class="images-item">
                         <img src="img/<?php echo $se_dog['Anh1'] ?>" alt="">
                       </div>
@@ -249,9 +251,9 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                       </div>
                       <div class="price-item mb-1">
                         <span class="price"><b><?php echo $se_dog['Dongia'] ?></b></span>
+                        
                       </div>
                       </a>
-                      </div>
                     </div>
                     <?php
                         }
@@ -274,6 +276,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
 
                         ?>
                     <div class="item-product text-center mb-5">
+                    <a href="product-item.php?id=<?php echo $se_cat['id_dv'];?> &maloai=<?php echo $se_cat['Maloai'];?>" class="more">
                       <div class="images-item">
                         <img src="img/<?php echo $se_cat['Anh1'] ?>" alt="">
                       </div>
@@ -283,8 +286,9 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                       </div>
                       <div class="price-item mb-1">
                         <span class="price"><b><?php echo $se_cat['Dongia'] ?></b></span>
-                        <span><a href="product-item.php?id=<?php echo $se_cat['id_dv'];?> &maloai=<?php echo $se_cat['Maloai'];?>" class="more"> Chi tiết&gt;&gt;</a></span>
+                        
                       </div>
+                      </a>
                     </div>
                     <?php
                         }
