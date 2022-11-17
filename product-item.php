@@ -31,7 +31,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
         <div id="header">
             <nav class=" container-fluid p-2 navbar-expand-sm navbar-dark bg-dark d-flex align-items-center justify-content-between">
                 <div class="ms-3">
-                  <a class="navbar-brand" href="index.html">
+                  <a class="navbar-brand" href="index.php">
                     <img src="images/logo.png" alt="">
                   </a>
                 </div>
@@ -39,26 +39,26 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                     <div class="collapse navbar-collapse" id="mynavbar">
                       <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                          <a class="nav-link" href="intro.html">GIỚI THIỆU</a>
+                          <a class="nav-link" href="intro.php">GIỚI THIỆU</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="dog.html">CHÓ CẢNH</a>
+                          <a class="nav-link" href="dog.php">CHÓ CẢNH</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="cat.html">MÈO CẢNH</a>
+                          <a class="nav-link" href="cat.php">MÈO CẢNH</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="food.html" role="button" data-bs-toggle="dropdown">ĐỒ ĂN</a>
+                            <a class="nav-link dropdown-toggle" href="food.php" role="button" data-bs-toggle="dropdown">ĐỒ ĂN</a>
                             <ul class="dropdown-menu mt-3 p-2 fade">
-                              <li><a class="dropdown-item text-dark " href="food-dog.html">Đồ ăn cho chó</a></li>
-                              <li><a class="dropdown-item text-dark" href="food-cat.html">Đồ ăn cho mèo</a></li>
+                              <li><a class="dropdown-item text-dark " href="food-dog.php">Đồ ăn cho chó</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-cat.php">Đồ ăn cho mèo</a></li>
                             </ul>
                           </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pk.html">PHỤ KIỆN</a>
+                            <a class="nav-link" href="pk.php">PHỤ KIỆN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">LIÊN HỆ</a>
+                            <a class="nav-link" href="contact.php">LIÊN HỆ</a>
                         </li>
                         
                       </ul>
@@ -84,7 +84,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                             <div class="modal-dialog">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h4 class="modal-title text-dark">Đăng Nhập || <span><a href="register.html"  class="text-info">Đăng ký</a></span></h4>
+                                  <h4 class="modal-title text-dark">Đăng Nhập || <span><a href="register.php"  class="text-info">Đăng ký</a></span></h4>
                                   <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                           
@@ -104,7 +104,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                                         <input type="checkbox" class="form-check-input mt-2" name="" id=""> <span>Ghi nhớ đăng nhập</span>
                                     </div>
                                     <div class="mb-3">
-                                        <a href="forgetpass.html" class="text-dark ">Quên mật khẩu</a>
+                                        <a href="forgetpass.php" class="text-dark ">Quên mật khẩu</a>
                                     </div>
                                   </form>
                                   <?php
@@ -167,7 +167,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                             <li><?php echo $_SESSION["hoten"]?></li>
                             <li><a href="logout.php">Đăng xuất</a></li> 
                             <?php }?>
-                        <li><a  href="carts.html"><i class="fa fa-shopping-cart" ></i></a></li>
+                        <li><a  href="carts.php"><i class="fa fa-shopping-cart" ></i></a></li>
                     </ul>
                 </div>
             </nav>
@@ -249,7 +249,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                       </div>
                       <div class="col-sm-6">
                         <div class="first-select1 text-dark">
-                          <span><a href="index.html">TRANG CHỦ</a>  || <a href="cat.php"><?php echo $se_if["Maloai"] ?></a></span>
+                          <span><a href="index.php">TRANG CHỦ</a>  || <a href="cat.php"><?php echo $se_if["Maloai"] ?></a></span>
                           <h3 class="name-product title-2 mt-3"><?php echo $se_if["Tenthucung"] ?></h3>
                           <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongia"] ?></h3>
                           <p class="description mt-2"><?php echo $se_if["Maloai"] ?></p>
@@ -279,14 +279,15 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                       </div>
                       <div class="col-sm-6">
                         <div class="first-select1 text-dark">
-                          <span><a href="index.html">TRANG CHỦ</a>  || <a href="cat.html"><?php echo $se_if["Maloai"] ?></a></span>
+                          <span><a href="index1.php">TRANG CHỦ</a>  || <a href="cat.php"><?php echo $se_if["Maloai"] ?></a></span>
                           <h3 class="name-product title-2 mt-3"><?php echo $se_if["Tenthucung"] ?></h3>
                           <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongia"] ?></h3>
                           <p class="description mt-2"><?php echo $se_if["Maloai"] ?></p>
                           <div class="chose">
                             <form action="" method="post">
                               <input type="number" name="quantity" min="1" max="10" value="1" id="">
-                              <input type="submit" value="Thêm vào giỏ hàng">
+                             <a href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>">Thêm vào giỏ hàng</a>
+
                             </form>
                           </div>
 
@@ -318,7 +319,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                   <div class="tab-content text-dark">
                     <div id="home" class="container tab-pane active"><br>
                       <p class="discription-item">
-                        <?php echo  $se_if["Thongtin"];?>                      </p>
+                        <?php echo  $se_if["Thongtinthem"];?>                      </p>
                     </div>
                     <div id="menu1" class="container tab-pane fade"><br>
                       <h3>Đánh giá của bạn</h3>

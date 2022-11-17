@@ -20,7 +20,7 @@ else{
               if($insert_giohang){?>
 
                 <script>
-                location.href = 'giohang.php';
+                location.href = 'cart.php';
                 </script>
                 <?php
               }

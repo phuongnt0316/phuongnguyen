@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+ob_start();
 session_start();
 include("control.php");
 $get_data=new data();
@@ -7,12 +8,16 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
   $getdata=$get_data->login_user($_SESSION["email"],$_SESSION["pass"]);
   foreach($getdata as $sel){
       $_SESSION["hoten"]=$sel["Hoten"];
+      $id_kh=$sel["id_kh"];
   }
 
 }
 else {?> <script>
+  alert('Đăng nhập để xem gio hàng của bạn');
+  location.href = 'index1.php';
+  //document.getElementById("Btn").click();
 
-location.href = 'login.php';
+
 </script>
 <?php }?>
 <html lang="en">
@@ -86,9 +91,10 @@ location.href = 'login.php';
                                 </li>
                             </ul>
                         </li>
-                        <li class="lii"><button  type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-user-circle-o text-white" ></i>
-                        </button>
                         <?php if(empty ($_SESSION["email"])){?>
+                        <li class="lii"><button id="Btn"  type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-user-circle-o text-white" ></i>
+                        </button>
+                        
                         <div class="modal mt-5 p-5 account fade" id="myModal">
                             <div class="modal-dialog">
                               <div class="modal-content">
@@ -194,38 +200,34 @@ location.href = 'login.php';
                   <th>TỔNG CỘNG</th>
                   <th>THÊM</th>
                 </tr>
+                <?php
+                $get_cart=$get_data->get_cart($id_kh);
+                foreach($get_cart as $cart){
+                 ?>
                 <tr>
                   <td class="d-flex flex-wrap ">
-                    <img src="./images/cat/cat-1.jpg" width="100px" alt="">
-                    <h5 class="mt-4 ms-3">Mèo nhà </h5>
+                    <img src="./img/<?php echo $cart["Anh1"]?>" width="100px" alt="">
+                    <h5 class="mt-4 ms-3"><?php echo $cart["Tenthucung"] ?> </h5>
                   </td>
-                  <td ><p class="mt-4">5000000</p></td>
+                  <td ><p class="mt-4"><?php echo $cart["Dongia"] ?></p></td>
                   <td><input type="number" name="" min="1"  class="mt-4" value="1" max="10" width="100px" id=""></td>
-                  <td><p  class="mt-4">5000000</p></td>
-                  <td><a href="" class="text-danger "><i class="fa fa-minus-square mt-4" style="font-size:24px"></i></a></td>
+                  <td><p  class="mt-4"><?php echo $cart["Tong"] ?></p></td>
+                  <td><a href="delete_cart.php?id_kh=<?php echo $cart["id_kh"]?> &id_sp=<?php echo $cart["id_sp"] ?>" onclick="return (confirm('Xóa sản phẩm?'))" class="text-danger "><i class="fa fa-minus-square mt-4" style="font-size:24px"></i></a></td>
                 </tr>
-                <tr>
-                  <td class="d-flex flex-wrap ">
-                    <img src="./images/cat/cat-1.jpg" width="100px" alt="">
-                    <h5 class="mt-4 ms-3">Mèo nhà </h5>
-                  </td>
-                  <td ><p class="mt-4">5000000</p></td>
-                  <td><input type="number" name="" min="1"  class="mt-4" value="1" max="10" width="100px" id=""></td>
-                  <td><p  class="mt-4">5000000</p></td>
-                  <td><a href="" class="text-danger"><i class="fa fa-minus-square mt-4" style="font-size:24px"></i></a></td>
-                </tr>
-                
+                <?php
+                }
+                ?>                
               </table>
               <div class="d-flex justify-content-between link mt-5" >
-                <a href="">Tiếp tục xem sản phẩm</a>
+                <a href="index1.php">Tiếp tục xem sản phẩm</a>
                 <input type="submit" value="Cập nhật giỏ hàng">
-                <input type="submit" value="Thanh toán">
+                <a href="pay.php?id_kh=<?php echo $id_kh ?>">Thanh toán</a>
               </div>
             </form>
           </div>
         </div>
 
-        <!-- -------------------------------------footer-------------------------- -->
+        <!---------------------------------------footer-------------------------- -->
         <div id="footer">
             <div class="container-fluid ft">
                 <div class="row">
