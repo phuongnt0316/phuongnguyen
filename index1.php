@@ -58,10 +58,6 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                         <li class="nav-item">
                             <a class="nav-link" href="contact.php">LIÊN HỆ</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="blog.php">BLOG</a>
-                        </li>
-                        
                       </ul>
                     </div>
                 </div>
@@ -304,7 +300,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
               <img src="images/pr-3.jpg" alt="">
             </div>
             <div class="product cat container-fluid mt-5">
-              <h2 class="title text-dark text-center">Đồ ăn</h2>
+              <h2 class="title text-dark text-center">Đồ ăn và phụ kiện</h2>
               <div class="menu-product d-flex flex-wrap justify-content-around">
                 <div class="item-product text-center mb-5">
                   <div class="images-item">
