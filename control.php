@@ -430,11 +430,35 @@ public function get_loai(){
     $run =mysqli_query($conn,$sql);
     return $run;  
  }
+ public function sumcart($id){
+    global $conn;
+    $sql="SELECT Sum(Soluong*Dongia) as Tong
+    from giohang
+    WHERE id_kh=$id";
+    $run =mysqli_query($conn,$sql);
+    return $run;  
+ }
  public function delete_cart($id_kh,$id_sp){
     global $conn;
     $sql="delete from giohang where id_kh='$id_kh' and id_sp='$id_sp'";
     $run=mysqli_query($conn,$sql);
     return $run;
+ }
+ public function insert_donhang($id_kh,$diachi,$tongtien){
+    global $conn;
+    $sql="INSERT INTO donhang(id_kh,Diachi_giaohang,Tongtien,Trangthai)
+    VALUES ($id_kh,'$diachi',$tongtien,'CHOXUATHANG') RETURNING id_hd";
+    //sql2="SELECT LAST_INSERT_ID()";
+    $run=mysqli_query($conn,$sql);
+    //$run2=mysqli_query($conn,$sql2);
+    return $run;
+ }
+ public function get_diachigiaohang($id_kh){
+    global $conn;
+    $sql="Select*from diachi_giaohang where id_kh=$id_kh";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+
  }
  
 }

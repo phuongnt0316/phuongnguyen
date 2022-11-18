@@ -6,7 +6,12 @@ $get_data=new data();
 if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
   $getdata=$get_data->login_user($_SESSION["email"],$_SESSION["pass"]);
   foreach($getdata as $sel){
+      $id_kh=$sel["id_kh"];
       $_SESSION["hoten"]=$sel["Hoten"];
+      $hoten=$sel["Hoten"];
+      $email=$sel["Email"];
+      $diachi=$sel["Diachi"];
+      $sdt=$sel["Sodienthoai"];
   }
 
 }
@@ -188,64 +193,85 @@ location.href = 'login.php';
             <div class="row text-dark p-3 pay">
               <div class="col-md-7 pay-left p-5">
                 <form action="" method="post">
-                <h5 class="mb-3">THÔNG TIN THANH TOÁN</h5>
+                <h5 class="mb-3">CHỌN ĐỊA CHỈ GIAO HÀNG</h5>
                   <table>
                     <tr>
-                      <td>
-                        <label for="ho" class="mb-2">Họ Tên<span class="text-danger">*</span></label> <br>
-                        <input type="text" name="" id="ho">
-                      </td>
+                      <th>Chọn</th>
+                      <th>Họ tên</th>
+                      <th>Số điện thoại</th>
+                      <th>Địa chỉ</th>
                     </tr>
+                    <?php 
+                    $get_address=$get_data->get_diachigiaohang($id_kh);
+                    foreach($get_address as $d){
+                    ?>
                     <tr>
-                      <td>
-                        <label for="sdt" class="mb-2">Số điện thoại <span class="text-danger">*</span></label> <br>
-                        <input type="text" name="" id="sdt">
-                      </td>
+                    <td><input type="radio" name="txtdiachi" value="<?php echo $d["Hoten"]."-".$d["Sodienthoai"]."-".$d["Diachi_giaohang"]?>"></td>
+                    <td><?php echo $d["Hoten"]?></td>
+                    <td><?php echo $d["Sodienthoai"]?></td>
+                    <td><?php echo $d["Diachi_giaohang"]?></td>
                     </tr>
-                    <tr>
-                      <td>
-                        <label for="ho" class="mb-2">Địa chỉ Email <span class="text-danger">*</span></label> <br>
-                        <input type="text" name="" id="ho">
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <label for="diachi" class="mb-2">Địa chỉ<span class="text-danger">*</span></label> <br>
-                        <textarea name="" id="diachi" ></textarea>
-                      </td>
-                    </tr>
+                    <?php } ?>
                   </table>
-                </form>
+                  <a href="user_address.php">Thêm địa chỉ giao hàng khác</a>
+                  
+                
               </div>
               <div class="col-md-5 pay-right p-5">
                 <div class="pay-right-main p-4">
                   <h5>ĐƠN HÀNG CỦA BẠN</h5>
-                  <form action="" method="post">
+                  
                     <table class="table">
                       <tr>
                         <td><b>SẢN PHẨM</b></td>
-                        <td><b>TỔNG CỘNG</b></td>
+                        <td><b>THÀNH TIỀN</b></td>
                       </tr>
+                      <?php 
+                      $get_cart=$get_data->get_cart($id_kh);
+                      foreach($get_cart as $p){
+                       ?>
                       <tr>
-                        <td>Mèo anh lông dài đuôi ngắn * <span class="soluong">2</span></td>
-                        <td><b>100000000 đ</b></td>
+                        <td><?php echo $p["Tenthucung"]." * ".$p["Soluong"] ?> <span class="soluong">2</span></td>
+                        <td><b><?php echo $p["Tong"]?> </b></td>
                       </tr>
-                      <tr>
-                        <td><b>Tổng cộng</b></td>
-                        <td><b>100000000 đ</b></td>
-                      </tr>
+                      <?php } 
+                      $Sum=$get_data->sumcart($id_kh);
+                      foreach($Sum as $s){
+                        $sum_cart=$s["Tong"];
+                      }
+                      ?>
                       <tr>
                         <td><b>Giao hàng</b></td>
                         <td><b>Miễn phí giao hàng</b></td>
                       </tr>
                       <tr>
-                        <td><b>Tổng cộng</b></td>
-                        <td><b>100000000 đ</b></td>
+                        <td><b>Tổng thanh toán</b></td>
+                        <td><b><?php echo $sum_cart; ?></b></td>
                       </tr>
                     </table>
                     <p>Khi nhận hàng quý khách vui lòng kiểm tra kỹ đơn hàng trước khi nhận để đảm bảo tránh các vấn đề sai sót và không phát sinh thêm phí dịch vụ khác <br> <b>Xin trân thành cảm ơn sự ủng hộ của quý khách!</b></p>
-                    <input type="submit" class="mt-3" value="Thanh toán">
+                    <input type="submit" class="mt-3" value="Thanh toán" name="sub_pay">
                   </form>
+                  <?php if(isset($_POST["sub_pay"])){
+                    echo $_POST["txtdiachi"];
+                    $diachi=$_POST["txtdiachi"];
+                    $out=$get_data->insert_donhang($id_kh,$diachi,$sum_cart);
+                    echo $out;
+                    if($out!=NULL){?>
+                    
+                             <script>
+
+                             location.href = 'history.php';
+                             </script>
+                    <?php
+
+                    }
+                    else ?>
+                    <script>
+                    alert('Liên hệ hotline!');
+                    </script>
+                    <?php
+                  } ?>
                 </div>
                 
               </div>
