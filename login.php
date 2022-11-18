@@ -131,7 +131,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
     if ($login==1)
     {
         $_SESSION["email"]=$_POST["txtemail"];
-        $_SESSION["pass"]=$_POST["txtpass"];//khoi tao session co ten la user
+        $_SESSION["pass"]=$_POST["txtpass"];
         $get=$get_data->login_user($_POST["txtemail"],$_POST["txtpass"]);
         foreach($get as $se){
             $lv=$se["quyen"];
