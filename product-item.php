@@ -332,7 +332,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                   <div class="tab-content text-dark">
                     <div id="home" class="container tab-pane active"><br>
                       <p class="discription-item">
-                        <?php echo  $se_if["Thongtinthem"];?>                      </p>
+                        <?php echo  $se_if["Thongtin"];?>                      </p>
                     </div>
                     <div id="menu1" class="container tab-pane fade"><br>
                       <h3>Đánh giá của bạn</h3>

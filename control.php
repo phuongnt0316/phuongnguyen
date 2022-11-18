@@ -447,11 +447,9 @@ public function get_loai(){
  public function insert_donhang($id_kh,$diachi,$tongtien){
     global $conn;
     $sql="INSERT INTO donhang(id_kh,Diachi_giaohang,Tongtien,Trangthai)
-    VALUES ($id_kh,'$diachi',$tongtien,'CHOXUATHANG') RETURNING id_hd";
-    //sql2="SELECT LAST_INSERT_ID()";
+    VALUES ($id_kh,'$diachi',$tongtien,'CHOXUATHANG')";
     $run=mysqli_query($conn,$sql);
-    //$run2=mysqli_query($conn,$sql2);
-    return $run;
+    return mysqli_insert_id($conn);
  }
  public function get_diachigiaohang($id_kh){
     global $conn;
