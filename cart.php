@@ -32,6 +32,7 @@ else {?> <script>
     <link rel="stylesheet" href="style/cart.css">
     <title>Document</title>
 </head>
+
 <body>
     <div class="content">
         <div id="header">

@@ -53,3 +53,17 @@
     border: none;
     color: var(--color-3);
 }
+.pay-right .pay-right-main input:hover{
+    background: var(--main-color-3hover);
+}
+.add-address{
+    background: var(--main-color-1);
+    padding: 20px;
+    width: 150px;
+    height: 40px;
+    border: none;
+    color: var(--color-3);
+}
+.add-address{
+    text-align: justify;
+}

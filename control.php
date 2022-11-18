@@ -346,10 +346,10 @@ public function check_idmeo($id){//check idmeo da ton tai chua
     $count=mysqli_num_rows($run);
     return $count;
 }
-public function insert_meo($id_dv, $Tenthucung, $Maloai, $Machungloai, $Dongia, $Kieulong, $Mausac, $Mucdorunglong, $Mucdophobien, $Vengoai, $Thongtin, $Anh1, $Anh2){
+public function insert_meo($id_dv, $Tenthucung, $Maloai, $Machungloai, $Dongia, $Kieulong, $Mausac, $Mucdorunglong, $Mucdophobien, $Vengoai, $Thongtinthem, $Anh1, $Anh2){
     global $conn;
-    $sql="INSERT INTO thucung_meo(id_dv, Tenthucung, Maloai, Machungloai, Dongia, Kieulong, Mausac, Mucdorunglong, Mucdophobien, Vengoai, Thongtin, Anh1, Anh2) 
-    VALUES ('$id_dv', '$Tenthucung', '$Maloai', '$Machungloai', $Dongia, '$Kieulong', '$Mausac', '$Mucdorunglong', '$Mucdophobien', '$Vengoai', '$Thongtin', '$Anh1', '$Anh2')";
+    $sql="INSERT INTO thucung_meo(id_dv, Tenthucung, Maloai, Machungloai, Dongia, Kieulong, Mausac, Mucdorunglong, Mucdophobien, Vengoai, Thongtinthem, Anh1, Anh2) 
+    VALUES ('$id_dv', '$Tenthucung', '$Maloai', '$Machungloai', $Dongia, '$Kieulong', '$Mausac', '$Mucdorunglong', '$Mucdophobien', '$Vengoai', '$Thongtinthem', '$Anh1', '$Anh2')";
     $run =mysqli_query($conn,$sql);
     return $run;
 }

@@ -32,6 +32,32 @@ location.href = 'login.php';
     <link rel="stylesheet" href="style/cart.css">
     <title>Document</title>
 </head>
+<style>
+  .pay-right .pay-right-main input{
+    background: var(--main-color-3);
+    padding: 10px;
+    width: 150px;
+    border: none;
+    color: var(--color-3);
+}
+.pay-right .pay-right-main input:hover{
+    background: var(--main-color-3hover);
+}
+.add-address{
+    background: var(--main-color-1);
+    padding:15px 10px;
+    width: 150px;
+    height:20px;
+    text-decoration:none;
+    border: none;
+    color: var(--color-3);
+    margin-top:20px;
+}
+.add-address:hover{
+  color:azure;
+  background:#25928c;
+}
+</style>
 <body>
     <div class="content">
         <div id="header">
@@ -194,9 +220,9 @@ location.href = 'login.php';
               <div class="col-md-7 pay-left p-5">
                 <form action="" method="post">
                 <h5 class="mb-3">CHỌN ĐỊA CHỈ GIAO HÀNG</h5>
-                  <table>
+                  <table class="table mb-3">
                     <tr>
-                      <th>Chọn</th>
+                      <th>Chọn địa chỉ</th>
                       <th>Họ tên</th>
                       <th>Số điện thoại</th>
                       <th>Địa chỉ</th>
@@ -206,14 +232,14 @@ location.href = 'login.php';
                     foreach($get_address as $d){
                     ?>
                     <tr>
-                    <td><input type="radio" name="txtdiachi" value="<?php echo $d["Hoten"]."-".$d["Sodienthoai"]."-".$d["Diachi_giaohang"]?>"></td>
+                    <td><input type="radio" class="form-check-input" name="txtdiachi" value="<?php echo $d["Hoten"]."-".$d["Sodienthoai"]."-".$d["Diachi_giaohang"]?>"></td>
                     <td><?php echo $d["Hoten"]?></td>
                     <td><?php echo $d["Sodienthoai"]?></td>
                     <td><?php echo $d["Diachi_giaohang"]?></td>
                     </tr>
                     <?php } ?>
                   </table>
-                  <a href="user_address.php">Thêm địa chỉ giao hàng khác</a>
+                  <a href="user_address.php" class="add-address mt-3">Thêm địa chỉ giao hàng khác</a>
                   
                 
               </div>
@@ -251,7 +277,11 @@ location.href = 'login.php';
                     </table>
                     <p>Khi nhận hàng quý khách vui lòng kiểm tra kỹ đơn hàng trước khi nhận để đảm bảo tránh các vấn đề sai sót và không phát sinh thêm phí dịch vụ khác <br> <b>Xin trân thành cảm ơn sự ủng hộ của quý khách!</b></p>
                     <input type="submit" class="mt-3" value="Thanh toán" name="sub_pay">
-                  </form>
+                  
+                </div>
+                
+              </div>
+              </form>
                   <?php if(isset($_POST["sub_pay"])){
                     
                     $diachi=$_POST["txtdiachi"];
@@ -272,9 +302,6 @@ location.href = 'login.php';
                     </script>
                     <?php
                   } ?>
-                </div>
-                
-              </div>
             </div>
           </div>
         </div>

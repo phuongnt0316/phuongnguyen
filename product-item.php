@@ -38,6 +38,9 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
 .chose form a:hover{
   background: #a73963;
 }
+.add-address{
+    text-align: justify;
+}
 </style>
 <body>
     <div class="content">
@@ -257,7 +260,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                     $get_info=$get_data->get_infomeo($id_dv);
                     foreach($get_info as $se_if){					
                       ?>
-                          <img src="img/<?php echo $se_if["Anh1"] ?>" alt="" id="img-main">
+                          <img src="img/<?php echo $se_if["Anh1"] ?>" alt="" id="img-main" width="250px" height="500px">
                         </div>
                       </div>
                       <div class="col-sm-6">
@@ -267,16 +270,16 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                           <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongia"] ?></h3>
                           <p class="description mt-2"><?php echo $se_if["Maloai"] ?></p>
                           <div class="chose-1">
-                              <a href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>">Thêm vào giỏ hàng</a>
+                              <a href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>" class="mt-3">Thêm vào giỏ hàng</a>
                           </div>
-                          <p class="description mt-4"><?php echo $se_if["Thongtin"] ?></p>
+                          <p class="description mt-4" style="text-align: justify;"><?php echo $se_if["Thongtinthem"] ?></p>
 
                       </div>
                     </div>
                     <div class="img-product mt-3 mb-5">
                       <ul class="d-flex">
-                        <li><img src="img/<?php echo $se_if["Anh1"] ?>" alt="" onclick="changeImg('img-one')" id="img-one"></li>
-                        <li><img src="img/<?php echo $se_if["Anh2"] ?>" alt="" onclick="changeImg('img-two')" id="img-two"></li>
+                        <li><img src="img/<?php echo $se_if["Anh1"] ?>" alt="" onclick="changeImg('img-one')" id="img-one" width="210px" height="130px"></li>
+                        <li><img src="img/<?php echo $se_if["Anh2"] ?>" alt="" onclick="changeImg('img-two')" id="img-two" width="210px" height="130px"></li>
                       </ul>
                     </div>
                   </div> 
@@ -302,7 +305,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
 
                             </form>
                           </div>
-                          <h5 class="description mt-4"><?php echo $se_if["Thongtinthem"] ?></h5>
+                          <h5 class="description mt-4" style="text-align: justify;"><?php echo $se_if["Thongtinthem"] ?></h5>
 
                       </div>
                     </div>
@@ -332,7 +335,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                   <div class="tab-content text-dark">
                     <div id="home" class="container tab-pane active"><br>
                       <p class="discription-item">
-                        <?php echo  $se_if["Thongtin"];?>                      </p>
+                        <?php echo  $se_if["Thongtinthem"];?>                      </p>
                     </div>
                     <div id="menu1" class="container tab-pane fade"><br>
                       <h3>Đánh giá của bạn</h3>
