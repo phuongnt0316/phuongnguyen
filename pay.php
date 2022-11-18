@@ -253,10 +253,10 @@ location.href = 'login.php';
                     <input type="submit" class="mt-3" value="Thanh toán" name="sub_pay">
                   </form>
                   <?php if(isset($_POST["sub_pay"])){
-                    echo $_POST["txtdiachi"];
+                    
                     $diachi=$_POST["txtdiachi"];
                     $out=$get_data->insert_donhang($id_kh,$diachi,$sum_cart);
-                    echo $out;
+                    
                     if($out!=NULL){?>
                     
                              <script>
