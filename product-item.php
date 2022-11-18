@@ -27,13 +27,14 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
     <title>Document</title>
 </head>
 <style>
-  .chose form a{
+  .chose form a,.chose-1 a{
     text-decoration: none;
     background: #e8598f;
     padding: 15px;
     color: var(--color-3);
     margin-left: 10px;
 } 
+ 
 .chose form a:hover{
   background: #a73963;
 }
@@ -179,7 +180,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                             <li><?php echo $_SESSION["hoten"]?></li>
                             <li><a href="logout.php">Đăng xuất</a></li> 
                             <?php }?>
-                        <li><a  href="carts.php"><i class="fa fa-shopping-cart" ></i></a></li>
+                        <li><a  href="cart.php"><i class="fa fa-shopping-cart" ></i></a></li>
                     </ul>
                 </div>
             </nav>
@@ -265,10 +266,10 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                           <h3 class="name-product title-2 mt-3"><?php echo $se_if["Tenthucung"] ?></h3>
                           <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongia"] ?></h3>
                           <p class="description mt-2"><?php echo $se_if["Maloai"] ?></p>
-                          <div class="chose">
+                          <div class="chose-1">
                               <a href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>">Thêm vào giỏ hàng</a>
                           </div>
-                          <p class="description mt-2"><?php echo $se_if["Thongtinthem"] ?></p>
+                          <p class="description mt-4"><?php echo $se_if["Thongtin"] ?></p>
 
                       </div>
                     </div>

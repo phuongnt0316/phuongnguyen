@@ -124,7 +124,7 @@ else {?> <script>
                  ?>
                 <tr>
                   <td class="d-flex flex-wrap ">
-                    <img src="./img/<?php echo $cart["Anh1"]?>" width="100px" alt="">
+                    <img src="./img/<?php echo $cart["Anh1"]?>" width="100px" height="100px" alt="">
                     <h5 class="mt-4 ms-3"><?php echo $cart["Tenthucung"] ?> </h5>
                   </td>
                   <td ><p class="mt-4"><?php echo $cart["Dongia"] ?></p></td>

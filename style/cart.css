@@ -46,7 +46,7 @@
 .pay .pay-right .pay-right-main{
     border: 2px solid var(--main-color-1);
 }
-.pay .pay-right .pay-right-main form input{
+.pay-right .pay-right-main input{
     background: var(--main-color-3);
     padding: 10px;
     width: 150px;
