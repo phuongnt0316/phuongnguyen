@@ -393,7 +393,6 @@ public function update_blog($Ten_blog,$s_blog,$l_blog,$Ngaydang,$Anh,$id_blog){
             $run=mysqli_query($conn,$sql);
             return $run;
 }
-<<<<<<< HEAD
 //sanpham
 public function get_phukien(){
     global $conn;
@@ -405,8 +404,7 @@ public function get_tenloaisp($ma){
     global $conn;
     $sql="select*from loaisanpham where Maloaisanpham='$ma'";
     $run=mysqli_query($conn,$sql);
-    return $run;
-=======
+    return $run;}
 
 // ------------------------contact-------------------
 public function in_contact($Hoten,$Email,$Sodt,$Loinhan){
@@ -430,6 +428,5 @@ public function delete_contact($id_lh){
     $run=mysqli_query($conn,$sql);
     return $run;
 
->>>>>>> 6e31c639840635bfb5f4f5f8e6b9e616456c6b5f
 }
 }

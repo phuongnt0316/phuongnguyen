@@ -289,7 +289,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                   </div> 
                   <?php }
                     }
-                  else{
+                  else if($maloai=="CHO"){
                     $get_info=$get_data->get_infocho($id_dv);
                     foreach($get_info as $se_if){					
                       ?>
@@ -298,7 +298,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                       </div>
                       <div class="col-sm-6 p-2 pe-3">
                         <div class="first-select1 text-dark">
-                          <span><a href="index1.php">TRANG CHỦ</a>  || <a href="cat.php"><?php echo $se_if["Maloai"] ?></a></span>
+                          <span><a href="index1.php">TRANG CHỦ</a>  || <a href="dog.php"><?php echo $se_if["Maloai"] ?></a></span>
                           <h3 class="name-product title-2 mt-3"><?php echo $se_if["Tenthucung"] ?></h3>
                           <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongia"] ?></h3>
                           <p class="description mt-2"><?php echo $se_if["Maloai"] ?></p>
