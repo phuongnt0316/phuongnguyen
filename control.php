@@ -332,7 +332,6 @@ public function get_loai(){
     $run=mysqli_query($conn,$sql);
     return $run;
  }
-<<<<<<< HEAD
  //donhang
  public function get_donhang(){
     global $conn;
@@ -342,7 +341,6 @@ public function get_loai(){
 
  }
  
-=======
 
 //  ---------------------------blog------------------------
 public function select_blogad(){
@@ -381,12 +379,12 @@ public function delete_blog($id_blog){
     $run=mysqli_query($conn,$sql);
     return $run;
 }
-public function add_blog($Ten_blog,$s_blog,$l_blog,$Ngaydang,$Anh){
+public function add_blog($Ten_blog,$s_blog,$l_blog,$Anh){
     global $conn;
-            $sql="insert into blog(Ten_blog,s_blog,l_blog,Ngaydang,Anh)
-            values('$Ten_blog','$s_blog','$l_blog','$Ngaydang','$Anh')";
+            $sql="insert into blog(Ten_blog,s_blog,l_blog,Anh)
+            values('$Ten_blog','$s_blog','$l_blog','$Anh')";
             $run=mysqli_query($conn,$sql);
-            return $run;
+            return $sql;
 }
 public function update_blog($Ten_blog,$s_blog,$l_blog,$Ngaydang,$Anh,$id_blog){
     global $conn;
@@ -395,5 +393,17 @@ public function update_blog($Ten_blog,$s_blog,$l_blog,$Ngaydang,$Anh,$id_blog){
             $run=mysqli_query($conn,$sql);
             return $run;
 }
->>>>>>> 9b86d8200364986e4a16be31df9e110a50ae2668
+//sanpham
+public function get_phukien(){
+    global $conn;
+    $sql="select*from sanpham";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
+public function get_tenloaisp($ma){
+    global $conn;
+    $sql="select*from loaisanpham where Maloaisanpham='$ma'";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
 }

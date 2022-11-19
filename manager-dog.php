@@ -150,54 +150,53 @@
                   <input class="form-control" id="myInput" type="text" placeholder="Tìm kiếm khách hàng">
                   <br>
                   <table class="table table-bordered table-striped .table-responsive">
-                    <thead class="table-dark">
+                  <thead class="table-dark"> 
                       <tr>
                         <th>Mã sản phẩm</th>
-                        <th>Tên sản phẩm</th>
+                        <th>Tên thú cưng</th>
                         <th>Loại</th>
-                        <th>Mô tả</th>
-                        <th>Xuất sứ</th>
-                        <th>Giá</th>
-                        <th>Ghi chú</th>
-                        <th>Số lượng</th>
-                        <th>Ảnh 1</th>
+                        <th>Chủng loại</th>
+                        <th>Đơn giá</th>
+                        <th>Kiểu lông</th>
+                        <th>Mục đích nuôi</th>
+                        <th>Mức độ rụng lông</th>
+                        <th>Mức độ phổ biến</th>
+                        <th>Thông tin</th>
+                        <th>ẢNh 1</th>
                         <th>Ảnh 2</th>
+                        <th>Trạng thái</th>
                         <th colspan="3">Thao tác</th>
                       </tr>
                     </thead>
                     <tbody id="myTable">
+                    <?php
+                      include("control.php");
+                      $get_data=new data();
+                      $get=$get_data->get_alldog();
+                      foreach($get as $se){
+                      ?>
                       <tr>
-                        <td>DG01</td>
-                        <td>Chó phú quốc</td>
-                        <td>Chó phú quốc</td>
-                        <td>Vằn sau lưng</td>
-                        <td>Việt Nam</td>
-                        <td>50000000</td>
-                        <td>đã tiêm vaccine</td>
-                        <td>Anh 1</td>
-                        <td>Ảnh 2</td>
-                        <td><a href="#">Thêm</a></td>
-                        <td><a href="#">Sửa</a></td>
+                        <td>dddd<?php echo $se["id_dv"] ?></td>
+                        <td><?php echo $se["Tenthucung"] ?></td>                      
+                        <td><?php $loai=$get_data->get_tenchungloai($se["Machungloai"]);foreach ($loai as $lo){echo $lo["Tenchungloai"];}?></td>
+                        <td><?php echo $se["Maloai"] ?></td>
+                        <td><?php echo $se["Dongia"] ?></td>
+                        <td><?php echo $se["Kieulong"] ?></td>
+                        <td><?php echo $se["Mucdichnuoi"] ?></td>
+                        <td><?php echo $se["Kichthuoc"] ?></td>
+                        <td><?php echo $se["Mucdophobien"] ?></td>
+                        <td><?php echo $se["Thongtinthem"] ?></td>
+                        <td><img src="img/<?php echo $se['Anh1'] ?>" alt="" width="50px"></td>
+                        <td><img src="img/<?php echo $se['Anh2'] ?>" alt="" width="50px"></td>
+                        <td><?php echo $se["Trangthai"] ?></td>
+                        <td><a href="updatedog.php?id=<?php echo $se["id_dv"] ?>">Sửa</a></td>
                         <td><a href="#">Xóa</a></td>
                       </tr>
-                      <tr>
-                        <td>DG02</td>
-                        <td>Chó phú quốc</td>
-                        <td>Chó phú quốc</td>
-                        <td>Vằn sau lưng</td>
-                        <td>Việt Nam</td>
-                        <td>50000000</td>
-                        <td>đã tiêm vaccine</td>
-                        <td>Anh 1</td>
-                        <td>Ảnh 2</td>
-                        <td><a href="#">Thêm</a></td>
-                        <td><a href="#">Sửa</a></td>
-                        <td><a href="#">Xóa</a></td>
-                      </tr>
+                      <?php } ?>
+                      
                     </tbody>
                   </table>
                 </div>
-                
                 <script>
                 $(document).ready(function(){
                   $("#myInput").on("keyup", function() {
