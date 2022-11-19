@@ -1,4 +1,18 @@
 <!DOCTYPE html>
+<?php
+session_start();
+include("control.php");
+$get_data=new data();
+if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
+  $getdata=$get_data->login_user($_SESSION["email"],$_SESSION["pass"]);
+  foreach($getdata as $sel){
+    $idkh=$sel["id_kh"];
+      $_SESSION["hoten"]=$sel["Hoten"];
+  }
+
+}
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,14 +23,27 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/product.css">
+    <link rel="stylesheet" href="style/product-item.css">
     <title>Document</title>
 </head>
+<style>
+  .chose form a{
+    text-decoration: none;
+    background: #e8598f;
+    padding: 15px;
+    color: var(--color-3);
+    margin-left: 10px;
+} 
+.chose form a:hover{
+  background: #a73963;
+}
+</style>
 <body>
     <div class="content">
         <div id="header">
             <nav class=" container-fluid p-2 navbar-expand-sm navbar-dark bg-dark d-flex align-items-center justify-content-between">
                 <div class="ms-3">
-                  <a class="navbar-brand" href="index1.php">
+                  <a class="navbar-brand" href="index.php">
                     <img src="images/logo.png" alt="">
                   </a>
                 </div>
@@ -62,8 +89,10 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="lii"><button  type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-user-circle-o text-white" ></i>
+                        <li class="lii"><button id="Btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-user-circle-o text-white" ></i>
                         </button>
+                        
+                        <?php if(empty ($_SESSION["email"])){?>
                         <div class="modal mt-5 p-5 account fade" id="myModal">
                             <div class="modal-dialog">
                               <div class="modal-content">
@@ -72,31 +101,85 @@
                                   <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                           
-                                <!-- Modal body -->
                                 <div class="modal-body">
                                   <form action="" method="post">
                                     <div class="mb-3 mt-3 text-dark">
-                                        <label for="email" class="mb-1"><b>Tên đăng nhập</b></label>
-                                        <input type="email" class="form-control" id="email" placeholder="Enter username" name="email">
+                                        <label for="email" class="mb-1"><b>Email</b></label>
+                                        <input type="email" name="txtemail" class="form-control" id="email" placeholder="Nhập email của bạn" name="email">
                                       </div>
                                       <div class="mb-3 text-dark">
                                         <label for="pwd" class="mb-1"><b>Mật khẩu</b></label>
-                                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                                        <input type="password" name="txtpass" class="form-control" id="pwd" placeholder="Nhập mật khẩu" name="pswd">
                                       </div>
                                     <div class="text-dark">
-                                        <input type="submit" class="btn me-3 mb-3 p-2" value="Đăng Nhập">
+                                        <input type="submit" class="btn me-3 mb-3 p-2" name="sub_dangnhap" value="Đăng Nhập">
                                         <input type="checkbox" class="form-check-input mt-2" name="" id=""> <span>Ghi nhớ đăng nhập</span>
                                     </div>
                                     <div class="mb-3">
                                         <a href="forgetpass.php" class="text-dark ">Quên mật khẩu</a>
                                     </div>
                                   </form>
+                                  <?php
+    if(isset($_POST["sub_dangnhap"])){
+      if(empty($_POST["txtemail"])||empty($_POST["txtpass"]))
+      {
+      echo("<script>alert('Không được để trống');</script>");
+      }
+  else
+  {
+    $login=$get_data->login($_POST["txtemail"],$_POST["txtpass"]);
+    if ($login==1)
+    {
+        $_SESSION["email"]=$_POST["txtemail"];
+        $_SESSION["pass"]=$_POST["txtpass"];//khoi tao session co ten la user
+        $get=$get_data->login_user($_POST["txtemail"],$_POST["txtpass"]);
+        foreach($get as $se){
+            $lv=$se["quyen"];
+            $_SESSION["quyen"]=$se["quyen"];
+            $_SESSION["hoten"]=$se["Hoten"];
+        }
+            //header("location:admin_login.php");}
+            
+        if($lv==0)
+        {?>
+         <script>
+
+            location.href = 'index1.php';
+            </script>
+        <?php
+        //	header("location:user_login.php");
+        }
+        else{?>
+          <script>
+            //alert("lv".$lv);
+          location.href = 'admin.php';
+          </script>
+      <?php
+      }
+        //echo("<script>alert('login thanh cong!!!');</script>");
+    }
+  
+    else
+    echo("<script>alert('login that bai!!!');</script>");   
+    
+  }
+  
+}
+
+?>	
                                 </div>
                           
                               </div>
-                            </div>
+                            </div>                                                       
                         </li>
-                        <li><a  href="cart.php"><i class="fa fa-shopping-cart" ></i></a></li>
+                        <?php } 
+                            else{
+                            
+                            ?>
+                            <li><?php echo $_SESSION["hoten"]?></li>
+                            <li><a href="logout.php">Đăng xuất</a></li> 
+                            <?php }?>
+                        <li><a  href="carts.php"><i class="fa fa-shopping-cart" ></i></a></li>
                     </ul>
                 </div>
             </nav>
@@ -189,12 +272,12 @@
                 <div class="product container-fluid ">
                   <div class="menu-product d-flex flex-wrap justify-content-around mt-3">
                   <?php
-                        include("control.php");
-                        $get_data=new data();
-                        $get=$get_data->get_cho();
-                        foreach($get as $se){
+                        
+                        $getdog=$get_data->get_cho();
+                        foreach($getdog as $se){
 
                         ?>
+                    <a href="product-item.php?id=<?php echo $se['id_dv'];?>&maloai=<?php echo $se['Maloai']?>" class="more" style={text-decoration:none;color:black;}>
                     <div class="item-product text-center mb-5">
                       <div class="images-item">
                         <img src="img/<?php echo $se['Anh1'] ?>" alt="">
@@ -207,6 +290,7 @@
                         <span class="price"><b><?php echo $se['Dongia'] ?></b></span>
                       </div>
                     </div>
+                        </a>
                     <?php
                         }
                     ?>                                     

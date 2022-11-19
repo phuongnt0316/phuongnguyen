@@ -272,7 +272,11 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                           <div class="chose-1">
                               <a href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>" class="mt-3">Thêm vào giỏ hàng</a>
                           </div>
+<<<<<<< HEAD
+                          <p class="description mt-2"><?php echo $se_if["Thongtin"] ?></p>
+=======
                           <p class="description mt-4" style="text-align: justify;"><?php echo $se_if["Thongtinthem"] ?></p>
+>>>>>>> 210fe884827d340e131d2d5be07b98c27e766050
 
                       </div>
                     </div>

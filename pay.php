@@ -285,12 +285,13 @@ location.href = 'login.php';
                   <?php if(isset($_POST["sub_pay"])){
                     
                     $diachi=$_POST["txtdiachi"];
-                    $out=$get_data->insert_donhang($id_kh,$diachi,$sum_cart);
+                    $rs=$get_data->insert_donhang($id_kh,$diachi,$sum_cart);
+                    $insert=$get_data->insert_ctdonhang($rs,$id_kh);
+                    $delete=$get_data->delete_giohang($id_kh);
                     
-                    if($out!=NULL){?>
-                    
+                    if($delete){?>
                              <script>
-
+                            
                              location.href = 'history.php';
                              </script>
                     <?php
@@ -298,7 +299,7 @@ location.href = 'login.php';
                     }
                     else ?>
                     <script>
-                    alert('Liên hệ hotline!');
+                    //alert('Liên hệ hotline!');
                     </script>
                     <?php
                   } ?>

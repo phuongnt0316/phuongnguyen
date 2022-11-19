@@ -98,114 +98,6 @@ require 'PHPMailer/src/SMTP.php';
         $run=mysqli_query($conn,$sql);
         return $run;
     }
-    //blog
-    public function add_blog($id_regt,$id_sub,$name_blog,$add,$s_blog,$l_blog,$img,$check_blog){
-        global $conn;
-        $sql="insert into blog(id_regt,id_sub,Name_blog,id_add,S_blog,L_blog,Date_blog,image,Check_blog) 
-        values($id_regt,$id_sub,'$name_blog','$add','$s_blog','$l_blog',curdate(),'$img',$check_blog)";
-        echo $sql;
-        $run=mysqli_query($conn,$sql);
-        return $run;
-    }
-    public function select_blog(){
-        global $conn;
-        $sql="select*from blog,register where register.id_regt=blog.id_regt";
-        $run=mysqli_query($conn,$sql);
-        return $run;
-    }
-    public function post_blog()
-{
-    global $conn;
-    $sql="SELECT*from register,blog WHERE register.id_regt=blog.id_regt and check_blog= 1";
-    $run =mysqli_query($conn,$sql);
-    return $run;
-}
-public function blog_travel() //blog theo chu de du lich
-{
-    global $conn;
-    $sql="SELECT*from register,blog WHERE register.id_regt=blog.id_regt and check_blog= 1 and id_sub=1";
-    $run =mysqli_query($conn,$sql);
-    return $run;}
-public function blog_dd($id_add) //blog theo dia diem
-    {
-        global $conn;
-        $sql="SELECT*from register,blog WHERE register.id_regt=blog.id_regt and check_blog= 1 and id_add=$id_add";
-        $run =mysqli_query($conn,$sql);
-        return $run;}
-    public function blog_culinary()// blog chu de am thuc
-    {
-        global $conn;
-        $sql="SELECT*from register,blog WHERE register.id_regt=blog.id_regt and check_blog= 1 and id_sub=2";
-        $run =mysqli_query($conn,$sql);
-        return $run;
-    }
-public function post_blog3()
-{
-    global $conn;
-    $sql="SELECT*from register,blog WHERE register.id_regt=blog.id_regt and check_blog= 1 ORDER by Date_blog DESC LIMIT 3";
-    $run =mysqli_query($conn,$sql);
-    return $run;
-}
-public function post_blog5()
-{
-    global $conn;
-    $sql="SELECT*from register,blog WHERE register.id_regt=blog.id_regt and check_blog= 1 ORDER by Date_blog DESC LIMIT 5";
-    $run =mysqli_query($conn,$sql);
-    return $run;
-}
-    public function post($id)
-{
-    global $conn;
-    $sql="update blog set check_blog='1' where id_blog= '$id'";
-    $run=mysqli_query($conn,$sql);
-    return $run;
-}
-public function unpost($id)
-{
-    global $conn;
-    $sql="update blog set check_blog='0' where id_blog= '$id'";
-    $run=mysqli_query($conn,$sql);
-    return $run;
-}
-public function select_blog_id($id_blog){
-    global $conn;
-    $sql="select*from blog,register where register.id_regt=blog.id_regt and id_blog=$id_blog";
-    $run=mysqli_query($conn,$sql);
-    return $run;
-}
-public function update_blog($id_blog,$id_sub,$name_blog,$id_add,$s_blog,$l_blog,$file){
-    global $conn;
-    $sql="update blog set  id_sub=$id_sub,Name_blog='$name_blog',id_add='$id_add', S_blog='$s_blog', L_blog='$l_blog',Date_blog=CURDATE(),
-     image='$file' where id_blog=$id_blog";
-    $run=mysqli_query($conn,$sql);
-    return $run;
-
-}
-public function delete_blog($id_blog){
-    global $conn;
-    $sql="delete from blog where id_blog=$id_blog";
-    $run=mysqli_query($conn,$sql);
-    return $run;
-}
-public function select_user_blog($id_regt){
-    global $conn;
-    $sql="select*from blog where Id_regt=$id_regt";
-    $run=mysqli_query($conn,$sql);
-    return $run;
-}
-public function search_blog($search){
-    global $conn;
-    $sql="SELECT*from register,blog WHERE register.id_regt=blog.id_regt and L_blog like N'%$search%'";
-    $run =mysqli_query($conn,$sql);
-    return $run;
-}
-public function check_search_blog($search){
-    global $conn;
-    $sql="SELECT*from register,blog WHERE register.id_regt=blog.id_regt and L_blog like N'%$search%'";
-    $run =mysqli_query($conn,$sql);
-    $count=mysqli_num_rows($run);
-    return $count;
-}
     public function sendMail($username,$password,$address,$subject,$body,$altbody){
 
         
@@ -249,12 +141,7 @@ public function check_search_blog($search){
     $run =mysqli_query($conn,$sql);
     return $run;
  }
- public function select_subject(){
-    global $conn;
-    $sql="SELECT*from subject";
-    $run =mysqli_query($conn,$sql);
-    return $run;
- }
+
  //contact
  public function contact($name,$email){
     global $conn;
@@ -275,70 +162,7 @@ public function select_contact(){
     $run=mysqli_query($conn,$sql);
     return $run;
 }
-//add_blog
-public function select_add(){//chon add_bog
-    global $conn;
-    $sql="SELECT*from add_blog";
-    $run =mysqli_query($conn,$sql);
-    return $run;
-}
-public function select_id($id){// chon add_blog theo id
-    global $conn;
-    $sql="SELECT*from add_blog where id_add=$id";
-    $run =mysqli_query($conn,$sql);
-    return $run;
-}
-public function update_id($id,$name){ // cap nhat add_blog theo id
-    global $conn;
-    $sql="update add_blog set name_add='$name' where id_add=$id";
-    $run =mysqli_query($conn,$sql);
-    return $run;
-}
-public function delete_id($id){// xoa add_blog theo id
-    global $conn;
-    $sql="delete from add_blog where id_add=$id";
-    $run =mysqli_query($conn,$sql);
-    return $run;
-}
-public function insert_id($name){// them moi id
-    global $conn;
-    $sql="insert into add_blog(name_add) values('$name')";
-    $run =mysqli_query($conn,$sql);
-    echo $sql;
-    return $run;
-}
-//header_blog
-public function insert_hd($name,$cont,$f1,$f2,$f3,$check_hd){// them moi id
-    global $conn;
-    $sql="insert into header_blog(name_header,content,file1,file2,file3,check_hd) 
-    values('$name','$cont','$f1','$f2','$f3',$check_hd)";
-    $run =mysqli_query($conn,$sql);
-    return $run;
-}
-public function select_hd(){//chon tat ca bai viet chu de
-    global $conn;
-    $sql="select *from header_blog";
-    $run =mysqli_query($conn,$sql);
-    return $run;
-}
-public function post_hd(){// hien thi bai viet chu de
-    global $conn;
-    $sql="select *from header_blog where check_hd=1";
-    $run =mysqli_query($conn,$sql);
-    return $run;
-}
-public function update_hd0(){// set tat ca check=0
-    global $conn;
-    $sql="update  header_blog set check_hd=0";
-    $run =mysqli_query($conn,$sql);
-    return $run;
-}
-public function update_hd1($id){ // cho blog chu de da chon bang 1
-    global $conn;
-    $sql="update  header_blog set check_hd=1 where id_header=$id";
-    $run =mysqli_query($conn,$sql);
-    return $run;
-}
+
 public function check_idmeo($id){//check idmeo da ton tai chua
     global $conn;
     $sql="select*from thucung_meo where id_dv='$id'";
@@ -363,13 +187,25 @@ public function check_idcho($id){//check idcho
 
 public function get_cho(){
     global $conn;
+    $sql="select*from thucung_cho where Trangthai='CONHANG'";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
+public function get_alldog(){
+    global $conn;
     $sql="select*from thucung_cho";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
+public function get_allcat(){
+    global $conn;
+    $sql="select*from thucung_meo";
     $run=mysqli_query($conn,$sql);
     return $run;
 }
 public function get_meo(){
     global $conn;
-    $sql="select*from thucung_meo";
+    $sql="select*from thucung_meo where Trangthai='CONHANG'";
     $run=mysqli_query($conn,$sql);
     return $run;
 }
@@ -400,9 +236,22 @@ public function insert_cho($id_dv, $Tenthucung, $Maloai, $Machungloai, $Kieulong
     $run =mysqli_query($conn,$sql);
     return $run;
 }
+public function update_cho($id_dv, $Tenthucung, $Maloai, $Machungloai, $Kieulong, $Mucdichnuoi, $Kichthuoc, $Dongia, $Mucdophobien, $Thongtinthem, $Anh1, $Anh2){
+    global $conn;
+    $sql="update thucung_cho set Tenthucung='$Tenthucung',Maloai='$Maloai',$Machungloai='$Machungloai',Kieulong='$Kieulong',
+    Dongia=$Dongia,Mucdophobien='$Mucdophobien', Thongtinthem='$Thongtinthem', Anh1='$Anh1',Anh2= '$Anh2' where id_dv='$iddv'";
+    $run =mysqli_query($conn,$sql);
+    return $run;
+}
 public function get_chungloai($maloai){
     global $conn;
     $sql="select * from chungloai where Maloai='$maloai'";
+    $run =mysqli_query($conn,$sql);
+    return $run;
+}
+public function get_tenchungloai($machungloai){
+    global $conn;
+    $sql="select * from chungloai where Machungloai='$machungloai'";
     $run =mysqli_query($conn,$sql);
     return $run;
 }
@@ -449,7 +298,8 @@ public function get_loai(){
     $sql="INSERT INTO donhang(id_kh,Diachi_giaohang,Tongtien,Trangthai)
     VALUES ($id_kh,'$diachi',$tongtien,'CHOXUATHANG')";
     $run=mysqli_query($conn,$sql);
-    return mysqli_insert_id($conn);
+    $rs=mysqli_insert_id($conn);
+    return $rs;
  }
  public function get_diachigiaohang($id_kh){
     global $conn;
@@ -458,5 +308,22 @@ public function get_loai(){
     return $run;
 
  }
+ public function delete_giohang($id_kh){
+    global $conn;
+    $sql="delete from giohang where id_kh=$id_kh";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+
+ }
+ public function insert_ctdonhang($id_hd,$id_kh){
+    global $conn;
+    $sql="INSERT INTO chitiet_donhang(id_hd,id_kh,id_sp,Soluong,Maloai,Dongia)
+        SELECT $id_hd,id_kh,id_sp,Soluong,Maloai,Dongia
+        FROM giohang
+        WHERE id_kh=$id_kh";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+ }
+ 
  
 }

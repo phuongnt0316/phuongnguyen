@@ -121,68 +121,142 @@ if(empty($_SESSION["email"])){
               
         </div>
         <!-- --------------------------------body--------------------------------- -->
-          <div class="main d-flex justify-content-center">
+        <div class="main d-flex justify-content-center">
              
-            <div class="main-right">
-              <div class="list-customer">
-                
-                <div class="container p-3">
-                  <h4 class="text-dark text-center">DANH SÁCH KHÁCH HÀNG || <a href="admin_customer_add.php" id="t">Thêm khách hàng</a></h4>
-                  <input class="form-control mt-5 mb-3" id="myInput" type="text" placeholder="Tìm kiếm khách hàng">
-                  <br>
-                  <table class="table table-bordered table-striped .table-responsive">
-                    <thead class="table-dark">
-                      <tr>
-                        <th>Mã khách hàng</th>
-                        <th>Họ tên</th>
-                        <th>Email</th>
-                        <th>Địa chỉ</th>
-                        <th>SĐT</th>
-                        <th>Giới tính</th>
-                        <th>Ngày sinh</th>
-                        <th colspan="2">Thao tác</th>
-                      </tr>
-                      <?php 
-                      include("control.php");
-                      $get_data=new data();
-                      $select_user=$get_data->select_user();
-                      foreach($select_user as $se){
-                      ?>
-
-                    </thead>
-                    <tbody id="myTable">
-                      <tr>
-                        <td><?php echo $se['id_kh']?></td>
-                        <td><?php echo $se['Hoten']?></td>
-                        <td><?php echo $se['Email']?></td>
-                        <td><?php echo $se['Diachi']?></td>                        
-                        <td><?php echo $se['Sodienthoai']?></td>
-                        <td><?php echo $se['Gioitinh']?></td>
-                        <td><?php echo $se['Ngaysinh']?></td>
-                        <td><a href="admin_customer_edit.php?edit=<?php echo $se['id_kh']?>"><i class="fa fa-home text-primary " style="font-size:24px"></i></a></td>
-                        <td><a href="admin_customer_delete.php?delete=<?php echo $se['id_kh']?>"><i class="fa fa-minus-square text-danger mt-1" style="font-size:20px"></i></a></td>
-                      </tr>
-                      
-                      <?php
+             <div class="main-right">
+               <div class="list-customer">
+                 <div class="container p-3 ms-5">
+                   <h4 class="text-dark text-center">DANH SÁCH || <a href="admin.html">Quay lại</a></h4>
+                   <br>
+                   <form action="" enctype="multipart/form-data" method="post" class="form-info text-dark me-5">
+                     <table>
+                         <tr>
+                             <td><label for="id" class="">ID</label></td>
+                             <td><input type="text" name="txtId" id="id" ></td>
+                         </tr>
+                         <tr>
+                             <td><label for="ten">Tên thú nuôi</label</td>
+                             <td><input type="text" name="txtTen" id="ten" ></td>
+                         </tr>
+                         <tr>
+                             <td><label for="tenloai">Tên chủng loại</label></td>
+                             <td> 
+                                     <select name="txtTenchungloai" id="maloai">
+                                     <?php include('control.php');
+                                     $get_data=new data();
+                                     $loai=$get_data->get_chungloai($maloai);
+                                     foreach($loai as $se){
+                                     ?>
+                                     <option value="<?php echo $se['Machungloai'] ?>"><?php echo $se['Tenchungloai'] ?></option>
+ 
+                                                   <?php }?>
+                          </select>  
+                             </td>
+                         </tr>
+                         <tr>
+                             <td><label for="kichthuoc">Kích Thước</label></td>
+                             <td>
+                                 <select name="txtKichthuoc" id="">
+                                     <option value="">---Chọn---</option>
+                                     <option value="Nhỏ">Nhỏ</option>
+                                     <option value="Trung Bình">Trung bình</option>
+                                     <option value="Lớn">Lớn</option>
+                                 </select>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td><label for="long">Kiểu lông</label></td>
+                             <td>
+                                 <select name="txtKieulong" id="long">
+                                     <option value="">---Chọn---</option>
+                                     <option value="Ngắn">Ngắn</option>
+                                     <option value="Dài">Dài</option>
+                                     <option value="Xoăn">Xoăn</option>
+                                 </select>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td><label for="phobien">Độ phổ biến</label></td>
+                             <td>
+                                 <select name="txtPhobien" id="">
+                                     <option value="">---Chọn---</option>
+                                     <option value="Cao">Cao</option>
+                                     <option value="Trung bình">Trung bình</option>
+                                     <option value="Thấp">Thấp</option>
+                                 </select>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td><label for="mucdich">Mục đích nuôi</label></td>
+                             <td>
+                                 <select name="txtMucdich" id="">
+                                     <option value="">---Chọn---</option>
+                                     <option value="Làm cảnh, bầu bạn">Làm cảnh & bầu bạn</option>
+                                     <option value="Canh gác, bảo vệ">Canh gác, bảo vệ</option>
+                                 </select>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td><label for="mota">Mô tả</label></td>
+                             <td><textarea name="txtMota" id="" cols="57.5" rows="5"></textarea></td>
+                         </tr>
+                         <tr>
+                             <td><label for="gia">Giá</label></td>
+                             <td><input type="text" name="txtDongia" id="gia" ></td>
+                         </tr>
+                         
+                             
+                         <tr>
+                             <td><label for="anh1">Ảnh 1</label></td>
+                             <td><input type="file" name="txtFile1" id="anh1" ></td>
+                         </tr>
+                         <tr>
+                             <td><label for="anh2">Ảnh 2</label></td>
+                             <td><input type="file" name="txtFile2" id="anh2" ></td>
+                         </tr>
+                         <tr>
+                             <td colspan="2" >
+                                 <input type="submit" name="btnThem" class=" sd text-right" value="Gửi">
+                             </td>
+                         </tr>
+                         
+                         
+                     </table>
+                   </form>
+                   <?php
+                  if(isset($_POST["btnThem"])){
+                      $check_id=$get_data->check_idcho($_POST["txtId"]);
+                      if($check_id>0){
+                          echo"<script> alert('ID đã tồn tại, vui lòng kiểm tra lại')</script>";	
                       }
-                      ?>
-                    </tbody>
-                  </table>
-                </div>
-                
-                <script>
-                $(document).ready(function(){
-                  $("#myInput").on("keyup", function() {
-                    var value = $(this).val().toLowerCase();
-                    $("#myTable tr").filter(function() {
-                      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                    });
-                  });
-                });
-                </script>
-              </div>
-            </div>
-          </div>
+                      else{
+                       //VALUES ('$id_dv', '$Tenthucung', '$Maloai', '$Machungloai', '$Kieulong', '$Mucdichnuoi', '$Kichthuoc', '$Dongia', '$Mucdophobien', '$Thongtinthem', '$Anh1', '$Anh2')";
+                       move_uploaded_file($_FILES['txtFile1']['tmp_name'],"img/". $_FILES['txtFile1']['name']);
+                       move_uploaded_file($_FILES['txtFile2']['tmp_name'],"img/". $_FILES['txtFile2']['name']);
+                       $insert=$get_data->insert_cho($_POST['txtId'],$_POST['txtTen'],$maloai,$_POST['txtTenchungloai'],$_POST['txtKieulong'],$_POST['txtMucdich'],$_POST['txtKichthuoc'],$_POST['txtDongia'],$_POST['txtPhobien'],$_POST['txtMota'],$_FILES['txtFile1']['name'],$_FILES['txtFile2']['name']);
+                   
+                       if($insert){
+                         ?> <script>
+                         location.href = 'admin.php';
+                       </script>
+                       <?php
+                   
+                       }
+                       else
+                       echo"<script> alert('Không thành công')</script>";
+                   
+                               }
+ 
+                             }
+                         
+                         ?>
+                   ?>
+ 
+                 </div>
+                 
+               </div>
+             </div>
+           </div>
         <!-- -------------------------------------footer-------------------------- -->
         <div id="footer">
             <div class=" ft text-center">
