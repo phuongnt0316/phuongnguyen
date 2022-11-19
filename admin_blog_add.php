@@ -57,7 +57,7 @@ $get_data=new data();
                             <a class="nav-link" href="#">DOANH THU</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="blog.php">BLOG</a>
+                            <a class="nav-link" href="blog.php" style="color: var(--main-color-1);">BLOG</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">QUẢNG CÁO</a>

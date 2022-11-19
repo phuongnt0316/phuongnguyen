@@ -33,7 +33,7 @@ $maloai="CHO";
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown">SẢN PHẨM</a>
                             <ul class="dropdown-menu mt-3 p-2 fade">
-                              <li><a class="dropdown-item text-dark " href="food-dog.php">CHÓ</a></li>
+                              <li><a class="dropdown-item text-dark " href="food-dog.php" style="color: var(--main-color-1);">CHÓ</a></li>
                               <li><a class="dropdown-item text-dark" href="food-cat.php">MÈO</a></li>
                               <li><a class="dropdown-item text-dark" href="food-dog.php">ĐỒ ĂN CHO CHÓ</a></li>
                               <li><a class="dropdown-item text-dark" href="food-cat.php">ĐỒ ĂN CHO MÈO</a></li>

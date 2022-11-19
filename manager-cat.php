@@ -37,7 +37,7 @@ if(empty($_SESSION["email"])){
                           <a class="nav-link" href="admin.php">KHÁCH HÀNG</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown">SẢN PHẨM</a>
+                            <a class="nav-link dropdown-toggle" href="" role="button" style="color: var(--main-color-1);" data-bs-toggle="dropdown">SẢN PHẨM</a>
                             <ul class="dropdown-menu mt-3 p-2 fade">
                               <li><a class="dropdown-item text-dark " href="manager-dog.php">CHÓ</a></li>
                               <li><a class="dropdown-item text-dark" href="manager-cat.php">MÈO</a></li>
@@ -58,10 +58,10 @@ if(empty($_SESSION["email"])){
                             <a class="nav-link" href="#">DOANH THU</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="blog.php">BLOG</a>
+                            <a class="nav-link" href="admin_blog.php">BLOG</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">QUẢNG CÁO</a>
+                            <a class="nav-link" href="admin_contact.php">LIÊN HỆ</a>
                         </li>
                         
                       </ul>

@@ -51,7 +51,7 @@ if(empty($_SESSION["email"])){
                           <a class="nav-link" href="#">KHO HÀNG</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">HÓA ĐƠN</a>
+                          <a class="nav-link" href="#" style="color: var(--main-color-1);">HÓA ĐƠN</a>
                         </li>
                        
                         <li class="nav-item">
