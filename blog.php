@@ -1,4 +1,18 @@
 <!DOCTYPE html>
+<?php
+session_start();
+include("control.php");
+$get_data=new data();
+if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
+  $getdata=$get_data->login_user($_SESSION["email"],$_SESSION["pass"]);
+  foreach($getdata as $sel){
+    $idkh=$sel["id_kh"];
+      $_SESSION["hoten"]=$sel["Hoten"];
+  }
+
+}
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,15 +22,31 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/intro.css">
     <title>Document</title>
 </head>
+<style>
+ .blog .img img{
+    border-radius: 3px
+ }
+ .blog .bl-content a{
+    background: var(--main-color-1);
+    text-decoration:none;
+    padding: 15px 30px;
+    width: 200px;
+    height: 40px;
+    border: none;
+    color: var(--color-3);
+ }
+ .blog .bl-content a:hover{ 
+    background: var(--main-color1-hover);
+ }
+</style>
 <body>
     <div class="content">
         <div id="header">
             <nav class=" container-fluid p-2 navbar-expand-sm navbar-dark bg-dark d-flex align-items-center justify-content-between">
                 <div class="ms-3">
-                  <a class="navbar-brand" href="index.html">
+                  <a class="navbar-brand" href="index.php">
                     <img src="images/logo.png" alt="">
                   </a>
                 </div>
@@ -24,26 +54,26 @@
                     <div class="collapse navbar-collapse" id="mynavbar">
                       <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                          <a class="nav-link" href="intro.html">GIỚI THIỆU</a>
+                          <a class="nav-link" href="intro.php">GIỚI THIỆU</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="dog.html">CHÓ CẢNH</a>
+                          <a class="nav-link" href="dog.php">CHÓ CẢNH</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="cat.html">MÈO CẢNH</a>
+                          <a class="nav-link" href="cat.php">MÈO CẢNH</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="food.html" role="button" data-bs-toggle="dropdown">ĐỒ ĂN</a>
+                            <a class="nav-link dropdown-toggle" href="food.php" role="button" data-bs-toggle="dropdown">ĐỒ ĂN</a>
                             <ul class="dropdown-menu mt-3 p-2 fade">
-                              <li><a class="dropdown-item text-dark " href="food-dog.html">Đồ ăn cho chó</a></li>
-                              <li><a class="dropdown-item text-dark" href="food-cat.html">Đồ ăn cho mèo</a></li>
+                              <li><a class="dropdown-item text-dark " href="food-dog.php">Đồ ăn cho chó</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-cat.php">Đồ ăn cho mèo</a></li>
                             </ul>
                           </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pk.html">PHỤ KIỆN</a>
+                            <a class="nav-link" href="pk.php">PHỤ KIỆN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">LIÊN HỆ</a>
+                            <a class="nav-link" href="contact.php">LIÊN HỆ</a>
                         </li>
                         
                       </ul>
@@ -62,50 +92,128 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="lii"><button  type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-user-circle-o text-white" ></i>
+                        <li class="lii"><button id="Btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-user-circle-o text-white" ></i>
                         </button>
+                        
+                        <?php if(empty ($_SESSION["email"])){?>
                         <div class="modal mt-5 p-5 account fade" id="myModal">
                             <div class="modal-dialog">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h4 class="modal-title text-dark">Đăng Nhập || <span><a href="register.html"  class="text-info">Đăng ký</a></span></h4>
+                                  <h4 class="modal-title text-dark">Đăng Nhập || <span><a href="register.php"  class="text-info">Đăng ký</a></span></h4>
                                   <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                           
-                                <!-- Modal body -->
                                 <div class="modal-body">
                                   <form action="" method="post">
                                     <div class="mb-3 mt-3 text-dark">
-                                        <label for="email" class="mb-1"><b>Tên đăng nhập</b></label>
-                                        <input type="email" class="form-control" id="email" placeholder="Enter username" name="email">
+                                        <label for="email" class="mb-1"><b>Email</b></label>
+                                        <input type="email" name="txtemail" class="form-control" id="email" placeholder="Nhập email của bạn" name="email">
                                       </div>
                                       <div class="mb-3 text-dark">
                                         <label for="pwd" class="mb-1"><b>Mật khẩu</b></label>
-                                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                                        <input type="password" name="txtpass" class="form-control" id="pwd" placeholder="Nhập mật khẩu" name="pswd">
                                       </div>
                                     <div class="text-dark">
-                                        <input type="submit" class="btn me-3 mb-3 p-2" value="Đăng Nhập">
+                                        <input type="submit" class="btn me-3 mb-3 p-2" name="sub_dangnhap" value="Đăng Nhập">
                                         <input type="checkbox" class="form-check-input mt-2" name="" id=""> <span>Ghi nhớ đăng nhập</span>
                                     </div>
                                     <div class="mb-3">
-                                        <a href="forgetpass.html" class="text-dark ">Quên mật khẩu</a>
+                                        <a href="forgetpass.php" class="text-dark ">Quên mật khẩu</a>
                                     </div>
                                   </form>
+                                  <?php
+    if(isset($_POST["sub_dangnhap"])){
+      if(empty($_POST["txtemail"])||empty($_POST["txtpass"]))
+      {
+      echo("<script>alert('Không được để trống');</script>");
+      }
+  else
+  {
+    $login=$get_data->login($_POST["txtemail"],$_POST["txtpass"]);
+    if ($login==1)
+    {
+        $_SESSION["email"]=$_POST["txtemail"];
+        $_SESSION["pass"]=$_POST["txtpass"];//khoi tao session co ten la user
+        $get=$get_data->login_user($_POST["txtemail"],$_POST["txtpass"]);
+        foreach($get as $se){
+            $lv=$se["quyen"];
+            $_SESSION["quyen"]=$se["quyen"];
+            $_SESSION["hoten"]=$se["Hoten"];
+        }
+            //header("location:admin_login.php");}
+            
+        if($lv==0)
+        {?>
+         <script>
+
+            location.href = 'index1.php';
+            </script>
+        <?php
+        //	header("location:user_login.php");
+        }
+        else{?>
+          <script>
+            //alert("lv".$lv);
+          location.href = 'admin.php';
+          </script>
+      <?php
+      }
+        //echo("<script>alert('login thanh cong!!!');</script>");
+    }
+  
+    else
+    echo("<script>alert('login that bai!!!');</script>");   
+    
+  }
+  
+}
+
+?>	
                                 </div>
                           
                               </div>
-                            </div>
+                            </div>                                                       
                         </li>
-                        <li><a  href="carts.html"><i class="fa fa-shopping-cart" ></i></a></li>
+                        <?php } 
+                            else{
+                            
+                            ?>
+                            <li><?php echo $_SESSION["hoten"]?></li>
+                            <li><a href="logout.php">Đăng xuất</a></li> 
+                            <?php }?>
+                        <li><a  href="carts.php"><i class="fa fa-shopping-cart" ></i></a></li>
                     </ul>
                 </div>
             </nav>
               
         </div>
         <!-- --------------------------------body--------------------------------- -->
-        <div class="body  mt-5 mb-5">
-             
+        <div id="body">
+          <div class="container-fluid text-dark">
+            <?php 
+                $quyen;
+                $getblog=$get_data->select_blog($quyen);
+                foreach($getblog as $se_blog){
+            ?>
+            <div class="blog mt-3 mb-3 d-flex justify-content-between mb-5">
+              <div class="img me-5">
+                <img src="img/<?php echo $se_blog['Anh'] ?>" alt="" width="450px" height="350px">
+              </div>
+              <div class="pe-5 bl-content">
+                <h5><b><?php echo $se_blog['Ten_blog'] ?></b></h5>
+                <p>Date: <?php echo $se_blog['Ngaydang']?></p>
+                <p class="mb-5" style="text-align: justify;"><?php echo $se_blog['s_blog']?></p>
+                <a href="full_blog.php?id=<?php echo $se_blog["id_blog"]?>" >Xem thêm</a>
+              </div>
+              
+            </div>
+            <?php
+                }
+            ?> 
+          </div>
         </div>
+
         <!-- -------------------------------------footer-------------------------- -->
         <div id="footer">
             <div class="container-fluid ft">
@@ -121,10 +229,10 @@
                         </ul>
                     </div>
                     <div class="col-sm-6 center align-center">
-                      <div class="logo-1 text-center mb-3 text-white">
-                        <img src="images/logo.png" alt="">
-                        <p class="mt-3">Nơi gửi gắm niềm tin về vẻ đẹp thú cưng</p>
-                    </div>
+                        <div class="logo-1 text-center mb-3 text-white">
+                            <img src="images/logo.png" alt="">
+                            <p class="mt-3">Nơi gửi gắm niềm tin về vẻ đẹp thú cưng</p>
+                        </div>
                         <div class="text-center">
                             <form action="" method="get">
                                 <input type="email" name="" id="" placeholder="Enter your mail">

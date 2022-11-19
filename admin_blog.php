@@ -39,10 +39,10 @@ if(empty($_SESSION["email"])){
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown">SẢN PHẨM</a>
                             <ul class="dropdown-menu mt-3 p-2 fade">
-                              <li><a class="dropdown-item text-dark " href="manager-dog.php">CHÓ</a></li>
-                              <li><a class="dropdown-item text-dark" href="manager-cat.php">MÈO</a></li>
-                              <li><a class="dropdown-item text-dark" href="manager-food-dog.php">ĐỒ ĂN CHO CHÓ</a></li>
-                              <li><a class="dropdown-item text-dark" href="manafer-food-cat.php">ĐỒ ĂN CHO MÈO</a></li>
+                              <li><a class="dropdown-item text-dark " href="food-dog.php">CHÓ</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-cat.php">MÈO</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-dog.php">ĐỒ ĂN CHO CHÓ</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-cat.php">ĐỒ ĂN CHO MÈO</a></li>
                               <li><a class="dropdown-item text-dark" href="pk.php">PHỤ KIỆN</a></li>
                               
                             </ul>
@@ -58,7 +58,7 @@ if(empty($_SESSION["email"])){
                             <a class="nav-link" href="#">DOANH THU</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="admin_blog.php">BLOG</a>
+                            <a class="nav-link" href="blog.php">BLOG</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">QUẢNG CÁO</a>
@@ -67,6 +67,7 @@ if(empty($_SESSION["email"])){
                       </ul>
                     </div>
                 </div>
+
             </nav>
               
         </div>
@@ -77,40 +78,51 @@ if(empty($_SESSION["email"])){
               <div class="list-customer">
                 
                 <div class="container p-3">
-                  <h4 class="text-dark text-center">DANH SÁCH KHÁCH HÀNG || <a href="admin_customer_add.php" id="t">Thêm khách hàng</a></h4>
+                  <h4 class="text-dark text-center">BLOG || <a href="admin_blog_add.php" id="t">Thêm blog</a></h4>
                   <input class="form-control mt-5 mb-3" id="myInput" type="text" placeholder="Tìm kiếm khách hàng">
                   <br>
                   <table class="table table-bordered table-striped .table-responsive">
                     <thead class="table-dark">
                       <tr>
-                        <th>Mã khách hàng</th>
-                        <th>Họ tên</th>
-                        <th>Email</th>
-                        <th>Địa chỉ</th>
-                        <th>SĐT</th>
-                        <th>Giới tính</th>
-                        <th>Ngày sinh</th>
-                        <th colspan="2">Thao tác</th>
+                        <th>Mã blog</th>
+                        <th>Tên blog</th>
+                        <th>Tóm tắt blog</th>
+                        <th>Nội dung blog</th>
+                        <th>Ngày đăng</th>
+                        <th>Ảnh</th>
+                        <th>Quyền</th>
+                        <th colspan="3">Thao tác</th>
                       </tr>
                       <?php 
                       include("control.php");
                       $get_data=new data();
-                      $select_user=$get_data->select_user();
-                      foreach($select_user as $se){
+                      $select_blog=$get_data->select_blogad();
+                      foreach($select_blog as $se){
                       ?>
 
                     </thead>
-                    <tbody id="myTable">
+                    <tbody id="myTable" class="text-dark">
                       <tr>
-                        <td><?php echo $se['id_kh']?></td>
-                        <td><?php echo $se['Hoten']?></td>
-                        <td><?php echo $se['Email']?></td>
-                        <td><?php echo $se['Diachi']?></td>                        
-                        <td><?php echo $se['Sodienthoai']?></td>
-                        <td><?php echo $se['Gioitinh']?></td>
-                        <td><?php echo $se['Ngaysinh']?></td>
-                        <td><a href="admin_customer_edit.php?edit=<?php echo $se['id_kh']?>"><i class="fa fa-home text-primary " style="font-size:24px"></i></a></td>
-                        <td><a href="admin_customer_delete.php?delete=<?php echo $se['id_kh']?>"><i class="fa fa-minus-square text-danger mt-1" style="font-size:20px"></i></a></td>
+                        <td><?php echo $se['id_blog']?></td>
+                        <td><?php echo $se['Ten_blog']?></td>
+                        <td><?php echo $se['s_blog']?></td>
+                        <td><?php echo $se['l_blog']?></td>                        
+                        <td><?php echo $se['Ngaydang']?></td>
+                        <td><?php echo $se['Anh']?></td>
+                        <td><?php echo $se['quyen']?></td>
+                        <td><a href="admin_blog_edit.php?edit=<?php echo $se['id_blog']?>"><i class="fa fa-home text-primary " style="font-size:24px"></i></a></td>
+                        <td><a href="delete_blog.php?delete=<?php echo $se['id_blog']?>" onclick="return(confirm('Are you sure delete ?'))"><i class="fa fa-minus-square text-danger mt-1" style="font-size:20px"></i></a></td>
+                         <?php
+						 if($se['quyen']==0)
+						{
+							echo
+							"<td><a href='post_blog.php?post=". $se['id_blog'] ."'><i class='fa fa-cloud-upload'></i></a></td>";
+						}
+							else
+							echo
+						 "<td><a href='unpost_blog.php?unpost=".$se['id_blog'] ."'><i class='fa fa-cloud-download'></i></a></td>";
+				   
+					?>
                       </tr>
                       
                       <?php

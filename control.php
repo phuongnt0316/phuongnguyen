@@ -332,6 +332,7 @@ public function get_loai(){
     $run=mysqli_query($conn,$sql);
     return $run;
  }
+<<<<<<< HEAD
  //donhang
  public function get_donhang(){
     global $conn;
@@ -341,4 +342,58 @@ public function get_loai(){
 
  }
  
+=======
+
+//  ---------------------------blog------------------------
+public function select_blogad(){
+    global $conn;
+    $sql="select * from blog";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
+public function select_blog($quyen){
+    global $conn;
+    $sql="select * from blog where quyen='1'";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
+public function select_fullblog($id_blog){
+    global $conn;
+    $sql="select * from blog where id_blog='$id_blog'";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
+public function post_blog($id_blog){
+    global $conn;
+    $sql="update blog set quyen='1' where id_blog='$id_blog'";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
+public function un_blog($id_blog){
+    global $conn;
+    $sql="update blog set quyen='0' where id_blog='$id_blog'";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
+public function delete_blog($id_blog){
+    global $conn;
+    $sql="delete from blog where id_blog='$id_blog'";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
+public function add_blog($Ten_blog,$s_blog,$l_blog,$Ngaydang,$Anh){
+    global $conn;
+            $sql="insert into blog(Ten_blog,s_blog,l_blog,Ngaydang,Anh)
+            values('$Ten_blog','$s_blog','$l_blog','$Ngaydang','$Anh')";
+            $run=mysqli_query($conn,$sql);
+            return $run;
+}
+public function update_blog($Ten_blog,$s_blog,$l_blog,$Ngaydang,$Anh,$id_blog){
+    global $conn;
+            $sql="update blog set
+            Ten_blog='$Ten_blog',s_blog='$s_blog',l_blog='$l_blog',Ngaydang='$Ngaydang',Anh='$Anh' where id_blog='$id_blog'";
+            $run=mysqli_query($conn,$sql);
+            return $run;
+}
+>>>>>>> 9b86d8200364986e4a16be31df9e110a50ae2668
 }
