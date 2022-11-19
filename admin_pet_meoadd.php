@@ -144,7 +144,7 @@ $maloai="MEO";
                                     <option value="<?php echo $se['Machungloai'] ?>"><?php echo $se['Tenchungloai'] ?></option>
 
 							                      <?php }?>
-                         </select>  
+                                    </select>  
                             </td>
                         </tr>
                         <tr>
@@ -236,6 +236,7 @@ $maloai="MEO";
                      }
                      else{
                       //$id_dv, $Tenthucung, $Maloai, $Machungloai, $Dongia, $Kieulong, $Mausac, $Mucdorunglong, $Mucdophobien, $Vengoai, $Thongtin, $Anh1, $Anh2
+                      move_uploaded_file($_FILES['txtFile1']['tmp_name'],"img/". $_FILES['txtFile1']['name']);
                       move_uploaded_file($_FILES['txtFile2']['tmp_name'],"img/". $_FILES['txtFile2']['name']);
                       $insert=$get_data->insert_meo($_POST['txtId'],$_POST['txtTen'],$maloai,$_POST['txtTenchungloai'],$_POST['txtDongia'],$_POST['txtKieulong'],$_POST['txtMausac'],$_POST['txtDorunglong'],$_POST['txtVengoai'],$_POST['txtPhobien'],$_POST['txtMota'],$_FILES['txtFile1']['name'],$_FILES['txtFile2']['name']);
                   
