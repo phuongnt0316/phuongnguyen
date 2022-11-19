@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+<?php
+session_start();
+include("control.php");
+$get_data=new data();
+if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
+  $getdata=$get_data->login_user($_SESSION["email"],$_SESSION["pass"]);
+  foreach($getdata as $sel){
+      $_SESSION["hoten"]=$sel["Hoten"];
+  }
+
+}
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -43,9 +55,11 @@
                             <a class="nav-link" href="pk.php">PHỤ KIỆN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.php">LIÊN HỆ</a>
+                            <a class="nav-link" href="contact.php" style="color: var(--main-color-1);">LIÊN HỆ</a>
                         </li>
-                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.php">BLOG</a>
+                        </li>
                       </ul>
                     </div>
                 </div>
@@ -58,12 +72,21 @@
                                         <input type="search" name="txtsearch" placeholder="Tìm kiếm ....">
                                         <input type="submit" name="btm" value="Search">
                                     </form>
-                                        
+                                    <?php
+                                    if(isset($_POST["txtsearch"])){
+                                      ?>
+                                      <script>
+                                      location.href = "search.php?search=<?php echo $_POST['txt_search'];?>";
+                                      </script>
+                                    <?php
+                                    }
+                                    ?>
                                 </li>
                             </ul>
                         </li>
                         <li class="lii"><button  type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-user-circle-o text-white" ></i>
                         </button>
+                        <?php if(empty ($_SESSION["email"])){?>
                         <div class="modal mt-5 p-5 account fade" id="myModal">
                             <div class="modal-dialog">
                               <div class="modal-content">
@@ -91,12 +114,67 @@
                                         <a href="forgetpass.php" class="text-dark ">Quên mật khẩu</a>
                                     </div>
                                   </form>
+                                  <?php
+    if(isset($_POST["sub_dangnhap"])){
+      if(empty($_POST["txtemail"])||empty($_POST["txtpass"]))
+      {
+      echo("<script>alert('Không được để trống');</script>");
+      }
+  else
+  {
+    $login=$get_data->login($_POST["txtemail"],$_POST["txtpass"]);
+    if ($login==1)
+    {
+        $_SESSION["email"]=$_POST["txtemail"];
+        $_SESSION["pass"]=$_POST["txtpass"];//khoi tao session co ten la user
+        $get=$get_data->login_user($_POST["txtemail"],$_POST["txtpass"]);
+        foreach($get as $se){
+            $lv=$se["quyen"];
+            $_SESSION["quyen"]=$se["quyen"];
+            $_SESSION["hoten"]=$se["Hoten"];
+        }
+            //header("location:admin_login.php");}
+            
+        if($lv==0)
+        {?>
+         <script>
+
+            location.href = 'index1.php';
+            </script>
+        <?php
+        //	header("location:user_login.php");
+        }
+        else{?>
+          <script>
+            //alert("lv".$lv);
+          location.href = 'admin.php';
+          </script>
+      <?php
+      }
+        //echo("<script>alert('login thanh cong!!!');</script>");
+    }
+  
+    else
+    echo("<script>alert('login that bai!!!');</script>");   
+    
+  }
+  
+}
+
+?>
                                 </div>
                           
                               </div>
                             </div>
-                        </li>
-                        <li><a  href="cart.php"><i class="fa fa-shopping-cart" ></i></a></li>
+                            <?php } 
+                            else{
+                            
+                            ?>
+                            <li><?php echo $_SESSION["hoten"]?></li>
+                            <li><a href="logout.php" class="text-white">Đăng xuất</a></li> 
+                            <?php }?>
+                        <li><a href="cart.php"><i class="fa fa-shopping-cart" name="btn_cart" ></i></a></li>
+                       
                     </ul>
                 </div>
             </nav>
@@ -115,21 +193,35 @@
                     </div>
                     <div class="col-sm-6 p-4 mt-5 mb-3 ct-right" >
                         <h2 class="text-center mb-4">THÔNG TIN LIÊN HỆ</h2>
+                    
                         <form action="" method="post">
                             <div class="info mb-3 d-flex flex-wrap">
-                                <input type="text" class="me-3" name="" id="" placeholder="Họ và Tên">
-                                <input type="email" name="" id="" placeholder="Email">
+                                <input type="text" class="me-3" name="Hoten" id="" placeholder="Họ và Tên">
+                                <input type="email" name="Email" id="" placeholder="Email">
                             </div>
                             <div class="info mb-3 d-flex">
-                                <input type="text" name="" id="" placeholder="Số điện thoại">
+                                <input type="text" name="Sodt" id="" placeholder="Số điện thoại">
                             </div>
                             <div class="info mb-3 d-flex">
-                                <textarea name="" id="" cols="70" rows="5" placeholder="Lời nhắn"></textarea>
+                                <textarea name="Loinhan" id="" cols="70" rows="5" placeholder="Lời nhắn"></textarea>
                             </div>
                             <div class="send d-flex mb-3 justify-content-center">
-                               <input type="submit" class="" value="Gửi">
+                               <input type="submit" class="" name="sbmgui" value="Gửi">
                             </div>
                         </form>
+                        <?php
+					if (isset($_POST['sbmgui']))
+					{
+						if(empty($_POST['Hoten'])||empty($_POST["Email"]) || empty($_POST["Loinhan"]))
+						echo"<script>alert('Thông tin không được để trống');</script>";
+						else{
+							$insert=$get_data->in_contact($_POST['Hoten'],$_POST['Email'],$_POST['Sodt'],$_POST['Loinhan']);
+					   	 if($insert)echo"<script>alert('Thông tin đã được gửi');</script>";
+					   	 else echo"<script> alert ('Lỗi xin thử lại')</script>";
+
+						}
+					}
+				?>
                     </div>
                 </div>
             </div>

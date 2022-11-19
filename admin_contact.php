@@ -39,10 +39,10 @@ if(empty($_SESSION["email"])){
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown">SẢN PHẨM</a>
                             <ul class="dropdown-menu mt-3 p-2 fade">
-                              <li><a class="dropdown-item text-dark " href="manager-dog.php">CHÓ</a></li>
-                              <li><a class="dropdown-item text-dark" href="manager-cat.php">MÈO</a></li>
-                              <li><a class="dropdown-item text-dark" href="manager-food-dog.php">ĐỒ ĂN CHO CHÓ</a></li>
-                              <li><a class="dropdown-item text-dark" href="manafer-food-cat.php">ĐỒ ĂN CHO MÈO</a></li>
+                              <li><a class="dropdown-item text-dark " href="food-dog.php">CHÓ</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-cat.php">MÈO</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-dog.php">ĐỒ ĂN CHO CHÓ</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-cat.php">ĐỒ ĂN CHO MÈO</a></li>
                               <li><a class="dropdown-item text-dark" href="pk.php">PHỤ KIỆN</a></li>
                               
                             </ul>
@@ -70,6 +70,7 @@ if(empty($_SESSION["email"])){
                       </ul>
                     </div>
                 </div>
+
             </nav>
               
         </div>
@@ -80,45 +81,40 @@ if(empty($_SESSION["email"])){
               <div class="list-customer">
                 
                 <div class="container p-3">
-                  <h4 class="text-dark text-center">DANH SÁCH KHÁCH HÀNG || <a href="admin_customer_add.php" id="t">Thêm khách hàng</a></h4>
+                  <h4 class="text-dark text-center">Danh sách BLOG </h4>
                   <input class="form-control mt-5 mb-3" id="myInput" type="text" placeholder="Tìm kiếm khách hàng">
                   <br>
                   <table class="table table-bordered table-striped .table-responsive">
                     <thead class="table-dark">
                       <tr>
-                        <th>Mã khách hàng</th>
-                        <th>Họ tên</th>
+                        <th>ID contact</th>
+                        <th>Họ tên khách</th>
                         <th>Email</th>
-                        <th>Địa chỉ</th>
-                        <th>SĐT</th>
-                        <th>Giới tính</th>
-                        <th>Ngày sinh</th>
-                        <th colspan="2">Thao tác</th>
+                        <th>Số điện thoại</th>
+                        <th>Nội dung</th>
+                        <th>Thao tác</th>
                       </tr>
                       <?php 
                       include("control.php");
                       $get_data=new data();
-                      $select_user=$get_data->select_user();
-                      foreach($select_user as $se){
+                      $select_contact=$get_data->se_contact();
+                      foreach($select_contact as $se){
                       ?>
 
                     </thead>
-                    <tbody id="myTable">
+                    <tbody id="myTable" class="text-dark">
                       <tr>
-                        <td><?php echo $se['id_kh']?></td>
+                        <td><?php echo $se['id_lh']?></td>
                         <td><?php echo $se['Hoten']?></td>
                         <td><?php echo $se['Email']?></td>
-                        <td><?php echo $se['Diachi']?></td>                        
-                        <td><?php echo $se['Sodienthoai']?></td>
-                        <td><?php echo $se['Gioitinh']?></td>
-                        <td><?php echo $se['Ngaysinh']?></td>
-                        <td><a href="admin_customer_edit.php?edit=<?php echo $se['id_kh']?>"><i class="fa fa-home text-primary " style="font-size:24px"></i></a></td>
-                        <td><a href="admin_customer_delete.php?delete=<?php echo $se['id_kh']?>"><i class="fa fa-minus-square text-danger mt-1" style="font-size:20px"></i></a></td>
+                        <td><?php echo $se['Sodt']?></td>
+                        <td><?php echo $se['Loinhan']?></td>                        
+                        <td><a href="delete_contact.php?delete=<?php echo $se['id_lh']?>" onclick="return(confirm('Are you sure delete ?'))"><i class="fa fa-minus-square text-danger mt-1" style="font-size:20px"></i></a></td>
                       </tr>
-                      
                       <?php
                       }
                       ?>
+                    </tbody>
                     </tbody>
                   </table>
                 </div>

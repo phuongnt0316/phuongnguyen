@@ -92,7 +92,9 @@ location.href = 'login.php';
                         <li class="nav-item">
                             <a class="nav-link" href="contact.php">LIÊN HỆ</a>
                         </li>
-                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.php">BLOG</a>
+                        </li>
                       </ul>
                     </div>
                 </div>

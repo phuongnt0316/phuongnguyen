@@ -33,7 +33,7 @@
                           <a class="nav-link" href="cat.php">MÈO CẢNH</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="food.php" role="button" data-bs-toggle="dropdown">ĐỒ ĂN</a>
+                            <a class="nav-link dropdown-toggle" style="color: var(--main-color-1);" href="food.php" role="button" data-bs-toggle="dropdown">ĐỒ ĂN</a>
                             <ul class="dropdown-menu mt-3 p-2 fade">
                               <li><a class="dropdown-item text-dark " href="food-dog.php">Đồ ăn cho chó</a></li>
                               <li><a class="dropdown-item text-dark" href="food-cat.php">Đồ ăn cho mèo</a></li>
@@ -44,6 +44,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.php">LIÊN HỆ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.php">BLOG</a>
                         </li>
                         
                       </ul>

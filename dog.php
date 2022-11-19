@@ -37,6 +37,9 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
 .chose form a:hover{
   background: #a73963;
 }
+.activ{
+    color: var(--main-color-1);
+ }
 </style>
 <body>
     <div class="content">
@@ -54,7 +57,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                           <a class="nav-link" href="intro.php">GIỚI THIỆU</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="dog.php">CHÓ CẢNH</a>
+                          <a class="nav-link activ" href="dog.php" style="color: var(--main-color-1);">CHÓ CẢNH</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="cat.php">MÈO CẢNH</a>
@@ -71,6 +74,9 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.php">LIÊN HỆ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.php">BLOG</a>
                         </li>
                         
                       </ul>
@@ -205,13 +211,16 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
             <div class="row ms-1 mt-2">
               <div class="col-sm-3">
                 <div class="category">
-                  <div class="first-category">
+                <div class="first-category">
                       <p class="title-2 text-dark"><b>DANH MỤC SẢN PHẨM</b></p>
-                      <<div class="dm p-1"><a href="dog.php" >Chó cảnh</a></div>
+                      <div class="type p-2">
+                          <div class="dm p-1"><a href="dog.php" >Chó cảnh</a></div>
                           <div class="dm p-1"><a href="cat.php" >Mèo cảnh</a></div>
                           <div class="dm p-1"><a href="food-dog.php" >Thức ăn chó</a></div>
                           <div class="dm p-1"><a href="food-cat.php" >Thức ăn mèo</a></div>
                           <div class="dm p-1"><a href="pk.php" >Phụ kiện</a></div>
+                          
+                      </div>
                   </div>
                  
                   <div class="first-category text-dark mt-3">
