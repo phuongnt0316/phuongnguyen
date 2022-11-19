@@ -57,7 +57,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                           <a class="nav-link" href="dog.php">CHÓ CẢNH</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="cat.php">MÈO CẢNH</a>
+                          <a class="nav-link" href="cat.php" style="color: var(--main-color-1);">MÈO CẢNH</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="food.php" role="button" data-bs-toggle="dropdown">ĐỒ ĂN</a>
@@ -71,6 +71,9 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.php">LIÊN HỆ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.php">BLOG</a>
                         </li>
                         
                       </ul>

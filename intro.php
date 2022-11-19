@@ -24,7 +24,7 @@
                     <div class="collapse navbar-collapse" id="mynavbar">
                       <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                          <a class="nav-link" href="intro.php">GIỚI THIỆU</a>
+                          <a class="nav-link" href="intro.php" style="color: var(--main-color-1);">GIỚI THIỆU</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="dog.php">CHÓ CẢNH</a>
@@ -45,7 +45,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="contact.php">LIÊN HỆ</a>
                         </li>
-                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.php">BLOG</a>
+                        </li>
                       </ul>
                     </div>
                 </div>

@@ -325,3 +325,6 @@ nav .menu-2 ul li a{
  .blog .bl-content a:hover{ 
     background: var(--main-color1-hover);
  }
+ .activ{
+    color: var(--main-color-1);
+ }

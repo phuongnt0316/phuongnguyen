@@ -75,6 +75,9 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                         <li class="nav-item">
                             <a class="nav-link" href="contact.php">LIÊN HỆ</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.php" style="color: var(--main-color-1);">BLOG</a>
+                        </li>
                         
                       </ul>
                     </div>
