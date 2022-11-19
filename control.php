@@ -332,7 +332,6 @@ public function get_loai(){
     $run=mysqli_query($conn,$sql);
     return $run;
  }
-<<<<<<< HEAD
  //donhang
  public function get_donhang(){
     global $conn;
@@ -342,8 +341,6 @@ public function get_loai(){
 
  }
  
-=======
-
 //  ---------------------------blog------------------------
 public function select_blogad(){
     global $conn;
@@ -395,5 +392,28 @@ public function update_blog($Ten_blog,$s_blog,$l_blog,$Ngaydang,$Anh,$id_blog){
             $run=mysqli_query($conn,$sql);
             return $run;
 }
->>>>>>> 9b86d8200364986e4a16be31df9e110a50ae2668
+
+// ------------------------contact-------------------
+public function in_contact($Hoten,$Email,$Sodt,$Loinhan){
+    global $conn;
+    $sql="insert into lienhe (Hoten,Email,Sodt,Loinhan) 
+    values('$Hoten','$Email','$Sodt','$Loinhan')";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+
+}
+public function se_contact(){
+    global $conn;
+    $sql="select * from lienhe";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+
+}
+public function delete_contact($id_lh){
+    global $conn;
+    $sql="delete from lienhe where id_lh='$id_lh'";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+
+}
 }

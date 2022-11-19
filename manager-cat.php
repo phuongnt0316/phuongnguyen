@@ -11,6 +11,7 @@ if(empty($_SESSION["email"])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style/style.css">
@@ -71,15 +72,9 @@ if(empty($_SESSION["email"])){
         </div>
         <!-- --------------------------------body--------------------------------- -->
           <div class="main d-flex">
-            <div class="menu-left p-2">
-              <h5 class="">Quản lý bán hàng</h5>
-              <ul>
-                
-              </ul>
-            </div>
             <div class="main-right">
-              <div class="list-customer">
-                <div class="container p-3">
+              <div class="list-customer mt-3">
+                <div class="container p-3 ms-4">
                   <h4 class="text-dark text-center">DANH SÁCH SẢN PHẨM - MÈO CẢNH || <a href="admin_pet_meoadd.php">Thêm Thú cưng</a></h4>
                   <input class="form-control" id="myInput" type="text" placeholder="Tìm kiếm khách hàng">
                   <br>
@@ -125,8 +120,8 @@ if(empty($_SESSION["email"])){
                         <td><img src="img/<?php echo $se['Anh1'] ?>" alt="" width="50px"></td>
                         <td><img src="img/<?php echo $se['Anh2'] ?>" alt="" width="50px"></td>
                         <td><?php echo $se["Trangthai"] ?></td>
-                        <td><a href="updatecat.php?id=<?php echo $se["id_dv"] ?>">Sửa</a></td>
-                        <td><a href="#">Xóa</a></td>
+                        <td><a href="updatecat.php?id=<?php echo $se["id_dv"] ?>"><i class="fa fa-home text-primary " style="font-size:24px"></i></a></td>
+                        <td><a href="#"><i class="fa fa-minus-square text-danger mt-1" style="font-size:20px"></i></a></td>
                       </tr>
                       <?php } ?>
                       

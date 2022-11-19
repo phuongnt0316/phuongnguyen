@@ -72,7 +72,7 @@ $id_cat=$_GET["id"];
               
         </div>
         <!-- --------------------------------body--------------------------------- -->
-        div class="main d-flex justify-content-center">
+        <div class="main d-flex justify-content-center">
              <?php 
              include('control.php');
             $get_data=new data();
@@ -172,11 +172,11 @@ $id_cat=$_GET["id"];
                             
                         <tr>
                             <td><label for="anh1">Ảnh 1</label></td>
-                            <td><img src="img/<?php echo $cat['Anh1'] ?>" alt=""><input type="file" name="txtFile1" id="anh1" ></td>
+                            <td><img src="img/<?php echo $cat['Anh1'] ?>" alt="" width="300px" height="250px" class="me-3"><input type="file" name="txtFile1" id="anh1" ></td>
                         </tr>
                         <tr>
                             <td><label for="anh2">Ảnh 2</label></td>
-                            <td><img src="img/<?php echo $cat['Anh2'] ?>" alt=""> <input type="file" name="txtFile2" id="anh2" ></td>
+                            <td><img src="img/<?php echo $cat['Anh2'] ?>" alt="" width="300px" height="250px" class="me-3"> <input type="file" name="txtFile2" id="anh2" ></td>
                         
                         </tr>
                         <tr>
