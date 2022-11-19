@@ -271,6 +271,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
               <div class="col-sm-9 ">
                 <div class="product container-fluid ">
                   <div class="menu-product d-flex flex-wrap justify-content-around mt-3">
+                    <p>xĩnhao</p>
                   <?php
                         
                         $getdog=$get_data->get_cho();
