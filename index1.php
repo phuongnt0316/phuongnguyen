@@ -305,54 +305,25 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
             <div class="product cat container-fluid mt-5">
               <h2 class="title text-dark text-center">Đồ ăn và phụ kiện</h2>
               <div class="menu-product d-flex flex-wrap justify-content-around">
+                <?php $get_pk=$get_data->get_phukien();
+                foreach($get_pk as $pk){
+                  $tensp=$get_data->get_tenloaisp($pk["Maloaisanpham"]);
+                  foreach($tensp as $ten){ $tenloaisp=$ten["Tenloaisanpham"];}
+                 ?>
                 <div class="item-product text-center mb-5">
                   <div class="images-item">
-                    <img src="images/food/f-1.jpg" alt="">
+                    <img src="img/<?php echo $pk["Hinhanh"] ?>" alt="">
                   </div>
                   <div class="title-item">
-                    <p class="item-kind">Chó cảnh <br></p>
-                   <p class="item-name"><b>Chó Alasca trắng đen</b></p>
+                    <p class="item-kind"><?php echo $tenloaisp; ?> <br></p>
+                   <p class="item-name"><b><?php echo $pk["Tensanpham"] ?></b></p>
                   </div>
                   <div class="price-item mb-1">
-                    <span class="price"><b>Gía: 5000000</b></span>
+                    <span class="price"><b>Giá: <?php echo $pk["Dongiaban"] ?></b></span>
                   </div>
                 </div>
-                <div class="item-product text-center mb-5">
-                  <div class="images-item">
-                    <img src="images/food/f-2.jpg" alt="">
-                  </div>
-                  <div class="title-item">
-                    <p class="item-kind">Chó cảnh <br></p>
-                   <p class="item-name"><b>Chó Alasca trắng đen</b></p>
-                  </div>
-                  <div class="price-item mb-1">
-                    <span class="price"><b>Gía: 5000000</b></span>
-                  </div>
-                </div>
-                <div class="item-product text-center mb-5">
-                  <div class="images-item">
-                    <img src="images/food/f-3.jpg" alt="">
-                  </div>
-                  <div class="title-item">
-                    <p class="item-kind">Chó cảnh <br></p>
-                   <p class="item-name"><b>Chó Alasca trắng đen</b></p>
-                  </div>
-                  <div class="price-item mb-1">
-                    <span class="price"><b>Gía: 5000000</b></span>
-                  </div>
-                </div>
-                <div class="item-product text-center mb-5">
-                  <div class="images-item">
-                    <img src="images/food/f-4.jpg" alt="">
-                  </div>
-                  <div class="title-item">
-                    <p class="item-kind">Chó cảnh <br></p>
-                   <p class="item-name"><b>Chó Alasca trắng đen</b></p>
-                  </div>
-                  <div class="price-item mb-1">
-                    <span class="price"><b>Gía: 5000000</b></span>
-                  </div>
-                </div>
+                <?php } ?>
+                
                 
               </div>
               <div class="xt mt-3 text-center"><button class="btn">Xem thêm</button></div>

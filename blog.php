@@ -195,7 +195,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
         <div id="body">
           <div class="container-fluid text-dark">
             <?php 
-                $quyen;
+                $quyen=1;
                 $getblog=$get_data->select_blog($quyen);
                 foreach($getblog as $se_blog){
             ?>

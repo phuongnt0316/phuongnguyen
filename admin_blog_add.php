@@ -127,7 +127,7 @@ $get_data=new data();
                 <div class="container p-3 ms-5">
                   <h4 class="text-dark text-center">Thêm mới blog || <a href="admin_blog.php">Quay lại</a></h4>
                   <br>
-                  <form action="" method="post" class="form-info text-dark me-5">
+                  <form action="" enctype="multipart/form-data" method="post" class="form-info text-dark me-5">
                     <table>
                         
                         <tr>
@@ -148,11 +148,6 @@ $get_data=new data();
                             <textarea name="txtl_blog" id="noidung" cols="58" rows="5" placeholder="Nội dung"></textarea>
                           </td>
                       </tr>
-                      
-                    <tr>
-                      <td><label for="ngaydang" class="">Ngày Đăng</label></td>
-                      <td><input type="date" name="txtNgaydang" id="" placeholder="Ngày đăng"></td>
-                    </tr>
                     <tr>
                             <td><label for="anh">Ảnh</label></td>
                             <td><input type="file" name="txtFile" id="anh" ></td>
@@ -160,7 +155,7 @@ $get_data=new data();
                     
                         <tr>
                             <td colspan="2" >
-                            <input type="submit" name="btnthem" class=" sd text-right" value="Thêm">
+                            <input type="submit" name="btnThem" class=" sd text-right" value="Thêm">
                             </td>
                         </tr>
                         
@@ -169,10 +164,9 @@ $get_data=new data();
                   </form>
                   <?php
                  if(isset($_POST["btnThem"])){
-                      //VALUES ('$id_dv', '$Tenthucung', '$Maloai', '$Machungloai', '$Kieulong', '$Mucdichnuoi', '$Kichthuoc', '$Dongia', '$Mucdophobien', '$Thongtinthem', '$Anh1', '$Anh2')";
                       move_uploaded_file($_FILES['txtFile']['tmp_name'],"img/". $_FILES['txtFile']['name']);
-                      $insert=$get_data->add_blog($_POST['txtTen_blog'],$_POST['txts_blog'],$_POST['txtl_blog'],$_POST['txtNgaydang'],$_FILES['txtFile']['name']);
-                  
+                      $insert=$get_data->add_blog($_POST['txtTen_blog'],$_POST['txts_blog'],$_POST['txtl_blog'],$_FILES['txtFile']['name']);
+                    
                       if($insert){
                         ?> <script>
                         location.href = 'admin_blog.php';
