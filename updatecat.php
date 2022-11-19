@@ -162,11 +162,11 @@ $id_cat=$_GET["id"];
                         </tr>
                         <tr>
                             <td><label for="mota">Mô tả</label></td>
-                            <td><textarea name="txtMota" id="" cols="57.5" rows="5" ><?php $cat["Thongtinthem"]?></textarea></td>
+                            <td><textarea name="txtMota" id="" cols="57.5" rows="5" ><?php echo $cat["Thongtinthem"]?></textarea></td>
                         </tr>
                         <tr>
                             <td><label for="gia">Giá</label></td>
-                            <td><input type="text" name="txtDongia" id="gia" value="<?php $cat["Dongia"]?>"></td>
+                            <td><input type="text" name="txtDongia" id="gia" value="<?php echo $cat["Dongia"]?>"></td>
                         </tr>
                         
                             
@@ -191,16 +191,17 @@ $id_cat=$_GET["id"];
                   </form>
                   <?php
                  if(isset($_POST["btnSua"])){
-                     $check_id=$get_data->check_idcho($_POST["txtId"]);
+                    move_uploaded_file($_FILES['txtFile1']['tmp_name'],"img/". $_FILES['txtFile1']['name']);
+                    move_uploaded_file($_FILES['txtFile2']['tmp_name'],"img/". $_FILES['txtFile2']['name']);
+
                      if (empty($_FILES['txtFile1']['name'])){
                         $_FILES['txtFile1']['name']=$anh1;
                     }
+                    
                     if (empty($_FILES['txtFile2']['name'])){
                         $_FILES['txtFile2']['name']=$anh2;
-                    }
-                      move_uploaded_file($_FILES['txtFile1']['tmp_name'],"img/". $_FILES['txtFile1']['name']);
-                      move_uploaded_file($_FILES['txtFile2']['tmp_name'],"img/". $_FILES['txtFile2']['name']);
-                      $update=$get_data->updatecat($id_cat,$_POST['txtTen'],$maloai,$_POST['txtTenchungloai'],$_POST['txtDongia'],$_POST['txtKieulong'],$_POST['txtMausac'],$_POST['txtDorunglong'],$_POST['txtVengoai'],$_POST['txtPhobien'],$_POST['txtMota'],$_FILES['txtFile1']['name'],$_FILES['txtFile2']['name']);
+                    } 
+                      $update=$get_data->update_meo($id_cat,$_POST['txtTen'],$maloai,$_POST['txtTenchungloai'],$_POST['txtDongia'],$_POST['txtKieulong'],$_POST['txtMausac'],$_POST['txtDorunglong'],$_POST['txtVengoai'],$_POST['txtPhobien'],$_POST['txtMota'],$_FILES['txtFile1']['name'],$_FILES['txtFile2']['name']);
                   
                       if($update){
                         ?> <script>

@@ -207,12 +207,11 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                 <div class="category">
                   <div class="first-category">
                       <p class="title-2 text-dark"><b>DANH MỤC SẢN PHẨM</b></p>
-                      <div class="type p-2">
-                          <div class="dm p-1"><a href="dog.php" >Chó cảnh</a></div>
-                          
-                          <div class="dm p-1"><a href="dog.php" >Mèo cảnh</a></div>
-                          
-                      </div>
+                      <<div class="dm p-1"><a href="dog.php" >Chó cảnh</a></div>
+                          <div class="dm p-1"><a href="cat.php" >Mèo cảnh</a></div>
+                          <div class="dm p-1"><a href="food-dog.php" >Thức ăn chó</a></div>
+                          <div class="dm p-1"><a href="food-cat.php" >Thức ăn mèo</a></div>
+                          <div class="dm p-1"><a href="pk.php" >Phụ kiện</a></div>
                   </div>
                  
                   <div class="first-category text-dark mt-3">
@@ -227,42 +226,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                                 <p>200$</p>
                             </div>
                         </div>
-                        <div class="type-of">
-                              <div class="type-img">
-                                  <a href=""><img src="images/cat/cat-1.jpg" alt=""></a>
-                              </div>
-                           <div class="type-des">
-                               <a href="">Chó alaska</a>
-                               <p>200$</p>
-                           </div>
-                          </div>
-                          <div class="type-of">
-                              <div class="type-img">
-                                <a href=""><img src="images/cat/cat-2.jpg" alt=""></a>
-                              </div>
-                              <div class="type-des">
-                                  <a href="">Thức ăn cho chó</a>
-                                  <p>200$</p>
-                              </div>
-                          </div>
-                          <div class="type-of">
-                              <div class="type-img">
-                                <a href=""><img src="images/cat/cat-8.jpg" alt=""></a>
-                              </div>
-                              <div class="type-des">
-                                  <a href="">Mèo Anh - tai cụp</a>
-                                  <p>200$</p>
-                              </div>
-                          </div>
-                          <div class="type-of">
-                              <div class="type-img">
-                                <a href=""><img src="images/cat/cat-8.jpg" alt=""></a>
-                              </div>
-                              <div class="type-des">
-                                  <a href="">Mèo ta</a>
-                                  <p>200$</p>
-                              </div>
-                          </div>
+                        
                           
                       </div>
                   </div>

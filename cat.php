@@ -209,8 +209,10 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                       <p class="title-2 text-dark"><b>DANH MỤC SẢN PHẨM</b></p>
                       <div class="type p-2">
                           <div class="dm p-1"><a href="dog.php" >Chó cảnh</a></div>
-                          
-                          <div class="dm p-1"><a href="dog.php" >Mèo cảnh</a></div>
+                          <div class="dm p-1"><a href="cat.php" >Mèo cảnh</a></div>
+                          <div class="dm p-1"><a href="food-dog.php" >Thức ăn chó</a></div>
+                          <div class="dm p-1"><a href="food-cat.php" >Thức ăn mèo</a></div>
+                          <div class="dm p-1"><a href="pk.php" >Phụ kiện</a></div>
                           
                       </div>
                   </div>
