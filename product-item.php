@@ -309,7 +309,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
 
                             </form>
                           </div>
-                          <h5 class="description mt-4" style="text-align: justify;"><?php echo $se_if["Thongtinthem"] ?></h5>
+                          <p class="description mt-4" style="text-align: justify;"><?php echo $se_if["Thongtinthem"] ?></p>
 
                       </div>
                     </div>

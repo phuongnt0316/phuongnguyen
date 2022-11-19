@@ -257,7 +257,7 @@ location.href = 'login.php';
                       foreach($get_cart as $p){
                        ?>
                       <tr>
-                        <td><?php echo $p["Tenthucung"]." * ".$p["Soluong"] ?> <span class="soluong">2</span></td>
+                        <td><?php echo $p["Tenthucung"]." * ".$p["Soluong"] ?> <span class="soluong"></span></td>
                         <td><b><?php echo $p["Tong"]?> </b></td>
                       </tr>
                       <?php } 
