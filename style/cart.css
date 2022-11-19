@@ -27,9 +27,7 @@
 #body .cart form .link input[type="submit"]:hover{
     background: var(--main-color-3hover);
 }
-.pay .pay-left {
-  
-}
+
 .pay .pay-left form table tr td input[type="text"],
 .pay .pay-left form table tr td textarea
 {

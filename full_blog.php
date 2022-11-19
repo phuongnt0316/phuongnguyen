@@ -6,6 +6,7 @@ $get_data=new data();
 if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
   $getdata=$get_data->login_user($_SESSION["email"],$_SESSION["pass"]);
   foreach($getdata as $sel){
+    $idkh=$sel["id_kh"];
       $_SESSION["hoten"]=$sel["Hoten"];
   }
 
@@ -23,13 +24,29 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
     <link rel="stylesheet" href="style/style.css">
     <title>Document</title>
 </head>
-
+<style>
+ .blog .img img{
+    border-radius: 3px
+ }
+ .blog .bl-content a{
+    background: var(--main-color-1);
+    text-decoration:none;
+    padding: 15px 30px;
+    width: 200px;
+    height: 40px;
+    border: none;
+    color: var(--color-3);
+ }
+ .blog .bl-content a:hover{ 
+    background: var(--main-color1-hover);
+ }
+</style>
 <body>
     <div class="content">
         <div id="header">
             <nav class=" container-fluid p-2 navbar-expand-sm navbar-dark bg-dark d-flex align-items-center justify-content-between">
                 <div class="ms-3">
-                  <a class="navbar-brand" href="index1.php">
+                  <a class="navbar-brand" href="index.php">
                     <img src="images/logo.png" alt="">
                   </a>
                 </div>
@@ -58,9 +75,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                         <li class="nav-item">
                             <a class="nav-link" href="contact.php">LIÊN HỆ</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="blog.php">BLOG</a>
-                        </li>
+                        
                       </ul>
                     </div>
                 </div>
@@ -71,17 +86,8 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                                 <li>
                                     <form action="" method="get">
                                         <input type="search" name="txtsearch" placeholder="Tìm kiếm ....">
-                                        <input type="submit" name="btm" value="Tìm kiếm">
+                                        <input type="submit" name="btm" value="Search">
                                     </form>
-                                    <?php
-                                    if(isset($_POST["txtsearch"])){
-                                      ?>
-                                      <script>
-                                      location.href = "search.php?search=<?php echo $_POST['txt_search'];?>";
-                                      </script>
-                                    <?php
-                                    }
-                                    ?>
                                         
                                 </li>
                             </ul>
@@ -174,193 +180,41 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                             
                             ?>
                             <li><?php echo $_SESSION["hoten"]?></li>
-                            <li><a href="logout.php" class="text-white">Đăng xuất</a></li> 
+                            <li><a href="logout.php">Đăng xuất</a></li> 
                             <?php }?>
-                        <li><a href="cart.php"><i class="fa fa-shopping-cart" name="btn_cart" ></i></a></li>
-                       
+                        <li><a  href="carts.php"><i class="fa fa-shopping-cart" ></i></a></li>
                     </ul>
                 </div>
             </nav>
+              
         </div>
-        <div id="demo" class="carousel slide" data-bs-ride="carousel">
-
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-          </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="images/benner2.png" alt="New York" class="d-block" style="width:100% ; height: 600px;">
-            </div>
-            <div class="carousel-item">
-              <img src="images/benner5.jpg" alt="Los Angeles" class="d-block" style="width:100%; height: 600px;">
-            </div>
-            <div class="carousel-item">
-              <img src="images/pr.jpg" alt="Chicago" class="d-block" style="width:100% ; height: 600px;">
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-          </button>
-        </div>
-  <!-- ----------------------------------------------------------------------------- -->
-        <div class="container-fluid discount">
-          <div class="row p-5">
-            <div class=" d-flex col-sm-3 text-center  align-items-center">
-              <i class="fa fa-rocket me-3" ></i>
-                <span><b>FREE SHIPPING </b> <br> Order Over $150</span>
-            </div>
-              <div class=" b1 p-2 d-flex col-sm-3 text-center align-items-center">
-                <i class="fa fa-money me-3" ></i>
-                <span> <b>15% DISCOUNT</b> <br> For first order</span>
+        <!-- --------------------------------body--------------------------------- -->
+        <div id="body">
+          <div class="container-fluid text-dark">
+            <?php 
+                $id_blog=$_GET['id'];
+                $getfullblog=$get_data->select_fullblog($id_blog);
+                foreach($getfullblog as $fullblog){
+            ?>
+            <div class="blog mt-5  d-flex justify-content-between mb-5">
+              <div class="img me-5">
+                <img src="img/<?php echo $fullblog['Anh'] ?>" alt="" width="450px" height="350px">
               </div>
-              <div class=" b2 p-2 d-flex col-sm-3 text-center align-items-center">
-                <i class="fa fa-credit-card me-3" ></i> 
-                <span> <b>SECURE PAYMENT</b> <br> Confirmed</span>
+              <div class="pe-5 bl-content">
+                <h5><b><?php echo $fullblog['Ten_blog'] ?></b></h5>
+                <p>Date: <?php echo $fullblog['Ngaydang']?></p>
+                <p class="mb-5" style="text-align: justify;"><?php echo $fullblog['l_blog']?></p>
+                <a href="blog.php" >Quay lại</a>
               </div>
-              <div class="b3 p-2 d-flex col-sm-3 text-center align-items-center ">
-                <i class="fa fa-gift me-3" ></i> <span><b> AWESOME GIFT</b><br>Every Month</span> 
-              </div>
+              
+            </div>
+            <?php
+                }
+            ?> 
           </div>
         </div>
-        
-  <!-- --------------------------------body--------------------------------- -->
-  <div id="body" class="mt-5">
-  <div class="product cat container-fluid mt-5">
-              <h2 class="title text-dark text-center">Chó Cảnh</h2>
-              <div class="menu-product d-flex flex-wrap justify-content-around">
-              <?php
-                        
-                        $getdog=$get_data->get_cho();
-                        foreach($getdog as $se_dog){
 
-                        ?>
-                    <div class="item-product text-center mb-5">
-                      <a href="product-item.php?id=<?php echo $se_dog['id_dv'];?>&maloai=<?php echo $se_dog['Maloai']?>" class="more" style={text-decoration:none;color:black;}>
-                      <div class="images-item">
-                        <img src="img/<?php echo $se_dog['Anh1'] ?>" alt="" width=" 300px" height= "350px">
-                      </div>
-                      <div class="title-item mt-3">
-                        <p class="item-kind"><?php echo $se_dog['Tenthucung']."-".$se_dog['id_dv'] ?><br></p>
-                       
-                      </div>
-                      <div class="price-item mb-2">
-                        <span class="price"><b><?php echo $se_dog['Dongia'] ?> đ</b></span>
-                        
-                      </div>
-                      </a>
-                    </div>
-                    <?php
-                        }
-                    ?> 
-                
-              </div>
-              <div class="xt mt-3 text-center "><button class="btn">Xem thêm</button></div>
-            </div>
-            <!-- --------------------------cat---------------------------------- -->
-            <div class="pr">
-              <img src="images/penner-2.jpg" alt="">
-            </div>
-            <div class="product cat container-fluid mt-5">
-              <h2 class="title text-dark text-center">Mèo Cảnh</h2>
-              <div class="menu-product d-flex flex-wrap justify-content-around">
-              <?php
-                        
-                        $getcat=$get_data->get_meo();
-                        foreach($getcat as $se_cat){
-
-                        ?>
-                    <div class="item-product text-center mb-5">
-                    <a href="product-item.php?id=<?php echo $se_cat['id_dv'];?> &maloai=<?php echo $se_cat['Maloai'];?>" class="more">
-                      <div class="images-item">
-                        <img src="img/<?php echo $se_cat['Anh1'] ?>" alt="">
-                      </div>
-                      <div class="title-item mt-3">
-                        <p class="item-kind"><?php echo $se_cat['Tenthucung']."-".$se_cat['id_dv'] ?><br></p>
-                       
-                      </div>
-                      <div class="price-item mb-2">
-                        <span class="price"><b><?php echo $se_cat['Dongia'] ?> đ</b></span>
-                        
-                      </div>
-                      </a>
-                    </div>
-                    <?php
-                        }
-                    ?> 
-                
-              </div>
-              <div class="xt mt-3 text-center"><button class="btn">Xem thêm</button></div>
-            </div>
-
-            <!-- ---------------------------------food----------------------------- -->
-            <div class="pr-1 d-flex mt-5">
-              <img src="images/pr-2.jpg" alt="">
-              <img src="images/pr-3.jpg" alt="">
-            </div>
-            <div class="product cat container-fluid mt-5">
-              <h2 class="title text-dark text-center">Đồ ăn và phụ kiện</h2>
-              <div class="menu-product d-flex flex-wrap justify-content-around">
-                <div class="item-product text-center mb-5">
-                  <div class="images-item">
-                    <img src="images/food/f-1.jpg" alt="">
-                  </div>
-                  <div class="title-item">
-                    <p class="item-kind">Chó cảnh <br></p>
-                   <p class="item-name"><b>Chó Alasca trắng đen</b></p>
-                  </div>
-                  <div class="price-item mb-1">
-                    <span class="price"><b>Gía: 5000000</b></span>
-                  </div>
-                </div>
-                <div class="item-product text-center mb-5">
-                  <div class="images-item">
-                    <img src="images/food/f-2.jpg" alt="">
-                  </div>
-                  <div class="title-item">
-                    <p class="item-kind">Chó cảnh <br></p>
-                   <p class="item-name"><b>Chó Alasca trắng đen</b></p>
-                  </div>
-                  <div class="price-item mb-1">
-                    <span class="price"><b>Gía: 5000000</b></span>
-                  </div>
-                </div>
-                <div class="item-product text-center mb-5">
-                  <div class="images-item">
-                    <img src="images/food/f-3.jpg" alt="">
-                  </div>
-                  <div class="title-item">
-                    <p class="item-kind">Chó cảnh <br></p>
-                   <p class="item-name"><b>Chó Alasca trắng đen</b></p>
-                  </div>
-                  <div class="price-item mb-1">
-                    <span class="price"><b>Gía: 5000000</b></span>
-                  </div>
-                </div>
-                <div class="item-product text-center mb-5">
-                  <div class="images-item">
-                    <img src="images/food/f-4.jpg" alt="">
-                  </div>
-                  <div class="title-item">
-                    <p class="item-kind">Chó cảnh <br></p>
-                   <p class="item-name"><b>Chó Alasca trắng đen</b></p>
-                  </div>
-                  <div class="price-item mb-1">
-                    <span class="price"><b>Gía: 5000000</b></span>
-                  </div>
-                </div>
-                
-              </div>
-              <div class="xt mt-3 text-center"><button class="btn">Xem thêm</button></div>
-            </div>
-            
-        </div>
-        
-  <!-- -------------------------------------footer---------------------------------- -->
+        <!-- -------------------------------------footer-------------------------- -->
         <div id="footer">
             <div class="container-fluid ft">
                 <div class="row">
@@ -375,8 +229,9 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                         </ul>
                     </div>
                     <div class="col-sm-6 center align-center">
-                        <div class="logo-1 text-center mb-5">
+                        <div class="logo-1 text-center mb-3 text-white">
                             <img src="images/logo.png" alt="">
+                            <p class="mt-3">Nơi gửi gắm niềm tin về vẻ đẹp thú cưng</p>
                         </div>
                         <div class="text-center">
                             <form action="" method="get">

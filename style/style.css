@@ -310,3 +310,18 @@ nav .menu-2 ul li a{
     height: 40px;
     padding: 15px;
 }
+.blog .img img{
+    border-radius: 3px
+ }
+ .blog .bl-content a{
+    background: var(--main-color-1);
+    text-decoration:none;
+    padding: 15px 30px;
+    width: 200px;
+    height: 40px;
+    border: none;
+    color: var(--color-3);
+ }
+ .blog .bl-content a:hover{ 
+    background: var(--main-color1-hover);
+ }
