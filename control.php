@@ -243,6 +243,14 @@ public function update_cho($id_dv, $Tenthucung, $Maloai, $Machungloai, $Kieulong
     $run =mysqli_query($conn,$sql);
     return $run;
 }
+public function update_meo($id_dv, $Tenthucung, $Maloai, $Machungloai, $Dongia, $Kieulong, $Mausac, $Mucdorunglong, $Mucdophobien, $Vengoai, $Thongtinthem, $Anh1, $Anh2){
+    global $conn;
+    $sql="update thucung_meo set Tenthucung='$Tenthucung',Maloai='$Maloai',$Machungloai='$Machungloai',Kieulong='$Kieulong',Mausac='$Mausac',
+    Mucdonrunglong='$Mucdorunglong',Vengoai='$Vengoai',
+    Dongia=$Dongia,Mucdophobien='$Mucdophobien', Thongtinthem='$Thongtinthem', Anh1='$Anh1',Anh2= '$Anh2' where id_dv='$iddv'";
+    $run =mysqli_query($conn,$sql);
+    return $run;
+}
 public function get_chungloai($maloai){
     global $conn;
     $sql="select * from chungloai where Maloai='$maloai'";
