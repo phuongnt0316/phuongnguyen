@@ -287,7 +287,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                        
                       </div>
                       <div class="price-item mb-2">
-                        <span class="price"><b><?php echo $se_cat['Dongia'] ?></b></span>
+                        <span class="price"><b><?php echo $se_cat['Dongia'] ?> đ</b></span>
                         
                       </div>
                       </a>
