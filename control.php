@@ -341,10 +341,7 @@ public function get_loai(){
 
  }
  
-<<<<<<< HEAD
 
-=======
->>>>>>> 6e31c639840635bfb5f4f5f8e6b9e616456c6b5f
 //  ---------------------------blog------------------------
 public function select_blogad(){
     global $conn;
