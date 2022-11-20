@@ -209,6 +209,8 @@ public function get_meo(){
     $run=mysqli_query($conn,$sql);
     return $run;
 }
+
+
 public function get_info($id){
     global $conn;
     $sql="SELECT*from thucung_meo WHERE id_dv = '$id'
@@ -509,6 +511,13 @@ public function select_food_dog(){
 public function select_food_cat(){
     global $conn;
     $sql="select * from sanpham where Maloaisanpham='FOOD_CAT'";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+
+}
+public function select_pk(){
+    global $conn;
+    $sql="select * from sanpham where Maloaisanpham='PK'";
     $run=mysqli_query($conn,$sql);
     return $run;
 

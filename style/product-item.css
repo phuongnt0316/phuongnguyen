@@ -5,6 +5,7 @@
     --main-color1-hover:#25928c;
     --main-color3-hover:#a73963;
     --title-2-afer:#e5e5e5;
+    --title-3-afer:#686464;
     --color-3:azure;
 }
 .col-sm-9 .product .row .col-sm-6 .type-img img{
@@ -16,7 +17,7 @@
 }
 .col-sm-6 .first-select1 span a{
     text-decoration: none;
-    color: var(--title-2-afer);
+    color: var(--title-3-afer);
 }
 .chose {
     margin-top: 40px;

@@ -185,7 +185,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                             <li><?php echo $_SESSION["hoten"]?></li>
                             <li><a href="logout.php">Đăng xuất</a></li> 
                             <?php }?>
-                        <li><a  href="carts.php"><i class="fa fa-shopping-cart" ></i></a></li>
+                        <li><a  href="cart.php"><i class="fa fa-shopping-cart" ></i></a></li>
                     </ul>
                 </div>
             </nav>

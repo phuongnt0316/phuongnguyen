@@ -51,17 +51,17 @@ if(empty($_SESSION["email"])){
                           <a class="nav-link" href="#">KHO HÀNG</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#" style="color: var(--main-color-1);">HÓA ĐƠN</a>
+                          <a class="nav-link" href="hoadon.php" style="color: var(--main-color-1);">HÓA ĐƠN</a>
                         </li>
                        
                         <li class="nav-item">
-                            <a class="nav-link" href="#">DOANH THU</a>
+                            <a class="nav-link" href="admin_doanhthu.php">DOANH THU</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="blog.php">BLOG</a>
+                            <a class="nav-link" href="admin_blog.php">BLOG</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">QUẢNG CÁO</a>
+                            <a class="nav-link" href="admin_contact.php">LIÊN HỆ</a>
                         </li>
                         
                       </ul>

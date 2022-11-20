@@ -113,6 +113,7 @@ else {?> <script>
         <!-- --------------------------------body--------------------------------- -->
         <div id="body">
           <div class="container p-5 cart">
+            <h3 class="text-center  mt-3 mb-5 text-dark">Lịch sử mua hàng</h3>
             <form action="" method="post">
               <table class="table text-dark ">
                 <tr>

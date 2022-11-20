@@ -57,7 +57,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                           <a class="nav-link" href="dog.php">CHÓ CẢNH</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="cat.php" style="color: var(--main-color-1);">MÈO CẢNH</a>
+                          <a class="nav-link" href="cat.php" >MÈO CẢNH</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="food.php" role="button" data-bs-toggle="dropdown">ĐỒ ĂN</a>
@@ -67,7 +67,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                             </ul>
                           </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pk.php">PHỤ KIỆN</a>
+                            <a class="nav-link" style="color: var(--main-color-1);" href="pk.php">PHỤ KIỆN</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.php">LIÊN HỆ</a>
@@ -287,12 +287,13 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                       <div class="images-item">
                         <img src="img/<?php echo $pk['Hinhanh'] ?>" alt="">
                       </div>
-                      <div class="title-item mt-3">
+                      <div class="title-item ">
+                        <p class="item-kind">Phụ kiện<br></p>
                         <p class="item-kind"><?php echo $pk['Tensanpham']."-".$pk['id_sp'] ?><br></p>
                        
                       </div>
                       <div class="price-item mb-2">
-                        <span class="price"><b><?php echo $pk['Dongiaban'] ?> </b></span>
+                        <span class="price"><b>Giá: <?php echo $pk['Dongiaban'] ?> đ</b></span>
                         
                       </div>
                       </a>
