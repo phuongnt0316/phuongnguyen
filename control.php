@@ -362,10 +362,7 @@ SELECT chitiet_donhang.id_sp,Tensanpham,Hinhanh,chitiet_donhang.Soluong,chitiet_
     return $run;
 
  }
-<<<<<<< HEAD
- 
 
-=======
  public function get_donhangid($id){
     global $conn;
     $sql="Select*from donhang where id_hd=$id";
@@ -401,7 +398,6 @@ SELECT chitiet_donhang.id_sp,Tensanpham,Hinhanh,chitiet_donhang.Soluong,chitiet_
  }
 
 //  ---------------------------blog------------------------
->>>>>>> d03beb30a2f066324922b53bb3f6301bc4131560
 public function select_blogad(){
     global $conn;
     $sql="select * from blog";
@@ -469,14 +465,10 @@ public function get_tenloaisp($ma){
     global $conn;
     $sql="select*from loaisanpham where Maloaisanpham='$ma'";
     $run=mysqli_query($conn,$sql);
-<<<<<<< HEAD
     return $run;
 }
-=======
-    return $run;}
 
 // ------------------------contact-------------------
->>>>>>> d03beb30a2f066324922b53bb3f6301bc4131560
 public function in_contact($Hoten,$Email,$Sodt,$Loinhan){
     global $conn;
     $sql="insert into lienhe (Hoten,Email,Sodt,Loinhan) 
@@ -500,5 +492,19 @@ public function delete_contact($id_lh){
 
 }
 
+public function select_food_dog(){
+    global $conn;
+    $sql="select * from sanpham where Maloaisanpham='FOOD_DOG'";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+
+}
+public function select_food_cat(){
+    global $conn;
+    $sql="select * from sanpham where Maloaisanpham='FOOD_CAT'";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+
+}
 
  }
