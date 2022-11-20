@@ -43,19 +43,19 @@ if(empty($_SESSION["email"])){
                               <li><a class="dropdown-item text-dark" href="manager-cat.php">MÈO</a></li>
                               <li><a class="dropdown-item text-dark" href="manager-food-dog.php">ĐỒ ĂN CHO CHÓ</a></li>
                               <li><a class="dropdown-item text-dark" href="manafer-food-cat.php">ĐỒ ĂN CHO MÈO</a></li>
-                              <li><a class="dropdown-item text-dark" href="pk.php">PHỤ KIỆN</a></li>
+                              <li><a class="dropdown-item text-dark" href="manafer-pk.php">PHỤ KIỆN</a></li>
                               
                             </ul>
                           </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="khohang.php">KHO HÀNG</a>
+                          <a class="nav-link" href="#">KHO HÀNG</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="hoadon.php">HÓA ĐƠN</a>
                         </li>
                        
                         <li class="nav-item">
-                            <a class="nav-link" href="doanhthu.php" style="color: var(--main-color-1);">DOANH THU</a>
+                            <a class="nav-link" href="admin_doanhthu.php">DOANH THU</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="admin_blog.php">BLOG</a>
@@ -63,7 +63,7 @@ if(empty($_SESSION["email"])){
                         <li class="nav-item">
                             <a class="nav-link" href="admin_contact.php">LIÊN HỆ</a>
                         </li>
-                        
+                       
                         
                       </ul>
                     </div>
@@ -78,56 +78,48 @@ if(empty($_SESSION["email"])){
               <div class="list-customer">
                 
                 <div class="container p-3">
-                  <h4 class="text-dark text-center">DOANH THU </h4>
-                  <input class="form-control mt-5 mb-3" id="myInput" type="text" placeholder="Tìm kiếm....">
+                  <h4 class="text-dark text-center">DANH SÁCH sản phẩm|| <a href="admin_product_add.php" id="t">Thêm sản phẩm mới</a></h4>
+                  <input class="form-control mt-5 mb-3" id="myInput" type="text" placeholder="Tìm kiếm thú cưng">
                   <br>
                   <table class="table table-bordered table-striped .table-responsive">
                     <thead class="table-dark">
-                      <tr>
-                      <tr>
-                        <th>Mã đơn hàng</th>
-                        <th>Mã khách hàng</th>
-                        <th>Địa chỉ giao hàng</th>
-                        <th>Tổng tiền</th>
-                        <th>Ngày đặt</th>
+                    <tr>
+                        <th>Mã sản phẩm</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Mô tả</th>
+                        <th>Nơi sản xuất</th>
+                        <th>Mã loại sản phẩm</th>
+                        <th>Hình ảnh</th>
+                        <th>Đơn giá bán</th>
+                        
                         <th>Trạng thái</th>
                         <th colspan="3">Thao tác</th>
                       </tr>
-                      <?php 
-                      include("control.php");
-                      $get_data=new data();
-                      $select=$get_data->doanhthu();
-                      foreach($select as $se){
-                      ?>
-
                     </thead>
                     <tbody id="myTable">
-                      <tr>
-                        <td><?php echo $se['id_hd']?></td>
-                        <td><?php echo $se['id_kh']?></td>
-                        <td><?php echo $se['Diachi_giaohang']?></td>
-                        <td><?php echo $se['Tongtien']?></td>                        
-                        <td><?php echo $se['Ngayxuat']?></td>
-                        <td><?php echo $se['Trangthai']?></td>
-                        <td><a href="ct_donhang.php?id=<?php echo $se['id_hd']?>"> Chi tiết</a></td>
-                        <td><a href="admin_customer_edit.php?edit=<?php echo $se['id_kh']?>"><i class="fa fa-home text-primary " style="font-size:24px"></i></a></td>
-                        <td><a href="admin_customer_delete.php?delete=<?php echo $se['id_kh']?>"><i class="fa fa-minus-square text-danger mt-1" style="font-size:20px" onclick="return (confirm('Xóa?'))"></i></a></td>
-                      </tr>
-                      <?php
-                      }
+                    <?php
+                      include("control.php");
+                      $get_data=new data();
+                      $get=$get_data->select_food_cat();
+                      foreach($get as $se){
                       ?>
+                      <tr>
+                        <td>dddd<?php echo $se["id_sp"] ?></td>
+                        <td><?php echo $se["Tensanpham"] ?></td>                      
+                        <td><?php echo $se["Mota"] ?></td>
+                        <td><?php echo $se["Noisanxuat"] ?></td>
+                        <td><?php echo $se["Maloaisanpham"] ?></td>
+                        <td><img src="img/<?php echo $se['Hinhanh'] ?>" alt="" width="50px"></td>
+                        <td><?php echo $se["Dongiaban"] ?></td>
+                        <td><?php echo $se["Trangthai"] ?></td>
+                        <td><a href="updatedog.php?id=<?php echo $se["id_dv"] ?>">Sửa</a></td>
+                        <td><a href="deletedog.php?id=<?php echo $se["id_dv"]?>" onclick="return (confirm('Xóa thú cưng?'))">Xóa</a></td>
+                      </tr>
+                      <?php } ?>
+                      
                     </tbody>
                   </table>
-                  <?php $tong=$get_data->tongdoanhthu();
-                  foreach($tong as $doanhthu){
-                    $sum=$doanhthu["sum(Tongtien)"];
-                  }
-                  
-                  ?>
-                  <h4 class=" text-center mb-5 mt-3 text-info">Tổng doanh thu: <?php echo $sum ?>VNĐ</h4>
-                
                 </div>
-                
                 <script>
                 $(document).ready(function(){
                   $("#myInput").on("keyup", function() {

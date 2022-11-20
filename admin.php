@@ -55,7 +55,7 @@ if(empty($_SESSION["email"])){
                         </li>
                        
                         <li class="nav-item">
-                            <a class="nav-link" href="doanhthu.php">DOANH THU</a>
+                            <a class="nav-link" href="admin_doanhthu.php">DOANH THU</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="admin_blog.php">BLOG</a>

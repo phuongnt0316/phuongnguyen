@@ -250,7 +250,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                        
                       </div>
                       <div class="price-item mb-2">
-                        <span class="price"><b><?php echo $se_dog['Dongia'] ?> đ</b></span>
+                        <span class="price"><b>Giá: <?php echo $se_dog['Dongia'] ?> đ</b></span>
                         
                       </div>
                       </a>
@@ -286,7 +286,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                        
                       </div>
                       <div class="price-item mb-2">
-                        <span class="price"><b><?php echo $se_cat['Dongia'] ?> đ</b></span>
+                        <span class="price"><b>Giá: <?php echo $se_cat['Dongia'] ?> đ</b></span>
                         
                       </div>
                       </a>
@@ -322,7 +322,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                    <p class="item-name"><b><?php echo $pk["Tensanpham"] ?></b></p>
                   </div>
                   <div class="price-item mb-1">
-                    <span class="price"><b>Giá: <?php echo $pk["Dongiaban"] ?></b></span>
+                    <span class="price"><b>Giá: <?php echo $pk["Dongiaban"] ?> đ</b></span>
                   </div>
                 </a>
                 </div>
