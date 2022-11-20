@@ -141,10 +141,11 @@ else {?> <script>
                 }
                 ?>                
               </table>
-              <div class="d-flex justify-content-between link mt-5" >
-                <a href="index1.php">Tiếp tục xem sản phẩm</a>
-                <input type="submit" value="Cập nhật giỏ hàng">
-                <a href="pay.php?id_kh=<?php echo $id_kh ?>">Thanh toán</a>
+              <div class="d-flex justify-content-end link mt-5" >
+                <a href="index1.php" class="me-5">Tiếp tục xem sản phẩm</a>
+                <a href="cart.php">Quay lại</a>
+               
+                
               </div>
             </form>
           </div>

@@ -244,7 +244,8 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                       <div class="images-item">
                         <img src="img/<?php echo $se_dog['Anh1'] ?>" alt="" width=" 300px" height= "350px">
                       </div>
-                      <div class="title-item mt-3">
+                      <div class="title-item">
+                      <p class="item-kind">Chó cảnh <br></p>
                         <p class="item-kind"><?php echo $se_dog['Tenthucung']."-".$se_dog['id_dv'] ?><br></p>
                        
                       </div>
@@ -279,7 +280,8 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                       <div class="images-item">
                         <img src="img/<?php echo $se_cat['Anh1'] ?>" alt="">
                       </div>
-                      <div class="title-item mt-3">
+                      <div class="title-item ">
+                      <p class="item-kind">Mèo cảnh <br></p>
                         <p class="item-kind"><?php echo $se_cat['Tenthucung']."-".$se_cat['id_dv'] ?><br></p>
                        
                       </div>

@@ -113,6 +113,7 @@ else {?> <script>
         <!-- --------------------------------body--------------------------------- -->
         <div id="body">
           <div class="container p-5 cart">
+            <h4 class="text-dark mt-3 mb-5 text-center">Giỏ hàng của bạn || <a href="user_donhang.php" id="t"> Lịch sử mua hàng</a></h4>
             <form action="" method="post">
               <table class="table text-dark ">
                 <tr>

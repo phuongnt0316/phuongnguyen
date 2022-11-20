@@ -63,12 +63,9 @@ if(empty($_SESSION["email"])){
                         <li class="nav-item">
                             <a class="nav-link" href="admin_contact.php">CONTACT</a>
                         </li>
-<<<<<<< HEAD
-=======
                         <li class="nav-item">
                             <a class="nav-link" href="quangcao.php">QUẢNG CÁO</a>
                         </li>
->>>>>>> d03beb30a2f066324922b53bb3f6301bc4131560
                         
                       </ul>
                     </div>

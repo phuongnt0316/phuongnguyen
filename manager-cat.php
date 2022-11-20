@@ -59,12 +59,9 @@ if(empty($_SESSION["email"])){
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="admin_blog.php">BLOG</a>
-<<<<<<< HEAD
-=======
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="admin_contact.php">CONTACT</a>
->>>>>>> d03beb30a2f066324922b53bb3f6301bc4131560
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="admin_contact.php">LIÊN HỆ</a>

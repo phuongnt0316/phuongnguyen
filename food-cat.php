@@ -1,4 +1,17 @@
 <!DOCTYPE html>
+<?php
+session_start();
+include("control.php");
+$get_data=new data();
+if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
+  $getdata=$get_data->login_user($_SESSION["email"],$_SESSION["pass"]);
+  foreach($getdata as $sel){
+    $idkh=$sel["id_kh"];
+      $_SESSION["hoten"]=$sel["Hoten"];
+  }
+
+}
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -126,13 +139,15 @@
               <div class="col-sm-3">
                 <div class="category">
                   <div class="first-category">
-                      <p class="title-2 text-dark"><b>DANH MỤC SẢN PHẨM</b></p>
-                      <div class="type p-2">
-                          <div class="dm p-1"><a href="dog.html" >Chó cảnh</a></div>
-                          
-                          <div class="dm p-1"><a href="dog.html" >Mèo cảnh</a></div>
-                          
-                      </div>
+                    <p class="title-2 text-dark"><b>DANH MỤC SẢN PHẨM</b></p>
+                    <div class="type p-2">
+                        <div class="dm p-1"><a href="dog.php" >Chó cảnh</a></div>
+                        <div class="dm p-1"><a href="cat.php" >Mèo cảnh</a></div>
+                        <div class="dm p-1"><a href="food-dog.php" >Thức ăn chó</a></div>
+                        <div class="dm p-1"><a href="food-cat.php" >Thức ăn mèo</a></div>
+                        <div class="dm p-1"><a href="pk.php" >Phụ kiện</a></div>
+                        
+                    </div>
                   </div>
                  
                   <div class="first-category text-dark mt-3 ">
@@ -149,7 +164,7 @@
                         </div>
                         <div class="type-of">
                               <div class="type-img">
-                                  <a href=""><img src="images/cat/cat-1.jpg" alt=""></a>
+                                  <a href=""><img src="img/c2a.jpg" alt=""></a>
                               </div>
                            <div class="type-des">
                                <a href="">Chó alaska</a>
@@ -191,78 +206,30 @@
               <div class="col-sm-9">
                 <div class="product container-fluid">
                   <div class="menu-product d-flex flex-wrap justify-content-around mt-3">
+                  <?php 
+                      $getfood=$get_data->select_food_cat();
+                      foreach($getfood as $se){
+
+                     
+                    ?>
                     <div class="item-product text-center mb-5">
+                    <a href="product-item.php?id=<?php echo $se['id_sp'];?>&maloai=<?php echo $se['Maloaisanpham']?>" class="more " style={text-decoration:none;color:black;}>
                       <div class="images-item">
-                        <img src="images/food/f-1.jpg" alt="">
+                        <img src="img/<?php echo $se['Hinhanh'] ?>" alt="">
                       </div>
                       <div class="title-item">
-                        <p class="item-kind">Chó cảnh <br></p>
-                       <p class="item-name"><b>Chó Alasca trắng đen</b></p>
+                        <p class="item-kind">Thức ăn cho chó <br></p>
+                       <p class="item-name"><?php echo $se['Tensanpham']."-".$se['id_sp'] ?></p>
                       </div>
                       <div class="price-item mb-1">
-                        <span class="price"><b>Gía: 5000000</b></span>
+                        <span class="price"><b>Giá:<?php echo $se['Dongiaban'] ?> đ</b></span>
                       </div>
+                      </a>
                     </div>
-                    <div class="item-product text-center mb-5">
-                      <div class="images-item">
-                        <img src="images/food/f-2.jpg" alt="">
-                      </div>
-                      <div class="title-item">
-                        <p class="item-kind">Chó cảnh <br></p>
-                       <p class="item-name"><b>Chó Alasca trắng đen</b></p>
-                      </div>
-                      <div class="price-item mb-1">
-                        <span class="price"><b>Gía: 5000000</b></span>
-                      </div>
-                    </div>
-                    <div class="item-product text-center mb-5">
-                      <div class="images-item">
-                        <img src="images/food/f-3.jpg" alt="">
-                      </div>
-                      <div class="title-item">
-                        <p class="item-kind">Chó cảnh <br></p>
-                       <p class="item-name"><b>Chó Alasca trắng đen</b></p>
-                      </div>
-                      <div class="price-item mb-1">
-                        <span class="price"><b>Gía: 5000000</b></span>
-                      </div>
-                    </div>
-                    <div class="item-product text-center mb-5">
-                      <div class="images-item">
-                        <img src="images/food/f-4.jpg" alt="">
-                      </div>
-                      <div class="title-item">
-                        <p class="item-kind">Chó cảnh <br></p>
-                       <p class="item-name"><b>Chó Alasca trắng đen</b></p>
-                      </div>
-                      <div class="price-item mb-1">
-                        <span class="price"><b>Gía: 5000000</b></span>
-                      </div>
-                    </div>
-                    <div class="item-product text-center mb-5">
-                      <div class="images-item">
-                        <img src="images/food/f-10.jpg" alt="">
-                      </div>
-                      <div class="title-item">
-                        <p class="item-kind">Chó cảnh <br></p>
-                       <p class="item-name"><b>Chó Alasca trắng đen</b></p>
-                      </div>
-                      <div class="price-item mb-1">
-                        <span class="price"><b>Gía: 5000000</b></span>
-                      </div>
-                    </div>
-                    <div class="item-product text-center mb-5">
-                      <div class="images-item">
-                        <img src="images/food/f-11.jpg" alt="">
-                      </div>
-                      <div class="title-item">
-                        <p class="item-kind">Chó cảnh <br></p>
-                       <p class="item-name"><b>Chó Alasca trắng đen</b></p>
-                      </div>
-                      <div class="price-item mb-1">
-                        <span class="price"><b>Gía: 5000000</b></span>
-                      </div>
-                    </div>
+                    <?php
+                        }
+                    ?> 
+                    
                     
                   </div>
                 </div>

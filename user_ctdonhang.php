@@ -114,7 +114,7 @@ else {?> <script>
         <div id="body">
           <div class="container p-5 cart">
             <form action="" method="post">
-            <h4 class="text-dark text-center">CHI TIẾT ĐƠN HÀNG <?php echo $id; ?> || <a href="admin_customer_add.php" id="t">Thêm đơn hàng</a></h4>
+            <h4 class="text-dark text-center">CHI TIẾT ĐƠN HÀNG <?php echo $id; ?></h4>
                   <?php $select=$get_data->get_donhangid($id);
                       foreach($select as $se){
                       ?>
@@ -134,7 +134,7 @@ else {?> <script>
                 <tr>
                         <th>Mã sản phẩm</th>
                         <th>Tên sản phẩm</th>                        
-                        <th>Hình ảnh</th>
+                        <!-- <th>Hình ảnh</th> -->
                         <th>Số lượng</th>
                         <th>Đơn giá</th>
                         <th> Thành tiền </th>
@@ -145,7 +145,6 @@ else {?> <script>
                 ?>
                 <td><?php echo $se['id_sp']?></td>
                         <td><?php echo $se['Tenthucung']?></td>
-                        <td><?php echo $se['Anh1']?></td>
                         <td><?php echo $se['Soluong']?></td>                        
                         <td><?php echo $se['Dongia']?></td>
                         <td><?php echo $se['Tong']?></td>
@@ -155,10 +154,8 @@ else {?> <script>
                       }
                       ?>               
               </table>
-              <div class="d-flex justify-content-between link mt-5" >
+              <div class="d-flex justify-content-end link mt-5" >
                 <a href="index1.php">Tiếp tục xem sản phẩm</a>
-                <input type="submit" value="Cập nhật giỏ hàng">
-                <a href="pay.php?id_kh=<?php echo $id_kh ?>">Thanh toán</a>
               </div>
             </form>
           </div>
