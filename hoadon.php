@@ -108,9 +108,9 @@ if(empty($_SESSION["email"])){
                         <td><?php echo $se['Tongtien']?></td>                        
                         <td><?php echo $se['Ngayxuat']?></td>
                         <td><?php echo $se['Trangthai']?></td>
-                        <td><a href="ct_donhang.php"> Chi tiết</a></td>
+                        <td><a href="ct_donhang.php?id=<?php echo $se['id_hd']?>"> Chi tiết</a></td>
                         <td><a href="admin_customer_edit.php?edit=<?php echo $se['id_kh']?>"><i class="fa fa-home text-primary " style="font-size:24px"></i></a></td>
-                        <td><a href="admin_customer_delete.php?delete=<?php echo $se['id_kh']?>"><i class="fa fa-minus-square text-danger mt-1" style="font-size:20px"></i></a></td>
+                        <td><a href="admin_customer_delete.php?delete=<?php echo $se['id_kh']?>"><i class="fa fa-minus-square text-danger mt-1" style="font-size:20px" onclick="return (confirm('Xóa?'))"></i></a></td>
                       </tr>
                       
                       <?php

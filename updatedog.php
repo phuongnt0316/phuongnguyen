@@ -5,6 +5,7 @@ session_start();
 if(empty($_SESSION["email"])){
   header('location:login.php');
 }
+$id_dog=$_GET["id"];
 ?>
 <html lang="en">
 <head>
@@ -67,87 +68,41 @@ if(empty($_SESSION["email"])){
                       </ul>
                     </div>
                 </div>
-                <!-- <div class="menu-2 me-3">
-                     <ul class="navbar-nav me-auto menu-22">
-                        <li ><a  href="#"><i class="fa fa-search" ></i></a>
-                            <ul class="search">
-                                <li>
-                                    <form action="" method="get">
-                                        <input type="search" name="txtsearch" placeholder="Tìm kiếm ....">
-                                        <input type="submit" name="btm" value="Search">
-                                    </form>
-                                        
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="lii"><button  type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-user-circle-o text-white" ></i>
-                        </button>
-                        <div class="modal mt-5 p-5 account fade" id="myModal">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 class="modal-title text-dark">Đăng Nhập || <span><a href="register.html"  class="text-info">Đăng ký</a></span></h4>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                </div>
-                          
-                                Modal body 
-                                <div class="modal-body">
-                                  <form action="" method="post">
-                                    <div class="mb-3 mt-3 text-dark">
-                                        <label for="email" class="mb-1"><b>Tên đăng nhập</b></label>
-                                        <input type="email" class="form-control" id="email" placeholder="Enter username" name="email">
-                                      </div>
-                                      <div class="mb-3 text-dark">
-                                        <label for="pwd" class="mb-1"><b>Mật khẩu</b></label>
-                                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-                                      </div>
-                                    <div class="text-dark">
-                                        <input type="submit" class="btn me-3 mb-3 p-2" value="Đăng Nhập">
-                                        <input type="checkbox" class="form-check-input mt-2" name="" id=""> <span>Ghi nhớ đăng nhập</span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <a href="forgetpass.html" class="text-dark ">Quên mật khẩu</a>
-                                    </div>
-                                  </form>
-                                </div>
-                          
-                              </div>
-                            </div>
-                        </li>
-                        <li><a  href="carts.html"><i class="fa fa-shopping-cart" ></i></a></li>
-                    </ul>
-                </div> -->
+               
             </nav>
               
         </div>
         <!-- --------------------------------body--------------------------------- -->
         <div class="main d-flex justify-content-center">
-             
+        <?php 
+             include('control.php');
+            $get_data=new data();
+             $getif=$get_data->get_infocho($id_dog); 
+             foreach($getif as $dog){
+                $anh1=$dog["Anh1"];
+                $anh2=$dog["Anh2"];
+             ?>
              <div class="main-right">
                <div class="list-customer">
                  <div class="container p-3 ms-5">
-                   <h4 class="text-dark text-center">DANH SÁCH || <a href="admin.html">Quay lại</a></h4>
+                   <h4 class="text-dark text-center"><?php echo $dog["id_dv"] ?> || <a href="admin.html">Quay lại</a></h4>
                    <br>
                    <form action="" enctype="multipart/form-data" method="post" class="form-info text-dark me-5">
                      <table>
                          <tr>
-                             <td><label for="id" class="">ID</label></td>
-                             <td><input type="text" name="txtId" id="id" ></td>
-                         </tr>
-                         <tr>
                              <td><label for="ten">Tên thú nuôi</label</td>
-                             <td><input type="text" name="txtTen" id="ten" ></td>
+                             <td><input type="text" name="txtTen" id="ten" value="<?php echo $dog["Tenthucung"] ?>"></td>
                          </tr>
                          <tr>
                              <td><label for="tenloai">Tên chủng loại</label></td>
                              <td> 
                                      <select name="txtTenchungloai" id="maloai">
-                                     <?php include('control.php');
-                                     $get_data=new data();
+                                     <?php 
+                                     $maloai="CHO";
                                      $loai=$get_data->get_chungloai($maloai);
                                      foreach($loai as $se){
                                      ?>
-                                     <option value="<?php echo $se['Machungloai'] ?>"><?php echo $se['Tenchungloai'] ?></option>
+                                        <option value="<?php echo $se['Machungloai'] ?>" <?php if($se["Machungloai"]==$dog["Machungloai"]) echo"selected"; ?>><?php echo $se['Tenchungloai'] ?></option>
  
                                                    <?php }?>
                           </select>  
@@ -157,10 +112,9 @@ if(empty($_SESSION["email"])){
                              <td><label for="kichthuoc">Kích Thước</label></td>
                              <td>
                                  <select name="txtKichthuoc" id="">
-                                     <option value="">---Chọn---</option>
-                                     <option value="Nhỏ">Nhỏ</option>
-                                     <option value="Trung Bình">Trung bình</option>
-                                     <option value="Lớn">Lớn</option>
+                                     <option value="Nhỏ" <?php if($dog["Kichthuoc"]=="Nhỏ") echo "selected"; ?>>Nhỏ</option>
+                                     <option value="Trung Bình"  <?php if($dog["Kichthuoc"]=="Trung bình") echo "selected"; ?>>Trung bình</option>
+                                     <option value="Lớn"  <?php if($dog["Kichthuoc"]=="Lớn") echo "selected"; ?>>Lớn</option>
                                  </select>
                              </td>
                          </tr>
@@ -168,90 +122,88 @@ if(empty($_SESSION["email"])){
                              <td><label for="long">Kiểu lông</label></td>
                              <td>
                                  <select name="txtKieulong" id="long">
-                                     <option value="">---Chọn---</option>
-                                     <option value="Ngắn">Ngắn</option>
-                                     <option value="Dài">Dài</option>
-                                     <option value="Xoăn">Xoăn</option>
+                                     <option value="Ngắn"  <?php if($dog["Kieulong"]=="Ngắn") echo "selected"; ?>>Ngắn</option>
+                                     <option value="Dài" <?php if($dog["Kieulong"]=="Dài") echo "selected"; ?>>Dài</option>
+                                     <option value="Xoăn" <?php if($dog["Kieulong"]=="Xoăn") echo "selected"; ?>>Xoăn</option>
                                  </select>
                              </td>
                          </tr>
                          <tr>
                              <td><label for="phobien">Độ phổ biến</label></td>
                              <td>
-                                 <select name="txtPhobien" id="">
-                                     <option value="">---Chọn---</option>
-                                     <option value="Cao">Cao</option>
-                                     <option value="Trung bình">Trung bình</option>
-                                     <option value="Thấp">Thấp</option>
+                                 <select name="txtPhobien" id="">                                     
+                                     <option value="Cao" <?php if($dog["Mucdophobien"]=="Cao") echo "selected"; ?>>Cao</option>
+                                     <option value="Trung bình"  <?php if($dog["Mucdophobien"]=="Trung bình") echo "selected"; ?>>Trung bình</option>
+                                     <option value="Thấp"  <?php if($dog["Mucdophobien"]=="Thấp") echo "selected"; ?>>Thấp</option>
                                  </select>
                              </td>
                          </tr>
                          <tr>
                              <td><label for="mucdich">Mục đích nuôi</label></td>
                              <td>
-                                 <select name="txtMucdich" id="">
-                                     <option value="">---Chọn---</option>
-                                     <option value="Làm cảnh, bầu bạn">Làm cảnh & bầu bạn</option>
-                                     <option value="Canh gác, bảo vệ">Canh gác, bảo vệ</option>
+                                 <select name="txtMucdich" id="">                                     
+                                     <option value="Làm cảnh, bầu bạn"  <?php if($dog["Mucdichnuoi"]=="Làm cảnh, bầu bạn") echo "selected"; ?>>Làm cảnh & bầu bạn</option>
+                                     <option value="Canh gác, bảo vệ" <?php if($dog["Mucdichnuoi"]=="Canh gác, bảo vệ") echo "selected"; ?>>Canh gác, bảo vệ</option>
                                  </select>
                              </td>
                          </tr>
                          <tr>
                              <td><label for="mota">Mô tả</label></td>
-                             <td><textarea name="txtMota" id="" cols="57.5" rows="5"></textarea></td>
+                             <td><textarea name="txtMota" id="" cols="57.5" rows="5"><?php echo $dog["Thongtinthem"]?></textarea></td>
                          </tr>
                          <tr>
                              <td><label for="gia">Giá</label></td>
-                             <td><input type="text" name="txtDongia" id="gia" ></td>
+                             <td><input type="text" name="txtDongia" id="gia" value="<?php echo $dog["Dongia"]?>" ></td>
                          </tr>
                          
                              
                          <tr>
                              <td><label for="anh1">Ảnh 1</label></td>
-                             <td><input type="file" name="txtFile1" id="anh1" ></td>
+                             <td><img src="img/<?php echo $dog['Anh1'] ?>" alt="" width="300px" height="250px" class="me-3"><input type="file" name="txtFile1" id="anh1" ></td>
                          </tr>
                          <tr>
                              <td><label for="anh2">Ảnh 2</label></td>
-                             <td><input type="file" name="txtFile2" id="anh2" ></td>
+                             <td><img src="img/<?php echo $dog['Anh2'] ?>" alt="" width="300px" height="250px" class="me-3"><input type="file" name="txtFile2" id="anh2" ></td>
                          </tr>
                          <tr>
                              <td colspan="2" >
-                                 <input type="submit" name="btnThem" class=" sd text-right" value="Gửi">
+                                 <input type="submit" name="btnSua" class=" sd text-right" value="Gửi">
                              </td>
                          </tr>
                          
                          
                      </table>
+                     <?php } ?>
                    </form>
                    <?php
-                  if(isset($_POST["btnThem"])){
-                      $check_id=$get_data->check_idcho($_POST["txtId"]);
-                      if($check_id>0){
-                          echo"<script> alert('ID đã tồn tại, vui lòng kiểm tra lại')</script>";	
+                 if(isset($_POST["btnSua"])){
+                    move_uploaded_file($_FILES['txtFile1']['tmp_name'],"img/". $_FILES['txtFile1']['name']);
+                    move_uploaded_file($_FILES['txtFile2']['tmp_name'],"img/". $_FILES['txtFile2']['name']);
+
+                     if (empty($_FILES['txtFile1']['name'])){
+                        $_FILES['txtFile1']['name']=$anh1;
+                    }
+                    
+                    if (empty($_FILES['txtFile2']['name'])){
+                        $_FILES['txtFile2']['name']=$anh2;
+                    } 
+                      $update=$get_data->update_cho($id_dog,$_POST['txtTen'],$maloai,$_POST['txtTenchungloai'],$_POST['txtKieulong'],$_POST['txtMucdich'],$_POST['txtKichthuoc'],$_POST['txtDongia'],$_POST['txtPhobien'],$_POST['txtMota'],$_FILES['txtFile1']['name'],$_FILES['txtFile2']['name']);
+                  
+                      if($update){
+                        ?> <script>
+                        location.href = 'manager-dog.php';
+                      </script>
+                      <?php
+                  
                       }
-                      else{
-                       //VALUES ('$id_dv', '$Tenthucung', '$Maloai', '$Machungloai', '$Kieulong', '$Mucdichnuoi', '$Kichthuoc', '$Dongia', '$Mucdophobien', '$Thongtinthem', '$Anh1', '$Anh2')";
-                       move_uploaded_file($_FILES['txtFile1']['tmp_name'],"img/". $_FILES['txtFile1']['name']);
-                       move_uploaded_file($_FILES['txtFile2']['tmp_name'],"img/". $_FILES['txtFile2']['name']);
-                       $insert=$get_data->insert_cho($_POST['txtId'],$_POST['txtTen'],$maloai,$_POST['txtTenchungloai'],$_POST['txtKieulong'],$_POST['txtMucdich'],$_POST['txtKichthuoc'],$_POST['txtDongia'],$_POST['txtPhobien'],$_POST['txtMota'],$_FILES['txtFile1']['name'],$_FILES['txtFile2']['name']);
-                   
-                       if($insert){
-                         ?> <script>
-                         location.href = 'admin.php';
-                       </script>
-                       <?php
-                   
-                       }
-                       else
-                       echo"<script> alert('Không thành công')</script>";
-                   
-                               }
- 
-                             }
-                         
-                         ?>
-                   ?>
- 
+                      else
+                      echo"<script> alert('Không thành công')</script>";
+              	
+			}
+
+                            
+                        
+                        ?>
                  </div>
                  
                </div>

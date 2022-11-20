@@ -5,6 +5,9 @@ session_start();
 if(empty($_SESSION["email"])){
   header('location:login.php');
 }
+$id=$_GET["id"];
+include("control.php");
+$get_data=new data();
 ?>
 <html lang="en">
 <head>
@@ -58,10 +61,7 @@ if(empty($_SESSION["email"])){
                             <a class="nav-link" href="#">DOANH THU</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="admin_blog.php">BLOG</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="admin_contact.php">CONTACT</a>
+                            <a class="nav-link" href="blog.php">BLOG</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">QUẢNG CÁO</a>
@@ -70,67 +70,72 @@ if(empty($_SESSION["email"])){
                       </ul>
                     </div>
                 </div>
+                
             </nav>
               
         </div>
         <!-- --------------------------------body--------------------------------- -->
-          <div class="main d-flex justify-content-center mb-5">
+          <div class="main d-flex justify-content-center">
              
-            <div class="main-right mb-5">
+            <div class="main-right">
               <div class="list-customer">
                 
                 <div class="container p-3">
-                  <h4 class="text-dark text-center">DANH SÁCH CHÓ || <a href="admin_pet_choadd.php" id="t">Thêm thú cưng</a></h4>
-                  <input class="form-control mt-5 mb-3" id="myInput" type="text" placeholder="Tìm kiếm thú cưng">
+                  <h4 class="text-dark text-center">CHI TIẾT ĐƠN HÀNG <?php echo $id; ?> || <a href="admin_customer_add.php" id="t">Thêm đơn hàng</a></h4>
+                  <?php $select=$get_data->get_donhangid($id);
+                      foreach($select as $se){
+                      ?>
+                      <span class="text-dark text-center">
+                    Mã khách đặt hàng:<?php echo $se['id_kh'] ?><br>
+                    Địa chỉ giao hàng:<?php echo $se['Diachi_giaohang']?><br>
+                    Tổng tiền:<?php echo $se['Tongtien']?><br>
+                    Ngày đặt:<?php echo $se['Ngayxuat'] ;?><br>
+                    <?php if($se['Trangthai']=="CHOXUATHANG"){?>
+					<a href="xuathang.php?id=<?php echo $se['id_hd']?>" onclick="return (confirm('Xuất hàng?'))" class='post'>Xuất hàng</a> <br>
+					<a href="huydonhang.php?id=<?php echo $se['id_hd']?>" onclick="return (confirm('Hủy đơn hàng?'))" >Hủy đơn hàng</a>
+					<?php
+					}
+                    else echo $se["Trangthai"];
+                    }
+					?>
+                      </span>
+                  <input class="form-control mt-5 mb-3" id="myInput" type="text" placeholder="Tìm kiếm sản phẩm">
                   <br>
                   <table class="table table-bordered table-striped .table-responsive">
                     <thead class="table-dark">
-                    <tr>
+                      <tr>
                         <th>Mã sản phẩm</th>
-                        <th>Tên thú cưng</th>
-                        <th>Chủng loại</th>
+                        <th>Tên sản phẩm</th>                        
+                        <th>Hình ảnh</th>
+                        <th>Số lượng</th>
                         <th>Đơn giá</th>
-                        <th>Kiểu lông</th>
-                        <th>Màu sắc</th>
-                        <th>Mức độ rụng lông</th>
-                        <th>Mức độ phổ biến</th>
-                        <th>Vẻ ngoài</th>
-                        <th>Thông tin</th>
-                        <th>Ảnh 1</th>
-                        <th>Ảnh 2</th>
-                        <th>Trạng thái</th>
-                        <th colspan="3">Thao tác</th>
+                        <th> Thành tiền </th>
+                        
                       </tr>
+                      <?php 
+                      
+                      $select=$get_data->get_chitiet($id);
+                      foreach($select as $se){
+                      ?>
+
                     </thead>
                     <tbody id="myTable">
-                    <?php
-                      include("control.php");
-                      $get_data=new data();
-                      $get=$get_data->get_allcat();
-                      foreach($get as $se){
-                      ?>
                       <tr>
-                        <td>dddd<?php echo $se["id_dv"] ?></td>
-                        <td><?php echo $se["Tenthucung"] ?></td>                      
-                        <td><?php $loai=$get_data->get_tenchungloai($se["Machungloai"]);foreach ($loai as $lo){echo $lo["Tenchungloai"];}?></td>
-                        <td><?php echo $se["Dongia"] ?></td>
-                        <td><?php echo $se["Kieulong"] ?></td>
-                        <td><?php echo $se["Mausac"] ?></td>
-                        <td><?php echo $se["Mucdorunglong"] ?></td>
-                        <td><?php echo $se["Mucdophobien"] ?></td>
-                        <td><?php echo $se["Vengoai"] ?></td>
-                        <td align="justify"><?php echo $se["Thongtinthem"] ?></td>
-                        <td><img src="img/<?php echo $se['Anh1'] ?>" alt="" width="100px"></td>
-                        <td><img src="img/<?php echo $se['Anh2'] ?>" alt="" width="100px"></td>
-                        <td><?php echo $se["Trangthai"] ?></td>
-                        <td><a href="updatecat.php?id=<?php echo $se["id_dv"] ?>"><i class="fa fa-home text-primary " style="font-size:24px"></i></a></td>
-                        <td><a href="#"><i class="fa fa-minus-square text-danger mt-1" style="font-size:20px"></i></a></td>
+                        <td><?php echo $se['id_sp']?></td>
+                        <td><?php echo $se['Tenthucung']?></td>
+                        <td><?php echo $se['Anh1']?></td>
+                        <td><?php echo $se['Soluong']?></td>                        
+                        <td><?php echo $se['Dongia']?></td>
+                        <td><?php echo $se['Tong']?></td>
                       </tr>
-                      <?php } ?>
                       
+                      <?php
+                      }
+                      ?>
                     </tbody>
                   </table>
                 </div>
+                
                 <script>
                 $(document).ready(function(){
                   $("#myInput").on("keyup", function() {
@@ -145,7 +150,7 @@ if(empty($_SESSION["email"])){
             </div>
           </div>
         <!-- -------------------------------------footer-------------------------- -->
-        <div id="footer" class="mt-5">
+        <div id="footer">
             <div class=" ft text-center">
                  <p>Sản phẩm của Phuong&Linh PDU - Hotline hỗ trợ : 0123456789</p>
             </div>

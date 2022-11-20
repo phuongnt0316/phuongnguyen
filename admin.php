@@ -48,14 +48,14 @@ if(empty($_SESSION["email"])){
                             </ul>
                           </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">KHO HÀNG</a>
+                          <a class="nav-link" href="khohang.php">KHO HÀNG</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">HÓA ĐƠN</a>
+                          <a class="nav-link" href="hoadon.php">HÓA ĐƠN</a>
                         </li>
                        
                         <li class="nav-item">
-                            <a class="nav-link" href="#">DOANH THU</a>
+                            <a class="nav-link" href="doanhthu.php">DOANH THU</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="admin_blog.php">BLOG</a>
@@ -64,7 +64,7 @@ if(empty($_SESSION["email"])){
                             <a class="nav-link" href="admin_contact.php">CONTACT</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">QUẢNG CÁO</a>
+                            <a class="nav-link" href="quangcao.php">QUẢNG CÁO</a>
                         </li>
                         
                       </ul>
@@ -113,7 +113,7 @@ if(empty($_SESSION["email"])){
                         <td><?php echo $se['Gioitinh']?></td>
                         <td><?php echo $se['Ngaysinh']?></td>
                         <td><a href="admin_customer_edit.php?edit=<?php echo $se['id_kh']?>"><i class="fa fa-home text-primary " style="font-size:24px"></i></a></td>
-                        <td><a href="admin_customer_delete.php?delete=<?php echo $se['id_kh']?>"><i class="fa fa-minus-square text-danger mt-1" style="font-size:20px"></i></a></td>
+                        <td><a href="admin_customer_delete.php?delete=<?php echo $se['id_kh']?>" onclick="return (confirm('Xóa thú cưng?'))"><i class="fa fa-minus-square text-danger mt-1" style="font-size:20px"></i></a></td>
                       </tr>
                       
                       <?php

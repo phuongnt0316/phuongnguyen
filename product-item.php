@@ -259,7 +259,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                     $id_dv=$_GET['id'];
                     $maloai=$_GET['maloai'];
                     if($maloai=="MEO"){
-                    $get_info=$get_data->get_infomeo($id_dv);
+                    $get_info=$get_data->get_infomeo($_GET['id']);
                     foreach($get_info as $se_if){					
                       ?>
                           <img src="img/<?php echo $se_if["Anh1"] ?>" alt="" id="img-main" width="250px" height="500px">
@@ -267,7 +267,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                       </div>
                       <div class="col-sm-6">
                         <div class="first-select1 text-dark">
-                          <span><a href="index.php">TRANG CHỦ</a>  || <a href="cat.php"><?php echo $se_if["Maloai"] ?></a></span>
+                          <span><a href="index.php">TRANG CHỦ</a>  || <a href="cat.php"><?php echo $se_if["Tenloaisanpham"] ?></a></span>
                           <h3 class="name-product title-2 mt-3"><?php echo $se_if["Tenthucung"] ?></h3>
                           <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongia"] ?></h3>
                           <p class="description mt-2"><?php echo $se_if["Maloai"] ?></p>
@@ -289,19 +289,21 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                   </div> 
                   <?php }
                     }
-                  else if($maloai=="CHO"){
-                    $get_info=$get_data->get_infocho($id_dv);
-                    foreach($get_info as $se_if){					
+                  else { if($maloai=="CHO"){
+                    $get_info=$get_data->get_infocho($_GET['id']);
+                    foreach($get_info as $se_if){			
+                      
+                 ?>		
                       ?>
                           <img src="img/<?php echo $se_if["Anh1"] ?>" alt="" id="img-main" width="250px" height="500px">
                         </div>
                       </div>
                       <div class="col-sm-6 p-2 pe-3">
                         <div class="first-select1 text-dark">
-                          <span><a href="index1.php">TRANG CHỦ</a>  || <a href="dog.php"><?php echo $se_if["Maloai"] ?></a></span>
+                          <span><a href="index1.php">TRANG CHỦ</a>  || <a href="dog.php"><?php echo $se_if["Tenloaisanpham"] ?></a></span>
                           <h3 class="name-product title-2 mt-3"><?php echo $se_if["Tenthucung"] ?></h3>
                           <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongia"] ?></h3>
-                          <p class="description mt-2"><?php echo $se_if["Maloai"] ?></p>
+                          <p class="description mt-2"><?php echo $se_if["Mucdichnuoi"] ?></p>
                           <div class="chose">
                             <form action="" method="post">
                               <input type="number" name="quantity" min="1" max="10" value="1" id="">
@@ -322,7 +324,38 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                   </div> 
                   <?php
 
-                  }}?>
+                  }
+                }
+
+                  else{
+                    $get_info=$get_data->get_sanpham($_GET['id']);
+                    foreach($get_info as $se_if){	
+                    				
+                      ?>
+                          <img src="img/<?php echo $se_if["Hinhanh"] ?>" alt="" id="img-main" width="250px" height="500px">
+                        </div>
+                      </div>
+                      <div class="col-sm-6 p-2 pe-3">
+                        <div class="first-select1 text-dark">
+                          <span><a href="index1.php">TRANG CHỦ</a>  || <a href="pk.php"><?php echo $se_if["Tenloaisanpham"] ?></a></span>
+                          <h3 class="name-product title-2 mt-3"><?php echo $se_if["Tensanpham"] ?></h3>
+                          <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongiaban"] ?></h3>
+                          <p class="description mt-2"><?php echo $se_if["Mota"] ?></p>
+                          <div class="chose">
+                            <form action="" method="post">
+                              <input type="number" name="quantity" min="1" max="10" value="1" id="">
+                             <a href="themgiohang.php?id=<?php echo $se_if["id_sp"]?> &maloai=<?php echo $se_if["Maloaisanpham"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongiaban"]?>" >Thêm vào giỏ hàng</a>
+
+                            </form>
+                          </div>
+                          <p class="description mt-4" style="text-align: justify;"><?php echo $se_if["Mota"] ?></p>
+
+                      </div>
+                    </div>
+                  </div> 
+                  <?php
+
+                  }}}?>
                 </div>
                 <div class="container mt-5 list-op">
                   <ul class="nav nav-tabs" role="tablist">
@@ -339,7 +372,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                   <div class="tab-content text-dark">
                     <div id="home" class="container tab-pane active"><br>
                       <p class="discription-item">
-                        <?php echo  $se_if["Thongtinthem"];?>                      </p>
+                                            </p>
                     </div>
                     <div id="menu1" class="container tab-pane fade"><br>
                       <h3>Đánh giá của bạn</h3>
