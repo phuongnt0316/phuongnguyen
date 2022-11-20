@@ -52,65 +52,16 @@ $maloai="CHO";
                             <a class="nav-link" href="#">DOANH THU</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="blog.php">BLOG</a>
+                            <a class="nav-link" href="admin_blog.php">BLOG</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">QUẢNG CÁO</a>
+                            <a class="nav-link" href="admin_contact">LIÊN HỆ</a>
                         </li>
                         
                       </ul>
                     </div>
                 </div>
-                <!-- <div class="menu-2 me-3">
-                     <ul class="navbar-nav me-auto menu-22">
-                        <li ><a  href="#"><i class="fa fa-search" ></i></a>
-                            <ul class="search">
-                                <li>
-                                    <form action="" method="get">
-                                        <input type="search" name="txtsearch" placeholder="Tìm kiếm ....">
-                                        <input type="submit" name="btm" value="Search">
-                                    </form>
-                                        
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="lii"><button  type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-user-circle-o text-white" ></i>
-                        </button>
-                        <div class="modal mt-5 p-5 account fade" id="myModal">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 class="modal-title text-dark">Đăng Nhập || <span><a href="register.html"  class="text-info">Đăng ký</a></span></h4>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                </div>
-                          
-                                Modal body 
-                                <div class="modal-body">
-                                  <form action="" method="post">
-                                    <div class="mb-3 mt-3 text-dark">
-                                        <label for="email" class="mb-1"><b>Tên đăng nhập</b></label>
-                                        <input type="email" class="form-control" id="email" placeholder="Enter username" name="email">
-                                      </div>
-                                      <div class="mb-3 text-dark">
-                                        <label for="pwd" class="mb-1"><b>Mật khẩu</b></label>
-                                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-                                      </div>
-                                    <div class="text-dark">
-                                        <input type="submit" class="btn me-3 mb-3 p-2" value="Đăng Nhập">
-                                        <input type="checkbox" class="form-check-input mt-2" name="" id=""> <span>Ghi nhớ đăng nhập</span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <a href="forgetpass.html" class="text-dark ">Quên mật khẩu</a>
-                                    </div>
-                                  </form>
-                                </div>
-                          
-                              </div>
-                            </div>
-                        </li>
-                        <li><a  href="carts.html"><i class="fa fa-shopping-cart" ></i></a></li>
-                    </ul>
-                </div> -->
+                
             </nav>
               
         </div>
