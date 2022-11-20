@@ -48,41 +48,44 @@ if(empty($_SESSION["email"])){
                             </ul>
                           </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">KHO HÀNG</a>
+                          <a class="nav-link" href="khohang.php">KHO HÀNG</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">HÓA ĐƠN</a>
+                          <a class="nav-link" href="hoadon.php">HÓA ĐƠN</a>
                         </li>
                        
                         <li class="nav-item">
-                            <a class="nav-link" href="#">DOANH THU</a>
+                            <a class="nav-link" href="doanhthu.php">DOANH THU</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="blog.php">BLOG</a>
+                            <a class="nav-link" href="admin_blog.php">BLOG</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">QUẢNG CÁO</a>
+                            <a class="nav-link" href="admin_contact.php">CONTACT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="quangcao.php">QUẢNG CÁO</a>
                         </li>
                         
                       </ul>
                     </div>
                 </div>
-                
             </nav>
               
         </div>
         <!-- --------------------------------body--------------------------------- -->
-          <div class="main d-flex justify-content-center">
+          <div class="main d-flex justify-content-center mb-5">
              
-            <div class="main-right">
+            <div class="main-right mb-5">
               <div class="list-customer">
                 
                 <div class="container p-3">
-                  <h4 class="text-dark text-center">DANH SÁCH ĐƠN HÀNG || <a href="admin_customer_add.php" id="t">Thêm đơn hàng</a></h4>
-                  <input class="form-control mt-5 mb-3" id="myInput" type="text" placeholder="Tìm kiếm khách hàng">
+                  <h4 class="text-dark text-center">DOANH THU || <a href="admin_customer_add.php" id="t">Thêm khách hàng</a></h4>
+                  <input class="form-control mt-5 mb-3" id="myInput" type="text" placeholder="Tìm kiếm....">
                   <br>
                   <table class="table table-bordered table-striped .table-responsive">
                     <thead class="table-dark">
+                      <tr>
                       <tr>
                         <th>Mã đơn hàng</th>
                         <th>Mã khách hàng</th>
@@ -95,7 +98,7 @@ if(empty($_SESSION["email"])){
                       <?php 
                       include("control.php");
                       $get_data=new data();
-                      $select=$get_data->get_donhang();
+                      $select=$get_data->doanhthu();
                       foreach($select as $se){
                       ?>
 
@@ -112,12 +115,19 @@ if(empty($_SESSION["email"])){
                         <td><a href="admin_customer_edit.php?edit=<?php echo $se['id_kh']?>"><i class="fa fa-home text-primary " style="font-size:24px"></i></a></td>
                         <td><a href="admin_customer_delete.php?delete=<?php echo $se['id_kh']?>"><i class="fa fa-minus-square text-danger mt-1" style="font-size:20px" onclick="return (confirm('Xóa?'))"></i></a></td>
                       </tr>
-                      
                       <?php
                       }
                       ?>
                     </tbody>
                   </table>
+                  <?php $tong=$get_data->tongdoanhthu();
+                  foreach($tong as $doanhthu){
+                    $sum=$doanhthu["sum(Tongtien)"];
+                  }
+                  
+                  ?>
+                  <h4 class="text-dark text-center">DOANH THU :<?php echo $sum ?></h4>
+                
                 </div>
                 
                 <script>
@@ -134,7 +144,7 @@ if(empty($_SESSION["email"])){
             </div>
           </div>
         <!-- -------------------------------------footer-------------------------- -->
-        <div id="footer">
+        <div id="footer" class="mt-5">
             <div class=" ft text-center">
                  <p>Sản phẩm của Phuong&Linh PDU - Hotline hỗ trợ : 0123456789</p>
             </div>

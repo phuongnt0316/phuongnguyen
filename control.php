@@ -367,7 +367,12 @@ SELECT chitiet_donhang.id_sp,Tensanpham,Hinhanh,chitiet_donhang.Soluong,chitiet_
     $sql="Select*from donhang where id_hd=$id";
     $run=mysqli_query($conn,$sql);
     return $run;
-
+ }
+ public function get_donhanguser($id){
+    global $conn;
+    $sql="Select*from donhang where id_kh=$id";
+    $run=mysqli_query($conn,$sql);
+    return $run;
  }
  public function update_donhang($id,$tt){
     global $conn;
@@ -376,7 +381,20 @@ SELECT chitiet_donhang.id_sp,Tensanpham,Hinhanh,chitiet_donhang.Soluong,chitiet_
     return $run;
 
  }
- 
+ public function doanhthu(){
+    global $conn;
+    $sql="Select*from donhang where Trangthai='DANHAN'";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+
+ }
+ public function tongdoanhthu(){
+    global $conn;
+    $sql="Select sum(Tongtien) from donhang where Trangthai='DANHAN'";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+
+ }
 
 //  ---------------------------blog------------------------
 public function select_blogad(){
