@@ -399,7 +399,6 @@ SELECT chitiet_donhang.id_sp,Tensanpham,Hinhanh,chitiet_donhang.Soluong,chitiet_
  }
 
 //  ---------------------------blog------------------------
->>>>>>> d03beb30a2f066324922b53bb3f6301bc4131560
 public function select_blogad(){
     global $conn;
     $sql="select * from blog";
@@ -451,9 +450,16 @@ public function update_blog($Ten_blog,$s_blog,$l_blog,$Ngaydang,$Anh,$id_blog){
             return $run;
 }
 //sanpham
+
 public function get_phukien(){
     global $conn;
     $sql="select*from sanpham";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
+public function sanpham($ma){
+    global $conn;
+    $sql="select*from sanpham where Maloaisanpham='$ma'";
     $run=mysqli_query($conn,$sql);
     return $run;
 }

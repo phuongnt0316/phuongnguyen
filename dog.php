@@ -258,7 +258,6 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                       </div>
                       <div class="title-item mt-3">
                         <p class="item-kind"><?php echo $se['Tenthucung']."-".$se['id_dv'] ?><br></p>
-                       <!-- <p class="item-name"><b>Chó cảnh lưỡi đốm khôn lắm</b></p> -->
                       </div>
                       <div class="price-item mb-2">
                         <span class="price"><b><?php echo $se['Dongia'] ?> đ</b></span>
