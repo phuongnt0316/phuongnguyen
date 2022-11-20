@@ -311,6 +311,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                   foreach($tensp as $ten){ $tenloaisp=$ten["Tenloaisanpham"];}
                  ?>
                 <div class="item-product text-center mb-5">
+                <a href="product-item.php?id=<?php echo $pk['id_sp'];?> &maloai=<?php echo $pk['Maloaisanpham'];?>" class="more">
                   <div class="images-item">
                     <img src="img/<?php echo $pk["Hinhanh"] ?>" alt="">
                   </div>
@@ -321,6 +322,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                   <div class="price-item mb-1">
                     <span class="price"><b>Giá: <?php echo $pk["Dongiaban"] ?></b></span>
                   </div>
+                </a>
                 </div>
                 <?php } ?>
                 

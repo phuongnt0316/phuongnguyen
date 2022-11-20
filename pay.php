@@ -294,7 +294,7 @@ location.href = 'login.php';
                     if($delete){?>
                              <script>
                             
-                             location.href = 'history.php';
+                             location.href = 'user_donhang.php';
                              </script>
                     <?php
 

@@ -48,14 +48,14 @@ if(empty($_SESSION["email"])){
                             </ul>
                           </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">KHO HÀNG</a>
+                          <a class="nav-link" href="khohang.php">KHO HÀNG</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">HÓA ĐƠN</a>
+                          <a class="nav-link" href="hoadon.php">HÓA ĐƠN</a>
                         </li>
                        
                         <li class="nav-item">
-                            <a class="nav-link" href="#">DOANH THU</a>
+                            <a class="nav-link" href="doanhthu.php">DOANH THU</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="admin_blog.php">BLOG</a>
@@ -64,7 +64,7 @@ if(empty($_SESSION["email"])){
                             <a class="nav-link" href="admin_contact.php">CONTACT</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">QUẢNG CÁO</a>
+                            <a class="nav-link" href="quangcao.php">QUẢNG CÁO</a>
                         </li>
                         
                       </ul>
@@ -80,57 +80,56 @@ if(empty($_SESSION["email"])){
               <div class="list-customer">
                 
                 <div class="container p-3">
-                  <h4 class="text-dark text-center">DANH SÁCH CHÓ || <a href="admin_pet_choadd.php" id="t">Thêm thú cưng</a></h4>
-                  <input class="form-control mt-5 mb-3" id="myInput" type="text" placeholder="Tìm kiếm thú cưng">
+                  <h4 class="text-dark text-center">DOANH THU || <a href="admin_customer_add.php" id="t">Thêm khách hàng</a></h4>
+                  <input class="form-control mt-5 mb-3" id="myInput" type="text" placeholder="Tìm kiếm....">
                   <br>
                   <table class="table table-bordered table-striped .table-responsive">
                     <thead class="table-dark">
-                    <tr>
-                        <th>Mã sản phẩm</th>
-                        <th>Tên thú cưng</th>
-                        <th>Chủng loại</th>
-                        <th>Đơn giá</th>
-                        <th>Kiểu lông</th>
-                        <th>Màu sắc</th>
-                        <th>Mức độ rụng lông</th>
-                        <th>Mức độ phổ biến</th>
-                        <th>Vẻ ngoài</th>
-                        <th>Thông tin</th>
-                        <th>Ảnh 1</th>
-                        <th>Ảnh 2</th>
+                      <tr>
+                      <tr>
+                        <th>Mã đơn hàng</th>
+                        <th>Mã khách hàng</th>
+                        <th>Địa chỉ giao hàng</th>
+                        <th>Tổng tiền</th>
+                        <th>Ngày đặt</th>
                         <th>Trạng thái</th>
                         <th colspan="3">Thao tác</th>
                       </tr>
-                    </thead>
-                    <tbody id="myTable">
-                    <?php
+                      <?php 
                       include("control.php");
                       $get_data=new data();
-                      $get=$get_data->get_allcat();
-                      foreach($get as $se){
+                      $select=$get_data->doanhthu();
+                      foreach($select as $se){
                       ?>
+
+                    </thead>
+                    <tbody id="myTable">
                       <tr>
-                        <td>dddd<?php echo $se["id_dv"] ?></td>
-                        <td><?php echo $se["Tenthucung"] ?></td>                      
-                        <td><?php $loai=$get_data->get_tenchungloai($se["Machungloai"]);foreach ($loai as $lo){echo $lo["Tenchungloai"];}?></td>
-                        <td><?php echo $se["Dongia"] ?></td>
-                        <td><?php echo $se["Kieulong"] ?></td>
-                        <td><?php echo $se["Mausac"] ?></td>
-                        <td><?php echo $se["Mucdorunglong"] ?></td>
-                        <td><?php echo $se["Mucdophobien"] ?></td>
-                        <td><?php echo $se["Vengoai"] ?></td>
-                        <td align="justify"><?php echo $se["Thongtinthem"] ?></td>
-                        <td><img src="img/<?php echo $se['Anh1'] ?>" alt="" width="100px"></td>
-                        <td><img src="img/<?php echo $se['Anh2'] ?>" alt="" width="100px"></td>
-                        <td><?php echo $se["Trangthai"] ?></td>
-                        <td><a href="updatecat.php?id=<?php echo $se["id_dv"] ?>"><i class="fa fa-home text-primary " style="font-size:24px"></i></a></td>
-                        <td><a href="#"><i class="fa fa-minus-square text-danger mt-1" style="font-size:20px"></i></a></td>
+                        <td><?php echo $se['id_hd']?></td>
+                        <td><?php echo $se['id_kh']?></td>
+                        <td><?php echo $se['Diachi_giaohang']?></td>
+                        <td><?php echo $se['Tongtien']?></td>                        
+                        <td><?php echo $se['Ngayxuat']?></td>
+                        <td><?php echo $se['Trangthai']?></td>
+                        <td><a href="ct_donhang.php?id=<?php echo $se['id_hd']?>"> Chi tiết</a></td>
+                        <td><a href="admin_customer_edit.php?edit=<?php echo $se['id_kh']?>"><i class="fa fa-home text-primary " style="font-size:24px"></i></a></td>
+                        <td><a href="admin_customer_delete.php?delete=<?php echo $se['id_kh']?>"><i class="fa fa-minus-square text-danger mt-1" style="font-size:20px" onclick="return (confirm('Xóa?'))"></i></a></td>
                       </tr>
-                      <?php } ?>
-                      
+                      <?php
+                      }
+                      ?>
                     </tbody>
                   </table>
+                  <?php $tong=$get_data->tongdoanhthu();
+                  foreach($tong as $doanhthu){
+                    $sum=$doanhthu["sum(Tongtien)"];
+                  }
+                  
+                  ?>
+                  <h4 class="text-dark text-center">DOANH THU :<?php echo $sum ?></h4>
+                
                 </div>
+                
                 <script>
                 $(document).ready(function(){
                   $("#myInput").on("keyup", function() {
