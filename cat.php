@@ -223,51 +223,21 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                   <div class="first-category text-dark mt-3">
                       <p class="title-2"><b>SẢN PHẨM</b></p>
                       <div class="type p-2">
+                      <?php $sanpham=$get_data->get_sp();
+                      foreach($sanpham as $sp){
+                      ?>
+                      
                         <div class="type-of">
                             <div class="type-img">
-                              <a href=""><img src="images/cat/cat-8.jpg" alt=""></a>
+                              <a href=""><img src="img/<?php echo $sp["Hinhanh"] ?>" alt=""></a>
                             </div>
                             <div class="type-des">
-                                <a href="">Chó alaska</a>
-                                <p>200$</p>
+                                <a href="product-item.php?id=<?php echo $sp['id_sp'];?> &maloai=<?php echo $sp['Maloaisanpham'];?>"><?php echo $sp["Tensanpham"] ?></a>
+                                <p><?php echo $sp["Dongiaban"] ?></p>
                             </div>
                         </div>
-                        <div class="type-of">
-                              <div class="type-img">
-                                  <a href=""><img src="images/cat/cat-1.jpg" alt=""></a>
-                              </div>
-                           <div class="type-des">
-                               <a href="">Chó alaska</a>
-                               <p>200$</p>
-                           </div>
-                          </div>
-                          <div class="type-of">
-                              <div class="type-img">
-                                <a href=""><img src="images/cat/cat-2.jpg" alt=""></a>
-                              </div>
-                              <div class="type-des">
-                                  <a href="">Thức ăn cho chó</a>
-                                  <p>200$</p>
-                              </div>
-                          </div>
-                          <div class="type-of">
-                              <div class="type-img">
-                                <a href=""><img src="images/cat/cat-8.jpg" alt=""></a>
-                              </div>
-                              <div class="type-des">
-                                  <a href="">Mèo Anh - tai cụp</a>
-                                  <p>200$</p>
-                              </div>
-                          </div>
-                          <div class="type-of">
-                              <div class="type-img">
-                                <a href=""><img src="images/cat/cat-8.jpg" alt=""></a>
-                              </div>
-                              <div class="type-des">
-                                  <a href="">Mèo ta</a>
-                                  <p>200$</p>
-                              </div>
-                          </div>
+                        <?php } ?>
+
                           
                       </div>
                   </div>

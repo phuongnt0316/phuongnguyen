@@ -1,5 +1,5 @@
 <?php
- include('connect.php');
+include('connect.php');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -397,6 +397,14 @@ SELECT chitiet_donhang.id_sp,Tensanpham,Hinhanh,chitiet_donhang.Soluong,chitiet_
     return $run;
 
  }
+ //diachigiaohang
+ public function insert_diachi($id,$hoten,$sdt,$diachi){
+    global $conn;
+    $sql="INSERT INTO diachi_giaohang(id_kh, Hoten, Sodienthoai, Diachi_giaohang)
+     VALUES ($id,'$hoten','$sdt','$diachi')";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
 
 //  ---------------------------blog------------------------
 public function select_blogad(){
@@ -454,6 +462,13 @@ public function update_blog($Ten_blog,$s_blog,$l_blog,$Ngaydang,$Anh,$id_blog){
 public function get_phukien(){
     global $conn;
     $sql="select*from sanpham";
+    $run=mysqli_query($conn,$sql);
+    return $run;
+}
+public function get_sp(){
+    global $conn;
+    $sql="SELECT * FROM sanpham
+    LIMIT 8";
     $run=mysqli_query($conn,$sql);
     return $run;
 }

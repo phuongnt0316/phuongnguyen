@@ -199,53 +199,23 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                 <div class="category">
                   <div class="first-category text-dark mt-3">
                       <p class="title-2"><b>SẢN PHẨM</b></p>
+                      
                       <div class="type p-2">
+                      <?php $sanpham=$get_data->get_sp();
+                      foreach($sanpham as $sp){
+                      ?>
+                      
                         <div class="type-of">
                             <div class="type-img">
-                              <a href=""><img src="images/cat/cat-8.jpg" alt=""></a>
+                              <a href=""><img src="img/<?php echo $sp["Hinhanh"] ?>" alt=""></a>
                             </div>
                             <div class="type-des">
-                                <a href="">Chó alaska</a>
-                                <p>200$</p>
+                                <a href="product-item.php?id=<?php echo $sp['id_sp'];?> &maloai=<?php echo $sp['Maloaisanpham'];?>"><?php echo $sp["Tensanpham"] ?></a>
+                                <p><?php echo $sp["Dongiaban"] ?></p>
                             </div>
                         </div>
-                        <div class="type-of">
-                              <div class="type-img">
-                                  <a href=""><img src="images/cat/cat-1.jpg" alt=""></a>
-                              </div>
-                           <div class="type-des">
-                               <a href="">Chó alaska</a>
-                               <p>200$</p>
-                           </div>
-                          </div>
-                          <div class="type-of">
-                              <div class="type-img">
-                                <a href=""><img src="images/cat/cat-2.jpg" alt=""></a>
-                              </div>
-                              <div class="type-des">
-                                  <a href="">Thức ăn cho chó</a>
-                                  <p>200$</p>
-                              </div>
-                          </div>
-                          <div class="type-of">
-                              <div class="type-img">
-                                <a href=""><img src="images/cat/cat-8.jpg" alt=""></a>
-                              </div>
-                              <div class="type-des">
-                                  <a href="">Mèo Anh - tai cụp</a>
-                                  <p>200$</p>
-                              </div>
-                          </div>
-                          <div class="type-of">
-                              <div class="type-img">
-                                <a href=""><img src="images/cat/cat-8.jpg" alt=""></a>
-                              </div>
-                              <div class="type-des">
-                                  <a href="">Mèo ta</a>
-                                  <p>200$</p>
-                              </div>
-                          </div>
-                          
+                        <?php } ?>
+                      
                       </div>
                   </div>
               </div>
@@ -274,7 +244,6 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                           <div class="chose-1">
                               <a href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>" class="mt-3">Thêm vào giỏ hàng</a>
                           </div>
-                          <p class="description mt-5"><?php echo $se_if["Thongtinthem"] ?></p>
                           <p class="description mt-4" style="text-align: justify;"><?php echo $se_if["Thongtinthem"] ?></p>
 
 
@@ -348,7 +317,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
 
                             </form>
                           </div>
-                          <p class="description mt-4" style="text-align: justify;"><?php echo $se_if["Mota"] ?></p>
+
 
                       </div>
                     </div>
