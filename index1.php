@@ -235,7 +235,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
               <div class="menu-product d-flex flex-wrap justify-content-around">
               <?php
                         
-                        $getdog=$get_data->get_cho();
+                        $getdog=$get_data->get_cho10();
                         foreach($getdog as $se_dog){
 
                         ?>
@@ -260,7 +260,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                     ?> 
                 
               </div>
-              <div class="xt mt-3 text-center "><button class="btn">Xem thêm</button></div>
+              <div class="xt mt-3 text-center"><a href="dog.php" class="btn btn-primary"> Xem thêm</a></div>
             </div>
             <!-- --------------------------cat---------------------------------- -->
             <div class="pr">
@@ -271,7 +271,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
               <div class="menu-product d-flex flex-wrap justify-content-around">
               <?php
                         
-                        $getcat=$get_data->get_meo();
+                        $getcat=$get_data->get_meo10();
                         foreach($getcat as $se_cat){
 
                         ?>
@@ -296,7 +296,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                     ?> 
                 
               </div>
-              <div class="xt mt-3 text-center"><button class="btn">Xem thêm</button></div>
+              <div class="xt mt-3 text-center"><a href="cat.php" class="btn btn-primary"> Xem thêm</a></div>
             </div>
 
             <!-- ---------------------------------food----------------------------- -->
@@ -307,7 +307,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
             <div class="product cat container-fluid mt-5">
               <h2 class="title text-dark text-center">Đồ ăn và phụ kiện</h2>
               <div class="menu-product d-flex flex-wrap justify-content-around">
-                <?php $get_pk=$get_data->get_phukien();
+                <?php $get_pk=$get_data->get_phukien10();
                 foreach($get_pk as $pk){
                   $tensp=$get_data->get_tenloaisp($pk["Maloaisanpham"]);
                   foreach($tensp as $ten){ $tenloaisp=$ten["Tenloaisanpham"];}
@@ -330,7 +330,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                 
                 
               </div>
-              <div class="xt mt-3 text-center"><button class="btn">Xem thêm</button></div>
+              <div class="xt mt-3 text-center"><a href="pk.php" class="btn btn-primary"> Xem thêm</a></div>
             </div>
             
         </div>
