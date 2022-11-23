@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````<!DOCTYPE html>
 <?php
 session_start();
 include("control.php");
@@ -38,6 +38,10 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
   .chose form a:hover {
     background: #a73963;
   }
+
+  .activ {
+    color: var(--main-color-1);
+  }
 </style>
 
 <body>
@@ -45,7 +49,7 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
     <div id="header">
       <nav class=" container-fluid p-2 navbar-expand-sm navbar-dark bg-dark d-flex align-items-center justify-content-between">
         <div class="ms-3">
-          <a class="navbar-brand" href="index.php">
+          <a class="navbar-brand" href="index1.php">
             <img src="images/logo.png" alt="">
           </a>
         </div>
@@ -56,7 +60,7 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                 <a class="nav-link" href="intro.php">GIỚI THIỆU</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="dog.php">CHÓ CẢNH</a>
+                <a class="nav-link activ" href="dog.php" >CHÓ CẢNH</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="cat.php" style="color: var(--main-color-1);">MÈO CẢNH</a>
@@ -118,8 +122,7 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                           </div>
                           <div class="text-dark">
                             <input type="submit" class="btn me-3 mb-3 p-2" name="sub_dangnhap" value="Đăng Nhập">
-                            <input type="checkbox" class="form-check-input mt-2" name="" id="">
-                            <span>Ghi nhớ đăng nhập</span>
+                            <input type="checkbox" class="form-check-input mt-2" name="" id=""> <span>Ghi nhớ đăng nhập</span>
                           </div>
                           <div class="mb-3">
                             <a href="forgetpass.php" class="text-dark ">Quên mật khẩu</a>
@@ -173,7 +176,7 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
             <li><?php echo $_SESSION["hoten"] ?></li>
             <li><a href="logout.php">Đăng xuất</a></li>
           <?php } ?>
-          <li><a href="carts.php"><i class="fa fa-shopping-cart"></i></a></li>
+          <li><a href="cart.php"><i class="fa fa-shopping-cart"></i></a></li>
           </ul>
         </div>
       </nav>
@@ -183,17 +186,13 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
     <div id="body">
       <div class="first-select d-flex justify-content-between m-4">
         <div class="first-select1 text-dark">
-          <a href="index.php">TRANG CHỦ</a> <span> || <b>MÈO CẢNH</b></span>
+          <a href="index.php">TRANG CHỦ</a> <span> || <b>CHÓ CẢNH</b></span>
         </div>
         <div class="first-select1">
-          <select name="chose" id="select">
+          <select name="chose" id="select" onchange="OnSelectionChange()">
             <option value="Thứ tự mặc định">Thứ tự mặc định</option>
-            <option value="Thứ tự theo mức độ phổ biến">Thứ tự theo mức độ phổ biến</option>
-            <option value="Thứ tự theo điểm đánh giá sản phẩm">Thứ tự theo điểm đánh giá sản phẩm</option>
-            <option value="Thứ tự theo đánh giá: từ thấp đến cao">Thứ tự theo đánh giá: từ thấp đến cao
-            </option>
-            <option value="Thứ tự theo đánh giá: từ cao đến thấp">Thứ tự theo đánh giá: từ cao đến thấp
-            </option>
+            <option value="Thứ tự theo đánh giá: từ thấp đến cao">Giá từ thấp đến cao</option>
+            <option value="Thứ tự theo đánh giá: từ cao đến thấp">Giá từ cao đến thấp</option>
           </select>
         </div>
       </div>
@@ -201,29 +200,11 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
         <div class="row ms-1 mt-2">
           <div class="col-sm-3">
             <div class="category">
-              <div class="first-category">
-<<<<<<< HEAD
-                <p class="title-2 text-dark"><b>DANH MỤC CÁC LOẠI MÈO</b></p>
+
+
+              <div class="first-category text-dark mt-3">
+                <p class="title-2"><b>CHỦNG LOẠI MÈO</b></p>
                 <div class="type p-2">
-                <?php
-                      $maloai="MEO";
-                      $sanpham=$get_data->get_chungloai($maloai);
-                      foreach($sanpham as $sp){
-                      ?>
-                      
-                        <div class="type-of">
-                            <div class="type-img">
-                              <a href=""><img src="img/<?php echo $sp["HinhAnh"] ?>" alt=""></a>
-                            </div>
-                            <div class="type-des">
-                                <a href="cat_chungloai.php?Machungloai=<?php echo $sp['Machungloai'];?>"><?php echo $sp["Tenchungloai"] ?></a>
-                                
-                            </div>
-                        </div>
-                        <?php } ?>
-=======
-              <p class="title-2"><b>DANH MỤC CÁC LOẠI CHÓ</b></p>
-                <div class="type p-2 text-dark">
 
                   <?php
                   $maloai = "MEO";
@@ -236,7 +217,7 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                         <a href=""><img src="img/<?php echo $sp["HinhAnh"] ?>" alt=""></a>
                       </div>
                       <div class="type-des">
-                        <a href="dog_chungloai.php?Machungloai=<?php echo $sp['Machungloai']; ?>"><?php echo $sp["Tenchungloai"] ?></a>
+                        <a href="cat_chungloai.php?Machungloai=<?php echo $sp['Machungloai']; ?>"><?php echo $sp["Tenchungloai"] ?></a>
 
                       </div>
                     </div>
@@ -247,7 +228,7 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
               <div class="first-category text-dark mt-3">
                 <p class="title-2"><b>SẢN PHẨM</b></p>
                 <div class="type p-2">
-                  <?php $sanpham = $get_data->get_sp();
+                  <?php $sanpham = $get_data->select_food_cat();
                   if ($sanpham != NULL) {
                     foreach ($sanpham as $sp) {
                   ?>
@@ -267,7 +248,6 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                   <?php
                   }
                   ?>
->>>>>>> ab6d124da0dcf6db7458d493dcda92755ef0b93c
 
 
                 </div>
@@ -278,27 +258,25 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
             <div class="product container-fluid ">
               <div class="menu-product d-flex flex-wrap justify-content-around mt-3">
                 <?php
-
-                $getcat = $get_data->get_meo();
-                foreach ($getcat as $se_cat) {
+                $getdog = $get_data->get_meo();
+                foreach ($getdog as $se) {
 
                 ?>
+
                   <div class="item-product text-center mb-5">
-                    <a href="product-item.php?id=<?php echo $se_cat['id_dv']; ?> &maloai=<?php echo $se_cat['Maloai']; ?>" class="more">
+                    <a href="product-item.php?id=<?php echo $se['id_dv']; ?>&maloai=<?php echo $se['Maloai'] ?>" class="more" style={text-decoration:none;color:black;}>
                       <div class="images-item">
-                        <img src="img/<?php echo $se_cat['Anh1'] ?>" alt="">
+                        <img src="img/<?php echo $se['Anh1'] ?>" alt="">
                       </div>
                       <div class="title-item mt-3">
-                        <p class="item-kind">
-                          <?php echo $se_cat['Tenthucung'] . "-" . $se_cat['id_dv'] ?><br></p>
-
+                        <p class="item-kind"><?php echo $se['Tenthucung'] . "-" . $se['id_dv'] ?><br></p>
                       </div>
                       <div class="price-item mb-2">
-                        <span class="price"><b><?php echo $se_cat['Dongia'] ?> đ</b></span>
-
+                        <span class="price"><b><?php echo $se['Dongia'] ?> đ</b></span>
                       </div>
                     </a>
                   </div>
+
                 <?php
                 }
                 ?>
@@ -339,13 +317,10 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
           <div class="col-sm-3 right ">
             <h2>Thông tin lên hệ</h2>
             <ul class="list-unstyled">
-              <li><a href=""><i class="fa icon fa-map-marker"></i> Đại học Phương Đông<br> số 4 Ngõ Chùa
-                  Hưng Ký – Minh Khai <br> Hai Bà Trưng – Hà Nội</a></li>
-              <li><a href=""><i class="fa icon fa-volume-control-phone"></i> 02436241394 hoặc
-                  0936738889</a></li>
+              <li><a href=""><i class="fa icon fa-map-marker"></i> Đại học Phương Đông<br> số 4 Ngõ Chùa Hưng Ký – Minh Khai <br> Hai Bà Trưng – Hà Nội</a></li>
+              <li><a href=""><i class="fa icon fa-volume-control-phone"></i> 02436241394 hoặc 0936738889</a></li>
               <li><a href=""><i class="fa icon fa-envelope-o"></i> ict.dhphuongdong@gmail.com</a></li>
-              <li><a href=""><i class="fa icon fa-facebook-square"></i> facebook.com/cntt.phuongdong</a>
-              </li>
+              <li><a href=""><i class="fa icon fa-facebook-square"></i> facebook.com/cntt.phuongdong</a></li>
               <li><a href=""><i class="fa icon fa-globe"></i> cntt.phuongdong.edu.vn
                 </a></li>
             </ul>
