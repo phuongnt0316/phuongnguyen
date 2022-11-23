@@ -199,7 +199,6 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                 <div class="category">
                   <div class="first-category text-dark mt-3">
                       <p class="title-2"><b>SẢN PHẨM</b></p>
-                      
                       <div class="type p-2">
                       <?php $sanpham=$get_data->get_sp();
                       foreach($sanpham as $sp){
@@ -315,6 +314,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                              <a href="themgiohang.php?id=<?php echo $se_if["id_sp"]?> &maloai=<?php echo $se_if["Maloaisanpham"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongiaban"]?>" >Thêm vào giỏ hàng</a>
 
                             </form>
+                            <p class="description mt-4" style="text-align: justify;"><?php echo $se_if["Mota"] ?></p>
                           </div>
 
 

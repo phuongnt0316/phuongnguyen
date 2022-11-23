@@ -87,9 +87,9 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                         <li ><a  href="#"><i class="fa fa-search" ></i></a>
                             <ul class="search">
                                 <li>
-                                    <form action="search.php" method="post">
+                                    <form action="" method="get">
                                         <input type="search" name="txtsearch" placeholder="Tìm kiếm ....">
-                                        <input type="submit" name="sub_serch" value="Search">
+                                        <input type="submit" name="btm" value="Search">
                                     </form>
                                         
                                 </li>
@@ -195,10 +195,10 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
         <div id="body">
           <div class="first-select d-flex justify-content-between m-4">
             <div class="first-select1 text-dark">
-                <a href="index.php">TRANG CHỦ</a> <span> || <b>CHÓ CẢNH</b></span>
+                <a href="index.php">TRANG CHỦ</a> <span> || <a href="dog.php">XEM TẤT CẢ</b></span>
             </div>
             <div class="first-select1">
-                <select name="chose" id="select" onchange="OnSelectionChange()">
+                <select name="chose" id="select">
                     <option value="Thứ tự mặc định">Thứ tự mặc định</option>
                     <option value="Thứ tự theo đánh giá: từ thấp đến cao">Giá từ thấp đến cao</option>
                     <option value="Thứ tự theo đánh giá: từ cao đến thấp">Giá từ cao đến thấp</option>
@@ -239,7 +239,8 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                 <div class="product container-fluid ">
                   <div class="menu-product d-flex flex-wrap justify-content-around mt-3">
                   <?php
-                        $getdog=$get_data->get_cho();
+                        $machungloai=$_GET["Machungloai"];
+                        $getdog=$get_data->chotheoloai($machungloai);
                         foreach($getdog as $se){
 
                         ?>
