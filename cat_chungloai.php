@@ -38,6 +38,10 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
   .chose form a:hover {
     background: #a73963;
   }
+
+  .activ {
+    color: var(--main-color-1);
+  }
 </style>
 
 <body>
@@ -56,10 +60,10 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                 <a class="nav-link" href="intro.php">GIỚI THIỆU</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="dog.php">CHÓ CẢNH</a>
+                <a class="nav-link activ" href="dog.php">CHÓ CẢNH</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="cat.php">MÈO CẢNH</a>
+                <a class="nav-link" href="cat.php" style="color: var(--main-color-1);">MÈO CẢNH</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="food.php" role="button" data-bs-toggle="dropdown">ĐỒ ĂN</a>
@@ -69,7 +73,7 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" style="color: var(--main-color-1);" href="pk.php">PHỤ KIỆN</a>
+                <a class="nav-link" href="pk.php">PHỤ KIỆN</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="contact.php">LIÊN HỆ</a>
@@ -86,9 +90,9 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
             <li><a href="#"><i class="fa fa-search"></i></a>
               <ul class="search">
                 <li>
-                  <form action="search.php" method="post">
+                  <form action="" method="get">
                     <input type="search" name="txtsearch" placeholder="Tìm kiếm ....">
-                    <input type="submit" name="sub_serch" value="Search">
+                    <input type="submit" name="btm" value="Search">
                   </form>
 
                 </li>
@@ -172,7 +176,7 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
             <li><?php echo $_SESSION["hoten"] ?></li>
             <li><a href="logout.php">Đăng xuất</a></li>
           <?php } ?>
-          <li><a href="carts.php"><i class="fa fa-shopping-cart"></i></a></li>
+          <li><a href="cart.php"><i class="fa fa-shopping-cart"></i></a></li>
           </ul>
         </div>
       </nav>
@@ -182,15 +186,13 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
     <div id="body">
       <div class="first-select d-flex justify-content-between m-4">
         <div class="first-select1 text-dark">
-          <a href="index.php">TRANG CHỦ</a> <span> || <b>PHỤ KIỆN</b></span>
+          <a href="index.php">TRANG CHỦ</a> <span> || <a href="cat.php">XEM TẤT CẢ </a></b></span>
         </div>
         <div class="first-select1">
           <select name="chose" id="select">
             <option value="Thứ tự mặc định">Thứ tự mặc định</option>
-            <option value="Thứ tự theo mức độ phổ biến">Thứ tự theo mức độ phổ biến</option>
-            <option value="Thứ tự theo điểm đánh giá sản phẩm">Thứ tự theo điểm đánh giá sản phẩm</option>
-            <option value="Thứ tự theo đánh giá: từ thấp đến cao">Thứ tự theo đánh giá: từ thấp đến cao</option>
-            <option value="Thứ tự theo đánh giá: từ cao đến thấp">Thứ tự theo đánh giá: từ cao đến thấp</option>
+            <option value="Thứ tự theo đánh giá: từ thấp đến cao">Giá từ thấp đến cao</option>
+            <option value="Thứ tự theo đánh giá: từ cao đến thấp">Giá từ cao đến thấp</option>
           </select>
         </div>
       </div>
@@ -198,67 +200,27 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
         <div class="row ms-1 mt-2">
           <div class="col-sm-3">
             <div class="category">
-              <div class="first-category">
-                <p class="title-2 text-dark"><b>DANH MỤC SẢN PHẨM</b></p>
-                <div class="type p-2">
-                  <div class="dm p-1"><a href="dog.php">Chó cảnh</a></div>
-                  <div class="dm p-1"><a href="cat.php">Mèo cảnh</a></div>
-                  <div class="dm p-1"><a href="food-dog.php">Thức ăn chó</a></div>
-                  <div class="dm p-1"><a href="food-cat.php">Thức ăn mèo</a></div>
-                  <div class="dm p-1"><a href="pk.php">Phụ kiện</a></div>
 
-                </div>
-              </div>
 
               <div class="first-category text-dark mt-3">
-                <p class="title-2"><b>SẢN PHẨM</b></p>
+                <p class="title-2 text-dark"><b>CHỦNG LOẠI MÈO</b></p>
                 <div class="type p-2">
-                  <div class="type-of">
-                    <div class="type-img">
-                      <a href=""><img src="images/cat/cat-8.jpg" alt=""></a>
-                    </div>
-                    <div class="type-des">
-                      <a href="">Chó alaska</a>
-                      <p>200$</p>
-                    </div>
-                  </div>
-                  <div class="type-of">
-                    <div class="type-img">
-                      <a href=""><img src="images/cat/cat-1.jpg" alt=""></a>
-                    </div>
-                    <div class="type-des">
-                      <a href="">Chó alaska</a>
-                      <p>200$</p>
-                    </div>
-                  </div>
-                  <div class="type-of">
-                    <div class="type-img">
-                      <a href=""><img src="images/cat/cat-2.jpg" alt=""></a>
-                    </div>
-                    <div class="type-des">
-                      <a href="">Thức ăn cho chó</a>
-                      <p>200$</p>
-                    </div>
-                  </div>
-                  <div class="type-of">
-                    <div class="type-img">
-                      <a href=""><img src="images/cat/cat-8.jpg" alt=""></a>
-                    </div>
-                    <div class="type-des">
-                      <a href="">Mèo Anh - tai cụp</a>
-                      <p>200$</p>
-                    </div>
-                  </div>
-                  <div class="type-of">
-                    <div class="type-img">
-                      <a href=""><img src="images/cat/cat-8.jpg" alt=""></a>
-                    </div>
-                    <div class="type-des">
-                      <a href="">Mèo ta</a>
-                      <p>200$</p>
-                    </div>
-                  </div>
+                  <?php
+                  $maloai = "MEO";
+                  $sanpham = $get_data->get_chungloai($maloai);
+                  foreach ($sanpham as $sp) {
+                  ?>
 
+                    <div class="type-of">
+                      <div class="type-img">
+                        <a href=""><img src="img/<?php echo $sp["HinhAnh"] ?>" alt=""></a>
+                      </div>
+                      <div class="type-des">
+                        <a href="cat_chungloai.php?Machungloai=<?php echo $sp['Machungloai']; ?>"><?php echo $sp["Tenchungloai"] ?></a>
+
+                      </div>
+                    </div>
+                  <?php } ?>
                 </div>
               </div>
             </div>
@@ -267,27 +229,26 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
             <div class="product container-fluid ">
               <div class="menu-product d-flex flex-wrap justify-content-around mt-3">
                 <?php
-                $ma = "PK";
-                $getsp = $get_data->sanpham($ma);
-                foreach ($getsp as $pk) {
+                $machungloai = $_GET["Machungloai"];
+                $getdog = $get_data->meotheoloai($machungloai);
+                foreach ($getdog as $se) {
 
                 ?>
-                  <div class="item-product text-center mb-5">
-                    <a href="product-item.php?id=<?php echo $pk['id_sp']; ?> &maloai=<?php echo $pk['Maloaisanpham']; ?>" class="more">
-                      <div class="images-item">
-                        <img src="img/<?php echo $pk['Hinhanh'] ?>" alt="">
-                      </div>
-                      <div class="title-item ">
-                        <p class="item-kind">Phụ kiện<br></p>
-                        <p class="item-kind"><?php echo $pk['Tensanpham'] . "-" . $pk['id_sp'] ?><br></p>
 
+                  <div class="item-product text-center mb-5">
+                    <a href="product-item.php?id=<?php echo $se['id_dv']; ?>&maloai=<?php echo $se['Maloai'] ?>" class="more" style={text-decoration:none;color:black;}>
+                      <div class="images-item">
+                        <img src="img/<?php echo $se['Anh1'] ?>" alt="">
+                      </div>
+                      <div class="title-item mt-3">
+                        <p class="item-kind"><?php echo $se['Tenthucung'] . "-" . $se['id_dv'] ?><br></p>
                       </div>
                       <div class="price-item mb-2">
-                        <span class="price"><b>Giá: <?php echo $pk['Dongiaban'] ?> đ</b></span>
-
+                        <span class="price"><b><?php echo $se['Dongia'] ?> đ</b></span>
                       </div>
                     </a>
                   </div>
+
                 <?php
                 }
                 ?>

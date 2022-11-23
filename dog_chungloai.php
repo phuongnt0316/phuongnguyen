@@ -87,9 +87,9 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                         <li ><a  href="#"><i class="fa fa-search" ></i></a>
                             <ul class="search">
                                 <li>
-                                    <form action="" method="get">
+                                <form action="search.php" method="post">
                                         <input type="search" name="txtsearch" placeholder="Tìm kiếm ....">
-                                        <input type="submit" name="btm" value="Search">
+                                        <input type="submit" name="sub_serch" value="Search">
                                     </form>
                                         
                                 </li>
@@ -195,7 +195,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
         <div id="body">
           <div class="first-select d-flex justify-content-between m-4">
             <div class="first-select1 text-dark">
-                <a href="index.php">TRANG CHỦ</a> <span> || <a href="dog.php">XEM TẤT CẢ</b></span>
+                <a href="index.php">TRANG CHỦ</a> <span> || <a href="dog.php">XEM TẤT CẢ</a></b></span>
             </div>
             <div class="first-select1">
                 <select name="chose" id="select">
@@ -212,7 +212,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                 
                  
                   <div class="first-category text-dark mt-3">
-                      <p class="title-2"><b>DANH MỤC CÁC LOẠI CHÓ</b></p>
+                     <p class="title-2 text-dark"><b>CHỦNG LOẠI CHÓ</b></p>
                       <div class="type p-2">
 
                       <?php

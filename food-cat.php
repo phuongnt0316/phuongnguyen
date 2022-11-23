@@ -29,7 +29,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
         <div id="header">
         <nav class=" container-fluid p-2 navbar-expand-sm navbar-dark bg-dark d-flex align-items-center justify-content-between">
                 <div class="ms-3">
-                  <a class="navbar-brand" href="index.php">
+                  <a class="navbar-brand" href="index1.php">
                     <img src="images/logo.png" alt="">
                   </a>
                 </div>
@@ -70,9 +70,9 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                         <li ><a  href="#"><i class="fa fa-search" ></i></a>
                             <ul class="search">
                                 <li>
-                                    <form action="" method="get">
+                                <form action="search.php" method="post">
                                         <input type="search" name="txtsearch" placeholder="Tìm kiếm ....">
-                                        <input type="submit" name="btm" value="Search">
+                                        <input type="submit" name="sub_serch" value="Search">
                                     </form>
                                         
                                 </li>

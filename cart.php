@@ -14,7 +14,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
 }
 else {?> <script>
   alert('Đăng nhập để xem gio hàng của bạn');
-  location.href = 'index1.php';
+  location.href = 'login.php';
   //document.getElementById("Btn").click();
 
 
