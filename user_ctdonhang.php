@@ -16,8 +16,6 @@ else {?> <script>
   alert('Đăng nhập để xem gio hàng của bạn');
   location.href = 'index1.php';
   //document.getElementById("Btn").click();
-
-
 </script>
 <?php }?>
 <html lang="en">
@@ -122,15 +120,13 @@ else {?> <script>
                     Địa chỉ giao hàng:<?php echo $se['Diachi_giaohang']?><br>
                     Tổng tiền:<?php echo $se['Tongtien']?><br>
                     Ngày đặt:<?php echo $se['Ngayxuat'] ;?><br>
-                    <?php if($se['Trangthai']=="CHOGIAOHANG"){
-                       echo $se["Trangthai"];
-                      ?>
-                      <br>
+                    <?php if($se['Trangthai']=="CHOGIAOHANG"){?>
 					<a href="user_nhanhang.php?id=<?php echo $se['id_hd']?>" onclick="return (confirm('Bạn đã nhận hàng?'))" class='post'>Xác nhận đã nhận hàng</a> <br>
 					<?php
 					}
-                    
-                }
+                     echo $se["Trangthai"];
+                
+              }
 					?>
                       </span>
               <table class="table text-dark ">
