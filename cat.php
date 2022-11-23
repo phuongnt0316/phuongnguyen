@@ -202,41 +202,24 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
           <div class="col-sm-3">
             <div class="category">
               <div class="first-category">
-                <p class="title-2 text-dark"><b>DANH MỤC SẢN PHẨM</b></p>
+                <p class="title-2 text-dark"><b>DANH MỤC CÁC LOẠI MÈO</b></p>
                 <div class="type p-2">
-                  <div class="dm p-1"><a href="dog.php">Chó cảnh</a></div>
-                  <div class="dm p-1"><a href="cat.php">Mèo cảnh</a></div>
-                  <div class="dm p-1"><a href="food-dog.php">Thức ăn chó</a></div>
-                  <div class="dm p-1"><a href="food-cat.php">Thức ăn mèo</a></div>
-                  <div class="dm p-1"><a href="pk.php">Phụ kiện</a></div>
-
-                </div>
-              </div>
-
-              <div class="first-category text-dark mt-3">
-                <p class="title-2"><b>SẢN PHẨM</b></p>
-                <div class="type p-2">
-                  <?php $sanpham = $get_data->get_sp();
-                  if($sanpham!=NULL){
-                  foreach ($sanpham as $sp) {
-                  ?>
-
-                    <div class="type-of">
-                      <div class="type-img">
-                        <a href=""><img src="img/<?php echo $sp["Hinhanh"] ?>" alt=""></a>
-                      </div>
-                      <div class="type-des">
-                        <a href="product-item.php?id=<?php echo $sp['id_sp']; ?> &maloai=<?php echo $sp['Maloaisanpham']; ?>"><?php echo $sp["Tensanpham"] ?></a>
-                        <p><?php echo $sp["Dongiaban"] ?></p>
-                      </div>
-                    </div>
-                  <?php }
-                  }
-                  else{?>
-                    <p> KHÔNG CÓ DỮ LIỆU</p>
-                    <?php
-                  }
-                   ?>
+                <?php
+                      $maloai="MEO";
+                      $sanpham=$get_data->get_chungloai($maloai);
+                      foreach($sanpham as $sp){
+                      ?>
+                      
+                        <div class="type-of">
+                            <div class="type-img">
+                              <a href=""><img src="img/<?php echo $sp["HinhAnh"] ?>" alt=""></a>
+                            </div>
+                            <div class="type-des">
+                                <a href="cat_chungloai.php?Machungloai=<?php echo $sp['Machungloai'];?>"><?php echo $sp["Tenchungloai"] ?></a>
+                                
+                            </div>
+                        </div>
+                        <?php } ?>
 
 
                 </div>

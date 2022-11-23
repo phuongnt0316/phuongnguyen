@@ -340,6 +340,13 @@ class data
         $run = mysqli_query($conn, $sql);
         return $run;
     }
+    public function meotheoloai($machungloai)
+    {
+        global $conn;
+        $sql = "select*from thucung_meo  where Machungloai='$machungloai'";
+        $run = mysqli_query($conn, $sql);
+        return $run;
+    }
     //gio hang
     public function insert_giohang($id_kh, $id_sp, $Maloai, $Soluong, $dongia)
     {
