@@ -202,7 +202,7 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
           <div class="col-sm-3">
             <div class="category">
               <div class="first-category">
-              <p class="title-2"><b>DANH MỤC CÁC LOẠI CHÓ</b></p>
+              <p class="title-2 text-dark"><b>CHỦNG LOẠI MÈO</b></p>
                 <div class="type p-2 text-dark">
 
                   <?php
@@ -216,7 +216,7 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                         <a href=""><img src="img/<?php echo $sp["HinhAnh"] ?>" alt=""></a>
                       </div>
                       <div class="type-des">
-                        <a href="dog_chungloai.php?Machungloai=<?php echo $sp['Machungloai']; ?>"><?php echo $sp["Tenchungloai"] ?></a>
+                        <a href="cat_chungloai.php?Machungloai=<?php echo $sp['Machungloai']; ?>"><?php echo $sp["Tenchungloai"] ?></a>
 
                       </div>
                     </div>
