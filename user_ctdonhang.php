@@ -122,7 +122,7 @@ else {?> <script>
                     Địa chỉ giao hàng:<?php echo $se['Diachi_giaohang']?><br>
                     Tổng tiền:<?php echo $se['Tongtien']?><br>
                     Ngày đặt:<?php echo $se['Ngayxuat'] ;?><br>
-                    <?php if($se['Trangthai']=="DANGGIAO"){?>
+                    <?php if($se['Trangthai']=="CHOXUATHANG"){?>
 					<a href="user_nhanhang.php?id=<?php echo $se['id_hd']?>" onclick="return (confirm('Bạn đã nhận hàng?'))" class='post'>Xác nhận đã nhận hàng</a> <br>
 					<?php
 					}

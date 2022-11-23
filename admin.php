@@ -43,7 +43,7 @@ if(empty($_SESSION["email"])){
                               <li><a class="dropdown-item text-dark" href="manager-cat.php">MÈO</a></li>
                               <li><a class="dropdown-item text-dark" href="manager-food-dog.php">ĐỒ ĂN CHO CHÓ</a></li>
                               <li><a class="dropdown-item text-dark" href="manafer-food-cat.php">ĐỒ ĂN CHO MÈO</a></li>
-                              <li><a class="dropdown-item text-dark" href="pk.php">PHỤ KIỆN</a></li>
+                              <li><a class="dropdown-item text-dark" href="manafer-pk.php">PHỤ KIỆN</a></li>
                               
                             </ul>
                           </li>
@@ -63,9 +63,7 @@ if(empty($_SESSION["email"])){
                         <li class="nav-item">
                             <a class="nav-link" href="admin_contact.php">CONTACT</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="quangcao.php">QUẢNG CÁO</a>
-                        </li>
+                      
                         
                       </ul>
                     </div>

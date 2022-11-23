@@ -42,7 +42,7 @@ $get_data=new data();
                               <li><a class="dropdown-item text-dark" href="food-cat.php">MÈO</a></li>
                               <li><a class="dropdown-item text-dark" href="food-dog.php">ĐỒ ĂN CHO CHÓ</a></li>
                               <li><a class="dropdown-item text-dark" href="food-cat.php">ĐỒ ĂN CHO MÈO</a></li>
-                              <li><a class="dropdown-item text-dark" href="pk.php">PHỤ KIỆN</a></li>
+                              <li><a class="dropdown-item text-dark" href="manafer-pk.php">PHỤ KIỆN</a></li>
                               
                             </ul>
                           </li>

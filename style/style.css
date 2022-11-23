@@ -47,14 +47,15 @@ nav .menu-2 ul li a{
 .menu-2 .menu-22 li .search{
     display: none;
     position: absolute;
-    right: 28%;
+    right: 35%;
+    top: -15%;
 }
 .search li form{
     display: flex;
 } 
 .search li  input[type=search]{
-    height: 40px;
-    width: 250px;
+    height: 50px;
+    width: 350px;
     border: 2px solid #30b5b2;
     color: #333;
     padding: 10px;
@@ -62,9 +63,10 @@ nav .menu-2 ul li a{
     border-right: none;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    display: block;
 }
 .search li  input[type=submit]{
-    height: 40px;
+    height: 50px;
     width: 70px;
     margin-left: -5px;
     background-color: #30b5b2;

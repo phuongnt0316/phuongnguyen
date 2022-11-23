@@ -42,7 +42,7 @@ $get_data=new data();
                               <li><a class="dropdown-item text-dark" href="food-cat.php">MÈO</a></li>
                               <li><a class="dropdown-item text-dark" href="food-dog.php">ĐỒ ĂN CHO CHÓ</a></li>
                               <li><a class="dropdown-item text-dark" href="food-cat.php">ĐỒ ĂN CHO MÈO</a></li>
-                              <li><a class="dropdown-item text-dark" href="pk.php">PHỤ KIỆN</a></li>
+                              <li><a class="dropdown-item text-dark" href="manafer-pk.php">PHỤ KIỆN</a></li>
                               
                             </ul>
                           </li>
@@ -50,11 +50,11 @@ $get_data=new data();
                           <a class="nav-link" href="#">KHO HÀNG</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">HÓA ĐƠN</a>
+                          <a class="nav-link" href="hoadon.php">HÓA ĐƠN</a>
                         </li>
                        
                         <li class="nav-item">
-                            <a class="nav-link" href="#">DOANH THU</a>
+                            <a class="nav-link" href="admin_doanhthu.php">DOANH THU</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="admin_blog.php" style="color: var(--main-color-1);">BLOG</a>
