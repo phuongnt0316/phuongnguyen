@@ -287,7 +287,7 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
 
           </div>
           <div class="col-sm-3 right ">
-            <h2>Thông tin lên hệ</h2>
+            <h2>Thông tin liên hệ</h2>
             <ul class="list-unstyled">
               <li><a href=""><i class="fa icon fa-map-marker"></i> Đại học Phương Đông<br> số 4 Ngõ Chùa Hưng Ký – Minh Khai <br> Hai Bà Trưng – Hà Nội</a></li>
               <li><a href=""><i class="fa icon fa-volume-control-phone"></i> 02436241394 hoặc 0936738889</a></li>

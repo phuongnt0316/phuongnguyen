@@ -584,7 +584,7 @@ SELECT chitiet_donhang.id_sp,Tensanpham,Hinhanh,chitiet_donhang.Soluong,chitiet_
     {
         global $conn;
         $sql = "SELECT * FROM sanpham
-    LIMIT 8";
+        LIMIT 8";
         $run = mysqli_query($conn, $sql);
         return $run;
     }
