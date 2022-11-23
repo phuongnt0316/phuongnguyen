@@ -202,6 +202,7 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
           <div class="col-sm-3">
             <div class="category">
               <div class="first-category">
+<<<<<<< HEAD
                 <p class="title-2 text-dark"><b>DANH MỤC CÁC LOẠI MÈO</b></p>
                 <div class="type p-2">
                 <?php
@@ -220,6 +221,53 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                             </div>
                         </div>
                         <?php } ?>
+=======
+              <p class="title-2"><b>DANH MỤC CÁC LOẠI CHÓ</b></p>
+                <div class="type p-2 text-dark">
+
+                  <?php
+                  $maloai = "MEO";
+                  $sanpham = $get_data->get_chungloai($maloai);
+                  foreach ($sanpham as $sp) {
+                  ?>
+
+                    <div class="type-of">
+                      <div class="type-img">
+                        <a href=""><img src="img/<?php echo $sp["HinhAnh"] ?>" alt=""></a>
+                      </div>
+                      <div class="type-des">
+                        <a href="dog_chungloai.php?Machungloai=<?php echo $sp['Machungloai']; ?>"><?php echo $sp["Tenchungloai"] ?></a>
+
+                      </div>
+                    </div>
+                  <?php } ?>
+                </div>
+              </div>
+
+              <div class="first-category text-dark mt-3">
+                <p class="title-2"><b>SẢN PHẨM</b></p>
+                <div class="type p-2">
+                  <?php $sanpham = $get_data->get_sp();
+                  if ($sanpham != NULL) {
+                    foreach ($sanpham as $sp) {
+                  ?>
+
+                      <div class="type-of">
+                        <div class="type-img">
+                          <a href=""><img src="img/<?php echo $sp["Hinhanh"] ?>" alt=""></a>
+                        </div>
+                        <div class="type-des">
+                          <a href="product-item.php?id=<?php echo $sp['id_sp']; ?> &maloai=<?php echo $sp['Maloaisanpham']; ?>"><?php echo $sp["Tensanpham"] ?></a>
+                          <p><?php echo $sp["Dongiaban"] ?></p>
+                        </div>
+                      </div>
+                    <?php }
+                  } else { ?>
+                    <p> KHÔNG CÓ DỮ LIỆU</p>
+                  <?php
+                  }
+                  ?>
+>>>>>>> ab6d124da0dcf6db7458d493dcda92755ef0b93c
 
 
                 </div>
