@@ -698,6 +698,19 @@ SELECT chitiet_donhang.id_sp,Tensanpham,Hinhanh,chitiet_donhang.Soluong,chitiet_
         $run = mysqli_query($conn, $sql);
         return $run;
     }
+    public function insert_nhaphang($id,$soluong,$dongia){
+        global $conn;
+        $sql="insert into nhaphang(id_sp,Soluong,Dongianhap) values('$id',$soluong,$dongia)";
+        $run = mysqli_query($conn, $sql);
+        return $run;
+    }
+    public function update_soluong_sanpham($soluong,$id){
+        global $conn;
+        $sql="update khosanpham set Soluong=Soluong+$soluong where id_sp='$id'";
+        $run = mysqli_query($conn, $sql);
+        return $run;
+    }
+
     
 
 }

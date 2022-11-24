@@ -1,30 +1,24 @@
 <!DOCTYPE html>
 <?php
-ob_start();
-session_start();
-if(empty($_SESSION["email"])){
-  header('location:login.php');
-}
+$maloai="CHO";
 ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/manager.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Document</title>
     
 </head>
 <body>
     <div class="content">
         <div id="header">
-            <nav class=" container-fluid p-2 navbar-expand-sm navbar-dark bg-dark d-flex align-items-center justify-content-around">
+        <nav class=" container-fluid p-2 navbar-expand-sm navbar-dark bg-dark d-flex align-items-center justify-content-around">
                 <div class="ms-3">
                   <a class="navbar-brand" href="index1.php">
                     <img src="images/logo.png" alt="">
@@ -34,99 +28,130 @@ if(empty($_SESSION["email"])){
                     <div class="collapse navbar-collapse" id="mynavbar">
                       <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                          <a class="nav-link" href="admin.php" style="color: var(--main-color-1);">KHÁCH HÀNG</a>
+                          <a class="nav-link" href="intro.php">KHÁCH HÀNG</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown">SẢN PHẨM</a>
                             <ul class="dropdown-menu mt-3 p-2 fade">
-                              <li><a class="dropdown-item text-dark " href="manager-dog.php">CHÓ</a></li>
-                              <li><a class="dropdown-item text-dark" href="manager-cat.php">MÈO</a></li>
-                              <li><a class="dropdown-item text-dark" href="manager-food-dog.php">ĐỒ ĂN CHO CHÓ</a></li>
-                              <li><a class="dropdown-item text-dark" href="manafer-food-cat.php">ĐỒ ĂN CHO MÈO</a></li>
-                              <li><a class="dropdown-item text-dark" href="manafer-pk.php">PHỤ KIỆN</a></li>
+                              <li><a class="dropdown-item text-dark " href="food-dog.php" style="color: var(--main-color-1);">CHÓ</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-cat.php">MÈO</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-dog.php">ĐỒ ĂN CHO CHÓ</a></li>
+                              <li><a class="dropdown-item text-dark" href="food-cat.php">ĐỒ ĂN CHO MÈO</a></li>
+                              <li><a class="dropdown-item text-dark" href="pk.php">PHỤ KIỆN</a></li>
                               
                             </ul>
                           </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="khohang.php">KHO HÀNG</a>
+                          <a class="nav-link" href="#">KHO HÀNG</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="hoadon.php">HÓA ĐƠN</a>
+                          <a class="nav-link" href="#">HÓA ĐƠN</a>
                         </li>
                        
                         <li class="nav-item">
-                            <a class="nav-link" href="admin_doanhthu.php">DOANH THU</a>
+                            <a class="nav-link" href="#">DOANH THU</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="admin_blog.php">BLOG</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="admin_contact.php">CONTACT</a>
+                            <a class="nav-link" href="admin_contact">LIÊN HỆ</a>
                         </li>
-                      
                         
                       </ul>
                     </div>
                 </div>
+                
             </nav>
               
         </div>
         <!-- --------------------------------body--------------------------------- -->
-          <div class="main d-flex justify-content-center mb-5">
+          <div class="main d-flex justify-content-center">
              
-            <div class="main-right mb-5">
+            <div class="main-right">
               <div class="list-customer">
-                
-                <div class="container p-3">
-                  <h4 class="text-dark text-center">DANH SÁCH TỒN KHO</h4>
-                  <input class="form-control mt-5 mb-3" id="myInput" type="text" placeholder="Tìm kiếm tồn kho...">
+                <div class="container p-3 ms-5">
+                  <h4 class="text-dark text-center">DANH SÁCH || <a href="admin.html">Quay lại</a></h4>
                   <br>
-                  <table class="table table-bordered table-striped .table-responsive">
-                    <thead class="table-dark">
-                      <tr>
-                        <th>Mã sản phẩm</th>
-                        <th>Số lượng</th>
-                      </tr>
-                      <?php 
-                      include("control.php");
-                      $get_data=new data();
-                      $select_user=$get_data->select_user();
-                      foreach($select_user as $se){
-                      ?>
+                  <form action="" enctype="multipart/form-data" method="post" class="form-info text-dark me-5">
+                    <table>
+                        <tr>
+                            <td><label for="id" class="">Mã sản phẩm</label></td>
+                            <td><select name="txtId" id="tensp">
+                                    <?php include('control.php');
+                                    $get_data=new data();
+                                    $select=$get_data->get_phukien();
+                                    foreach($select as $se){
+                                    ?>
+                                    <option value="<?php echo $se['id_sp'] ?>"><?php echo $se['id_sp'] ?></option>
 
-                    </thead>
-                    <tbody id="myTable">
-                      <tr>
-                        <td><?php echo $se['id_sp']?></td>
-                        <td><?php echo $se['Soluong']?></td>
-                      </tr>
-                      
+							                      <?php }?>
+                         </select>  
+                        </td>
+                        </tr>
+                        <tr>
+                            <td><label for="ten">Tên sản phẩm</label</td>
+                            <td><input type="text" name="txtTen" id="ten" ></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><label for="Soluong">Số lượng</label></td>
+                            <td><input type="text" name="txtSoluong" id="ten" ></td>
+                        </tr>
+                        <tr>
+                            <td><label for="gia">Đơn giá nhập</label></td>
+                            <td><input type="text" name="txtDongia" id="gia" ></td>
+                        </tr>
+                        
+                            
+                        <tr>
+                            
+                        <tr>
+                            <td colspan="2" >
+                                <input type="submit" name="btnThem" class=" sd text-right" value="Gửi">
+                            </td>
+                        </tr>
+                        
+                        
+                    </table>
+                  </form>
+                  <?php
+                 if(isset($_POST["btnThem"])){
+                      $insert=$get_data->insert_nhaphang($_POST['txtId'],$_POST['txtSoluong'],$_POST['txtDongia']);
+                  
+                      if($insert){
+                        ?> <script>
+                        location.href = 'admin.php';
+                      </script>
                       <?php
+                  
                       }
-                      ?>
-                    </tbody>
-                  </table>
+                      else
+                      echo"<script> alert('Không thành công')</script>";
+              	
+			                  }
+
+                            
+                        
+                        ?>
+                  ?>
+
                 </div>
                 
-                <script>
-                $(document).ready(function(){
-                  $("#myInput").on("keyup", function() {
-                    var value = $(this).val().toLowerCase();
-                    $("#myTable tr").filter(function() {
-                      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                    });
-                  });
-                });
-                </script>
               </div>
             </div>
           </div>
         <!-- -------------------------------------footer-------------------------- -->
-        <div id="footer" class="mt-5">
-            <div class=" ft text-center">
+        <div id="footer">
+            <div class="container-fluid ft">
+                <div class="row">
+                <div class=" ft text-center">
                  <p>Sản phẩm của Phuong&Linh PDU - Hotline hỗ trợ : 0123456789</p>
             </div>
+                </div>
+            </div>
         </div>
+        
     </div>
 </body>
 </html>
