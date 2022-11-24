@@ -34,7 +34,7 @@ if(empty($_SESSION["email"])){
                     <div class="collapse navbar-collapse" id="mynavbar">
                       <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                          <a class="nav-link" href="admin.php">KHÁCH HÀNG</a>
+                          <a class="nav-link" href="admin.php" style="color: var(--main-color-1);">KHÁCH HÀNG</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown">SẢN PHẨM</a>
@@ -48,7 +48,7 @@ if(empty($_SESSION["email"])){
                             </ul>
                           </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">KHO HÀNG</a>
+                          <a class="nav-link" href="khohang.php">KHO HÀNG</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="hoadon.php">HÓA ĐƠN</a>
@@ -61,9 +61,9 @@ if(empty($_SESSION["email"])){
                             <a class="nav-link" href="admin_blog.php">BLOG</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="admin_contact.php">LIÊN HỆ</a>
+                            <a class="nav-link" href="admin_contact.php">CONTACT</a>
                         </li>
-                       
+                      
                         
                       </ul>
                     </div>
@@ -78,46 +78,36 @@ if(empty($_SESSION["email"])){
               <div class="list-customer">
                 
                 <div class="container p-3">
-                  <h4 class="text-dark text-center">DANH SÁCH sản phẩm|| <a href="admin_product_add.php" id="t">Thêm sản phẩm mới</a></h4>
-                  <input class="form-control mt-5 mb-3" id="myInput" type="text" placeholder="Tìm kiếm thú cưng">
+                  <h4 class="text-dark text-center">DANH SÁCH TỒN KHO</h4>
+                  <input class="form-control mt-5 mb-3" id="myInput" type="text" placeholder="Tìm kiếm tồn kho...">
                   <br>
                   <table class="table table-bordered table-striped .table-responsive">
                     <thead class="table-dark">
-                    <tr>
+                      <tr>
                         <th>Mã sản phẩm</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Mô tả</th>
-                        <th>Nơi sản xuất</th>
-                        <th>Mã loại sản phẩm</th>
-                        <th>Hình ảnh</th>
-                        <th>Đơn giá bán</th>
-                        
-                        <th colspan="2">Thao tác</th>
+                        <th>Số lượng</th>
                       </tr>
-                    </thead>
-                    <tbody id="myTable">
-                    <?php
+                      <?php 
                       include("control.php");
                       $get_data=new data();
-                      $get=$get_data->select_food_dog();
-                      foreach($get as $se){
+                      $select_user=$get_data->select_user();
+                      foreach($select_user as $se){
                       ?>
+
+                    </thead>
+                    <tbody id="myTable">
                       <tr>
-                        <td>dddd<?php echo $se["id_sp"] ?></td>
-                        <td><?php echo $se["Tensanpham"] ?></td>                      
-                        <td><?php echo $se["Mota"] ?></td>
-                        <td><?php echo $se["Noisanxuat"] ?></td>
-                        <td><?php echo $se["Maloaisanpham"] ?></td>
-                        <td><img src="img/<?php echo $se['Hinhanh'] ?>" alt="" width="50px"></td>
-                        <td><?php echo $se["Dongiaban"] ?></td>
-                        <td><a href="updatefooddog.php?id=<?php echo $se["id_sp"] ?>">Sửa</a></td>
-                        <td><a href="deletefooddog.php?id=<?php echo $se["id_sp"]?>" onclick="return (confirm('Xóa thú cưng?'))">Xóa</a></td>
+                        <td><?php echo $se['id_sp']?></td>
+                        <td><?php echo $se['Soluong']?></td>
                       </tr>
-                      <?php } ?>
                       
+                      <?php
+                      }
+                      ?>
                     </tbody>
                   </table>
                 </div>
+                
                 <script>
                 $(document).ready(function(){
                   $("#myInput").on("keyup", function() {

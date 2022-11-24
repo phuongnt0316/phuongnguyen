@@ -262,14 +262,14 @@ class data
     public function get_infocho($id)
     {
         global $conn;
-        $sql = "SELECT*from thucung_cho,loaisanpham WHERE thucung_cho.Maloai=loaisanpham.Maloaisanpham and id_dv = '$id'";
+        $sql = "SELECT*from thucung_cho where id_dv = '$id'";
         $run = mysqli_query($conn, $sql);
         return $run;
     }
     public function get_infomeo($id)
     {
         global $conn;
-        $sql = "SELECT*from thucung_meo,loaisanpham WHERE thucung_meo.Maloai=loaisanpham.Maloaisanpham and id_dv = '$id'";
+        $sql = "SELECT*from thucung_meo WHERE id_dv = '$id'";
         $run = mysqli_query($conn, $sql);
         return $run;
     }
@@ -655,4 +655,49 @@ SELECT chitiet_donhang.id_sp,Tensanpham,Hinhanh,chitiet_donhang.Soluong,chitiet_
         $run = mysqli_query($conn, $sql);
         return $run;
     }
+    //Khosanpham
+    public function select_khosanpham()
+    {
+        global $conn;
+        $sql = "select * from khosanpham,sanpham where sanpham.id_sp=khosanpham.id_sp";
+        $run = mysqli_query($conn, $sql);
+        return $run;
+    }
+    public function insert_khosanpham($id)
+    {
+        global $conn;
+        $sql = "insert into khosanpham(id_sp) values('$id')";
+        $run = mysqli_query($conn, $sql);
+        return $run;
+    }
+    public function tonkho_cho(){
+        global $conn;
+        $sql="select thucung_cho.Machungloai,Tenchungloai,COUNT(*) as Soluong  from thucung_cho,chungloai 
+        WHERE chungloai.Machungloai=thucung_cho.Machungloai GROUP by Machungloai,Tenchungloai";
+        $run = mysqli_query($conn, $sql);
+        return $run;
+    }
+    public function tonkho_meo(){
+        global $conn;
+        $sql="select thucung_meo.Machungloai,Tenchungloai,COUNT(*) as Soluong  from thucung_meo,chungloai 
+        WHERE chungloai.Machungloai=thucung_meo.Machungloai and Trangthai='CONHANG' GROUP by Machungloai,Tenchungloai";
+        $run = mysqli_query($conn, $sql);
+        return $run;
+    }
+    public function tonkho_meotheoloai($maloai){
+        global $conn;
+        $sql="select*from thucung_meo,chungloai where chungloai.Machungloai=thucung_meo.Machungloai and Trangthai='CONHANG' 
+        and thucung_meo.Machungloai='$maloai'";
+        $run = mysqli_query($conn, $sql);
+        return $run;
+    }
+    public function tonkho_chotheoloai($maloai){
+        global $conn;
+        $sql="select*from thucung_cho,chungloai where chungloai.Machungloai=thucung_cho.Machungloai and Trangthai='CONHANG' 
+        and thucung_cho.Machungloai='$maloai'";
+        $run = mysqli_query($conn, $sql);
+        return $run;
+    }
+    
+
 }
