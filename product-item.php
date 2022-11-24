@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+ob_start();
 session_start();
 include("control.php");
 $get_data = new data();
@@ -196,14 +197,14 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                                     foreach ($sanpham as $sp) {
                                     ?>
 
-                                        <div class="type-of">
-                                            <div class="type-img">
-                                                <a href=""><img src="img/<?php echo $sp["Hinhanh"] ?>" alt=""></a>
-                                            </div>
-                                            <div class="type-des">
-                                                <a href="product-item.php?id=<?php echo $sp['id_sp']; ?> &maloai=<?php echo $sp['Maloaisanpham']; ?>"><?php echo $sp["Tensanpham"] ?></a>
-                                                <p><?php echo $sp["Dongiaban"] ?></p>
-                                            </div>
+                                    <div class="type-of">
+                                        <div class="type-img">
+                                            <a href=""><img src="img/<?php echo $sp["Hinhanh"] ?>" alt=""></a>
+                                        </div>
+                                        <div class="type-des">
+                                            <a
+                                                href="product-item.php?id=<?php echo $sp['id_sp'];?> &maloai=<?php echo $sp['Maloaisanpham'];?>"><?php echo $sp["Tensanpham"] ?></a>
+                                            <p><?php echo $sp["Dongiaban"] ?></p>
                                         </div>
                                     <?php } ?>
 
@@ -228,16 +229,17 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="first-select1 text-dark">
-                                        <span><a href="index.php">TRANG CHỦ</a> || <a href="cat.php"><?php echo $se_if["Tenloaisanpham"] ?></a></span>
+                                        <span><a href="index.php">TRANG CHỦ</a> || <a
+                                                href="cat.php"><?php echo $se_if["Tenloaisanpham"] ?></a></span>
                                         <h3 class="name-product title-2 mt-3"><?php echo $se_if["Tenthucung"] ?></h3>
                                         <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongia"] ?></h3>
                                         <p class="description mt-2"><?php echo $se_if["Maloai"] ?></p>
                                         <div class="chose-1">
-                                            <a href="themgiohang.php?id=<?php echo $se_if["id_dv"] ?> &maloai=<?php echo $se_if["Maloai"] ?> &idkh=<?php echo $idkh; ?> &sl=1 &dg=<?php echo $se_if["Dongia"] ?>" class="mt-3">Thêm vào giỏ hàng</a>
+                                            <a href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>"
+                                                class="mt-3">Thêm vào giỏ hàng</a>
                                         </div>
                                         <p class="description mt-4" style="text-align: justify;">
                                             <?php echo $se_if["Thongtinthem"] ?></p>
-
 
                                     </div>
                                 </div>
@@ -261,15 +263,20 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                     </div>
                     <div class="col-sm-6 p-2 pe-3">
                         <div class="first-select1 text-dark">
-                            <span><a href="index1.php">TRANG CHỦ</a> || <a href="dog.php"><?php echo $se_if["Tenloaisanpham"] ?></a></span>
+                            <span><a href="index1.php">TRANG CHỦ</a> || <a
+                                    href="dog.php"><?php echo $se_if["Tenloaisanpham"] ?></a></span>
                             <h3 class="name-product title-2 mt-3"><?php echo $se_if["Tenthucung"] ?></h3>
                             <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongia"] ?></h3>
                             <p class="description mt-2"><?php echo $se_if["Mucdichnuoi"] ?></p>
                             <div class="chose">
                                 <form action="" method="post">
-                                    <a href="themgiohang.php?id=<?php echo $se_if["id_dv"] ?> &maloai=<?php echo $se_if["Maloai"] ?> &idkh=<?php echo $idkh; ?> &sl=1 &dg=<?php echo $se_if["Dongia"] ?>">Thêm
+                                    <input type="number" name="quantity" min="1" max="10" value="1" id="">
+                                    <a
+                                        href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>">Thêm
                                         vào giỏ hàng</a>
-
+                                        <?php }else { ?>
+                                    <a href="login.php?page=1"> Đăng nhập để mua hàng</a>
+                                    <?php } ?>
                                 </form>
                             </div>
                             <p class="description mt-4" style="text-align: justify;">
@@ -303,7 +310,8 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                 <div class="chose">
                     <form action="" method="post">
                         <input type="number" name="quantity" min="1" max="10" value="1" id="">
-                        <a href="themgiohang.php?id=<?php echo $se_if["id_sp"] ?> &maloai=<?php echo $se_if["Maloaisanpham"] ?> &idkh=<?php echo $idkh; ?> &sl=1 &dg=<?php echo $se_if["Dongiaban"] ?>">Thêm
+                        <a
+                            href="themgiohang.php?id=<?php echo $se_if["id_sp"]?> &maloai=<?php echo $se_if["Maloaisanpham"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongiaban"]?>">Thêm
                             vào giỏ hàng</a>
 
                     </form>
@@ -318,7 +326,7 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
 
                                                 }
                                             }
-                                        } ?>
+                                         ?>
 </div>
 <div class="container mt-5 list-op">
     <ul class="nav nav-tabs" role="tablist">
@@ -400,20 +408,19 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                         <input type="submit" value="Gửi">
                     </form>
                 </div>
-
-            </div>
-            <div class="col-sm-3 right ">
-                <h2>Thông tin lên hệ</h2>
-                <ul class="list-unstyled">
-                    <li><a href=""><i class="fa icon fa-map-marker"></i> Đại học Phương Đông<br> số 4 Ngõ Chùa Hưng
-                            Ký – Minh Khai <br> Hai Bà Trưng – Hà Nội</a></li>
-                    <li><a href=""><i class="fa icon fa-volume-control-phone"></i> 02436241394 hoặc 0936738889</a>
-                    </li>
-                    <li><a href=""><i class="fa icon fa-envelope-o"></i> ict.dhphuongdong@gmail.com</a></li>
-                    <li><a href=""><i class="fa icon fa-facebook-square"></i> facebook.com/cntt.phuongdong</a></li>
-                    <li><a href=""><i class="fa icon fa-globe"></i> cntt.phuongdong.edu.vn
-                        </a></li>
-                </ul>
+                <div class="col-sm-3 right ">
+                    <h2>Thông tin lên hệ</h2>
+                    <ul class="list-unstyled">
+                        <li><a href=""><i class="fa icon fa-map-marker"></i> Đại học Phương Đông<br> số 4 Ngõ Chùa Hưng
+                                Ký – Minh Khai <br> Hai Bà Trưng – Hà Nội</a></li>
+                        <li><a href=""><i class="fa icon fa-volume-control-phone"></i> 02436241394 hoặc 0936738889</a>
+                        </li>
+                        <li><a href=""><i class="fa icon fa-envelope-o"></i> ict.dhphuongdong@gmail.com</a></li>
+                        <li><a href=""><i class="fa icon fa-facebook-square"></i> facebook.com/cntt.phuongdong</a></li>
+                        <li><a href=""><i class="fa icon fa-globe"></i> cntt.phuongdong.edu.vn
+                            </a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
