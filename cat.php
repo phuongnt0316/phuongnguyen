@@ -186,7 +186,7 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
     <div id="body">
       <div class="first-select d-flex justify-content-between m-4">
         <div class="first-select1 text-dark">
-          <a href="index.php">TRANG CHỦ</a> <span> || <b>CHÓ CẢNH</b></span>
+          <a href="index.php">TRANG CHỦ</a> <span> || <b>MÈO CẢNH</b></span>
         </div>
         <div class="first-select1">
           <select name="chose" id="select" onchange="OnSelectionChange()">
