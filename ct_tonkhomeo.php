@@ -78,9 +78,9 @@ if(empty($_SESSION["email"])){
               <div class="list-customer">
                 
                 <div class="container p-3">
-                  <h4 class="text-dark text-center"><a href="khohang.php">Tồn kho sản phẩm</a></h4>
-                  <h4 class="text-dark text-center"><a href="toonkho_cho.php">Tồn kho chó cảnh</a></h4>
-                  <h4 class="text-dark text-center"><a href="tonkho_meo.php">Tồn kho mèo cảnh</a></h4>
+                  <a href="khohang.php" class ="btn btn-primary">Tồn kho sản phẩm</a>
+                  <a href="tonkho_cho.php" class ="btn btn-primary">Tồn kho chó cảnh</a>
+                  <a href="tonkho_meo.php" class ="btn btn-primary">Tồn kho mèo cảnh</a>
                   <input class="form-control mt-5 mb-3" id="myInput" type="text" placeholder="Tìm kiếm tồn kho...">
                   <br>
                   <table class="table table-bordered table-striped .table-responsive">

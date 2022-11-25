@@ -280,6 +280,20 @@ location.href = 'login.php';
                     $diachi=$_POST["txtdiachi"];
                     $rs=$get_data->insert_donhang($id_kh,$diachi,$sum_cart);
                     $insert=$get_data->insert_ctdonhang($rs,$id_kh);
+                    $get_cart=$get_data->get_cart($id_kh);
+                    foreach($get_cart as $insert){
+                      if($insert["Maloai"]=="CHO"){
+                       $update=$get_data->mua_cho($insert["id_sp"]); 
+                      }
+                      else{
+                        if($insert["Maloai"]=="MEO"){
+                          $update=$get_data->mua_meo($insert["id_sp"]); 
+                        }
+                        else{
+                          $update=$get_data->mua_sanpham($insert["Soluong"],$insert["id_sp"]);
+                        }
+                      }
+                    }
                     $delete=$get_data->delete_giohang($id_kh);
                     
                     if($delete){?>

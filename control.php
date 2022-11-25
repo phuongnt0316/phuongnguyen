@@ -189,11 +189,11 @@ class data
         $count = mysqli_num_rows($run);
         return $count;
     }
-    public function insert_meo($id_dv, $Tenthucung, $Maloai, $Machungloai, $Dongia, $Kieulong, $Mausac, $Mucdorunglong, $Mucdophobien, $Vengoai, $Thongtinthem, $Anh1, $Anh2)
+    public function insert_meo($id_dv, $Tenthucung, $Maloai, $Machungloai, $Dongia, $Kieulong, $Mausac, $Mucdorunglong, $Mucdophobien, $Vengoai, $Thongtinthem, $Anh1, $Anh2,$trangthai)
     {
         global $conn;
-        $sql = "INSERT INTO thucung_meo(id_dv, Tenthucung, Maloai, Machungloai, Dongia, Kieulong, Mausac, Mucdorunglong, Mucdophobien, Vengoai, Thongtinthem, Anh1, Anh2) 
-    VALUES ('$id_dv', '$Tenthucung', '$Maloai', '$Machungloai', $Dongia, '$Kieulong', '$Mausac', '$Mucdorunglong', '$Mucdophobien', '$Vengoai', '$Thongtinthem', '$Anh1', '$Anh2')";
+        $sql = "INSERT INTO thucung_meo(id_dv, Tenthucung, Maloai, Machungloai, Dongia, Kieulong, Mausac, Mucdorunglong, Mucdophobien, Vengoai, Thongtinthem, Anh1, Anh2,Trangthai) 
+    VALUES ('$id_dv', '$Tenthucung', '$Maloai', '$Machungloai', $Dongia, '$Kieulong', '$Mausac', '$Mucdorunglong', '$Mucdophobien', '$Vengoai', '$Thongtinthem', '$Anh1', '$Anh2','$trangthai')";
         $run = mysqli_query($conn, $sql);
         return $run;
     }
@@ -209,14 +209,14 @@ class data
     public function get_cho()
     {
         global $conn;
-        $sql = "select*from thucung_cho where Trangthai='CONHANG'";
+        $sql = "select*from thucung_cho where Trangthai='Còn hàng'";
         $run = mysqli_query($conn, $sql);
         return $run;
     }
     public function get_cho10()
     {
         global $conn;
-        $sql = "select*from thucung_cho where Trangthai='CONHANG' LIMIT 10";
+        $sql = "select*from thucung_cho where Trangthai='Còn hàng' LIMIT 10";
         $run = mysqli_query($conn, $sql);
         return $run;
     }
@@ -237,14 +237,14 @@ class data
     public function get_meo()
     {
         global $conn;
-        $sql = "select*from thucung_meo where Trangthai='CONHANG'";
+        $sql = "select*from thucung_meo where Trangthai='Còn hàng'";
         $run = mysqli_query($conn, $sql);
         return $run;
     }
     public function get_meo10()
     {
         global $conn;
-        $sql = "select*from thucung_meo where Trangthai='CONHANG' LIMIT 10";
+        $sql = "select*from thucung_meo where Trangthai='Còn hàng' LIMIT 10";
         $run = mysqli_query($conn, $sql);
         return $run;
     }
@@ -273,11 +273,11 @@ class data
         $run = mysqli_query($conn, $sql);
         return $run;
     }
-    public function insert_cho($id_dv, $Tenthucung, $Maloai, $Machungloai, $Kieulong, $Mucdichnuoi, $Kichthuoc, $Dongia, $Mucdophobien, $Thongtinthem, $Anh1, $Anh2)
+    public function insert_cho($id_dv, $Tenthucung, $Maloai, $Machungloai, $Kieulong, $Mucdichnuoi, $Kichthuoc, $Dongia, $Mucdophobien, $Thongtinthem, $Anh1, $Anh2,$trangthai)
     {
         global $conn;
-        $sql = "INSERT INTO thucung_cho(id_dv, Tenthucung, Maloai, Machungloai, Kieulong, Mucdichnuoi, Kichthuoc, Dongia, Mucdophobien, Thongtinthem, Anh1, Anh2) 
-    VALUES ('$id_dv', '$Tenthucung', '$Maloai', '$Machungloai', '$Kieulong', '$Mucdichnuoi', '$Kichthuoc', '$Dongia', '$Mucdophobien', '$Thongtinthem', '$Anh1', '$Anh2')";
+        $sql = "INSERT INTO thucung_cho(id_dv, Tenthucung, Maloai, Machungloai, Kieulong, Mucdichnuoi, Kichthuoc, Dongia, Mucdophobien, Thongtinthem, Anh1, Anh2,Trangthai) 
+    VALUES ('$id_dv', '$Tenthucung', '$Maloai', '$Machungloai', '$Kieulong', '$Mucdichnuoi', '$Kichthuoc', '$Dongia', '$Mucdophobien', '$Thongtinthem', '$Anh1', '$Anh2','$trangthai')";
         $run = mysqli_query($conn, $sql);
         return $run;
     }
@@ -358,11 +358,11 @@ class data
     public function get_cart($id)
     {
         global $conn;
-        $sql = "SELECT id_kh,id_sp,Tenthucung,Anh1,Soluong,giohang.Dongia,Soluong*giohang.Dongia as Tong from giohang,thucung_meo WHERE thucung_meo.id_dv=giohang.id_sp and id_kh='$id'
+        $sql = "SELECT id_kh,id_sp,Tenthucung,thucung_meo.Maloai,Anh1,Soluong,giohang.Dongia,Soluong*giohang.Dongia as Tong from giohang,thucung_meo WHERE thucung_meo.id_dv=giohang.id_sp and id_kh='$id'
     Union all
-    SELECT id_kh,id_sp,Tenthucung,Anh1,Soluong,giohang.Dongia,Soluong*giohang.Dongia as Tong from giohang,thucung_cho WHERE thucung_cho.id_dv=giohang.id_sp and id_kh='$id'
+    SELECT id_kh,id_sp,Tenthucung,thucung_cho.Maloai,Anh1,Soluong,giohang.Dongia,Soluong*giohang.Dongia as Tong from giohang,thucung_cho WHERE thucung_cho.id_dv=giohang.id_sp and id_kh='$id'
     union all
-    SELECT id_kh,giohang.id_sp,Tensanpham,Hinhanh,Soluong,giohang.Dongia,Soluong*giohang.Dongia as Tong from giohang,sanpham WHERE sanpham.id_sp=giohang.id_sp and id_kh='$id'";
+    SELECT id_kh,giohang.id_sp,Tensanpham,Maloaisanpham,Hinhanh,Soluong,giohang.Dongia,Soluong*giohang.Dongia as Tong from giohang,sanpham WHERE sanpham.id_sp=giohang.id_sp and id_kh='$id'";
         $run = mysqli_query($conn, $sql);
         return $run;
     }
@@ -598,7 +598,9 @@ SELECT chitiet_donhang.id_sp,Tensanpham,Hinhanh,chitiet_donhang.Soluong,chitiet_
     public function get_sanpham($id)
     {
         global $conn;
-        $sql = "select*from sanpham,loaisanpham WHERE sanpham.Maloaisanpham=loaisanpham.Maloaisanpham and id_sp='$id'";
+        $sql = "select*from sanpham,khosanpham,loaisanpham 
+        WHERE loaisanpham.Maloaisanpham=sanpham.Maloaisanpham 
+        and sanpham.id_sp=khosanpham.id_sp  and khosanpham.id_sp='$id'";
         $run = mysqli_query($conn, $sql);
         return $run;
     }
@@ -680,20 +682,20 @@ SELECT chitiet_donhang.id_sp,Tensanpham,Hinhanh,chitiet_donhang.Soluong,chitiet_
     public function tonkho_meo(){
         global $conn;
         $sql="select thucung_meo.Machungloai,Tenchungloai,COUNT(*) as Soluong  from thucung_meo,chungloai 
-        WHERE chungloai.Machungloai=thucung_meo.Machungloai and Trangthai='CONHANG' GROUP by Machungloai,Tenchungloai";
+        WHERE chungloai.Machungloai=thucung_meo.Machungloai and Trangthai='Còn hàng' GROUP by Machungloai,Tenchungloai";
         $run = mysqli_query($conn, $sql);
         return $run;
     }
     public function tonkho_meotheoloai($maloai){
         global $conn;
-        $sql="select*from thucung_meo,chungloai where chungloai.Machungloai=thucung_meo.Machungloai and Trangthai='CONHANG' 
+        $sql="select*from thucung_meo,chungloai where chungloai.Machungloai=thucung_meo.Machungloai and Trangthai='Còn hàng' 
         and thucung_meo.Machungloai='$maloai'";
         $run = mysqli_query($conn, $sql);
         return $run;
     }
     public function tonkho_chotheoloai($maloai){
         global $conn;
-        $sql="select*from thucung_cho,chungloai where chungloai.Machungloai=thucung_cho.Machungloai and Trangthai='CONHANG' 
+        $sql="select*from thucung_cho,chungloai where chungloai.Machungloai=thucung_cho.Machungloai and Trangthai='Còn hàng' 
         and thucung_cho.Machungloai='$maloai'";
         $run = mysqli_query($conn, $sql);
         return $run;
@@ -711,6 +713,23 @@ SELECT chitiet_donhang.id_sp,Tensanpham,Hinhanh,chitiet_donhang.Soluong,chitiet_
         return $run;
     }
 
-    
+    public function mua_sanpham($soluong,$id){
+        global $conn;
+        $sql="update khosanpham set Soluong=Soluong-$soluong where id_sp='$id'";
+        $run = mysqli_query($conn, $sql);
+        return $run;
+    }
+    public function mua_cho($id){
+        global $conn;
+        $sql="update thucung_cho set Trangthai='Đã bán' where id_dv='$id'";
+        $run = mysqli_query($conn, $sql);
+        return $run;
+    }
 
+    public function mua_meo($id){
+        global $conn;
+        $sql="update thucung_meo set Trangthai='Đã bán' where id_dv='$id'";
+        $run = mysqli_query($conn, $sql);
+        return $run;
+    }
 }

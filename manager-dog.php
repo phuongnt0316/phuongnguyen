@@ -108,7 +108,7 @@ if(empty($_SESSION["email"])){
                       foreach($get as $se){
                       ?>
                       <tr>
-                        <td>dddd<?php echo $se["id_dv"] ?></td>
+                        <td><?php echo $se["id_dv"] ?></td>
                         <td><?php echo $se["Tenthucung"] ?></td>                      
                         <td><?php $loai=$get_data->get_tenchungloai($se["Machungloai"]);foreach ($loai as $lo){echo $lo["Tenchungloai"];}?></td>
                         <td><?php echo $se["Maloai"] ?></td>

@@ -253,13 +253,16 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                                         <h3 class="name-product title-2 mt-3"><?php echo $se_if["Tenthucung"] ?></h3>
                                         <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongia"] ?></h3>
                                         <p class="description mt-2"><?php echo $se_if["Maloai"] ?></p>
-                                        <div class="chose-1">
-                                        <?php if(!empty($idkh)){?>
+                                        <div class="chose">
+                                <form action="" method="post">
+                                    <input type="number" name="quantity" min="1" max="1" value="1" id="">
+                                    <?php if(!empty($idkh)){?>
                                     <a href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>">Thêm
                                         vào giỏ hàng</a>
                                         <?php }else { ?>
                                     <a href="login.php?page=1"> Đăng nhập để mua hàng</a>
                                     <?php } ?>
+                                </form>
                                         </div>
                                         <p class="description mt-4" style="text-align: justify;">
                                             <?php echo $se_if["Thongtinthem"] ?></p>
@@ -297,7 +300,7 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                             <p class="description mt-2"><?php echo $se_if["Mucdichnuoi"] ?></p>
                             <div class="chose">
                                 <form action="" method="post">
-                                    <input type="number" name="quantity" min="1" max="10" value="1" id="">
+                                    <input type="number" name="quantity" min="1" max="1" value="1" id="">
                                     <?php if(!empty($idkh)){?>
                                     <a href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>">Thêm
                                         vào giỏ hàng</a>
@@ -341,13 +344,22 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                 <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongiaban"] ?></h3>
                 <div class="chose">
                     <form action="" method="post">
-                        <input type="number" name="quantity" min="1" max="10" value="1" id="">
-                        <?php if(!empty($idkh)){?>
-                                    <a href="themgiohang.php?id=<?php echo $se_if["id_sp"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongiaban"]?>">Thêm
+                        
+                        <?php 
+                        if($se_if["Soluong"]>0){
+                        if(!empty($idkh)){?>
+                                    <input type="number" name="quantity" min="1" max="10" value="1" id="">
+                                    <a href="themgiohang.php?id=<?php echo $se_if["id_sp"]?> &maloai=<?php echo $se_if["Maloaisanpham"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongiaban"]?>">Thêm
                                         vào giỏ hàng</a>
                                         <?php }else { ?>
                                     <a href="login.php?page=1"> Đăng nhập để mua hàng</a>
-                                    <?php } ?>
+                                    <?php } 
+                                    }
+                        else{?>
+                        <a>Tạm hết hàng</a>
+                            <?php
+                        }
+                                    ?>
 
                     </form>
                     <p class="description mt-4" style="text-align: justify;"><?php echo $se_if["Mota"] ?></p>
@@ -359,7 +371,9 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
     </div>
     <?php
 
-                  }}}?>
+                  }
+                }
+                  }?>
     </div>
     <div class="container mt-5 list-op">
         <ul class="nav nav-tabs" role="tablist">

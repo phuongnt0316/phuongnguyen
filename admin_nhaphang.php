@@ -77,7 +77,7 @@ $maloai="CHO";
                     <table>
                         <tr>
                             <td><label for="id" class="">Mã sản phẩm</label></td>
-                            <td><select name="txtId" id="tensp">
+                            <td><select name="txtId" id="tensp" ">
                                     <?php include('control.php');
                                     $get_data=new data();
                                     $select=$get_data->get_phukien();
@@ -89,10 +89,12 @@ $maloai="CHO";
                          </select>  
                         </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
+            
                             <td><label for="ten">Tên sản phẩm</label</td>
-                            <td><input type="text" name="txtTen" id="ten" ></td>
-                        </tr>
+                            <td><input type="text" name="txtTen" id="ten" value=""></td>
+                            
+                        </tr>  -->
                         
                         <tr>
                             <td><label for="Soluong">Số lượng</label></td>
@@ -120,6 +122,8 @@ $maloai="CHO";
                       $insert=$get_data->insert_nhaphang($_POST['txtId'],$_POST['txtSoluong'],$_POST['txtDongia']);
                   
                       if($insert){
+                      $update=$get_data->update_soluong_sanpham($_POST["txtSoluong"],$_POST["txtId"]);
+                      if($update){
                         ?> <script>
                         location.href = 'admin.php';
                       </script>
@@ -130,11 +134,11 @@ $maloai="CHO";
                       echo"<script> alert('Không thành công')</script>";
               	
 			                  }
-
+                      }
                             
                         
                         ?>
-                  ?>
+                  
 
                 </div>
                 

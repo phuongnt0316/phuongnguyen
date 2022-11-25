@@ -48,7 +48,7 @@ if(empty($_SESSION["email"])){
                             </ul>
                           </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">KHO HÀNG</a>
+                          <a class="nav-link" href="khohang.php">KHO HÀNG</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="hoadon.php">HÓA ĐƠN</a>
@@ -76,9 +76,8 @@ if(empty($_SESSION["email"])){
              
             <div class="main-right mb-5">
               <div class="list-customer">
-                
                 <div class="container p-3">
-                  <h4 class="text-dark text-center">DANH SÁCH sản phẩm|| <a href="admin_product_add.php" id="t">Thêm sản phẩm mới</a></h4>
+                  <h4 class="text-dark text-center">DANH SÁCH THỨC ĂN CHO MÈO|| <a href="admin_product_add.php" id="t">Thêm sản phẩm mới</a></h4>
                   <input class="form-control mt-5 mb-3" id="myInput" type="text" placeholder="Tìm kiếm thú cưng">
                   <br>
                   <table class="table table-bordered table-striped .table-responsive">
@@ -91,8 +90,6 @@ if(empty($_SESSION["email"])){
                         <th>Mã loại sản phẩm</th>
                         <th>Hình ảnh</th>
                         <th>Đơn giá bán</th>
-                        
-                        <th>Trạng thái</th>
                         <th colspan="3">Thao tác</th>
                       </tr>
                     </thead>
@@ -111,9 +108,8 @@ if(empty($_SESSION["email"])){
                         <td><?php echo $se["Maloaisanpham"] ?></td>
                         <td><img src="img/<?php echo $se['Hinhanh'] ?>" alt="" width="50px"></td>
                         <td><?php echo $se["Dongiaban"] ?></td>
-                        <td><?php echo $se["Trangthai"] ?></td>
-                        <td><a href="updatedog.php?id=<?php echo $se["id_dv"] ?>">Sửa</a></td>
-                        <td><a href="deletedog.php?id=<?php echo $se["id_dv"]?>" onclick="return (confirm('Xóa thú cưng?'))">Xóa</a></td>
+                        <td><a href="updatefoodcat.php?id=<?php echo $se["id_sp"] ?>">Sửa</a></td>
+                        <td><a href="deletefoodcat.php?id=<?php echo $se["id_sp"]?>" onclick="return (confirm('Xóa thú cưng?'))">Xóa</a></td>
                       </tr>
                       <?php } ?>
                       

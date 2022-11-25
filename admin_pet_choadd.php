@@ -33,10 +33,10 @@ $maloai="CHO";
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown">SẢN PHẨM</a>
                             <ul class="dropdown-menu mt-3 p-2 fade">
-                              <li><a class="dropdown-item text-dark " href="food-dog.php" style="color: var(--main-color-1);">CHÓ</a></li>
-                              <li><a class="dropdown-item text-dark" href="food-cat.php">MÈO</a></li>
-                              <li><a class="dropdown-item text-dark" href="food-dog.php">ĐỒ ĂN CHO CHÓ</a></li>
-                              <li><a class="dropdown-item text-dark" href="food-cat.php">ĐỒ ĂN CHO MÈO</a></li>
+                              <li><a class="dropdown-item text-dark " href="manager-dog.php" style="color: var(--main-color-1);">CHÓ</a></li>
+                              <li><a class="dropdown-item text-dark" href="manager-cat.php">MÈO</a></li>
+                              <li><a class="dropdown-item text-dark" href="manager-food-dog.php">ĐỒ ĂN CHO CHÓ</a></li>
+                              <li><a class="dropdown-item text-dark" href="manager-food-cat.php">ĐỒ ĂN CHO MÈO</a></li>
                               <li><a class="dropdown-item text-dark" href="pk.php">PHỤ KIỆN</a></li>
                               
                             </ul>
@@ -175,14 +175,14 @@ $maloai="CHO";
                          echo"<script> alert('ID đã tồn tại, vui lòng kiểm tra lại')</script>";	
                      }
                      else{
-                      //VALUES ('$id_dv', '$Tenthucung', '$Maloai', '$Machungloai', '$Kieulong', '$Mucdichnuoi', '$Kichthuoc', '$Dongia', '$Mucdophobien', '$Thongtinthem', '$Anh1', '$Anh2')";
+                        $trangthai="Còn hàng";
                       move_uploaded_file($_FILES['txtFile1']['tmp_name'],"img/". $_FILES['txtFile1']['name']);
                       move_uploaded_file($_FILES['txtFile2']['tmp_name'],"img/". $_FILES['txtFile2']['name']);
-                      $insert=$get_data->insert_cho($_POST['txtId'],$_POST['txtTen'],$maloai,$_POST['txtTenchungloai'],$_POST['txtKieulong'],$_POST['txtMucdich'],$_POST['txtKichthuoc'],$_POST['txtDongia'],$_POST['txtPhobien'],$_POST['txtMota'],$_FILES['txtFile1']['name'],$_FILES['txtFile2']['name']);
+                      $insert=$get_data->insert_cho($_POST['txtId'],$_POST['txtTen'],$maloai,$_POST['txtTenchungloai'],$_POST['txtKieulong'],$_POST['txtMucdich'],$_POST['txtKichthuoc'],$_POST['txtDongia'],$_POST['txtPhobien'],$_POST['txtMota'],$_FILES['txtFile1']['name'],$_FILES['txtFile2']['name'],$trangthai);
                   
                       if($insert){
                         ?> <script>
-                        location.href = 'admin.php';
+                        location.href = 'manager-dog.php';
                       </script>
                       <?php
                   

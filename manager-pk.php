@@ -48,7 +48,7 @@ if(empty($_SESSION["email"])){
                             </ul>
                           </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">KHO HÀNG</a>
+                          <a class="nav-link" href="khohang.php">KHO HÀNG</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="hoadon.php">HÓA ĐƠN</a>
