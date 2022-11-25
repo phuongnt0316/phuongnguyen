@@ -30,7 +30,19 @@ else {?> <script>
     <link rel="stylesheet" href="style/cart.css">
     <title>Document</title>
 </head>
-
+<style>
+ .xn {
+    background: var(--main-color-3);
+    text-decoration: none;
+    padding:  10px;
+    color:var(--color-3);
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    border-radius: 3px;
+    margin: 10px 0;
+}
+</style>
 <body>
     <div class="content">
         <div id="header">
@@ -112,19 +124,20 @@ else {?> <script>
         <div id="body">
           <div class="container p-5 cart">
             <form action="" method="post">
-            <h4 class="text-dark text-center">CHI TIẾT ĐƠN HÀNG <?php echo $id; ?></h4>
+            <h4 class="text-dark">CHI TIẾT ĐƠN HÀNG <?php echo $id; ?></h4>
                   <?php $select=$get_data->get_donhangid($id);
                       foreach($select as $se){
                       ?>
-                      <span class="text-dark text-center">
-                    Địa chỉ giao hàng:<?php echo $se['Diachi_giaohang']?><br>
-                    Tổng tiền:<?php echo $se['Tongtien']?><br>
-                    Ngày đặt:<?php echo $se['Ngayxuat'] ;?><br>
+                      <span class="text-dark">
+                   <p>Địa chỉ giao hàng:<?php echo $se['Diachi_giaohang']?></p>
+                   <p>Tổng tiền:<?php echo $se['Tongtien']?></p> 
+                   <p>Ngày đặt:<?php echo $se['Ngayxuat'] ;?></p>
                     <?php if($se['Trangthai']=="CHOGIAOHANG"){?>
+					<a href="user_nhanhang.php?id=<?php echo $se['id_hd']?>" onclick="return (confirm('Bạn đã nhận hàng?'))" class='post xn mt-3 mb-3'>Xác nhận đã nhận hàng</a> <br>
 					<a class="btn btn-primary" href="user_nhanhang.php?id=<?php echo $se['id_hd']?>" onclick="return (confirm('Bạn đã nhận hàng?'))" class='post'>Xác nhận đã nhận hàng</a> <br>
 					<?php
 					}
-                     echo $se["Trangthai"];
+               echo $se["Trangthai"];
                 
               }
 					?>
