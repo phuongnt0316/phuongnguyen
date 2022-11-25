@@ -291,7 +291,6 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                                     <input type="number" name="quantity" min="1" max="10" value="1" id="">
                                     <a
                                         href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>">Thêm
->>>>>>> a9054bbbda2952c361ac1997a466af84866df4b7
                                         vào giỏ hàng</a>
                                         <?php }else { ?>
                                     <a href="login.php?page=1"> Đăng nhập để mua hàng</a>
