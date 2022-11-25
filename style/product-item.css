@@ -49,9 +49,7 @@
 .col-sm-9 .product .img-product{
     height: 50px;
 }
-.col-sm-9 .product{
-    border-bottom: 1px solid var(--title-2-afer);
-}
+
 .tab-content #menu1 .bl-comment{
     border: 2px solid var(--main-color-1);
     padding: 30px;

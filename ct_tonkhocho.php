@@ -86,7 +86,7 @@ if(empty($_SESSION["email"])){
                   <table class="table table-bordered table-striped .table-responsive">
                     <thead class="table-dark">
                       <tr>
-                        <th>Mã loại thú cưng</th>
+                        <th>ID thú cưng</th>
                         <th>Tên thú cưng</th>
                         <th>Hình ảnh</th>
                         <th>Thao tác</th>
@@ -103,7 +103,7 @@ if(empty($_SESSION["email"])){
                     </thead>
                     <tbody id="myTable">
                       <tr>
-                        <td><?php echo $se['Matenthucung']?></td>
+                        <td><?php echo $se['id_dv']?></td>
                         <td><?php echo $se['Tenthucung']?></td>
                         <td><img src="img/<?php echo $se['Anh1']?>" width="100px"></td>
                         <td><a href="ct_tonkhocho.php?machungloai=<?php echo $se["Machungloai"] ?>">Chi tiết</a></td>
