@@ -234,9 +234,22 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                                         <h3 class="name-product title-2 mt-3"><?php echo $se_if["Tenthucung"] ?></h3>
                                         <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongia"] ?></h3>
                                         <p class="description mt-2"><?php echo $se_if["Maloai"] ?></p>
+<<<<<<< HEAD
+                                        <div class="chose">
+                                <form action="" method="post">
+                                    <input type="number" name="quantity" min="1" max="1" value="1" id="">
+                                    <?php if(!empty($idkh)){?>
+                                    <a href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>">Thêm
+                                        vào giỏ hàng</a>
+                                        <?php }else { ?>
+                                    <a href="login.php?page=1"> Đăng nhập để mua hàng</a>
+                                    <?php } ?>
+                                </form>
+=======
                                         <div class="chose-1">
                                             <a href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>"
                                                 class="mt-3">Thêm vào giỏ hàng</a>
+>>>>>>> a9054bbbda2952c361ac1997a466af84866df4b7
                                         </div>
                                         <p class="description mt-4" style="text-align: justify;">
                                             <?php echo $se_if["Thongtinthem"] ?></p>
@@ -270,9 +283,15 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                             <p class="description mt-2"><?php echo $se_if["Mucdichnuoi"] ?></p>
                             <div class="chose">
                                 <form action="" method="post">
+<<<<<<< HEAD
+                                    <input type="number" name="quantity" min="1" max="1" value="1" id="">
+                                    <?php if(!empty($idkh)){?>
+                                    <a href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>">Thêm
+=======
                                     <input type="number" name="quantity" min="1" max="10" value="1" id="">
                                     <a
                                         href="themgiohang.php?id=<?php echo $se_if["id_dv"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongia"]?>">Thêm
+>>>>>>> a9054bbbda2952c361ac1997a466af84866df4b7
                                         vào giỏ hàng</a>
                                         <?php }else { ?>
                                     <a href="login.php?page=1"> Đăng nhập để mua hàng</a>
@@ -309,10 +328,29 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                 <h3 class="price mt-2"><b>Giá:</b> <?php echo $se_if["Dongiaban"] ?></h3>
                 <div class="chose">
                     <form action="" method="post">
+<<<<<<< HEAD
+                        
+                        <?php 
+                        if($se_if["Soluong"]>0){
+                        if(!empty($idkh)){?>
+                                    <input type="number" name="quantity" min="1" max="10" value="1" id="">
+                                    <a href="themgiohang.php?id=<?php echo $se_if["id_sp"]?> &maloai=<?php echo $se_if["Maloaisanpham"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongiaban"]?>">Thêm
+                                        vào giỏ hàng</a>
+                                        <?php }else { ?>
+                                    <a href="login.php?page=1"> Đăng nhập để mua hàng</a>
+                                    <?php } 
+                                    }
+                        else{?>
+                        <a>Tạm hết hàng</a>
+                            <?php
+                        }
+                                    ?>
+=======
                         <input type="number" name="quantity" min="1" max="10" value="1" id="">
                         <a
                             href="themgiohang.php?id=<?php echo $se_if["id_sp"]?> &maloai=<?php echo $se_if["Maloaisanpham"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongiaban"]?>">Thêm
                             vào giỏ hàng</a>
+>>>>>>> a9054bbbda2952c361ac1997a466af84866df4b7
 
                     </form>
                     <p class="description mt-4" style="text-align: justify;"><?php echo $se_if["Mota"] ?></p>
@@ -324,6 +362,36 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
     </div>
 <?php
 
+<<<<<<< HEAD
+                  }
+                }
+                  }?>
+    </div>
+    <div class="container mt-5 list-op">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#home">Mô tả</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#menu1">Đánh giá</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#menu2">Chính sách bảo hành</a>
+            </li>
+        </ul>
+        <div class="tab-content text-dark">
+            <div id="home" class="container tab-pane active"><br>
+                <p class="discription-item">
+                </p>
+            </div>
+            <div id="menu1" class="container tab-pane fade"><br>
+                <h3>Đánh giá của bạn</h3>
+                <div class="bl-comment">
+                    <form action="" method="post">
+                        <div class="cmt">
+                            <label for="comment" class="mb-2"><b>Đánh giá của ban *</b></label> <br>
+                            <textarea name="comment" id="comment" cols="90" rows="5"></textarea>
+=======
                                                 }
                                             }
                                          ?>
@@ -357,6 +425,7 @@ if (!empty($_SESSION["email"]) && !empty($_SESSION["pass"])) {
                         <div class="me-5">
                             <label for="name" class="mb-2"><b>Tên *</b></label> <br>
                             <input type="text" name="name" id="name">
+>>>>>>> a9054bbbda2952c361ac1997a466af84866df4b7
                         </div>
                         <div>
                             <label for="name" class="mb-2"><b>Email *</b></label> <br>

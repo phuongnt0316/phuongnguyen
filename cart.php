@@ -117,6 +117,7 @@ else {?> <script>
             <form action="" method="post">
               <table class="table text-dark ">
                 <tr>
+                  <th>MÃ SẢN PHẨM</th>
                   <th>SẢN PHẨM</th>
                   <th>GIÁ</th>
                   <th>SỐ LƯỢNG</th>
@@ -128,6 +129,7 @@ else {?> <script>
                 foreach($get_cart as $cart){
                  ?>
                 <tr>
+                  <td><p class="mt-4"><?php echo $cart["id_sp"] ?></p></td>
                   <td class="d-flex flex-wrap ">
                     <img src="./img/<?php echo $cart["Anh1"]?>" width="100px" height="100px" alt="">
                     <h5 class="mt-4 ms-3"><?php echo $cart["Tenthucung"] ?> </h5>
@@ -144,7 +146,7 @@ else {?> <script>
               <div class="d-flex justify-content-between link mt-5" >
                 <a href="index1.php">Tiếp tục xem sản phẩm</a>
                 <input type="submit" value="Cập nhật giỏ hàng">
-                <a href="pay.php?id_kh=<?php echo $id_kh ?>">Thanh toán</a>
+                <a href="pay.php?id_kh=<?php echo $id_kh ?>">Đặt hàng</a>
               </div>
             </form>
           </div>

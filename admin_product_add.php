@@ -139,7 +139,7 @@ $maloai="CHO";
                                     $in=$get_data->insert_khosanpham($_POST["txtId"]);
                                     if($in){
                                   ?> <script>
-                                  location.href = 'pk.php';
+                                  location.href = 'manager-product.php';
                                   </script>
                                    <?php
                             

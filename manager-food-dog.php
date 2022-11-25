@@ -42,13 +42,13 @@ if(empty($_SESSION["email"])){
                               <li><a class="dropdown-item text-dark " href="manager-dog.php">CHÓ</a></li>
                               <li><a class="dropdown-item text-dark" href="manager-cat.php">MÈO</a></li>
                               <li><a class="dropdown-item text-dark" href="manager-food-dog.php">ĐỒ ĂN CHO CHÓ</a></li>
-                              <li><a class="dropdown-item text-dark" href="manafer-food-cat.php">ĐỒ ĂN CHO MÈO</a></li>
-                              <li><a class="dropdown-item text-dark" href="manafer-pk.php">PHỤ KIỆN</a></li>
+                              <li><a class="dropdown-item text-dark" href="manager-food-cat.php">ĐỒ ĂN CHO MÈO</a></li>
+                              <li><a class="dropdown-item text-dark" href="manager-pk.php">PHỤ KIỆN</a></li>
                               
                             </ul>
                           </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">KHO HÀNG</a>
+                          <a class="nav-link" href="khohang.php">KHO HÀNG</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="hoadon.php">HÓA ĐƠN</a>
@@ -103,7 +103,7 @@ if(empty($_SESSION["email"])){
                       foreach($get as $se){
                       ?>
                       <tr>
-                        <td>dddd<?php echo $se["id_sp"] ?></td>
+                        <td><?php echo $se["id_sp"] ?></td>
                         <td><?php echo $se["Tensanpham"] ?></td>                      
                         <td><?php echo $se["Mota"] ?></td>
                         <td><?php echo $se["Noisanxuat"] ?></td>
