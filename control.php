@@ -216,7 +216,7 @@ class data
     public function get_cho10()
     {
         global $conn;
-        $sql = "select*from thucung_cho where Trangthai='Còn hàng' LIMIT 10";
+        $sql = "select*from thucung_cho where Trangthai='Còn hàng' LIMIT 9";
         $run = mysqli_query($conn, $sql);
         return $run;
     }
