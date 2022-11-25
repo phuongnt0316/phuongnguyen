@@ -342,11 +342,17 @@ if(!empty($_SESSION["email"])&&!empty($_SESSION["pass"])){
                 <div class="chose">
                     <form action="" method="post">
                         <input type="number" name="quantity" min="1" max="10" value="1" id="">
-                        <?php if(!empty($idkh)){?>
+                        <?php 
+                        if($se_if["Soluong"]>0){
+                        if(!empty($idkh)){?>
                                     <a href="themgiohang.php?id=<?php echo $se_if["id_sp"]?> &maloai=<?php echo $se_if["Maloai"]?> &idkh=<?php echo $idkh;?> &sl=1 &dg=<?php echo $se_if["Dongiaban"]?>">Thêm
                                         vào giỏ hàng</a>
                                         <?php }else { ?>
                                     <a href="login.php?page=1"> Đăng nhập để mua hàng</a>
+                                    <?php }
+                                    }
+                                    else{ ?>
+                                    <a href="login.php?page=1"> Tạm hết hàng</a>
                                     <?php } ?>
 
                     </form>
